@@ -35,3 +35,15 @@
 * DNS 구성요소
 * DNS 동작원리
 * DNS 데이터
+
+## 5
+* Transport Layer 란
+* Transport Layer 에서 만들어지는 데이터의 단위
+* TCP 특징 (간략히)
+* Reliable / In-Order Delivery 란
+* Flow control & Congestion control 은 무엇인가
+* 멀티플렉싱 & 디멀티플렉싱의 차이
+* 포트번호는 Transport Layer 에서 어떻게 작용하는지
+* Checksum 이란
+* 패킷에 대한 에러가 있는 경우 이를 확인하기 위한 메커니즘
+* Sequece Number 란
