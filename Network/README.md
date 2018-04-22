@@ -82,3 +82,10 @@
 * TCP Tahoe & TCP Reno 개념 및 차이점
 * 3-Duplicate ACKs 란
 * TCP Fairness 란
+
+## 9
+* Network Layer 데이터단위
+* 라우터의 주요 두가지 기능
+  * 포워딩 & 라우팅
+* IP Protocol
+* subnets 
