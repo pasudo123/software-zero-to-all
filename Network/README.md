@@ -95,3 +95,18 @@
 * NAT 이란
 * NAT가 가진 문제점 두 가지 설명
 * NAT 환경에서 서버 사용의 문제점
+
+## 11
+* NAT 란
+* NAT 의 문제점은 무엇이고 설명
+* NAT 환경에서 서버 사용을 지양해야 하는지, 그리고 이에 따른 해결방법
+* IPv4 가 가진 문제점
+* cmd 창에서 ipconfig -all 을 치고 난 뒤 나타나는 것들 설명하기
+  * IP
+  * Subnet mask
+  * 기본 게이트웨이(Router)
+  * DNS
+  * DHCP
+* DHCP 란
+* DHCP 동작방식
+* IP 헤더 필드에서 16Bit Identifier 와 flag & offset 
