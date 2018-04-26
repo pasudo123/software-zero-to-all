@@ -104,8 +104,8 @@
 * cmd 창에서 ipconfig -all 을 치고 난 뒤 나타나는 것들 설명하기
   * IP
   * Subnet mask
-  * 기본 게이트웨이(Router)
-  * DNS
+  * 기본 게이트웨이(Router)
+  * DNS
   * DHCP
 * DHCP 란
 * DHCP 동작방식
