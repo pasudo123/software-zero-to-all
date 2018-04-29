@@ -110,3 +110,19 @@
 * DHCP 란
 * DHCP 동작방식
 * IP 헤더 필드에서 16Bit Identifier 와 flag & offset 
+
+## 12
+* ICMP 란 무엇인가
+* 라우팅 알고리즘 종류 (두가지)
+* link state 알고리즘이란
+* dijkstra 알고리즘이란
+* link state 알고리즘의 브로드캐스트 범위
+* distance vector 알고리즘 식과 해당 식 내용 설명
+
+## 13
+* distance vector 알고리즘 계산
+* distance vector 의 두 개의 노드의 값이 기존의 값보다 __작게__ 변경된 경우
+* distance vector 의 두 개의 노드의 값이 기존의 값보다 __크게__ 변경된 경우
+* distance vector 에서 count-infinite 란 무엇인가
+* link state 알고리즘의 브로드캐스트 범위
+* distance vector 알고리즘은 네트워크의 어느 부분에서 
