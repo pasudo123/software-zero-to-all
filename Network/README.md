@@ -125,4 +125,12 @@
 * distance vector 의 두 개의 노드의 값이 기존의 값보다 __크게__ 변경된 경우
 * distance vector 에서 count-infinite 란 무엇인가
 * link state 알고리즘의 브로드캐스트 범위
-* distance vector 알고리즘은 네트워크의 어느 부분에서 
+* distance vector 알고리즘은 네트워크의 어느 부분에서
+
+## 14
+* count infinite 현상이란 무엇인가
+* poison reverse 기법이란 무엇인가
+* AS(Autonomous System) 이란 무엇인가
+* AS 간의 Provider & Customer 의 관계란 무엇인가
+* AS 간의 Peering RelationShip 은 무엇인가
+* BGP 란 
