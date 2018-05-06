@@ -1,6 +1,11 @@
 ## Network
-질문
-  
+__참고강의__
+* [ 2015년 2학기 컴퓨터 네트워크 - 이석복 교수(한양대학교) ](http://www.kocw.net/home/search/kemView.do?kemId=1169634&ar=relateCourse)
+* [ 2016년 2학기 컴퓨터 네트워크 - 이석복 교수(한양대학교) ](http://www.kocw.net/home/search/kemView.do?kemId=1223614&ar=relateCourse)
+   
+__강의를 보면서 블로그에 게시글 작성__   
+__작성된 게시글을 통해서 질문글 추출__
+
 ## 1
 * 프로토콜이란 무엇인가
 * 네트워크 코어는 무엇인가
@@ -11,6 +16,7 @@
 * Packet Switching 시 Loss 와 Delay 개념 및 발생 이유
 * Delay 종류 네가지
 * Packet Loss 가 일어난 경우 어떤 동작이 발생하는가
+#### [ 1번 게시글 보기 ](http://pasudo123.tistory.com/118?category=746034)
   
 ## 2
 * 네트워크란 무엇인가
