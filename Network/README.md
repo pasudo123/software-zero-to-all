@@ -2,7 +2,7 @@
 질문
   
 ## 1
-* 프로토콜인란 무엇인가
+* 프로토콜이란 무엇인가
 * 네트워크 코어는 무엇인가
 * 라우터는 어떤 기능을 하는가
 * 라우터는 데이터를 어떻게 전달하는가
@@ -134,3 +134,18 @@
 * AS 간의 Provider & Customer 의 관계란 무엇인가
 * AS 간의 Peering RelationShip 은 무엇인가
 * BGP 란 
+
+## 15
+* 데이터 링크 레이어의 데이터 단위는 무엇인가
+* 네트워크 레이어에서 패킷이 출발지에서 목적지까지 도달하는 경우 어디로 처음 보내는가
+* 기본 게이트웨이(= 게이트웨이 라우터) 에서 프레임 혼선 문제, collision 설명하기
+* 홉(hop)이란 무엇인가
+* 링크 레이어는 어디에 구현되어 있는가
+* Medium Access Control 은 무엇인가
+* Mac Protocol 의 세가지 방식
+  * Channel Partitioning
+  * Random Access
+  * Taking Turns
+* CSMA/CD 란 무엇인가
+* binary (exponential) backoff 란 무엇인가
+* backoff 와 delay 간의 상관성
