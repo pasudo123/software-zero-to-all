@@ -170,3 +170,16 @@ __작성방식__
 * binary (exponential) backoff 란 무엇인가
 * backoff 와 delay 간의 상관성
 #### [ 15번 게시글 보기 ](http://pasudo123.tistory.com/154?category=746034)
+
+## 16
+* Ethernet 이란
+* Collision Detect 는 어디서 일어나야 하는 것인가
+* Minimum Frame Size 64Byte 란 무엇을 의미하는가
+* 데이터 링크 레이어의 데이터 전송 단위인 프레임에서 Source Address & Dest Address 는 무엇인가
+* MAC Address 는 48bit로 이루어져 있는데 이는 무엇을 의미하는가? (24bit + 24bit)
+* ARP 란
+* ARP Table 이란
+* A 라는 지점의 Source 에서 Google 서버로 접속하기 위해 어떤 과정이 존재하는가? (시나리오 설명)
+* 네트워크 코어의 라우터는 어느 테이블을 참조하는가
+* 프레임 전송원리에 대해서 설명
+#### [ 16번 게시글 보기 ](http://pasudo123.tistory.com/157?category=746034)
