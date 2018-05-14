@@ -197,6 +197,7 @@ __작성방식__
 * wifi 개략적인 설명
 * passive scanning 이란
 * CSMA/CA (Collision Avoidance) 설명
+* CSMA/CA 에서 ACK 는 무슨 역할을 수행하는가
 * RTS-CTS 란 무엇인가
 * wifi 에서 사용하는 프레임 설명
 #### [ 18번 게시글 보기 ](http://pasudo123.tistory.com/159?category=746034)
