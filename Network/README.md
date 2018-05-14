@@ -192,3 +192,11 @@ __작성방식__
 * 공유기에 공유기를 꽂는다면 어떻게 되는가
 * 가상의 IP 주소가 더 필요한 경우는 어떻게 행동으로 옮겨야 하는가
 #### [ 17번 게시글 보기 ](http://pasudo123.tistory.com/158?category=746034)
+
+## 18
+* wifi 개략적인 설명
+* passive scanning 이란
+* CSMA/CA (Collision Avoidance) 설명
+* RTS-CTS 란 무엇인가
+* wifi 에서 사용하는 프레임 설명
+#### [ 18번 게시글 보기 ](http://pasudo123.tistory.com/159?category=746034)
