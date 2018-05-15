@@ -201,3 +201,10 @@ __작성방식__
 * RTS-CTS 란 무엇인가
 * wifi 에서 사용하는 프레임 설명
 #### [ 18번 게시글 보기 ](http://pasudo123.tistory.com/159?category=746034)
+
+## 19
+* 비콘 프레임은 무엇인가
+* CSMA/CA + RTS-CTS 는 무엇인가
+* wifi 에서 사용하는 프레임 필드의 address1, address2, address3 설명하기
+* 일상생활에서 커피숍을 방문하였을 경우 wifi 연결을 한다면 어떻게 되는지 말해보아라
+#### [ 19번 게시글 보기 ](http://pasudo123.tistory.com/163?category=746034)
