@@ -33,7 +33,8 @@ __작성방식__
 * Web Caches (Proxy Server) 의 단점
 * Conditional GET 개념
 #### [ 2번 게시글 보기 ](http://pasudo123.tistory.com/119?category=746034)
-  
+#### [ 2번 질문데 대한 답변 확인 ](http://pasudo123.tistory.com/188?category=751090)
+
 ## 3
 * SMTP 프로토콜 개념
 * Mail Queue 개념
