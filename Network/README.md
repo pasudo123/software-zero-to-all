@@ -49,6 +49,7 @@ __작성방식__
 * DNS 동작원리
 * DNS 데이터
 #### [ 4번 게시글 보기 ](http://pasudo123.tistory.com/124?category=746034)
+#### [ 4번 질문에 대한 답변 확인 ](http://pasudo123.tistory.com/192?category=751090)
 
 ## 5
 * Transport Layer 란
