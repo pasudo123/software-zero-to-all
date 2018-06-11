@@ -41,6 +41,7 @@ __작성방식__
 * HTTP Protocol & SMTP Protocol 송수신 모습 (__push__ & __pull__)
 * Socket 이란
 #### [ 3번 게시글 보기 ](http://pasudo123.tistory.com/121?category=746034)
+#### [ 3번 질문에 대해 답변 확인 ](http://pasudo123.tistory.com/191?category=751090)
   
 ## 4
 * DNS 란
