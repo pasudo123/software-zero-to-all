@@ -63,6 +63,7 @@ __작성방식__
 * 패킷에 대한 에러가 있는 경우 이를 확인하기 위한 메커니즘
 * Sequece Number 란
 #### [ 5번 게시글 보기 ](http://pasudo123.tistory.com/125?category=746034)
+#### [ 5번 질문에 대한 답변 확인 ](http://pasudo123.tistory.com/193)
 
 ## 6
 * pack Error 가 생길 수 있는 네트워크에서 어느 메커니즘을 사용해야 하는 것인가
