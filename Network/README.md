@@ -66,7 +66,7 @@ __작성방식__
 #### [ 5번 질문에 대한 답변 확인 ](http://pasudo123.tistory.com/193)
 
 ## 6
-* pack Error 가 생길 수 있는 네트워크에서 어느 메커니즘을 사용해야 하는 것인가
+* Packet Error 가 생길 수 있는 네트워크에서 어느 메커니즘을 사용해야 하는 것인가
 * Sequence number 개념 및 사용이유
 * pipelined protocols 개념
 * TCP 특징
