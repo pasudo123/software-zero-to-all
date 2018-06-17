@@ -1,7 +1,5 @@
 # SoftwareZeroToALL
-:whale2: 소프트웨어에 대한 기본 지식들을 익히기 위한 곳
+기본 지식들을 공부하기. :ocean:
 
-#### 네트워크
-#### 데이터베이스
-#### 운영체제
-#### 자료구조 및 알고리즘
+## Network
+[ Network 바로가기 ](https://github.com/pasudo123/SoftwareZeroToALL/tree/master/Network)
