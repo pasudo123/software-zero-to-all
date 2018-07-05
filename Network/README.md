@@ -104,6 +104,7 @@ __작성방식__
 * 3-Duplicate ACKs 란
 * TCP Fairness 란
 #### [ 8번 게시글 보기 ](http://pasudo123.tistory.com/135?category=746034)
+#### [ 8번 질문에 대한 답변 확인 ](http://pasudo123.tistory.com/201)
 
 ## 9번 자문자답
 * Network Layer 데이터단위
