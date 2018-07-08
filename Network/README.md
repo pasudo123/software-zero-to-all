@@ -113,6 +113,7 @@ __작성방식__
 * IP Protocol
 * subnets 
 #### [ 9번 게시글 보기 ](http://pasudo123.tistory.com/138?category=746034)
+#### [ 9번 질문에 대한 답변 확인 ](http://pasudo123.tistory.com/219)
 
 ## 10번 자문자답
 * 서브넷이란
