@@ -122,6 +122,7 @@ __작성방식__
 * NAT가 가진 문제점 두 가지 설명
 * NAT 환경에서 서버 사용의 문제점
 #### [ 10번 게시글 보기 ](http://pasudo123.tistory.com/141?category=746034)
+#### [ 10번 질문에 대한 답변 확인 ](http://pasudo123.tistory.com/222?category=751090)
 
 ## 11번 자문자답
 * NAT 란
@@ -138,6 +139,7 @@ __작성방식__
 * DHCP 동작방식
 * IP 헤더 필드에서 16Bit Identifier 와 flag & offset 
 #### [ 11번 게시글 보기 ](http://pasudo123.tistory.com/142?category=746034)
+#### 게시글을 직접 보는게 좋다고 판단.
 
 ## 12번 자문자답
 * ICMP 란 무엇인가
