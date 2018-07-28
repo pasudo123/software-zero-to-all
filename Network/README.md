@@ -149,6 +149,7 @@ __작성방식__
 * link state 알고리즘의 브로드캐스트 범위
 * distance vector 알고리즘 식과 해당 식 내용 설명
 #### [ 12번 게시글 보기 ](http://pasudo123.tistory.com/144?category=746034)
+#### 게시글을 직접 보는게 좋다고 판단.
 
 ## 13번 자문자답
 * distance vector 알고리즘 계산
@@ -158,6 +159,7 @@ __작성방식__
 * link state 알고리즘의 브로드캐스트 범위
 * distance vector 알고리즘은 네트워크의 어느 부분에서
 #### [ 13번 게시글 보기 ](http://pasudo123.tistory.com/146?category=746034)
+#### 게시글을 직접 보는게 좋다고 판단.
 
 ## 14번 자문자답
 * count infinite 현상이란 무엇인가
@@ -167,6 +169,7 @@ __작성방식__
 * AS 간의 Peering RelationShip 은 무엇인가
 * BGP 란 
 #### [ 14번 게시글 보기 ](http://pasudo123.tistory.com/149?category=746034)
+#### 게시글을 직접 보는게 좋다고 판단.
 
 ## 15번 자문자답
 * 데이터 링크 레이어의 데이터 단위는 무엇인가
