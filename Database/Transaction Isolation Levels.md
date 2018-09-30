@@ -15,15 +15,14 @@ __이때 트랜잭션 2는 갱신된 데이터를 읽어와도 되는가 하는 
 <BR />
 <BR />
 ### 병렬 수행되는 트랜잭션에서 데이터가 모순되는 대표적 세가지 상태
-__1.  Dirty Read__
+__1.  Dirty Read__<BR />
 다른 트랜잭션이 변경했지만, 아직 커밋하지 않은 데이터를 읽어내는 것이다. Dirty 는 흑백이 구분되지 않은 어중간한 데이터라는 느낌을 나타낸다.
 
-__2.  Unrepeatable Read__
+__2.  Unrepeatable Read__<BR />
 트랜잭션 내에서 같은 데이터를 여러 번 읽을 때, 다른 트랜잭션이 해당 데이터를 변경하면 이전에 읽은 데이터와 다른 데이터를 읽어내는 것이다. 같은 값을 반복해서 읽을 수 없다는 의미에서 __Unrepeatable__ 이라는 표현이 사용되었다.
 
-__3.  Phantom Read__
+__3.  Phantom Read__<BR />
 트랜잭션 내에서 같은 데이터를 여러 번 읽을 때, 다른 트랜잭션이 새로 레코드를 추가하면 새로이 추가된 레코드를 읽어내는 것이다. Phantom 은 유령이라는 의미로 없던 내용이 다시 나타남을 생각하면 된다.
-<BR />
 <BR />
 ### 격리성 수준의 종류
 |                  독립성 수준                     |           의미            |
@@ -34,15 +33,15 @@ __3.  Phantom Read__
 | __Isolation Serializable__ |트랜잭션을 하나씩 순서대로 처리해서 독립시킴|
 | __Isolation Default__ |데이터베이스가 제공하는 기본 독립성 수준을 이용|
 <BR />
-<BR />
 
 ### 격리성 수준과 데이터가 모순된 상태 (O : 허용, X : 불허)
-|       독립성 수준       |   Dirty Read   |    Unrepeatable Read     |    Phantom Read    |
-|-----------------------|----------------|--------------------------|--------------------|
-|__Isolation Read UnCommitted__| O | O | O |
-|__Isolation Read Committed__| X | O | O |
-|__Isolation Repeatable Read__| X | X | O |
-|__Isolation Serializable__| X | X | X |
+|           독립성 수준          |   Dirty Read   |    Unrepeatable Read     |    Phantom Read    |
+|------------------------------|------|------|------|
+| __Isolation Read UnCommitted__ | O | O | O |
+| __Isolation Read Committed__ | X | O | O |
+| __Isolation Repeatable Read__ | X | X | O |
+| __Isolation Serializable__ | X | X | X |
+   
 아래로 내려올수록 모순된 상태를 허용하지 않고 격리성의 수준은 높아진다. 여기서 항상 격리성이 높은 __Isolation Serializable__ 을 생각할 수 있지만, 격리성이 높아지면 그만큼 성능이 나빠진다. 따라서 다중 트랜잭션 환경에서 DBMS가 제공하는 기능을 이용해 동시성을 제어하려면 트랜잭션 시작전에 명시적으로 __Set Transaction__ 명령어를 수행해주어야 한다. 
 
 ```
