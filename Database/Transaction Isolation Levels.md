@@ -32,6 +32,7 @@ __3.  Phantom Read__<BR />
 | __Isolation Serializable__ |트랜잭션을 하나씩 순서대로 처리해서 독립시킴|
 | __Isolation Default__ |데이터베이스가 제공하는 기본 독립성 수준을 이용|
 <BR />
+
 ### 격리성 수준과 데이터가 모순된 상태 (O : 허용, X : 불허)
 |           독립성 수준          |   Dirty Read   |    Unrepeatable Read     |    Phantom Read    |
 |------------------------------|------|------|------|
