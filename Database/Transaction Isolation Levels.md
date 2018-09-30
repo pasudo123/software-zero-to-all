@@ -35,14 +35,14 @@ __3.  Phantom Read__
 | __Isolation Default__ |데이터베이스가 제공하는 기본 독립성 수준을 이용|
 <BR />
 <BR />
+
 ### 격리성 수준과 데이터가 모순된 상태 (O : 허용, X : 불허)
-|독립성 수준|Dirty Read|Unrepeatable Read|Phantom Read|
-|-----------------------|-------------|-------------|-------------|
-| __Isolation Read UnCommitted__ |O|O|O|
-| __Isolation Read Committed__ |X|O|O|
-| __Isolation Repeatable Read__ |X|X|O|
-| __Isolation Serializable__ |X|X|X|
-<BR />
+|       독립성 수준       |   Dirty Read   |    Unrepeatable Read     |    Phantom Read    |
+|-----------------------|----------------|--------------------------|--------------------|
+|__Isolation Read UnCommitted__| O | O | O |
+|__Isolation Read Committed__| X | O | O |
+|__Isolation Repeatable Read__| X | X | O |
+|__Isolation Serializable__| X | X | X |
 아래로 내려올수록 모순된 상태를 허용하지 않고 격리성의 수준은 높아진다. 여기서 항상 격리성이 높은 __Isolation Serializable__ 을 생각할 수 있지만, 격리성이 높아지면 그만큼 성능이 나빠진다. 따라서 다중 트랜잭션 환경에서 DBMS가 제공하는 기능을 이용해 동시성을 제어하려면 트랜잭션 시작전에 명시적으로 __Set Transaction__ 명령어를 수행해주어야 한다. 
 
 ```
