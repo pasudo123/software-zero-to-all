@@ -44,4 +44,4 @@
 
 ## 참고링크
 1. [위키피디아](https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4#%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%9D%98_%EA%B0%9C%EB%85%90)
-2. [브런치 블로그 글] (https://brunch.co.kr/@toughrogrammer/17)
+2. [브런치 블로그 글](https://brunch.co.kr/@toughrogrammer/17)
