@@ -1,6 +1,5 @@
 ## Difference Between Statement And PreparedStatement In JDBC
 * __Statement__ 
-    * 우리가 아래와 같은 구문을 쳤다.
     ~~~SQL
     SELECT * FROM EMP WHERE SALARY = 10000;
     ~~~   
@@ -11,7 +10,7 @@
     3. Optimize Query
     4. Execute Query  
 
-    그리고 매 순간마다 모든 쿼리들에 대해 2 ~ 4의 절차를 수행한다.
+    그리고 매 순간마다 모든 쿼리들에 대해 __2, 3, 4__ 의 절차를 수행한다.
     
 * __PreparedStatement__
     ~~~SQL
