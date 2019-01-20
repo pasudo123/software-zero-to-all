@@ -5,7 +5,7 @@
 
 ## Object Oriented Programming (OOP)
 ### 객체지향의 올바른 이해
-* 객체지향 언어의 등장
+* [객체지향 언어의 등장](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EB%93%B1%EC%9E%A5.md)
 
 ## Database
 * [Database](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Database.md)
