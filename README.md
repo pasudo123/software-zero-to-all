@@ -6,6 +6,7 @@
 ## Object Oriented Programming (OOP)
 ### 객체지향의 올바른 이해
 * [객체지향 언어의 등장](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EB%93%B1%EC%9E%A5.md)
+* [객체지향의 올바른 이해 : 유연성](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4%20:%20%EC%9C%A0%EC%97%B0%EC%84%B1.md)
 
 ## Database
 * [Database](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Database.md)
