@@ -31,7 +31,7 @@ Database Index 개념 정리.
 ## Database Index 추가 내용
 * table row 에 하나씩 대응되는 별도의 객체 (object)
 * [옵티마이저](http://www.gurubee.net/lecture/2400)가 최적의 경로를 결정하기 위해 사용하는 요소 (factor)
-* 인덱스는 생성시킨 컬럼의 값과 table row 의 ROWID 로 구성되어 있으며, 이 컬럼들은 정되어 있는 상태
+* 인덱스는 생성시킨 컬럼의 값과 table row 의 ROWID 로 구성되어 있으며, 이 컬럼들은 정렬되어 있는 상태
 * 인덱스는 하나의 테이블에 여러 개를 지정할 수 있고, 하나의 컬럼이 여러 개의 인덱스에 포함될 수 있음
 * 테이블과 무관하게 CREATE 또는 DROP 이 독립적으로 가능하다.
 * __자동인덱스__ : Primary key 또는 Uninque 제약조건에 의해 자동적으로 생성된 인덱스
