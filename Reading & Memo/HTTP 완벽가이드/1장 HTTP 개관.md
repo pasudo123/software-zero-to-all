@@ -17,7 +17,7 @@
 * 웹 서버에 리소스는 각자의 이름을 가지고 있다.
   * 서버 리소스의 이름은 __URI( Uniform Resource Identifier ) 혹은 통합 자원 식별자__ 로 부른다.
 * URI 를 통해서 정보 리소스를 고유하게 식별하고 위치를 지정할 수 있다.
-* __URL( Uniform Resource Locator )__ 은 통합 자원 지시자로 부르며, 리소으데 대한 구체적인 위치를 서술한다.
+* __URL( Uniform Resource Locator )__ 은 통합 자원 지시자로 부르며, 리소스에 대한 구체적인 위치를 서술한다.
 * 오늘날 대부분의 URI 는 URL 이 될 수 있다.
 * __URN(Uniform Resource Name)__ 은 콘텐츠를 이루는 한 리소스에 대해, 그 리소스의 위치에 영향을 받지 않는 유일무이한 이름 역할을 수행한다.
    
