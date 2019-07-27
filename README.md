@@ -34,5 +34,3 @@
   * [1장 HTTP 개관](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Reading%20%26%20Memo/HTTP%20%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/1%EC%9E%A5%20HTTP%20%EA%B0%9C%EA%B4%80.md)
   * [5장 웹 서버](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Reading%20%26%20Memo/HTTP%20%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/5%EC%9E%A5%20%EC%9B%B9%20%EC%84%9C%EB%B2%84.md)
   * [HTTPS](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Reading%20%26%20Memo/HTTP%20%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/HTTPS.md)
-## Interest
-
