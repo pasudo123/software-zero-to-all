@@ -11,7 +11,12 @@
 
 ## Programming Language
 * [Java](https://github.com/pasudo123/LearnJava)
-
+  * __스프링 프레임워크 가이드 (참고용)__
+    * [Spring Guide By cheese10yun](https://github.com/cheese10yun/spring-guide)
+    * [Spring JPA Guide By cheese10yun](https://github.com/cheese10yun/spring-jpa-best-practices)
+  * __남들이 했던 것들__
+    * [디프만 프로젝트](https://github.com/depromeet)
+  
 ## Algorithm & Data-Structure
 * [내가 풀어본 것](https://github.com/pasudo123/Algorithms)
 * [Geeksforgeeks](https://github.com/pasudo123/Algorithms/tree/master/GeeksForGeeks)
@@ -25,7 +30,6 @@
 * [Transaction Isolation Levels In DBMS](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Transaction%20Isolation%20Levels.md)
 
 ## Network
-
 __네트워크 질문 (1)__   
 * 프로토콜이란 무엇인가
 * 네트워크 코어는 무엇인가
