@@ -10,15 +10,22 @@
 * [객체지향의 언어의 올바른 이해 : 유연성과 객체지향의 4대 특성](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)
 
 ## Programming Language
-* [Java](https://github.com/pasudo123/LearnJava)
-  * __스프링 프레임워크 가이드 (참고용)__
-    * [Spring Guide By cheese10yun](https://github.com/cheese10yun/spring-guide)
-    * [Spring JPA Guide By cheese10yun](https://github.com/cheese10yun/spring-jpa-best-practices)
-    * [실무에서 롬복 사용방법 By cheese10yun](https://www.popit.kr/%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-lombok-%EC%82%AC%EC%9A%A9%EB%B2%95/)
-  * __남들이 했던 것들__
-    * [디프만 프로젝트](https://github.com/depromeet)
-    * [Mash-Up](https://github.com/mash-up-kr)
-  
+#### [Java](https://github.com/pasudo123/LearnJava)
+* __스프링 프레임워크 가이드 (참고용)__
+   * [Spring Guide By cheese10yun](https://github.com/cheese10yun/spring-guide)
+   * [Spring JPA Guide By cheese10yun](https://github.com/cheese10yun/spring-jpa-best-practices)
+   * [실무에서 롬복 사용방법 By cheese10yun](https://www.popit.kr/%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-lombok-%EC%82%AC%EC%9A%A9%EB%B2%95/)
+* __남들이 했던 것들__
+  * [디프만 프로젝트](https://github.com/depromeet)
+  * [Mash-Up](https://github.com/mash-up-kr)
+
+#### vue js
+* [awesome-vue : all](https://github.com/vuejs/awesome-vue)
+* [vue devtools](https://github.com/vuejs/vue-devtools)
+* [vuex-persistedstate](https://github.com/robinvdvleuten/vuex-persistedstate)
+* [vuex-map-fields](https://github.com/maoberlehner/vuex-map-fields)
+* [vue-quill-editor](https://github.com/surmon-china/vue-quill-editor)
+
 ## Algorithm & Data-Structure
 * [내가 풀어본 것](https://github.com/pasudo123/Algorithms)
 * [Geeksforgeeks](https://github.com/pasudo123/Algorithms/tree/master/GeeksForGeeks)
