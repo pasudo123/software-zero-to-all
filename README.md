@@ -27,7 +27,7 @@
 * [vue-quill-editor](https://github.com/surmon-china/vue-quill-editor)
 
 #### Udemy
-* [Spring MVC Validation]()
+* [Spring MVC Validation](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Spring%20MVC%20Validation.md)
 
 ## Algorithm & Data-Structure
 * [내가 풀어본 것](https://github.com/pasudo123/Algorithms)
@@ -247,7 +247,7 @@ __네트워크 질문 (19)__
 ## Linux
 * [Linux 명령어 정리](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Linux/Linux%20Command/%EB%A6%AC%EB%88%85%EC%8A%A4%20%EB%AA%85%EB%A0%B9%EC%96%B4%20%EC%A0%95%EB%A6%AC.md)
 
-## Reading & Memo
+## Book & Memo
 * __HTTP 완벽 가이드__
   * [1장 HTTP 개관](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Reading%20%26%20Memo/HTTP%20%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/1%EC%9E%A5%20HTTP%20%EA%B0%9C%EA%B4%80.md)
   * [5장 웹 서버](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Reading%20%26%20Memo/HTTP%20%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/5%EC%9E%A5%20%EC%9B%B9%20%EC%84%9C%EB%B2%84.md)
