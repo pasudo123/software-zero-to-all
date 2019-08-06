@@ -119,6 +119,8 @@ __하이버네이트 설정파일__
 > @GenerationValue(strategy = GenerationType.TABLE)
 - 데이터베이스 키 생성 전용 테이블을 하나 만들고 이를 사용하여 기본키를 생성
 
+> MySQL 에서 GenerationType.IDENTIFY 없이 @Id 로만 PK 형태로 값을 집어넣을 수 있다. 하지만 중간에 PK 값을 강제적으로 올려버리고 이후에 GenerationType.IDENTIFT 를 다시 달았을 떄 INSERT 쿼리가 발생하지 않고 에러가 나타나는데 그 이유는 해당 PK 전략에서 자동적으로 MySQL AUTO_INCREMENT 를 설정해주어서 걊을 올바르게 조정시켜주기 때문이다.
+
 ## Question
 - JPA 엔티티는 왜 기본생성자 (NoArgsConsructor) 를 필요로 하는가?
     - 하이버네이트는 ```new``` 키워드를 통해서 엔티티 인스턴스를 생성한다. 만약 엔티티 클래스 네임이 Student 라고 한다면 하이버네이트는 new Student() 인스턴스를  만드는 것이다. 하이버네이트 내부적으로 __리플렉션 기법__ 을 이용해 해당 클래스를 생성하는데 이때 이용하는 것이 디폴트, 기본 생성자 인 것이다. 따라서 디버깅 하면 Constructor constructor 에 대해 __.newInstance() 메소드__ 를 호출하고 있음을 볼 수 있었다. 해당 메소드를 사용하기 위해선 해당 클래스에 대한 생성자가 인수가 없어야 한다. 추가적으로 해당 생성자는 공개적일 필요가 없다. 
