@@ -28,6 +28,7 @@
 
 ## Udemy
 * [Spring MVC Validation](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Spring%20MVC%20Validation.md)
+* [Hibernate Tutorial](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20tutorial.md)
 
 ## Algorithm & Data-Structure
 * [내가 풀어본 것](https://github.com/pasudo123/Algorithms)
