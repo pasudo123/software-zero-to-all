@@ -131,7 +131,7 @@ __하이버네이트 설정파일__
     - 하이버네이트는 JPA 라는 자바 ORM 표준의 구현체이며 명세라고 일컫을 수 있다. 하이버네이트를 만든 팀에서 JPA 어노테이션을 쓰는 것을 권장하고 있다.
 
 ### Hibernate :: Create
-```
+```java
 try{
 
             // SessionFactory 로부터 나온 Session 을 사용한다.
@@ -167,7 +167,7 @@ try{
 ```
 
 ### Hibernate :: Read
-```
+```java
 try{
 
     /** create session **/
@@ -202,7 +202,7 @@ try{
 ```
 
 ### Hibernate :: Update
-```
+```java
 try {
 
     // SessionFactory 로부터 나온 Session 을 사용한다.
@@ -242,7 +242,7 @@ try {
 ```
 
 ### Hibernate :: DELETE (엔티티 삭제)
-```
+```java
 try{
 
     // SessionFactory 로부터 나온 Session 을 사용한다.
@@ -269,7 +269,7 @@ try{
 ```
 
 ### Hibernate :: DELETE (쿼리 삭제)
-```
+```java
 try{
 
     // SessionFactory 로부터 나온 Session 을 사용한다.
@@ -289,4 +289,5 @@ try{
 
 } finally {
     sessionFactory.close();
+}
 ```
