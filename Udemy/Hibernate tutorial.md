@@ -129,3 +129,164 @@ __하이버네이트 설정파일__
  
 - 하이버네이트는 무엇인가?
     - 하이버네이트는 JPA 라는 자바 ORM 표준의 구현체이며 명세라고 일컫을 수 있다. 하이버네이트를 만든 팀에서 JPA 어노테이션을 쓰는 것을 권장하고 있다.
+
+### Hibernate :: Create
+```
+try{
+
+            // SessionFactory 로부터 나온 Session 을 사용한다.
+
+            /** create session **/
+            Session session = sessionFactory.getCurrentSession();
+
+            Student tempStudent = new Student("park", "sungdong", "oraedoa@gmail.com");
+            session.beginTransaction();
+            session.save(tempStudent);
+            session.getTransaction().commit();
+
+            /** find out Student's id : primary key **/
+            System.out.println("Saved student. Generated id : " + tempStudent);
+
+            /** new get Session and transaction start **/
+            session = sessionFactory.getCurrentSession();
+            session.beginTransaction();
+
+            System.out.println("Getting Student with id : " + tempStudent.getId());
+
+            Student foundStudent = session.get(Student.class, tempStudent.getId());
+
+            System.out.println("Get Complete : " + foundStudent);
+
+            session.getTransaction().commit();
+
+            System.out.println("Done !");
+
+        } finally {
+            sessionFactory.close();
+        }
+```
+
+### Hibernate :: Read
+```
+try{
+
+    /** create session **/
+    Session session = sessionFactory.getCurrentSession();
+
+    session.beginTransaction();
+
+    // query student
+    List<Student> students = session.createQuery("from Student").getResultList();
+
+    // display the student
+    for(Student student : students){
+        System.out.println(student);
+    }
+
+    // query student
+    List<Student> theStudent = session.createQuery("from Student stu where stu.firstName = 'park'").getResultList();
+    System.out.println("\n\n\n");
+
+    // display the student
+    for(Student student : theStudent){
+        System.out.println(student);
+    }
+
+    session.getTransaction().commit();
+
+    System.out.println("Done !!");
+
+} finally {
+    sessionFactory.close();
+}
+```
+
+### Hibernate :: Update
+```
+try {
+
+    // SessionFactory 로부터 나온 Session 을 사용한다.
+
+    /** create session **/
+    Session session = sessionFactory.getCurrentSession();
+
+    session.beginTransaction();
+
+    int studentId = 1;
+
+    /** select **/
+    Student foundStudent = session.get(Student.class, studentId);
+    System.out.println("found : " + foundStudent);
+
+    /** 하나만 updating **/
+    System.out.println("update Student");
+    foundStudent.setEmail("pasudo123@naver.com");
+
+    session.getTransaction().commit();
+
+    /** 전체 일괄 업데이트 **/
+    session = sessionFactory.getCurrentSession();
+    session.beginTransaction();
+
+    System.out.println("Update email for all Student");
+    session.createQuery("update Student set email = 'pasudo123@naver.com'")
+            .executeUpdate();
+
+    session.getTransaction().commit();
+
+    System.out.println("Done !");
+
+} finally {
+    sessionFactory.close();
+}
+```
+
+### Hibernate :: DELETE (엔티티 삭제)
+```
+try{
+
+    // SessionFactory 로부터 나온 Session 을 사용한다.
+
+    /** create session **/
+    Session session = sessionFactory.getCurrentSession();
+    session.beginTransaction();
+
+    System.out.println("Getting Student");
+    int studentId = 2000;
+    Student theStudent = session.get(Student.class, studentId);
+
+    /** delete Student **/
+    System.out.println("delete Student Id : " + studentId);
+    session.delete(theStudent);
+
+    session.getTransaction().commit();
+
+    System.out.println("Done !");
+
+} finally {
+    sessionFactory.close();
+}
+```
+
+### Hibernate :: DELETE (쿼리 삭제)
+```
+try{
+
+    // SessionFactory 로부터 나온 Session 을 사용한다.
+
+    /** create session **/
+    Session session = sessionFactory.getCurrentSession();
+    session.beginTransaction();
+
+    System.out.println("Getting Student");
+
+    System.out.println("Delete Using Query");
+    session.createQuery("delete from Student stu where stu.id >= 2000").executeUpdate();
+
+    session.getTransaction().commit();
+
+    System.out.println("Done !");
+
+} finally {
+    sessionFactory.close();
+```
