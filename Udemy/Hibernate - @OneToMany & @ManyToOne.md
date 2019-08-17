@@ -105,23 +105,6 @@ Hibernate: update book set book_store_id=?, name=? where id=?
 - 마지막으로 flush 메소드를 통해서 영속상태의 Book,BookStore 를 __데이터베이스와 동기화 시키는 작업을 수행__ 하면서 이 때 Update 쿼리가 날라간다. __만약에 변경이 일어나지 않았다면 업데이트 쿼리가 날라가지 않았을 것__ 이다.
 
 
-### Test Code 2 :: book.setBookStore(bookStore) 의 순서 변경
-```java
-book.setBookStore(bookStore);
-
-entityManager.persist(book);
-entityManager.persist(bookStore);
-entityManager.flush();
-```
-
-- 순서를 변경하면 update 쿼리는 flush() 를 수행하는 경우 날라가지 않는다. 왜냐하면 영속성 컨텍스트에 의해 관리되기 이전에 setBookStore() 메소드를 수항하였기 때문이다.
-
-```
-Hibernate: insert into book_store (name) values (?)
-Hibernate: insert into book (book_store_id, name) values (?, ?)
-```
-
-
 ### Test Code 3 :: entityManager 를 사용 (X), JpaRepository 사용 및 cascade = CascadeType.PERSIST) 적용
 ##### Book Entity 에 cascade 설정
 ```
