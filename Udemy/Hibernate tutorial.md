@@ -25,7 +25,7 @@ Query query = session.createQuery("from Student);
 List<Student> students = query.list();
 ```
 
-하이버네이트와 JDBC 의 관계
+#### 하이버네이트와 JDBC 의 관계
 * 하이버네이트는 데이터베이스와 통신하기 위해 JDBC 를 이용한다.
 * Java App < -- > ( Hibernate | JDBC ) < -- > Database
 
