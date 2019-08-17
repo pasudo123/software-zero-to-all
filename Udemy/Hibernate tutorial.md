@@ -92,31 +92,31 @@ __하이버네이트 설정파일__
 > @Table
 데이터베이스 테이블을 선정
 
-- SessionFactory
+### SessionFactory
     - 하이버네이트 설정 파일을 읽는다.
     - 세션 오브젝트를 생성한다.
     - 앱에서 딱 한번 구동된다.
 
-- Session
+### Session
     - JDBC Connection 으로 래핑되어 있다.
     - 세션은 메인 오브젝트로서 객체를 저장 및 반환하기 위해 사용된다.
     - 수명주기가 짧다
     - 세션 팩토리로부터 반환된다.
 
-> @GeneratedValue
+#### @GeneratedValue
 - 식별자 자동 생성을 지정한다.
 - 복합키보다는 인공키 사용을 권장한다.
 
-> @GeneratedValue(strategy = GenerationType.AUTO)
+#### @GeneratedValue(strategy = GenerationType.AUTO)
 - 특정한 데이터베이스에 적합한 전략을 생성 (데이터베이스에 관계없이 식별자를 자동으로 생성하라는 의미)
 
-> @GenerationValue(strategy = GenerationType.IDENTITY)
+#### @GenerationValue(strategy = GenerationType.IDENTITY)
 - 기본키 생성을 데이터베이스에 위임한다. (MySQL 데이터베이스에 사용하는 일반적인 방법)
 
-> @GenerationValue(strategy = GenerationType.SEQUENCE)
+#### @GenerationValue(strategy = GenerationType.SEQUENCE)
 - 데이터베이스의 특별한 오브젝트 시퀀스를 사용하여 기본키를 생성
 
-> @GenerationValue(strategy = GenerationType.TABLE)
+#### @GenerationValue(strategy = GenerationType.TABLE)
 - 데이터베이스 키 생성 전용 테이블을 하나 만들고 이를 사용하여 기본키를 생성
 
 > MySQL 에서 GenerationType.IDENTIFY 없이 @Id 로만 PK 형태로 값을 집어넣을 수 있다. 하지만 중간에 PK 값을 강제적으로 올려버리고 이후에 GenerationType.IDENTIFT 를 다시 달았을 떄 INSERT 쿼리가 발생하지 않고 에러가 나타나는데 그 이유는 해당 PK 전략에서 자동적으로 MySQL AUTO_INCREMENT 를 설정해주어서 걊을 올바르게 조정시켜주기 때문이다.
