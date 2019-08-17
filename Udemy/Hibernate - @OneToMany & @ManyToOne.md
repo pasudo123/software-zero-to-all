@@ -8,12 +8,8 @@
 - 서점은 여러 개의 책을 소유할 수 있다. (__@OneToMany__)
 - 책 (= Book) & 서점 (= BookStore)
 
-### DB Schema
 
-
-### 
-
-#### Book Entity
+### Book Entity
 ```java
 @Entity
 @Table(name = "BOOK")
@@ -48,7 +44,7 @@ public class Book {
 - @JoinColumn(name = "") 은 Book 엔티티 내에 조인되는 컬럼값을 무엇으로 할 지 지정한다.
 - foreignKey = @ForeignKey(name = "") 은 조인되는 컬럼값은 외래키이며 해당 외래키 명을 무엇으로 할 지 지정한다.
 
-#### Book Store Entity
+### Book Store Entity
 ```java
 @Entity
 @Table(name = "BOOK_STORE")
@@ -71,7 +67,7 @@ public class BookStore {
 ```
 
 
-#### Test Code 1 :: 서점에 책을 세팅한다.
+### Test Code 1 :: 서점에 책을 세팅한다.
 ```java
 @Test
 @Transactional
@@ -109,7 +105,7 @@ Hibernate: update book set book_store_id=?, name=? where id=?
 - 마지막으로 flush 메소드를 통해서 영속상태의 Book,BookStore 를 __데이터베이스와 동기화 시키는 작업을 수행__ 하면서 이 때 Update 쿼리가 날라간다. __만약에 변경이 일어나지 않았다면 업데이트 쿼리가 날라가지 않았을 것__ 이다.
 
 
-#### Test Code 2 :: book.setBookStore(bookStore) 의 순서 변경
+### Test Code 2 :: book.setBookStore(bookStore) 의 순서 변경
 ```java
 book.setBookStore(bookStore);
 
@@ -126,7 +122,7 @@ Hibernate: insert into book (book_store_id, name) values (?, ?)
 ```
 
 
-#### Test Code 3 :: entityManager 를 사용 (X), JpaRepository 사용 및 cascade = CascadeType.PERSIST) 적용
+### Test Code 3 :: entityManager 를 사용 (X), JpaRepository 사용 및 cascade = CascadeType.PERSIST) 적용
 ##### Book Entity 에 cascade 설정
 ```
 @ManyToOne(cascade = CascadeType.PERSIST)
