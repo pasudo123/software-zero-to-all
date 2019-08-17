@@ -70,6 +70,7 @@ public class BookStore {
 }
 ```
 
+
 #### Test Code 1 :: 서점에 책을 세팅한다.
 ```java
 @Test
@@ -105,7 +106,8 @@ Hibernate: update book set book_store_id=?, name=? where id=?
 - 엔티티 매니저를 통해 비영속 상태의 엔티티 Book 을 영속상태로 만든다. 영속상태로 만들어 해당 엔티티는 데이터베이스에 저장되고 이후에 메뢰 에서도 동일한 상태로 존재한다.
 - 이후에 영속상태에 있는 Book 에 BookStore 를 세팅한다.
 - 엔티티 매니저를 통해 비영속 상태의 엔티티 BookStore 를 영속상태로 만든다.
-- 마지막으로 flush 메소드를 통해서 영속상태의 Book,BookStore 를 데이터베이스와 동기화 시키는 작업을 수행하면서 이 때 Update 쿼리가 날라간다. 만약에 변경이 일어나지 않았다면 업데이트 쿼리가 날라가지 않았을 것이다.
+- 마지막으로 flush 메소드를 통해서 영속상태의 Book,BookStore 를 __데이터베이스와 동기화 시키는 작업을 수행__ 하면서 이 때 Update 쿼리가 날라간다. __만약에 변경이 일어나지 않았다면 업데이트 쿼리가 날라가지 않았을 것__ 이다.
+
 
 #### Test Code 2 :: book.setBookStore(bookStore) 의 순서 변경
 ```java
@@ -123,3 +125,20 @@ Hibernate: insert into book_store (name) values (?)
 Hibernate: insert into book (book_store_id, name) values (?, ?)
 ```
 
+
+#### Test Code 3 :: entityManager 를 사용 (X), JpaRepository 사용 및 cascade = CascadeType.PERSIST) 적용
+##### Book Entity 에 cascade 설정
+```
+@ManyToOne(cascade = CascadeType.PERSIST)
+@JoinColumn(name = "BOOK_STORE_ID", foreignKey = @ForeignKey(name = "FK_BOOK_BOOK_STORE_ID"))
+private BookStore bookStore;
+```
+
+- cascade 설정하면 연관된 엔티티들도 동일한 연산작업을 수행한다. (PERSIST, MERGE, DETACH, REFRESH, REMOVE, ALL 이 존재한다.)
+
+```java
+book.setBookStore(bookStore);
+bookRepository.save(book);
+```
+
+- 위와 같이 수행하면 앞선 __Test Code 2__ 내용과 같이 동일하게 쿼리가 날라감을 확인할 수 있다.
