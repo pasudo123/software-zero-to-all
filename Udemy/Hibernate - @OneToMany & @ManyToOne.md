@@ -310,3 +310,48 @@ Hibernate: select booklist0_.book_store_id as book_sto3_0_0_, booklist0_.id as i
 ```
 
 > 단방향일때는 BookStore 에서 Book 를 조회할 수 없었지만, 양방향이 되고 소스코드가 수정되고 나서는 가능하게 되었다.
+
+### 편의메소드 사용이유 ? (내용을 더 공부해야한다.)
+- 편의 메소드를 사용하는 이유는 연관관계 주인인 데이터에 대해서 값을 save() 하는 경우도 있지만, 연관관계의 주인인 아닌 데이터의 경우 값을 save() 해야하는 경우가 생긴다. 이 때 이 편의 메소드가 빛을 발휘한다. 
+
+__Book Entity__
+```java
+// 생략
+public class Book {
+
+    // 생략
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "BOOK_STORE_ID", foreignKey = @ForeignKey(name = "FK_BOOK_BOOK_STORE_ID"))
+    private BookStore bookStore;
+
+   // 생략
+
+    void setBookStore(BookStore bookStore) {
+        this.bookStore = bookStore;
+        getBookStore().getBookList().add(this);
+    }
+}
+```
+
+```java
+@Test
+public void 책_및_서점_생성_테스트() {
+
+    Book book = Book.builder()
+            .name("광부촌")
+            .build();
+
+    BookStore bookStore = BookStore
+            .builder()
+            .name("광부촌 서점")
+            .build();
+
+    book.setBookStore(bookStore);
+    bookStoreRepository.save(bookStore);
+}
+```
+
+- 위의 코드를 살펴보면 편의메소드를 통해서 레퍼런스 값과 this 키워드를 양쪽에 삽입해주고 있다.
+- 만약 연관관계의 주인은 Book 이지만 BookStore 로 값을 삽입하는 경우 편의메소드가 존재하지 않으면 Book 에는 값이 들어가지 않게된다.
+- __많은 블로그 내용을 보면 null 값에 대해서 말하고 있었지만 나는 널 값은 들어가는 것을 확인하지 못했다...__
