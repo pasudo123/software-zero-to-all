@@ -28,6 +28,7 @@
 * [vue-quill-editor](https://github.com/surmon-china/vue-quill-editor)
 
 ## Service Infra
+* [Amazone Web Serivce - 간략설명 (생활코딩)](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Service%20infra/Amazone%20Web%20Service.md)
 
 ## Udemy
 * [Spring MVC Validation](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Spring%20MVC%20Validation.md)
