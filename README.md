@@ -30,11 +30,14 @@
 ## Service Infra
 * [Amazone Web Serivce - 간략설명 (생활코딩)](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Service%20infra/Amazone%20Web%20Service.md)
 
-## Udemy
-* [Spring MVC Validation](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Spring%20MVC%20Validation.md)
-* [Hibernate Tutorial](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20tutorial.md)
-* [Hibernate OneToMany ManyToOne](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20-%20%40OneToMany%20%26%20%40ManyToOne.md)
-* [Hibernate FetchType.EAGER & FetchType.LAZY](#)
+## Online Lecture (Inflearn, Udemy, ETC)
+* Udemy
+  * [Spring MVC Validation](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Spring%20MVC%20Validation.md)
+  * [Hibernate Tutorial](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20tutorial.md)
+  * [Hibernate OneToMany ManyToOne](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20-%20%40OneToMany%20%26%20%40ManyToOne.md)
+  * [Hibernate FetchType.EAGER & FetchType.LAZY](#)
+* 자바 ORM 표준 JPA 프로그래밍
+  
 
 ## Algorithm & Data-Structure
 * [내가 풀어본 것](https://github.com/pasudo123/Algorithms)
