@@ -18,3 +18,7 @@
 * __JPA 내부 동작을 그림과 코드로 자세히 설명__
 * __JPA 가 어떤 SQL 을 만들어내는지 이해__
 * __JPA 가 언제 SQL 을 실행하는지 이해__
+
+# 목차
+* [01. JPA 소개](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/01.%20JPA%20%EC%86%8C%EA%B0%9C.md)
+* [02. JPA 기본 동작 및 실행](#)
