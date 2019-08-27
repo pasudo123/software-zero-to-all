@@ -36,7 +36,7 @@
   * [Hibernate Tutorial](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20tutorial.md)
   * [Hibernate OneToMany ManyToOne](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20-%20%40OneToMany%20%26%20%40ManyToOne.md)
   * [Hibernate FetchType.EAGER & FetchType.LAZY](#)
-* 자바 ORM 표준 JPA 프로그래밍
+* [자바 ORM 표준 JPA 프로그래밍](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/README.md)
   
 
 ## Algorithm & Data-Structure
