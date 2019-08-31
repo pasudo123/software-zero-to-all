@@ -23,3 +23,5 @@
 * [01. JPA 소개](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/01.%20JPA%20%EC%86%8C%EA%B0%9C.md)
 * [02. JPA 기본 동작 및 실행](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/02.%20JPA%20기본동작%20및%20실행.md)
 * [03. 영속성 컨텍스트](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/03.%20%EC%98%81%EC%86%8D%EC%84%B1%20%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8.md)
+* [04. 플러시(flush)](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/04.%20%ED%94%8C%EB%9F%AC%EC%8B%9C(flush).md)
+* [05. 준영속상태](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/05.%20%EC%A4%80%EC%98%81%EC%86%8D%EC%83%81%ED%83%9C.md)
