@@ -9,6 +9,7 @@
 * [03. 영속성 컨텍스트](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/03.%20%EC%98%81%EC%86%8D%EC%84%B1%20%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8.md)
 * [04. 플러시(flush)](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/04.%20%ED%94%8C%EB%9F%AC%EC%8B%9C(flush).md)
 * [05. 준영속상태](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/05.%20%EC%A4%80%EC%98%81%EC%86%8D%EC%83%81%ED%83%9C.md)
+* [06. 엔티티매핑](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/06.%20%EC%97%94%ED%8B%B0%ED%8B%B0%EB%A7%A4%ED%95%91.md)
 
 # JPA 실무가 어려운 이유
 * 예제들은 보통 테이블이 한 두개로 단순하다.
