@@ -17,7 +17,7 @@ public class ShopApplication {
 
     public static void main(String[]args){
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("test");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("shop");
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
@@ -27,11 +27,6 @@ public class ShopApplication {
         tx.begin();
 
         try{
-
-            Order order = entityManager.find(Order.class, 1L);
-            Member foundMember = order.getMember();
-
-
 
             tx.commit();
 
