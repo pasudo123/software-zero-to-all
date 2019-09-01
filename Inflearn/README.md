@@ -11,6 +11,10 @@
 * [05. 준영속상태](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/05.%20%EC%A4%80%EC%98%81%EC%86%8D%EC%83%81%ED%83%9C.md)
 * [06. 엔티티매핑](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/06.%20%EC%97%94%ED%8B%B0%ED%8B%B0%EB%A7%A4%ED%95%91.md)
 
+## 실전예제
+* [실전예제 01](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/%EC%8B%A4%EC%A0%84%EC%98%88%EC%A0%9C%2001%20-%20%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%B6%84%EC%84%9D%EA%B3%BC%20%EA%B8%B0%EB%B3%B8%EB%A7%A4%ED%95%91.md)
+  * 회원 / 주문 / 상품 / 주문상품
+
 # JPA 실무가 어려운 이유
 * 예제들은 보통 테이블이 한 두개로 단순하다.
 * 실무는 수십 개 이상의 복잡한 객체와 테이블 사용
