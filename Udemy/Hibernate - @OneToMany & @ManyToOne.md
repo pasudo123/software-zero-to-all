@@ -1,6 +1,6 @@
 ## Hibernate 에서 쓰이는 @OneToMany & @ManyToOne
 - ORM 에서 하나의 엔티티가 여러 개의 엔티티를 컬렉션으로 가지고 있는 경우 (@OneToMany)
-- ORM 에서 여러 개의 엔티티들으 하나의 엔티티를 레퍼런스로 가지고 있는 경우 (@ManyToOne)
+- ORM 에서 여러 개의 엔티티들 하나의 엔티티를 레퍼런스로 가지고 있는 경우 (@ManyToOne)
 
 ## 알아볼 예제
 - __책과 책방(=서점)__
@@ -215,6 +215,7 @@ BookStore(id=1, name=밀란쿤데라 서점2)
     - __연과관계의 주인은 항상 FK, 즉 외래키를 들고 있다.__
     - Book 과 BookStore 엔티티에서 연관관계가 맺어져있고 그 연관관계에 대한 주인은 Many 쪽이며, @JoinColumn 어노테이션을 가지고 있는 Book 엔티티가 연관관계의 주인이다.
     - 그리고 연관관계의 주인이 아닌 쪽에선 mappedBy = "" 속성을 이용하여 연관관계의 주인이 누구인지 명시해주어야 한다.
+        - mappedBy 속성을 사용하였을 때 해당 값은 @OneToMany 의 해당 객체에 있는 필드값을 명시해준다.
 
 __Book Entity__
 ```java
@@ -264,6 +265,7 @@ public class BookStore {
     @Column(name = "NAME")
     private String name;
 
+    /** Book 클래스의 bookStore 필드값을 mappedBy 속성값으로 지정한다. **/
     @OneToMany(mappedBy = "bookStore", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Book> bookList = new ArrayList<>();
 
