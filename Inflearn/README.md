@@ -11,6 +11,7 @@
 * [05. 준영속상태](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/05.%20%EC%A4%80%EC%98%81%EC%86%8D%EC%83%81%ED%83%9C.md)
 * [06. 엔티티매핑](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/06.%20%EC%97%94%ED%8B%B0%ED%8B%B0%EB%A7%A4%ED%95%91.md)
 * [07. 연관관계 매핑 기초](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/07.%20%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%20%EB%A7%A4%ED%95%91%20%EA%B8%B0%EC%B4%88.md)
+* [08. 양방향 연관관계 매핑 시 주의점](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/08.%20%EC%96%91%EB%B0%A9%ED%96%A5%20%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%20%EB%A7%A4%ED%95%91%20%EC%8B%9C%20%EC%A3%BC%EC%9D%98%EC%A0%90.md)
 
 ## 실전예제
 * [실전예제 01](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/%EC%8B%A4%EC%A0%84%EC%98%88%EC%A0%9C%2001%20-%20%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%B6%84%EC%84%9D%EA%B3%BC%20%EA%B8%B0%EB%B3%B8%EB%A7%A4%ED%95%91.md)
