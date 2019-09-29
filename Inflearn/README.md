@@ -17,6 +17,7 @@
 * [11. 프록시](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/11.%20%ED%94%84%EB%A1%9D%EC%8B%9C.md)
 * [12. 즉시로딩과 지연로딩](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/12.%20%20%EC%A6%89%EC%8B%9C%EB%A1%9C%EB%94%A9%EA%B3%BC%20%EC%A7%80%EC%97%B0%EB%A1%9C%EB%94%A9.md)
 * [13. 영속성 전이와 고아객체](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/13.%20%EC%98%81%EC%86%8D%EC%84%B1%20%EC%A0%84%EC%9D%B4%EC%99%80%20%EA%B3%A0%EC%95%84%EA%B0%9D%EC%B2%B4.md)
+* [14. 값 타입](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/14.%20%EA%B0%92%20%ED%83%80%EC%9E%85.md)
 
 ## 실전예제
 * [실전예제 01](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/%EC%8B%A4%EC%A0%84%EC%98%88%EC%A0%9C%2001%20-%20%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%B6%84%EC%84%9D%EA%B3%BC%20%EA%B8%B0%EB%B3%B8%EB%A7%A4%ED%95%91.md)
