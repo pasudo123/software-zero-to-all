@@ -1,4 +1,6 @@
-# 스프링 부트 Gradle Build 
+# 스프링 부트 Gradle Build
+- 최초작성 : 2019년 10월 11일
+- 최종수정 : 2019년 10월 12일
 
 ## Jar 또는 War 빌드 및 실행하기.
 - 빌드된 .jar 또는 .war 파일은 build/libs 에 있다.
@@ -39,6 +41,25 @@ bootRun {
 ### Running Application
 ```
 java -jar build/libs/demo.jar
+```
+
+### Append Date to Version Name subffix in Jar or War file 
+```gradle
+beta {
+    packageNameSuffix ".beta"
+    versionNameSuffix "-beta" + "-build" + getDate()
+    signingConfig signingConfigs.debug
+}
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMddHHmmss')
+    return formattedDate
+}
+
+def getDate() {
+    return new Date().format('yyyyMMddHHmmss')
+}
 ```
 
 ### dependecies
