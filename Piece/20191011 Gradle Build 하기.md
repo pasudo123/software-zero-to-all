@@ -43,7 +43,7 @@ bootRun {
 java -jar build/libs/demo.jar
 ```
 
-### Append Date to Version Name subffix in Jar or War file 
+### jar 또는 war 파일의 버전 뒤에 날짜 붙이기.
 ```gradle
 beta {
     packageNameSuffix ".beta"
