@@ -56,6 +56,10 @@
 ## Operating System (OS)
 * 
 
+## Piece (단편 지식)
+- [spring boot gradle build](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/20191011%20Gradle%20Build%20%ED%95%98%EA%B8%B0.md)
+- [패스워드 저장](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/20191027%20%ED%8C%A8%EC%8A%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%A5.md)
+
 ## Study-Sample-Code
 - [pasudo123-querydsl-sample](https://github.com/pasudo123/pasudo123-querydsl-sample)
 - [pasudo123-aop-sample](https://github.com/pasudo123/pasudo123-aop-sample)
