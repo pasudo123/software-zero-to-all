@@ -43,6 +43,7 @@
 * [Geeksforgeeks](https://github.com/pasudo123/Algorithms/tree/master/GeeksForGeeks)
 
 ## Database
+* [DB 설계 관련](http://www.ciboard.co.kr/manual/tables)
 * [Database](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Database.md)
 * [Database Index](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Database%20Index.md)
 * [Difference Between Statement And PreparedStatement In JDBC](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Difference%20Between%20Statement%20And%20PreparedStatement%20In%20JDBC.md)
