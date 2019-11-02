@@ -1,6 +1,6 @@
 # 스프링 부트 Gradle Build
 - 최초작성 : 2019년 10월 11일
-- 최종수정 : 2019년 10월 12일
+- 최종수정 : 2019년 11월 02일
 
 ## Jar 또는 War 빌드 및 실행하기.
 - 빌드된 .jar 또는 .war 파일은 build/libs 에 있다.
@@ -30,7 +30,8 @@ springBoot {
 }
 ```
 
-### ./gradlew bootRun
+### ./gradlew bootRun 명령어 수행.
+
 #### 스프링 부트를 빌드하지 않고 실행할 수 있다.
 ```gradle
 bootRun {
