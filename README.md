@@ -43,6 +43,7 @@
 * [Geeksforgeeks](https://github.com/pasudo123/Algorithms/tree/master/GeeksForGeeks)
 
 ## Database
+* [DB 설계 관련](http://www.ciboard.co.kr/manual/tables)
 * [Database](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Database.md)
 * [Database Index](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Database%20Index.md)
 * [Difference Between Statement And PreparedStatement In JDBC](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Difference%20Between%20Statement%20And%20PreparedStatement%20In%20JDBC.md)
@@ -55,6 +56,14 @@
 
 ## Operating System (OS)
 * 
+
+## Piece (단편 지식)
+- [spring boot gradle build](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/20191011%20Gradle%20Build%20%ED%95%98%EA%B8%B0.md)
+- [패스워드 저장](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/20191027%20%ED%8C%A8%EC%8A%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%A5.md)
+
+## Study-Sample-Code
+- [pasudo123-querydsl-sample](https://github.com/pasudo123/pasudo123-querydsl-sample)
+- [pasudo123-aop-sample](https://github.com/pasudo123/pasudo123-aop-sample)
 
 ## Linux
 * [Linux 명령어 정리](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Linux/Linux%20Command/%EB%A6%AC%EB%88%85%EC%8A%A4%20%EB%AA%85%EB%A0%B9%EC%96%B4%20%EC%A0%95%EB%A6%AC.md)
