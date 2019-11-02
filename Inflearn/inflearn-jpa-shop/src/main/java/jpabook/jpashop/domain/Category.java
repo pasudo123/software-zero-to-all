@@ -1,12 +1,9 @@
 //package jpabook.jpashop.domain;
 //
 ///**
-// * Created by pasudo123 on 2019-09-01
+// * Created by pasudo123 on 2019-09-18
 // * Blog: https://pasudo123.tistory.com/
 // * Email: oraedoa@gmail.com
 // **/
-//public enum OrderStatus {
-//
-//    ORDER, CANCEL
-//
+//public class Category {
 //}
