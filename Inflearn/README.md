@@ -28,7 +28,8 @@
 * [22. JPQL 타입 표현과 기타식](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/22.%20JPQL%20%ED%83%80%EC%9E%85%20%ED%91%9C%ED%98%84%EA%B3%BC%20%EA%B8%B0%ED%83%80%EC%8B%9D.md)
 * [23. 조건식](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/23.%20%EC%A1%B0%EA%B1%B4%EC%8B%9D.md)
 * [24. JPQL 기본함수](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/24.%20JPQL%20%EA%B8%B0%EB%B3%B8%ED%95%A8%EC%88%98.md)
-
+* [25. 객체지향 중급문법](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/25.%20%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%20%EC%A4%91%EA%B8%89%EB%AC%B8%EB%B2%95.md)
+* [26. 벌크연산](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/26.%20%EB%B2%8C%ED%81%AC%EC%97%B0%EC%82%B0.md)
 
 ## 실전예제
 * [실전예제 01](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/%EC%8B%A4%EC%A0%84%EC%98%88%EC%A0%9C%2001%20-%20%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%B6%84%EC%84%9D%EA%B3%BC%20%EA%B8%B0%EB%B3%B8%EB%A7%A4%ED%95%91.md)
