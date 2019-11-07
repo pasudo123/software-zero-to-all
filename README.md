@@ -69,7 +69,7 @@
 * [Linux 명령어 정리](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Linux/Linux%20Command/%EB%A6%AC%EB%88%85%EC%8A%A4%20%EB%AA%85%EB%A0%B9%EC%96%B4%20%EC%A0%95%EB%A6%AC.md)
 
 ## 개인적인 생각정리
-* [개발자의 커뮤니케이션]()
+* [실무를 하면서 드는 커뮤니케이션에 대한 생각들](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EB%82%98%EC%9D%98%20%EC%BB%A4%EB%AE%A4%EB%8B%88%EC%BC%80%EC%9D%B4%EC%85%98.md)
 
 ## Book & Memo
 * __HTTP 완벽 가이드__
