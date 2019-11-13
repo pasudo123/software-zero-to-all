@@ -60,6 +60,7 @@
 ## Piece (단편 지식)
 - [Gradle 관련](https://github.com/pasudo123/SoftwareZeroToALL/tree/master/Piece/gradle)
 - [패스워드 저장](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/20191027%20%ED%8C%A8%EC%8A%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%A5.md)
+- [VPS : 코노하](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/20191114%20VPS.md)
 
 ## Study-Sample-Code
 - [pasudo123-querydsl-sample](https://github.com/pasudo123/pasudo123-querydsl-sample)
