@@ -27,7 +27,10 @@
 - __user__
   -  ```user nginx```
   - nginx 를 기동하면 master process & worker process & cache process 이렇게 총 3개의 프로세스를 기동한다.
-  - 위의 세개의 프로세스에서 master process 이외의 프로세스를 기동하는 유저를 지칭한다.
+  - 위의 세개의 프로세스에서 nginx 는 worker process 가 실질적인 동작을 수행한다.
+    - 만약 ```user root``` 로 되어있다면 worker process 는 root 권한으로 동작한다. 악의적 사용자가 이를 제어하게 된다면 위험하다.
+    - 이런 위험 때문에 일반유저의 권한으로 접속할 수 없는 유저를 만들어야 한다. (쉘 접속 차단)
+    - ```www-data```, ```www```, ```nginx``` 와 같은 이름으로 유저를 만든다.
   - ```nginx 가 웹서버 프로세스를 실행할 사용자를 정의```
 - __worker_process__
   - ```worker_process auto;```
@@ -49,7 +52,17 @@
   - __location__
     - ```server``` 블록 안에 특정 URL 을 처리하는 방법을 정의한다.
       - 예를들어 http://A.com/category 와 http://A.com/search 에 접근하는 요청을 다르게 하고 싶을 때 사용한다.
-  
+
+### nginx 퍼포먼스 관련.
+- ```worker_process```
+  - 프로세스 몇개를 생성할 것인지 지정하는 지시어.
+- ```worker_connections```
+  - 이벤트 안에서 사용하는 지시어로 몇 개의 접속을 동시에 처리할 것인지 지정하는 지시어.
+
+> worker_process X worker_connection 을 조합하여 하나의 머신이 처리할 수 있는 커넥션의 양을 산출할 수 있다. worker_process = 4 이고 worker_connection = 1024 이면 4 X 1024 = 4096 개의 커넥션을 맺을 수 있다. 이러한 값을 설정하는 공식은 따로 없다. 
+- REF
+  - https://opentutorials.org/module/351/3334
+
 ### Load Balance
 트래픽을 서버 그룹 내에서 로드밸런싱 하기 위한 설정
 ```
