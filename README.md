@@ -43,9 +43,9 @@
 [Modern JAVA Interface Static Method](https://github.com/pasudo123/LearnJava/blob/master/JavaBasics/Java8InterfaceChanges02.java)<br>
 [Enum Type Example](https://github.com/pasudo123/LearnJava/blob/master/Enum/ThreadStatesEnum.java)<br>
 [Enum Type Safefy Example via Class Type](https://github.com/pasudo123/LearnJava/blob/master/Enum/ThreadStatesConstant.java)<br>
->> [class type constant](https://github.com/pasudo123/LearnJava/blob/master/Enum/ThreadStatesConstant.java)<br>
->> [enum type constant](https://github.com/pasudo123/LearnJava/blob/master/Enum/ThreadStates.java)<br>
->> [__How to use Enum Type : sample code__](https://github.com/pasudo123/LearnJava/blob/master/Enum/JavaEnumExamples.java)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; - [class type constant](https://github.com/pasudo123/LearnJava/blob/master/Enum/ThreadStatesConstant.java)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; - [enum type constant](https://github.com/pasudo123/LearnJava/blob/master/Enum/ThreadStates.java)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; - [__How to use Enum Type : sample code__](https://github.com/pasudo123/LearnJava/blob/master/Enum/JavaEnumExamples.java)<br>
   
 [Thread related post](https://github.com/pasudo123/LearnJava/blob/master/README.md)
 
