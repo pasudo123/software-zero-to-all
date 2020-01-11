@@ -1,7 +1,43 @@
-# SoftwareZeroToALL :dragon:
-```
-부족한 소프트웨어 지식들을 채워넣기 위한 공간
-```
+# SoftwareZeroToALL 👨🏻‍💻 👩🏻‍💻 
+부족한 소프트웨어 지식을 채워넣기 위한 공간.
+
+## Computer Science
+###
+
+## Development
+### OOP : Object Oriented Programming
+[초보개발자에게 권장하는 객체지향 모델링 공부방법](https://okky.kr/article/358197)
+[객체지향 언어 배경](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EB%93%B1%EC%9E%A5.md)<br>
+[객체지향 언어 이해 : 유연성](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)<br>
+[객체지향 언어 이해 : 유연성과 객체지향 4대 특성](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)<br>
+
+### TDD : Test Driven Development
+
+### Java
+[abstract keyword](https://github.com/pasudo123/LearnJava/blob/master/JavaBasics/AbstractEx.java)<br>
+[interface keyword](https://github.com/pasudo123/LearnJava/blob/master/JavaBasics/InterfaceEx.java)<br>
+[Difference Between interface & abstract](https://github.com/pasudo123/LearnJava/blob/master/JavaBasics/BetweenInterfaceAbstract.java)<br>
+[Stack Memory & Heap Memory](https://github.com/pasudo123/LearnJava/blob/master/AdvancedTopics/Memory.java)<br>
+[Reflection](https://github.com/pasudo123/LearnJava/blob/master/AdvancedTopics/Reflection.java)<br>
+[Reflection Sample Code](https://github.com/pasudo123/LearnJava/blob/master/AdvancedTopics/ReflectionSimple.java)<br>
+[Difference Between ArrayList & Vector](https://github.com/pasudo123/LearnJava/blob/master/AdvancedTopics/ArrayListVector.java)<br>
+[Difference Between Comparable & Comparator](https://github.com/pasudo123/LearnJava/blob/master/AdvancedTopics/CompareExercise.java)<br>
+[Modern JAVA Stream API](https://github.com/pasudo123/LearnJava/blob/master/AdvancedTopics/StreamAPIExplain.java)<br>
+[Modern JAVA Stream API Sample Code](https://github.com/pasudo123/LearnJava/blob/master/AdvancedTopics/StreamAPIExample.java)<br>
+[Modern JAVA Interface Default Method](https://github.com/pasudo123/LearnJava/blob/master/JavaBasics/Java8InterfaceChanges01.java)<br>
+[Modern JAVA Interface Static Method](https://github.com/pasudo123/LearnJava/blob/master/JavaBasics/Java8InterfaceChanges02.java)<br>
+[Enum Type Example](https://github.com/pasudo123/LearnJava/blob/master/Enum/ThreadStatesEnum.java)<br>
+[Enum Type Safefy Example via Class Type](https://github.com/pasudo123/LearnJava/blob/master/Enum/ThreadStatesConstant.java)<br>
+  - [class type constant](https://github.com/pasudo123/LearnJava/blob/master/Enum/ThreadStatesConstant.java)
+  - [enum type constant](https://github.com/pasudo123/LearnJava/blob/master/Enum/ThreadStates.java)
+  - __[How to use Enum Type : sample code](https://github.com/pasudo123/LearnJava/blob/master/Enum/JavaEnumExamples.java)__
+[Thread related post](https://github.com/pasudo123/LearnJava/blob/master/README.md)
+
+### Vue.js
+
+## Infra 
+### Nginx
+
 
 ## Object Oriented Programming (OOP)
 * [객체지향 언어의 등장](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EB%93%B1%EC%9E%A5.md)
