@@ -20,7 +20,7 @@
 
 ## Development
 ### OOP : Object Oriented Programming
-[초보개발자에게 권장하는 객체지향 모델링 공부방법](https://okky.kr/article/358197)
+[초보개발자에게 권장하는 객체지향 모델링 공부방법](https://okky.kr/article/358197)<br>
 [객체지향 언어 배경](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EB%93%B1%EC%9E%A5.md)<br>
 [객체지향 언어 이해 : 유연성](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)<br>
 [객체지향 언어 이해 : 유연성과 객체지향 4대 특성](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)<br>
@@ -54,8 +54,8 @@
 [롬복 애노테이션 사용 전략 : cheese10yun](https://www.popit.kr/%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-lombok-%EC%82%AC%EC%9A%A9%EB%B2%95/)<br>
 
 ### Java & Spring Sample Projects
-[디프만 프로젝트](https://github.com/depromeet)
-[매시업](https://github.com/mash-up-kr)
+[디프만 프로젝트](https://github.com/depromeet)<br>
+[매시업](https://github.com/mash-up-kr)<br>
 
 ### Vue.js
 [awesome-vue](https://github.com/vuejs/awesome-vue)<br>
@@ -71,11 +71,11 @@
 [Udemy, Hibernate Tutorial](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20tutorial.md)<br>
 [Udemy, OneToMany & ManyToOne](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20-%20%40OneToMany%20%26%20%40ManyToOne.md)<br>
 
-## Piece (단편 지식)
-- [Gradle 관련](https://github.com/pasudo123/SoftwareZeroToALL/tree/master/Piece/gradle)
-- [패스워드 저장](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/20191027%20%ED%8C%A8%EC%8A%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%A5.md)
-- [VPS : 코노하](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/20191114%20VPS.md)
-- [nginx 정리](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/nginx%20%EC%A0%95%EB%A6%AC.md)
+## 단편지식
+[gradle](https://github.com/pasudo123/SoftwareZeroToALL/tree/master/Piece/gradle)<br>
+[password 저장 방식](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/20191027%20%ED%8C%A8%EC%8A%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%A5.md)<br>
+[개인서버 할당 후 기록물 : 코노하 VPS](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/20191114%20VPS.md)<br>
+[nginx 정리](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/nginx%20%EC%A0%95%EB%A6%AC.md)<br>
 
 ## Study-Sample-Code
 - [pasudo123-querydsl-sample](https://github.com/pasudo123/pasudo123-querydsl-sample)
