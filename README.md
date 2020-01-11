@@ -23,14 +23,15 @@
 [Difference Between ArrayList & Vector](https://github.com/pasudo123/LearnJava/blob/master/AdvancedTopics/ArrayListVector.java)<br>
 [Difference Between Comparable & Comparator](https://github.com/pasudo123/LearnJava/blob/master/AdvancedTopics/CompareExercise.java)<br>
 [Modern JAVA Stream API](https://github.com/pasudo123/LearnJava/blob/master/AdvancedTopics/StreamAPIExplain.java)<br>
-[Modern JAVA Stream API Sample Code](https://github.com/pasudo123/LearnJava/blob/master/AdvancedTopics/StreamAPIExample.java)<br>
+[Modern JAVA Stream API __Sample Code__](https://github.com/pasudo123/LearnJava/blob/master/AdvancedTopics/StreamAPIExample.java)<br>
 [Modern JAVA Interface Default Method](https://github.com/pasudo123/LearnJava/blob/master/JavaBasics/Java8InterfaceChanges01.java)<br>
 [Modern JAVA Interface Static Method](https://github.com/pasudo123/LearnJava/blob/master/JavaBasics/Java8InterfaceChanges02.java)<br>
 [Enum Type Example](https://github.com/pasudo123/LearnJava/blob/master/Enum/ThreadStatesEnum.java)<br>
 [Enum Type Safefy Example via Class Type](https://github.com/pasudo123/LearnJava/blob/master/Enum/ThreadStatesConstant.java)<br>
   - [class type constant](https://github.com/pasudo123/LearnJava/blob/master/Enum/ThreadStatesConstant.java)
   - [enum type constant](https://github.com/pasudo123/LearnJava/blob/master/Enum/ThreadStates.java)
-  - __[How to use Enum Type : sample code](https://github.com/pasudo123/LearnJava/blob/master/Enum/JavaEnumExamples.java)__
+  - [__How to use Enum Type : sample code__](https://github.com/pasudo123/LearnJava/blob/master/Enum/JavaEnumExamples.java)
+  
 [Thread related post](https://github.com/pasudo123/LearnJava/blob/master/README.md)
 
 ### Vue.js
