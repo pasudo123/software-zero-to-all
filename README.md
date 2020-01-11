@@ -2,7 +2,21 @@
 부족한 소프트웨어 지식을 채워넣기 위한 공간.
 
 ## Computer Science
-###
+### Network
+[한양대 Network MOOC 수강 내용 정리](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Network/Network%20MOOC.md)<br>
+
+### Database
+[씨아이보드 메뉴얼 스키마 설계 샘플](http://www.ciboard.co.kr/manual/tables)<br>
+[데이터베이스 정의](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Database.md)<br>
+[인덱스](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Database%20Index.md)<br>
+[Difference Between Statement & PreparedStatement In JDBC](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Difference%20Between%20Statement%20And%20PreparedStatement%20In%20JDBC.md)<br>
+[조인 SQL](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Join%20(SQL).md)<br>
+[트랜잭션](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Transaction.md)<br>
+[트랜잭션 고립성(isolation) 레벨](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Transaction%20Isolation%20Levels.md)<br>
+
+### Algoritm
+[geeksforgeeks](https://github.com/pasudo123/Algorithms/tree/master/GeeksForGeeks)<br>
+[etc repository](https://github.com/pasudo123/Algorithms)<br>
 
 ## Development
 ### OOP : Object Oriented Programming
@@ -34,65 +48,28 @@
   
 [Thread related post](https://github.com/pasudo123/LearnJava/blob/master/README.md)
 
+### Java & Spring Reference 
+[스프링 가이드 : cheese10yun](https://github.com/cheese10yun/spring-guide)<br>
+[스프링 JPA 가이드 : cheese10yun](https://github.com/cheese10yun/spring-jpa-best-practices)<br>
+[롬복 애노테이션 사용 전략 : cheese10yun](https://www.popit.kr/%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-lombok-%EC%82%AC%EC%9A%A9%EB%B2%95/)<br>
+
+### Java & Spring Sample Projects
+[디프만 프로젝트](https://github.com/depromeet)
+[매시업](https://github.com/mash-up-kr)
+
 ### Vue.js
+[awesome-vue](https://github.com/vuejs/awesome-vue)<br>
 
 ## Infra 
+[생활코딩, 아마존 웹 서비스와 클라우드](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Service%20infra/Amazone%20Web%20Service.md)<br>
+
 ### Nginx
 
-
-## Object Oriented Programming (OOP)
-* [객체지향 언어의 등장](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EB%93%B1%EC%9E%A5.md)
-* [객체지향의 언어의 올바른 이해 : 유연성에 관하여](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)
-* [객체지향의 언어의 올바른 이해 : 유연성과 객체지향의 4대 특성](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)
-* [초보개발자에게 권장하는 객체지향 모델링 공부방법](https://okky.kr/article/358197)
-
-## Programming Language
-#### [Java](https://github.com/pasudo123/LearnJava)
-* __스프링 프레임워크 가이드 (참고용)__
-   * [Spring Guide By cheese10yun](https://github.com/cheese10yun/spring-guide)
-   * [Spring JPA Guide By cheese10yun](https://github.com/cheese10yun/spring-jpa-best-practices)
-   * [실무에서 롬복 사용방법 By cheese10yun](https://www.popit.kr/%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-lombok-%EC%82%AC%EC%9A%A9%EB%B2%95/)
-* __남들이 했던 것들__
-  * [디프만 프로젝트](https://github.com/depromeet)
-  * [Mash-Up](https://github.com/mash-up-kr)
-
-#### vue js
-* [awesome-vue : all](https://github.com/vuejs/awesome-vue)
-* [vue devtools](https://github.com/vuejs/vue-devtools)
-* [vuex-persistedstate](https://github.com/robinvdvleuten/vuex-persistedstate)
-* [vuex-map-fields](https://github.com/maoberlehner/vuex-map-fields)
-* [vue-quill-editor](https://github.com/surmon-china/vue-quill-editor)
-
-## Service Infra
-* [Amazone Web Serivce - 간략설명 (생활코딩)](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Service%20infra/Amazone%20Web%20Service.md)
-
-## Online Lecture (Inflearn, Udemy, ETC)
-* Udemy
-  * [Spring MVC Validation](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Spring%20MVC%20Validation.md)
-  * [Hibernate Tutorial](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20tutorial.md)
-  * [Hibernate OneToMany ManyToOne](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20-%20%40OneToMany%20%26%20%40ManyToOne.md)
-  * [Hibernate FetchType.EAGER & FetchType.LAZY](#)
-* [자바 ORM 표준 JPA 프로그래밍](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/README.md)
-  
-
-## Algorithm & Data-Structure
-* [내가 풀어본 것](https://github.com/pasudo123/Algorithms)
-* [Geeksforgeeks](https://github.com/pasudo123/Algorithms/tree/master/GeeksForGeeks)
-
-## Database
-* [DB 설계 관련](http://www.ciboard.co.kr/manual/tables)
-* [Database](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Database.md)
-* [Database Index](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Database%20Index.md)
-* [Difference Between Statement And PreparedStatement In JDBC](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Difference%20Between%20Statement%20And%20PreparedStatement%20In%20JDBC.md)
-* [Join(SQL)](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Join%20(SQL).md)
-* [Transaction](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Transaction.md)
-* [Transaction Isolation Levels In DBMS](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Transaction%20Isolation%20Levels.md)
-
-## Network
-* [한양대 Network MOOC : 강의 공부 내용](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Network/Network%20MOOC.md)
-
-## Operating System (OS)
-* 
+## 온라인 강의
+[인프런, 자바 ORM 표준 JPA 프로그래밍 : atoz](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/README.md)<br>
+[Udemy, Spring MVC Validation](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Spring%20MVC%20Validation.md)<br>
+[Udemy, Hibernate Tutorial](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20tutorial.md)<br>
+[Udemy, OneToMany & ManyToOne](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20-%20%40OneToMany%20%26%20%40ManyToOne.md)<br>
 
 ## Piece (단편 지식)
 - [Gradle 관련](https://github.com/pasudo123/SoftwareZeroToALL/tree/master/Piece/gradle)
