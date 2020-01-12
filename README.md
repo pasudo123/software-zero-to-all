@@ -60,6 +60,9 @@
 ### Vue.js
 * [awesome-vue](https://github.com/vuejs/awesome-vue)
 
+### Git
+* [소스트리에서 git reset(soft, mixed, hard)](https://github.com/pasudo123/GitFlowZero/blob/master/sourcetree-reset.md)
+
 ## 👨‍🚀 Infra 
 * [생활코딩, 아마존 웹 서비스와 클라우드](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Service%20infra/Amazone%20Web%20Service.md)
 * [nginx 에 SSL 적용하기](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Service%20infra/nginx-ssl.md)
