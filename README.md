@@ -87,4 +87,4 @@
 * [리눅스 크론탭 참고사이트](https://crontab.guru/)
 
 ## 👨‍🚀 실무관련
-* [커뮤니케이션 관련 : 다시 정리예정](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EB%82%98%EC%9D%98%20%EC%BB%A4%EB%AE%A4%EB%8B%88%EC%BC%80%EC%9D%B4%EC%85%98.md)
+* [신규서비스를 진행하면서 (서술)](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%8B%A0%EA%B7%9C%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%A7%84%ED%96%89%ED%95%98%EB%A9%B4%EC%84%9C%20(%EC%84%9C%EC%88%A0).md)
