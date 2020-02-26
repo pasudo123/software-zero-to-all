@@ -22,6 +22,7 @@ __도커는 이에 대해 일관성을 유지하게 해준다.__
 * 도커는 가상 컴퓨팅하고는 다른 구조이다.
 
 ![](https://vmarena.com/wp-content/uploads/2018/08/DOCK02.png)
+![](https://geekflare.com/wp-content/uploads/2019/09/traditional-vs-new-gen.png)
 
 ## 컨테이너
 * 애플리케이션을 환경에 구애받지 않고 실행시키는 기술
