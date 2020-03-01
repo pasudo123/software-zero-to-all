@@ -12,10 +12,8 @@ __도커는 이에 대해 일관성을 유지하게 해준다.__
   * __Docker image__ : Dockerfile 을 빌드하여 생성된 결과물
 > 도커파일을 1년전에 빌드하여 생성된 도커 이미지는 A와 B 서버의 구성의 차이가 기간이 많이나도,   
 > 동일한 환경에서 실행시킬 수 있다.
-
-## Dockerfile 을 빌드하고 나온 Docker image
-
-## Docker image 를 클라우드인 Dockerhub 에 올려서 공유 및 다운
+* Dockerfile 을 빌드하고 나온 Docker image
+* Docker image 를 클라우드인 Dockerhub 에 올려서 공유 및 다운
 
 ## Docker 는 각각을 서버에 설치하지 않고 각각의 컨테이너 안에 설치시킨다.
 * 각각을 컨테이너라고 불리는 독립된 공간에 설치한다.
