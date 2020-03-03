@@ -94,4 +94,4 @@
 
 ## 👨‍🚀 내가 궁금했던 것들
 * [왜 정적팩토리 메소드를 쓰는걸까?](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%99%9C%20%EC%A0%95%EC%A0%81%20%ED%8C%A9%ED%86%A0%EB%A6%AC%20%EB%A9%94%EC%86%8C%EB%93%9C%20%ED%8C%A8%ED%84%B4%EC%9D%84%20%EC%93%B0%EB%8A%94%EA%B0%80%3F.md)
-* [서비스 레이어와 비즈니스 로직과의 관계]
+* [서비스 레이어와 비즈니스 로직과의 관계](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EB%A1%9C%EC%A7%81%EA%B3%BC%EC%9D%98%20%EA%B4%80%EA%B3%84.md)
