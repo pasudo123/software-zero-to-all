@@ -83,8 +83,7 @@
 * [nginx 정리](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/nginx%20%EC%A0%95%EB%A6%AC.md)
 
 ## 👨‍🚀 Study-Sample-Code
-* [pasudo123-querydsl-sample](https://github.com/pasudo123/pasudo123-querydsl-sample)
-* [pasudo123-aop-sample](https://github.com/pasudo123/pasudo123-aop-sample)
+
 
 ## 👨‍🚀 Linux
 * [리눅스 크론탭 참고사이트](https://crontab.guru/)
