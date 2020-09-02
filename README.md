@@ -82,8 +82,8 @@
 * [개인서버 할당 후 기록물 : 코노하 VPS](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/20191114%20VPS.md)
 * [nginx 정리](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/nginx%20%EC%A0%95%EB%A6%AC.md)
 
-## 👨‍🚀 Study-Sample-Code
-
+## 👨‍🚀 leetcode
+* [leetcode 를 꾸준히 풀자](https://github.com/pasudo123/SoftwareZeroToALL/tree/master/leetcode)
 
 ## 👨‍🚀 Linux
 * [리눅스 크론탭 참고사이트](https://crontab.guru/)
