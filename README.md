@@ -3,17 +3,17 @@
 
 ## 👨‍🚀 Computer Science
 ### Network
-* [한양대 Network MOOC 수강 내용 정리](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Network/Network%20MOOC.md)
+* [한양대 Network MOOC 수강 내용 정리](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/network/Network%20MOOC.md)
 * [HTTPS](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Book%20%26%20Memo/HTTP%20%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/HTTPS.md)
 
 ### Database
 * [씨아이보드 메뉴얼 스키마 설계 샘플](http://www.ciboard.co.kr/manual/tables)
-* [데이터베이스 정의](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Database.md)
-* [인덱스](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Database%20Index.md)
-* [Difference Between Statement & PreparedStatement In JDBC](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Difference%20Between%20Statement%20And%20PreparedStatement%20In%20JDBC.md)
-* [조인 SQL](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Join%20(SQL).md)
-* [트랜잭션](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Transaction.md)
-* [트랜잭션 고립성(isolation) 레벨](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Database/Transaction%20Isolation%20Levels.md)
+* [데이터베이스 정의](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/database/Database.md)
+* [인덱스](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/database/Database%20Index.md)
+* [Difference Between Statement & PreparedStatement In JDBC](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/database/Difference%20Between%20Statement%20And%20PreparedStatement%20In%20JDBC.md)
+* [조인 SQL](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/database/Join%20(SQL).md)
+* [트랜잭션](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/database/Transaction.md)
+* [트랜잭션 고립성(isolation) 레벨](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/database/Transaction%20Isolation%20Levels.md)
 
 ### Algoritm
 * [geeksforgeeks](https://github.com/pasudo123/Algorithms/tree/master/GeeksForGeeks)
@@ -22,12 +22,9 @@
 ## 👨‍🚀 Development
 ### OOP : Object Oriented Programming
 * [초보개발자에게 권장하는 객체지향 모델링 공부방법](https://okky.kr/article/358197)
-* [객체지향 언어 배경](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EB%93%B1%EC%9E%A5.md)
-* [객체지향 언어 이해 : 유연성](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)
-* [객체지향 언어 이해 : 유연성과 객체지향 4대 특성](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Object%20Oriented%20Programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)
-
-### TDD : Test Driven Development
-* [TDD 피드백 관련](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/TDD/%EC%9D%B5%ED%9E%88%EA%B3%A0%20%EC%9E%88%EB%8A%94%20%EA%B2%83%EB%93%A4.md)
+* [객체지향 언어 배경](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/object_oriented_programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EB%93%B1%EC%9E%A5.md)
+* [객체지향 언어 이해 : 유연성](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/object_oriented_programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)
+* [객체지향 언어 이해 : 유연성과 객체지향 4대 특성](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/object_oriented_programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)
 
 ### Java
 * [abstract keyword](https://github.com/pasudo123/LearnJava/blob/master/JavaBasics/AbstractEx.java)
@@ -92,7 +89,9 @@
 * [신규서비스를 진행하면서 (서술)](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%8B%A0%EA%B7%9C%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%A7%84%ED%96%89%ED%95%98%EB%A9%B4%EC%84%9C%20(%EC%84%9C%EC%88%A0).md)
 * [내가 사용하는 키맵](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%9D%B8%ED%85%94%EB%A6%AC%EC%A0%9C%EC%9D%B4%20%EB%82%B4%EA%B0%80%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%20%ED%82%A4%EB%A7%B5.md)
 
-## 👨‍🚀 내가 궁금했던 것들
-* [왜 정적팩토리 메소드를 쓰는걸까?](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%99%9C%20%EC%A0%95%EC%A0%81%20%ED%8C%A9%ED%86%A0%EB%A6%AC%20%EB%A9%94%EC%86%8C%EB%93%9C%20%ED%8C%A8%ED%84%B4%EC%9D%84%20%EC%93%B0%EB%8A%94%EA%B0%80%3F.md)
-* [서비스 레이어 vs 비즈니스 로직](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EB%A1%9C%EC%A7%81%EA%B3%BC%EC%9D%98%20%EA%B4%80%EA%B3%84.md)
-* [객체지향의 TDA : Tell Don't ASK](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/Tell%20Don't%20ASK.md)
+## 👨‍🚀 Wonder That
+* [왜 정적팩토리 메소드를 쓰는걸까?](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/personal/%EC%99%9C%20%EC%A0%95%EC%A0%81%20%ED%8C%A9%ED%86%A0%EB%A6%AC%20%EB%A9%94%EC%86%8C%EB%93%9C%20%ED%8C%A8%ED%84%B4%EC%9D%84%20%EC%93%B0%EB%8A%94%EA%B0%80.md)
+* [서비스 레이어 vs 비즈니스 로직](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/personal/%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EB%A1%9C%EC%A7%81%EA%B3%BC%EC%9D%98%20%EA%B4%80%EA%B3%84.md)
+* [객체지향의 TDA : Tell Don't ASK](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/personal/Tell%20Don't%20ASK.md)
+* [서비스레이어와 비즈니스 로직과의 관계](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/personal/%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EB%A1%9C%EC%A7%81%EA%B3%BC%EC%9D%98%20%EA%B4%80%EA%B3%84.md)
+* [SPA vs MPA](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/personal/SPA%20vs%20MPA.md)
