@@ -1,10 +1,10 @@
 # DockerZeroToALL
 * 도커를 정리.
 
-<BR><BR>
+<BR>
 
-## <a id="index"></a>목차
-* [도커란](https://pasudo123.tistory.com/398)
+## <a id="index"></a>index
+* [docker 란](https://pasudo123.tistory.com/398)
 * [docker command](#docker-command-text)
     * [docker build command](#docker-build-command)
     * [docker build command option](#docker-build-command-option)
@@ -13,7 +13,7 @@
     * [docker ps](#docker-ps-command)
 * [도커 명령어 reference](https://docs.docker.com/engine/reference/commandline/docker/)
 
-<BR><BR>
+<BR>
 
 ## <a id="docker-command-text"></a>docker command
 * [목차이동](#index)
@@ -22,24 +22,23 @@
 $ docker -v
 ```
 
----
-
-<!------------------------------------------------------->
+<BR>
 
 ## <a id="docker-build-command"></a>docker build command
 * [목차이동](#index)
 ```
+// 이미지 빌드 ( dot 표기 필요 ! )
 $ docker build -t {name}:{tag} .
 ```
 
----
+<BR>
 
 ## <a id="docker-build-command-option"></a>docker build command option
 |name(shortcut)|default|description|example|
 |-------------|-------------|-------------|-------------|
 |--tag(-t)||{name}:{tag} 형식 이름 지정|`$docker build -t ubuntu:14.04 .`|
 
----
+<BR>
 
 ## <a id="docker-image-command"></a>docker image command
 * [목차이동](#index)
@@ -56,7 +55,7 @@ $ docker rmi {image-id}
 $ docker image prune
 ```
 
----
+<BR>
 
 ## <a id="docker-ps-command"></a>docker container command
 * [목차이동](#index)
@@ -87,7 +86,7 @@ $ docker rm -f {container-name}
 $ docker container prune
 ```
 
----
+<BR>
 
 ## <a id="docker-ps-command"></a>docker ps
 * [목차이동](#index)
@@ -116,4 +115,4 @@ $ docker ps -a
     * 컨테이너의 고유한 이름 
     * 컨테이너 생성 시, `--name` 옵션으로 이름을 설정하지 않으면 도커엔진이 임의로 이름을 조합한다.
 
----
+<BR>
