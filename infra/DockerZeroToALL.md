@@ -22,10 +22,26 @@
 $ docker -v
 ```
 
-<BR><BR>
+---
+
 <!------------------------------------------------------->
 
 ## <a id="docker-build-command"></a>docker build command
+* [목차이동](#index)
+```
+$ docker build -t {name}:{tag} .
+```
+
+---
+
+## <a id="docker-build-command-option"></a>docker build command option
+|name(shortcut)|default|description|example|
+|-------------|-------------|-------------|-------------|
+|--tag(-t)||{name}:{tag} 형식 이름 지정|`$docker build -t ubuntu:14.04 .`|
+
+---
+
+## <a id="docker-image-command"></a>docker image command
 * [목차이동](#index)
 ```
 // 도커 이미지 조회
@@ -40,16 +56,7 @@ $ docker rmi {image-id}
 $ docker image prune
 ```
 
-<BR><BR>
-<!------------------------------------------------------->
-
-## <a id="docker-build-command-option"></a>docker build command option
-|name(shortcut)|default|description|example|
-|-------------|-------------|-------------|-------------|
-|--tag(-t)||{name}:{tag} 형식 이름 지정|`$docker build -t ubuntu:14.04`|
-
-<BR><BR>
-<!------------------------------------------------------->
+---
 
 ## <a id="docker-ps-command"></a>docker container command
 * [목차이동](#index)
@@ -80,8 +87,7 @@ $ docker rm -f {container-name}
 $ docker container prune
 ```
 
-<BR><BR>
-<!------------------------------------------------------->
+---
 
 ## <a id="docker-ps-command"></a>docker ps
 * [목차이동](#index)
@@ -110,5 +116,4 @@ $ docker ps -a
     * 컨테이너의 고유한 이름 
     * 컨테이너 생성 시, `--name` 옵션으로 이름을 설정하지 않으면 도커엔진이 임의로 이름을 조합한다.
 
-<BR><BR>
-<!------------------------------------------------------->
+---
