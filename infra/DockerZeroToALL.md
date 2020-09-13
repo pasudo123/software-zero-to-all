@@ -9,26 +9,8 @@
     * 
 
 <BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
-<BR><BR>
 
-## Docker 란? {:#docker-text-wrapper}
+## <a id="docker-text-wrapper"></a>Docker 란?
 * [블로그 글](https://pasudo123.tistory.com/398)
 
 <BR><BR>
