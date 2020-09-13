@@ -5,8 +5,9 @@
 
 ## <a id="index"></a>목차
 * [도커란](https://pasudo123.tistory.com/398)
-* [도커 명령어](#docker-command-text)
+* [docker command](#docker-command-text)
     * [docker build command](#docker-build-command)
+    * [docker build command option](#docker-build-command-option)
     * [docker image command](#docker-image-command)
     * [docker container command](#docker-container-command)
     * [docker ps](#docker-ps-command)
@@ -14,8 +15,8 @@
 
 <BR><BR>
 
-## <a id="docker-command-text"></a>도커 명령어
-### [목차이동](#index)
+## <a id="docker-command-text"></a>docker command
+* [목차이동](#index)
 ```
 // 도커 버전 확인
 $ docker -v
@@ -26,14 +27,6 @@ $ docker -v
 
 ## <a id="docker-build-command"></a>docker build command
 * [목차이동](#index)
-
-### docker build command option
-|name(shortcut)|default|description|example|
-|-------------|-------------|-------------|-------------|
-|--tag(-t)||{name}:{tag} 형식 이름 지정|`$docker build -t ubuntu:14.04`|
-
-<BR>
-
 ```
 // 도커 이미지 조회
 $ docker images
@@ -46,6 +39,14 @@ $ docker rmi {image-id}
 // 도커 미사용 이미지 전체 삭제
 $ docker image prune
 ```
+
+<BR><BR>
+<!------------------------------------------------------->
+
+## <a id="docker-build-command-option"></a>docker build command option
+|name(shortcut)|default|description|example|
+|-------------|-------------|-------------|-------------|
+|--tag(-t)||{name}:{tag} 형식 이름 지정|`$docker build -t ubuntu:14.04`|
 
 <BR><BR>
 <!------------------------------------------------------->
