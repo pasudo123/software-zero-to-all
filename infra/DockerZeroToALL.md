@@ -9,6 +9,7 @@
     * [docker build command](#docker-build-command)
     * [docker build command option](#docker-build-command-option)
     * [docker image command](#docker-image-command)
+    * [docker images command option](#docker-images-command-option)
     * [docker container command](#docker-container-command)
     * [docker ps](#docker-ps-command)
 * [도커 명령어 reference](https://docs.docker.com/engine/reference/commandline/docker/)
@@ -53,7 +54,18 @@ $ docker rmi {image-id}
 
 // 도커 미사용 이미지 전체 삭제
 $ docker image prune
+
+// 도커 REPOSITORY, TAG 가 <none> 값인 것 모두 삭제
+$ docker rmi $(docker images -f "dangling=true" -q)
 ```
+
+<BR>
+
+## <a id="docker-images-command-option"></a>docker images command option
+|name(shortcut)|default|description|example|
+|-------------|-------------|-------------|-------------|
+|--filter(-f)||조건을 주고, 필터링해서 출력|`docker images --filter "dangling=true" // UNTAGGED IMAGES 를 출력한다.`|
+|--quiet(-q)||숫자 ID 만 보여줌|`docker images --filter "dangling=true" -q // UNTAGGED IMAGES 에서 IMAGE ID 만 보여준다.`|
 
 <BR>
 
