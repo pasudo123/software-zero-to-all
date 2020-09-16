@@ -6,6 +6,7 @@
 ## <a id="index"></a>index
 * [docker 기본개념](https://pasudo123.tistory.com/398)
 * [docker 컨테이너를 외부에 노출](#how-to-expose-to-external-that-container-of-docker)
+* [Dockerfile 작성하기](#how-to-write-way-Dockerfile)
 * [docker command](#docker-command-text)
     * [docker build command](#docker-build-command)
     * [docker build command option](#docker-build-command-option)
@@ -18,7 +19,7 @@
 
 <BR>
 
-## docker 컨테이너를 외부에 노출하는 방법
+## <a id="how-to-expose-to-external-that-container-of-docker"></a>docker 컨테이너를 외부에 노출하는 방법
 * [목차이동](#index)
 * 컨테이너는 가상IP 와 마찬가지로 가상 IP 주소를 할당받는다.
 ```shell
@@ -56,6 +57,12 @@ PS C:\Users\pasudo123> docker port {container-id}
 // 0.0.0.0 은 호스트의 활용 가능한 모든 네트워크 인터페이스에 바인딩함을 의미.
 // 호스트의 어떤 IP 로 {sour-port} 를 접근하든 컨테이너의 {dest-port} 에 연결
 ```
+
+<BR>
+
+## <a id="how-to-write-way-Dockerfile"></a>Dockerfile 작성하기
+* [목차이동](#index)
+
 
 <BR>
 
@@ -98,6 +105,7 @@ $ docker rmi {image-id}
 // 도커 미사용 이미지 전체 삭제
 $ docker image prune
 
+
 // 도커 REPOSITORY, TAG 가 <none> 값인 것 모두 삭제
 $ docker rmi $(docker images -f "dangling=true" -q)
 ```
@@ -107,14 +115,15 @@ $ docker rmi $(docker images -f "dangling=true" -q)
 ## <a id="docker-images-command-option"></a>docker images command option
 * [목차이동](#index)
 
-|name(shortcut)|default|description|example|
-|-------------|-------------|-------------|-------------|
-|--filter(-f)||조건을 주고, 필터링해서 출력|`docker images --filter "dangling=true" // UNTAGGED IMAGES 를 출력한다.`|
-|--quiet(-q)||숫자 ID 만 보여줌|`docker images --filter "dangling=true" -q // UNTAGGED IMAGES 에서 IMAGE ID 만 보여준다.`|
+|name(shortcut)|description|example|
+|-------------|-------------|-------------|
+|--filter(-f)|조건을 주고, 필터링해서 출력|`docker images --filter "dangling=true" // UNTAGGED IMAGES 를 출력한다.`|
+|--no-trunc|출력을 자르지 않고 전체 다 보여줌|`docker ps (-a) --no-trunc`
+|--quiet(-q)|숫자 ID 만 보여줌|`docker images --filter "dangling=true" -q // UNTAGGED IMAGES 에서 IMAGE ID 만 보여준다.`|
 
 <BR>
 
-## <a id="docker-ps-command"></a>docker container command
+## <a id="docker-container-command"></a>docker container command
 * [목차이동](#index)
 ```
 // 컨테이너 생성 및 실행
@@ -166,6 +175,11 @@ $ docker ps
 
 // 도커 엔진위에 올라간 [전체] 컨테이너 목록 출력 (정지된 컨테이너 포함)
 $ docker ps -a
+
+
+// {value} 값을 가진 container 조회
+// ex) docker ps -a -f status=exited
+$ docker ps -a -f status={value}
 ```
 * CONTAINER ID
     * 컨테이너에게 자동으로 할당된 고유한 ID
