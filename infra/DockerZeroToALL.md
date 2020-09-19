@@ -14,6 +14,8 @@
     * [docker images command option](#docker-images-command-option)
     * [docker container command](#docker-container-command)
     * [docker container command option](#docker-container-command-option)
+    * [docker run command](#docker-run-command)
+    * [docker run command option](#docker-run-command-option)
     * [docker ps](#docker-ps-command)
 * [도커 명령어 reference](https://docs.docker.com/engine/reference/commandline/docker/)
 
@@ -163,6 +165,33 @@ $ docker container prune
 |-------------|-------------|-------------|-------------|
 |--detach(-d)||백그라운드에서 컨테이너를 실행하고, 컨테이너 ID 를 출력한다.|`docker run -d -p 23340:14480 pasudo123/springboot-docker-basis`|
 
+
+<BR>
+
+## <a id="docker-run-command"></a>docker run command
+* [목차이동](#index)
+```shell
+// docker run : 호스트 볼륨 공유
+// {host 공유 디렉토리}:{컨테이너 공유 디렉토리}
+docker run -d -v /home/wordpress_db:/var/lib/mysql
+
+
+// 볼륨 컨테이너를 만들고 해당 컨테이너와 볼륨 마운트를 수행
+docker run -d --name new_container --volume-from {container-name}
+```
+
+<BR>
+
+## <a id="docker-run-command-option"></a>docker run command option
+|name(shortcut)|default|description|example|
+|-------------|-------------|-------------|-------------|
+|--volume(-v)||볼륨 바인드를 수행한다. <br> 이미지에 안에 디렉토리가 존재하는 상태에서 호스트의 볼륨을 공유하면 __이미지 내 기존 디렉토리는 덮어씌어진다.__ |`docker run -d -v /data/etc:/var/etc -p 23340:14480 pasudo123/springboot-docker-basis`|
+|--volume-from||지정한 컨테이너와 볼륨 바인드를 수행한다.|`docker run  -d  --name new_container --volume-from {container_name}` |
+
+<BR>
+
+## volume container 구성
+<img src="https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Image/2020-09-19_volume-container.png">
 
 <BR>
 
