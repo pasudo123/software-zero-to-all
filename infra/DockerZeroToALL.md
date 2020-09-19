@@ -6,7 +6,7 @@
 ## <a id="index"></a>index
 * [docker 기본개념](https://pasudo123.tistory.com/398)
 * [docker 컨테이너를 외부에 노출](#how-to-expose-to-external-that-container-of-docker)
-* [Dockerfile 작성하기](#how-to-write-way-Dockerfile)
+* [Dockerfile 작성하기](#how-to-write-way-docker-file)
 * [docker command](#docker-command-text)
     * [docker build command](#docker-build-command)
     * [docker build command option](#docker-build-command-option)
@@ -62,9 +62,29 @@ PS C:\Users\pasudo123> docker port {container-id}
 
 <BR>
 
-## <a id="how-to-write-way-Dockerfile"></a>Dockerfile 작성하기
+## <a id="how-to-write-way-docker-file"></a>Dockerfile 작성하기
 * [목차이동](#index)
-
+* [Dockerfile 작성하는 최선의 방법](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+```shell
+COPY requirements.txt /tmp/
+RUN pip install --requirement /tmp/requirements.txt
+COPY . /tmp/
+```
+* ADD vs COPY 
+    * 둘이 사용방법은 동일하다.
+        * `COPY test.html /home/`
+        * `COPY ["test.html", "/home/"]`
+    * __결론부터 말하면 COPY 를 애용__ 하자.
+    * __ADD__
+        * 파일을 이미지에 추가한다. 추가하는 파일은 Dockerfile 이 위치한 Context 가 기본경로인 상태에서 추가한다.
+        * __외부 URL 및 tar 파일도 추가할 수 있다.__
+        * `ADD http://example.com/big.tar.xz /usr/src/things/`
+    * __COPY__
+        * 로컬 디렉토리에서 읽어들인 Context 로부터 이미지에 파일을 복사하는 역할
+        * __로컬 파일만 이미지에 추가할 수 있다.__
+    * ADD 를 이용하게 되면 실질적으로 이미지에 추가하는 파일이 어떤 것인지 확신하기 어렵다. 
+    * COPY 는 Context 로 부터 직접 파일을 추가하기 때문에 명확하다.
+    
 
 <BR>
 
