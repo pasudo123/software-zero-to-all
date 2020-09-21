@@ -51,21 +51,13 @@
 * [스프링 JPA 가이드 : cheese10yun](https://github.com/cheese10yun/spring-jpa-best-practices)
 * [롬복 애노테이션 사용 전략 : cheese10yun](https://www.popit.kr/%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-lombok-%EC%82%AC%EC%9A%A9%EB%B2%95/)
 
-### Java & Spring Sample Projects
-* [디프만 프로젝트](https://github.com/depromeet)
-* [매시업](https://github.com/mash-up-kr)
-
-### Vue.js
-* [awesome-vue](https://github.com/vuejs/awesome-vue)
-
 ### Git
 * [소스트리에서 git reset(soft, mixed, hard)](https://github.com/pasudo123/GitFlowZero/blob/master/sourcetree-reset.md)
 
 ## 👨‍🚀 Infra 
 * [생활코딩, 아마존 웹 서비스와 클라우드](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Service%20infra/Amazone%20Web%20Service.md)
 * [nginx 에 SSL 적용하기](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Service%20infra/nginx-ssl.md)
-* [docker](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Service%20infra/Docker.md)
-* [docker command](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Service%20infra/Docker-command.md)
+* [DockerZeroToAll](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/infra/DockerZeroToALL.md)
 
 ## 👨‍🚀 온라인 강의
 * [인프런, 자바 ORM 표준 JPA 프로그래밍 : atoz](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/README.md)
@@ -82,7 +74,8 @@
 ## 👨‍🚀 leetcode
 * [leetcode 를 꾸준히 풀자](https://github.com/pasudo123/SoftwareZeroToALL/tree/master/leetcode)
 
-## 👨‍🚀 Linux
+## 👨‍🚀 linux
+* [linux command](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/linux%20%26%20shell/linux_command.md)
 * [리눅스 크론탭 참고사이트](https://crontab.guru/)
 
 ## 👨‍🚀 실무관련
