@@ -2,7 +2,7 @@
 * [링크](http://www.kocw.net/home/search/kemView.do?kemId=1046323)
 * [강의소개](#강의소개)
     * [운영체제의 목표](#goal)
-* [Introduction to operating system01](#introduction-to-operating-system)
+* [Introduction to operating system](#introduction-to-operating-system)
 
 <BR>
 
@@ -71,15 +71,57 @@
             * 정전이 일어나면 처음부터 다시 진행해야 한다.
 
 * 용어정리
-    * 멀티태스킹 : 여러 작업이 동시에 실행
+    * 멀티태스킹
+        * 하나의 프로그램이 끝나기 전에 다른 프로그램이 실행
         * CPU 가 번갈아서 작업을 수행 (CPU 는 매순간 하나의 작업을 수행)
     * 멀티프로그래밍 
         * 여러 프로그램이 메모리에 올라가 있음을 강조
     * Time sharing
         * Time sharing 은 CPU 의 시간을 분할하여 나누어 쓴다는 의미를 강조
     * MultiProcess
-    * __MultiProcessor__
+        * 여러 프로그램이 동시에 실행됨을 의미
+    * __MultiProcessor ★★__
         * 하나의 컴퓨터에 CPU(processor) 가 여러 개 붙어있음을 의미
-        * processor CPU 라고 칭한다.
-        
+        * CPU 가 여러 개 있는 컴퓨터를 멀티 프로세서 컴퓨터라고 한다.
 
+* 운영체제의 예
+    * unix
+        * 코드의 대부분을 C 언어로 작성
+        * 높은 이식성
+            * 하나의 컴퓨터에서 돌아가는 기계어 집합을 다른 컴퓨터에 이식할 수 있다.
+        * 최소한의 커널 구조 (대부분 C 언어로 작성)
+            * 커널의 크기를 작게 만들어 놓았다.
+        * 소스 코드 공개
+        * 프로그램 개발에 용이
+        * 다양한 버전
+            * System V, FreeBSD, SunOS, Solaris
+            * linux
+    * DOS (Disk Operating System)
+        * 단일 사용자용 운영체제, 메모리 관리 능력의 한계 (주기억장치 : 640KB)
+        * 하드웨어의 발전에 따라 코드가 복잡해짐에 따라 저문 OS 
+    * MS Windows
+        * MS 사의 다중 작업용 GUI 기반 운영체제
+        * Plug and Play, 네트워크 환경강화
+        * DOS용 응용 프로그램과 호환성 제공
+        * 불안정성
+        * 풍부한 지원 소프트웨어
+
+* 운영체제의 구조
+    * 자원을 관리하는 것이 운영체제의 목표.
+        * CPU 스케쥴링 : 누구한테 CPU 를 줄 것인가
+        * 메모리 관리 : 한정된 메모리를 어떻게 나눌 것인가
+            * 메모리에 너무 많은 프로그램을 올리기 보다는 CPU 에서 필요로 하는 프로그램을 메모리에 올려야 한다.
+            * 메모리에서 올리지 않은 프로그램을 어떻게 결정할 것인가. (:미래예측)
+        * 파일 관리 : 디스크에 파일을 어떻게 보관할 것인가
+        * 입출력 관리 : 각기 다른 입출력장치와 컴퓨터 간에 정보를 어떻게 주고받을 것인가.
+            * 인터럽트에 기반하여 관리한다.
+        * 프로세스 관리
+            * 프로세스의 생성과 삭제
+            * 자원 할당 및 반환
+            * 프로세스 간 협력
+        * 그 외
+            * 보호 시스템
+            * 네트워킹
+            * 명령어 해석기 (커맨드라인 인터프리터)
+            
+<img src="https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Image/2020-09-21_os-structure.png" />
