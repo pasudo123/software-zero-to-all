@@ -64,13 +64,15 @@ PS C:\Users\pasudo123> docker port {container-id}
 
 ## <a id="how-to-write-way-docker-file"></a>Dockerfile 작성하기
 * [목차이동](#index)
-* [Dockerfile 작성하는 최선의 방법](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
-```shell
-COPY requirements.txt /tmp/
-RUN pip install --requirement /tmp/requirements.txt
-COPY . /tmp/
-```
+* [Dockerfile 작성하는 최선의 방법에 대한 관련 링크](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+* context (컨텐스트)
+    * Dockerfile 과 같은 디렉토리에 있는 모든 파일들은 컨텍스트라고 한다. (context)
 * ADD vs COPY 
+    ```shell
+    COPY requirements.txt /tmp/
+    RUN pip install --requirement /tmp/requirements.txt
+    COPY . /tmp/
+    ```
     * 둘이 사용방법은 동일하다.
         * `COPY test.html /home/`
         * `COPY ["test.html", "/home/"]`
