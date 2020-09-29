@@ -1,8 +1,8 @@
 # System Structure & Program Execution 01
 
+<img src="https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Image/2020-09-28_computer_structure_detail2.PNG" />
 
 ## 컴퓨터 시스템의 구조
-<img src="https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Image/2020-09-28_computer_structure_detail2.PNG" />
 
 * 메모리는 CPU 의 작업공간이다.
   * CPU 에서는 매 클럭 사이클마다 기계어를 하나씩 읽어서 실행한다.
