@@ -94,29 +94,52 @@ Database Index 개념 정리.
 <BR>
 
 ## Clustering Index (클러스터형 인덱스)
-* 클러스터형 인덱스는 해당 키 값을 기반으로 테이블이나 뷰의 데이터 행을 정렬하고 저장한다. __Primary Key 에 한하여 적용__ 
+
+<img src="../Image/2020-10-12_clustered_index.png"/>
+
+* 클러스터형 인덱스는 해당 키 값을 기반으로 테이블이나 뷰의 데이터 행을 정렬하고 저장한다. `Primary Key 에 한하여 적용`
 * 데이터 행 자체는 한가지 순서로만 저장될 수 있으므로 테이블당 클러스터형 인덱스는 하나만 있을 수 있다.
-* 물리적으로 행을 __재배열__
+* 물리적으로 행을 `재배열`
+  * 인덱스 기반으로 데이터가 저장되기 때문에 정렬된 데이터에 새로운 데이터가 삽입 시, 해당 데이터는 중간에 들어가고 밀려난 데이터의 Index 는 하나씩 증가되어야 하는 문제가 발생. 결과적으로 `insert` 의 소모비용이 크다.
 * 인덱스 페이지 용량이 넌클러스터드 인덱스 페이지 용량보다 상대적으로 __작다.__ (데이터베이스 용량을 적게 차지한다.)
 * 테이블당 1개
 
 <BR>
 
-## Non Clustering Index (넌클러스터형 인덱스)
-* 비클러스터형 인덱스는 데이터 행으로부터 독립적이다. 
-* 비클러스터형 인덱스에는 비클러스터형 인덱스 키 값이 있으며 각 키 값 항목에는 해당 키 값이 포함된 데이터 행에 대한 포인터가 있다. 
+## Non Clustering Index (논클러스터형 인덱스)
+
+<img src="../Image/2020-10-12_non_clustered_index.png" />
+
+* 논클러스터형 인덱스는 데이터 행으로부터 독립적이다. 
+* 논클러스터형 인덱스에는 논클러스터형 인덱스 키 값이 있으며 각 키 값 항목에는 해당 키 값이 포함된 데이터 행에 대한 포인터가 있다. 
 * 물리적으로 행을 __재배열 하지 않는다.__ 
 * 인덱스 페이지 용량이 클러스터드 인덱스 페이지 용량보다 상대적으로 __크다.__ (데이터베이스 용량을 크게 차지한다.)
 * 테이블당 249개
+
 
 ### 조회결과의 약 30% 가 선택되는 정도라면, 데이터를 _클러스터드 인덱스_ 로 설정
 
 ### 조회결과의 약 3% 내외가 선택되는 정도라면, 데이터를 _넌클러스터 인덱스_ 로 설정
 
+<BR> 
+
 ## 결론
 * 인덱스는 데이터베이스의 테이블 내 원하는 레코드를 빠르게 찾아갈 수 있도록 만들어진 데이터구조이다. 
 * 기본적인 목적은 검색 성능의 최적화
 
+<BR> 
+
+## 추가적으로 살펴볼 것
+* Explain 실행계획 확인하기
+* B-Tree, Page(Block) In InnoDB
+* Cardinality
+* Composite Key
+* InnoDB_Buffer_Pool_Size
+* Log_throttle_queries_not_using_indexes
+
+<BR> 
+
 ## 참고링크
 1. [꿈꾸는 개발자, DBA 커뮤니티 구루비](http://www.gurubee.net/)
 2. [Clustered vs. Nonclustered Index Structures in SQL Server](https://www.youtube.com/watch?v=ITcOiLSfVJQ&t=363s)
+3. [[10분 테크톡] 안돌의 Index](https://www.youtube.com/watch?v=NkZ6r6z2pBg&ab_channel=%EC%9A%B0%EC%95%84%ED%95%9CTech)
