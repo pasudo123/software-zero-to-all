@@ -8,12 +8,12 @@
 
 ### Database
 * [씨아이보드 메뉴얼 스키마 설계 샘플](http://www.ciboard.co.kr/manual/tables)
-* [데이터베이스 정의](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/database/Database.md)
-* [인덱스](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/database/Database%20Index.md)
-* [Difference Between Statement & PreparedStatement In JDBC](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/database/Difference%20Between%20Statement%20And%20PreparedStatement%20In%20JDBC.md)
-* [조인 SQL](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/database/Join%20(SQL).md)
-* [트랜잭션](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/database/Transaction.md)
-* [트랜잭션 고립성(isolation) 레벨](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/database/Transaction%20Isolation%20Levels.md)
+* [데이터베이스 정의](./database/Database.md)
+* [Db Index](./database/Index.md)
+* [Difference Between Statement & PreparedStatement In JDBC](./database/Difference%20Between%20Statement%20And%20PreparedStatement%20In%20JDBC.md)
+* [조인 SQL](./database/Join%20(SQL).md)
+* [트랜잭션](./database/Transaction.md)
+* [트랜잭션 고립성(isolation) 레벨](./database/Transaction%20Isolation%20Levels.md)
 
 ### Algoritm
 * [geeksforgeeks](https://github.com/pasudo123/Algorithms/tree/master/GeeksForGeeks)
@@ -72,11 +72,11 @@
 * [nginx 정리](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/nginx%20%EC%A0%95%EB%A6%AC.md)
 
 ## 👨‍🚀 leetcode
-* [leetcode 를 꾸준히 풀자](https://github.com/pasudo123/SoftwareZeroToALL/tree/master/leetcode)
+* [leetcode](https://github.com/pasudo123/SoftwareZeroToALL/tree/master/leetcode)
 
 ## 👨‍🚀 linux
 * [linux command](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/linux%20%26%20shell/linux_command.md)
-* [리눅스 크론탭 참고사이트](https://crontab.guru/)
+* [cron, scheduling, linux](https://crontab.guru/)
 
 ## 👨‍🚀 실무관련
 * [신규서비스를 진행하면서 (서술)](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%8B%A0%EA%B7%9C%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%A7%84%ED%96%89%ED%95%98%EB%A9%B4%EC%84%9C%20(%EC%84%9C%EC%88%A0).md)
