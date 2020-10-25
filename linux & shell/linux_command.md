@@ -59,10 +59,10 @@ $ kill 123      // 생략 시 SIGTERM 으로 시그널이 전송된다.
     * 프로그래머가 지정한 핸들러를 호출한다.
 
 ### 👀 SIGTERM & SIGKILL 의 차이점은 무엇인가?
-* SIGTERM 은 gracefully 하게 프로세스를 종료시킬 수 있다. 반면에 SIGKILL 은 프로세스를 즉시 종료시킨다.
-* SIGTERM 신호는 처리/무시/차단 할 수 있지만, SIGKILL 은 처리하거나 차단할 수 없다.
-* SIGTERM 은 자식 프로세스를 죽이지 못하지만, SIGKILL 은 자식 프로세스를 죽일 수 있다.
-* SIGKILL 을 사용하면 좀비 프로세스가 생성될 수 있다. SIGKILL 을 받은 프로세스는 자식 프로세스에게 SIGKILL 신호를 알릴 기회를 얻지 못하기 때문이다.
+* `SIGTERM` 은 gracefully 하게 프로세스를 종료시킬 수 있다. 반면에 ``SIGKILL` 은 프로세스를 즉시 종료시킨다.
+* `SIGTERM` 신호는 처리/무시/차단 할 수 있지만, `SIGKILL` 은 처리하거나 차단할 수 없다.
+* `SIGTERM` 은 자식 프로세스를 죽이지 못하지만, `SIGKILL` 은 자식 프로세스를 죽일 수 있다.
+* `SIGKILL` 을 사용하면 좀비 프로세스가 생성될 수 있다. `SIGKILL` 을 받은 프로세스는 자식 프로세스에게 `SIGKILL` 신호를 알릴 기회를 얻지 못하기 때문이다.
 
 
 
