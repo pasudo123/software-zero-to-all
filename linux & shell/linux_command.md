@@ -1,9 +1,10 @@
-# command & usage
+# command & usage & concept
+* linux concept
 * a list of frequently used commands.
 
 ## <a id="index"></a>Page Of Index
 * linux
-    * [hard link & symbolic link](#link)
+    * [ln : hard link & symbolic link](#ln)
     * [kill](#kill)
     * [awk](#awk)
 * shell
@@ -14,7 +15,7 @@
 
 # linux 🚀
 
-## 🔔 <a id="link"></a> hard link & symbolic link
+## 🔔 <a id="ln"></a> ln : hard link & symbolic link
 * 심볼릭과 하드링크를 이해하기 inode 에 대한 이해가 밑바탕이 되어야한다.
 
 ### 👀 inode
@@ -22,10 +23,9 @@
 * 아이노드는 정규 파일, 디렉토리 등 파일 시스템에 관한 정보를 가지고 있다.
 * 파일들은 각자 하나의 아이노드를 가지고 있으며, 아이노드는 소유자 그룹, 접근모드, 파일형태, 아이노드 숫자 등 해당 파일에 관한 정보를 가지고 있다.
 * 파일시스템 내의 파일들은 고유한 아이노드 숫자를 통해 식별이 가능하다.
-* 아래 이미지에서 노란색 형광표기가 되어있는게 아이노드 번호이다.
+* 아래 이미지에서 __노란색 형광표기__ 가 되어있는게 아이노드 번호이다.
 
 <img src="../Image/2020-10-25_inode.png"/>
-<BR>
 
 ### 👀 심볼릭링크
 * 윈도우 시스템의 `바로가기 기능` 과 매우 유사하다.
