@@ -33,10 +33,13 @@
 * 원본파일을 삭제할경우 액세스 `불가능` 하다.
 * 원본파일을 다시 되살릴경우 액세스가 `다시 가능` 하다.
 
+__사용방법__
 ```shell
-ln -s {origin-file} {link-file}
+$ ln -s {origin-file} {link-file}
+```
 
-pasudo123@developer1997:/mnt/c/develop/etc$ ln -s sample-sym sample
+```shell
+pasudo123@developer1997:/mnt/c/develop/etc$ ln -s {sample} {sample-sym}
 pasudo123@developer1997:/mnt/c/develop/etc$ ll -i
 36028797019193832 -rwxrwxrwx 1 pasudo123 pasudo123    6 Oct 25 20:10 sample*
 11258999068722483 lrwxrwxrwx 1 pasudo123 pasudo123    6 Oct 25 20:11 sample-sym -> sample*
@@ -47,10 +50,14 @@ pasudo123@developer1997:/mnt/c/develop/etc$ ll -i
 * 원본파일은 하드링크와 비교하면 아무 차이가 없다.
 * 하드링크에는 새로운 inode 에 대한 생성이 없다. (`동일한 inode 값` 을 가진다.)
 * 원본파일을 삭제하더라도 액세스 `가능` 하다.
-```shell
-ln {origin-file} {link-file}
 
-pasudo123@developer1997:/mnt/c/develop/etc$ ln sample-hard sample
+__사용방법__
+```shell
+$ ln {origin-file} {link-file}
+```
+
+```
+pasudo123@developer1997:/mnt/c/develop/etc$ ln {sample} {sample-hard}
 pasudo123@developer1997:/mnt/c/develop/etc$ ll -i
 36028797019193832 -rwxrwxrwx 1 pasudo123 pasudo123    6 Oct 25 20:10 sample*
 36028797019193832 lrwxrwxrwx 1 pasudo123 pasudo123    6 Oct 25 20:11 sample-hard*
@@ -145,7 +152,7 @@ $ ps -ef | grep java | awk '{print $2}'
 <BR> 
 
 # shell 🚀
-## ⛑ <a id="variable-command"></a> bash 변수 할당
+## 🔔 <a id="variable-command"></a> bash 변수 할당
 * [목차이동](#index)
 * 값이나 명령어를 변수에 할당할 시, `variable={value}` 형식으로 equals(=) 에 딱 맞게 붙여준다.
 ```shell
