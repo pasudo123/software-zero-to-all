@@ -1,4 +1,4 @@
-# DockerZeroToALL
+# docker-zero-to-all
 * 도커를 정리.
 
 <BR>
@@ -193,6 +193,11 @@ $ docker container prune
 ## <a id="docker-run-command"></a>docker run command
 * [목차이동](#index)
 ```shell
+// 컨테이너 생성 및 실행
+// sour-port : 호스트의 포트번호
+// dest-port : 컨테이너의 포트번호
+$ docker run -p {sour-port}:{dest-port} {image-name}:{tag-name}
+
 // docker run : 호스트 볼륨 공유
 // {host 공유 디렉토리}:{컨테이너 공유 디렉토리}
 docker run -d -v /home/wordpress_db:/var/lib/mysql
