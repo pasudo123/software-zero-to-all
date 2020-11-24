@@ -92,5 +92,5 @@
 * [SPA vs MPA](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/personal/SPA%20vs%20MPA.md)
 
 ## 👨‍🚀 bolierplate
-* [[ java ] classpath 의 json 파일 읽어들이기]()
+* [[ java ] classpath 의 json 파일 읽어들이기](boilerplate/reading_json_file_of_classpath.md)
 
