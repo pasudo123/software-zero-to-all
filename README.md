@@ -51,6 +51,15 @@
 * [스프링 JPA 가이드 : cheese10yun](https://github.com/cheese10yun/spring-jpa-best-practices)
 * [롬복 애노테이션 사용 전략 : cheese10yun](https://www.popit.kr/%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-lombok-%EC%82%AC%EC%9A%A9%EB%B2%95/)
 
+### springboot-xxx-basis 🌼
+* [springboot-kafka-basis](https://github.com/coding-buddha/springboot-kafka-basis)
+* [springboot-querydsl-basis](https://github.com/coding-buddha/springboot-querydsl-basis)
+* [springboot-test-basis](https://github.com/coding-buddha/springboot-test-basis)
+* [springboot-batch-basis](https://github.com/coding-buddha/springboot-batch-basis)
+* [springboot-cache-basis](https://github.com/coding-buddha/springboot-cache-basis)
+* [springboot-docker-basis](https://github.com/coding-buddha/springboot-docker-basis)
+
+
 ### Git
 * [소스트리에서 git reset(soft, mixed, hard)](https://github.com/pasudo123/GitFlowZero/blob/master/sourcetree-reset.md)
 
