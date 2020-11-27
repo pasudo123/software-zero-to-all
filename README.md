@@ -2,11 +2,11 @@
 부족한 소프트웨어 지식을 채워넣기 위한 공간.
 
 ## 👨‍🚀 Computer Science
-### Network
+### network
 * [한양대 Network MOOC 수강 내용 정리](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/network/Network%20MOOC.md)
 * [HTTPS](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Book%20%26%20Memo/HTTP%20%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/HTTPS.md)
 
-### Database
+### database
 * [씨아이보드 메뉴얼 스키마 설계 샘플](http://www.ciboard.co.kr/manual/tables)
 * [데이터베이스 정의](./database/Database.md)
 * [Db Index](./database/Index.md)
@@ -15,18 +15,18 @@
 * [트랜잭션](./database/Transaction.md)
 * [트랜잭션 고립성(isolation) 레벨](./database/Transaction%20Isolation%20Levels.md)
 
-### Algoritm
+### algoritm
 * [geeksforgeeks](https://github.com/pasudo123/Algorithms/tree/master/GeeksForGeeks)
 * [etc repository](https://github.com/pasudo123/Algorithms)
 
 ## 👨‍🚀 Development
-### OOP : Object Oriented Programming
+### OOP : Object Oriented Programming 🌼
 * [초보개발자에게 권장하는 객체지향 모델링 공부방법](https://okky.kr/article/358197)
 * [객체지향 언어 배경](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/object_oriented_programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EB%93%B1%EC%9E%A5.md)
 * [객체지향 언어 이해 : 유연성](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/object_oriented_programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)
 * [객체지향 언어 이해 : 유연성과 객체지향 4대 특성](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/object_oriented_programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)
 
-### Java
+### java basis 🌼
 * [abstract keyword](https://github.com/pasudo123/LearnJava/blob/master/JavaBasics/AbstractEx.java)
 * [interface keyword](https://github.com/pasudo123/LearnJava/blob/master/JavaBasics/InterfaceEx.java)
 * [Difference Between interface & abstract](https://github.com/pasudo123/LearnJava/blob/master/JavaBasics/BetweenInterfaceAbstract.java)
@@ -46,12 +46,7 @@
   * [__How to use Enum Type : sample code__](https://github.com/pasudo123/LearnJava/blob/master/Enum/JavaEnumExamples.java)
 * [Thread related post](https://github.com/pasudo123/LearnJava/blob/master/README.md)
 
-### Java & Spring Reference 
-* [스프링 가이드 : cheese10yun](https://github.com/cheese10yun/spring-guide)
-* [스프링 JPA 가이드 : cheese10yun](https://github.com/cheese10yun/spring-jpa-best-practices)
-* [롬복 애노테이션 사용 전략 : cheese10yun](https://www.popit.kr/%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-lombok-%EC%82%AC%EC%9A%A9%EB%B2%95/)
-
-### springboot-xxx-basis 🌼
+### springboot-xxxkak-basis 🌼
 * [springboot-kafka-basis](https://github.com/coding-buddha/springboot-kafka-basis)
 * [springboot-querydsl-basis](https://github.com/coding-buddha/springboot-querydsl-basis)
 * [springboot-test-basis](https://github.com/coding-buddha/springboot-test-basis)
@@ -59,11 +54,15 @@
 * [springboot-cache-basis](https://github.com/coding-buddha/springboot-cache-basis)
 * [springboot-docker-basis](https://github.com/coding-buddha/springboot-docker-basis)
 
+### spring development reference 🌼
+* [스프링 가이드 : cheese10yun](https://github.com/cheese10yun/spring-guide)
+* [스프링 JPA 가이드 : cheese10yun](https://github.com/cheese10yun/spring-jpa-best-practices)
+* [롬복 애노테이션 사용 전략 : cheese10yun](https://www.popit.kr/%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-lombok-%EC%82%AC%EC%9A%A9%EB%B2%95/)
 
 ### Git
 * [소스트리에서 git reset(soft, mixed, hard)](https://github.com/pasudo123/GitFlowZero/blob/master/sourcetree-reset.md)
 
-## 👨‍🚀 Infra 
+## 👨‍🚀 infrastructure
 * [생활코딩, 아마존 웹 서비스와 클라우드](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Service%20infra/Amazone%20Web%20Service.md)
 * [nginx 에 SSL 적용하기](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Service%20infra/nginx-ssl.md)
 * [DockerZeroToAll](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/infra/docker-zero-to-all.md)
