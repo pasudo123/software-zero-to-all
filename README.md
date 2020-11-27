@@ -46,9 +46,10 @@
   * [__How to use Enum Type : sample code__](https://github.com/pasudo123/LearnJava/blob/master/Enum/JavaEnumExamples.java)
 * [Thread related post](https://github.com/pasudo123/LearnJava/blob/master/README.md)
 
-### springboot-xxxkak-basis 🌼
+### springboot-xxx-basis 🌼
 * [springboot-kafka-basis](https://github.com/coding-buddha/springboot-kafka-basis)
 * [springboot-querydsl-basis](https://github.com/coding-buddha/springboot-querydsl-basis)
+* [springboot-web-basis](https://github.com/coding-buddha/springboot-web-basis)
 * [springboot-test-basis](https://github.com/coding-buddha/springboot-test-basis)
 * [springboot-batch-basis](https://github.com/coding-buddha/springboot-batch-basis)
 * [springboot-cache-basis](https://github.com/coding-buddha/springboot-cache-basis)
