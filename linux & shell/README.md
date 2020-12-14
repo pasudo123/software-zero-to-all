@@ -9,7 +9,7 @@
     * [awk command](./linux_awk_command.md)
     * [nohup command](./linux_nohup_command.md)
 * shell
-    * [변수할당](./shell_variable_command.md)
+    * [variable](./shell_variable_command.md)
 * [reference](#reference)
 
 

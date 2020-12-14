@@ -7,9 +7,11 @@
 * 출력은 따로 리디렉션이 되지 않은 경우, nohup 을 실행시킨 위치에서 nohup.out 이라고 불리는 파일에 쓰여진다.
 
 __간단한 배쉬파일 작성__
-* sample.sh
-* 1초마다 `1`부터 `10000`까지 계속해서 숫자를 더해간다.
+
 ```bash
+sample.sh 파일
+1초마다 1부터 10000까지 숫자를 지속적으로 더해가는 로직
+
 #!/bin/sh
 x=1 
 while [ $x -le 10000 ]
@@ -44,7 +46,7 @@ nohup: ignoring input and redirecting stderr to stdout
 __& 의 활용__
 ```shell
 // 프로그램 수행 시, 명령어 맨 끝에 `&` 을 붙여주면 프로그램은 백그라운드로 실행된다.
-& ./sample.sh &
+$ ./sample.sh &
 [1] 597 
 ```
 * `&` 만 실행하면 꾸준하게 화면에 출력된다. `ctrl + c (=SIGINT)` 명령어도 무시해버린다.
@@ -54,9 +56,9 @@ __& 의 활용__
 
 __혼합사용__
 ```shell
-& nohup ./sample.sh > number.log &
+$ nohup ./sample.sh > number.log &
 [1] 790
-& tail -f number.log
+$ tail -f number.log
 ```
 * 출력은 num
 
