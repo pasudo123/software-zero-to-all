@@ -8,6 +8,7 @@
     * [kill command](./linux_kill_command.md)
     * [awk command](./linux_awk_command.md)
     * [nohup command](./linux_nohup_command.md)
+    * [watch command](./linux_watch_command.md)
 * shell
     * [variable](./shell_variable_command.md)
 * [reference](#reference)

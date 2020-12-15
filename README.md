@@ -86,7 +86,7 @@
 * [leetcode](https://github.com/pasudo123/SoftwareZeroToALL/tree/master/leetcode)
 
 ## 👨‍🚀 linux
-* [linux command](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/linux%20%26%20shell/linux_command.md)
+* [linux command](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/linux%20%26%20shell/README.md)
 * [cron, scheduling, linux](https://crontab.guru/)
 
 ## 👨‍🚀 실무관련
