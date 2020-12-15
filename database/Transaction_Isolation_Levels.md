@@ -29,11 +29,11 @@ __이때 트랜잭션 2는 갱신된 데이터를 읽어와도 되는가 하는 
 |                  독립성 수준                     |           의미            |
 |------------------------------------------------|--------------------------|
 | __Isolation : Read UnCommitted__ |다른 트랜잭션이 변경하였고, 아직 커밋하지 않은 데이터도 읽어낼 수 `있음`|
-| __Isolation : Read Committed__ |다른 트랜잭션이 변경하였지만, 커밋을 하지 않았기 때문에 읽을 수가 `없음`. 커밋 수행 시 읽어들일 수 있음|
+| __Isolation : Read Committed__ |다른 트랜잭션이 변경하였지만, 커밋을 하지 않았기 때문에 읽을 수가 `없음`. 대신 커밋 수행 시 읽어들일 수 있음|
 | __Isolation : Repeatable Read__ |트랜잭션 내에서 여러 번 데이터를 읽어올 때, <BR /> 다른 트랜잭션이 도중에 데이터를 갱신해도 여전히 같은 값을 읽어낼 수 있음 (이렇게 하는 이유는 스냅샷이 특정시점에 기록되기 때문에) |
 | __Isolation : Serializable__ |트랜잭션을 하나씩 순서대로 처리해서 독립시킴|
 
-## 격리성 수준과 데이터가 모순된 상태 (O : 허용, X : 불허)
+## 격리성 수준(isolation level) 과 데이터가 모순된 상태 (O : 허용, X : 불허)
 |           독립성 수준          |   Dirty Read   |    Unrepeatable Read     |    Phantom Read    |
 |------------------------------|------|------|------|
 | __Isolation Read UnCommitted__ | O | O | O |
@@ -59,7 +59,6 @@ __이때 트랜잭션 2는 갱신된 데이터를 읽어와도 되는가 하는 
 * `Consistent read` (일관된 읽기)
     * `read operation` 은  쿼리의 결과를 나타내기 위해서 특정시점 기준의 `snapshot` 정보를 사용한다. 다른 트랜잭션이 동시에 살행되는 것과 상관이 없이 특정시점의 `snapshot` 을 이용하는 것이다. 만약에 데이터가 다른 트랜잭션에 의해서 변경되면 오리진 데이터는 `undo log` 에 의해서 재구성된다. 이와 같은 `consistent read 기술` 은 `concurrency` 를 감소시키는 `locking` 이슈를 회피할 수 있다.
     * `Consistent read` 는 InnoDB 가 `READ COMMITED` 와 `REPEATABLE READ` 격리수준에서 SELECT 문을 처리하는 기본모드이다.
-
 
 
 ```
