@@ -38,18 +38,26 @@ __이때 트랜잭션 2는 갱신된 데이터를 읽어와도 되는가 하는 
 |------------------------------|------|------|------|
 | __Isolation Read UnCommitted__ | O | O | O |
 | __Isolation Read Committed__ | X | O | O |
-| __Isolation Repeatable Read__ | X | X | O |
+| __Isolation Repeatable Read__ | X | X | O (mysql 에서 X 이기도 함) |
 | __Isolation Serializable__ | X | X | X |
    
 아래로 내려올수록 모순된 상태를 허용하지 않고 격리성의 수준은 높아진다. 여기서 항상 격리성이 높은 __Isolation Serializable__ 을 생각할 수 있지만, 격리성이 높아지면 그만큼 성능이 나빠진다. 
 * 격리성이 높아지다는 것은 트랜잭션이 데이터에 동시에 접근하는 동시성이 떨어진다. 결국 이는 퍼포먼스 하락으로 이어진다. 반면 데이터는 일관된다.
+* 추가적으로 다른 블로그의 글을 살펴보니 mysql 의 `REPEATABLE READ` 에서 `phantom read` 또한 발생되지 않는다고 하였다. 왜 그런지에 대한 설명은 실제 mysql document 에 보면 나와있었다.
+
+### `READ COMMITTED` 
+> Each consistent read, even within the same transaction, sets and reads its own fresh snapshot.
+
+### `REPEATABLE READ` 
+> Consistent reads within the same transaction read the snapshot established by the first read.
+* 첫번째 읽어들인 스냅샷을 가지고 쿼리의 결과를 읽어들이기 때문.
 
 
 ## 추가설명
 * InnoDB 의 디폴트 isolation level 은 `REPEATABLE READ` 이다.
 * 유저는 `SET TRANSACTION` 을 통해서 싱글세션 또는 모든 subsequent connction 에 대해서 isolation level 을 설정할 수 있다. (자세한 내용은 하단 링크 참고)
 * `Consistent read` (일관된 읽기)
-    * `read operation` 은  쿼리의 결과를 나타내기 위해서 특정시점 기준의 `snapshot` 정보를 사용한다. 다른 트랜잭션이 동시에 살행되는 것과 상관이 없이 특정시점의 `snapshot` 을 이용하는 것이다. 만약에 데이터가 다른 트랜잭션에 의해서 변경되면 오리진 데이터는 `undo log` 에 의해서 재구성된다. 이와 같은 `기술` 은 `concurrency` 를 감소시키는 `locking` 이슈를 회피할 수 있다.
+    * `read operation` 은  쿼리의 결과를 나타내기 위해서 특정시점 기준의 `snapshot` 정보를 사용한다. 다른 트랜잭션이 동시에 살행되는 것과 상관이 없이 특정시점의 `snapshot` 을 이용하는 것이다. 만약에 데이터가 다른 트랜잭션에 의해서 변경되면 오리진 데이터는 `undo log` 에 의해서 재구성된다. 이와 같은 `consistent read 기술` 은 `concurrency` 를 감소시키는 `locking` 이슈를 회피할 수 있다.
     * `Consistent read` 는 InnoDB 가 `READ COMMITED` 와 `REPEATABLE READ` 격리수준에서 SELECT 문을 처리하는 기본모드이다.
 
 
@@ -61,3 +69,4 @@ __이때 트랜잭션 2는 갱신된 데이터를 읽어와도 되는가 하는 
 ## reference
 * [transaction isolation level](https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html)
 * [set transaction statement](https://dev.mysql.com/doc/refman/8.0/en/set-transaction.html#set-transaction-access-mode)
+* [누군가의 글 : isolation level](https://jupiny.com/2018/11/30/mysql-transaction-isolation-levels/)
