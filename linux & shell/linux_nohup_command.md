@@ -3,6 +3,7 @@
     * `no hang up` 의 준말
 * HUP 이란 kill 명령어의 시그널 번호 `1`, `SIGHUP` 을 의미한다.
     * `SIGHUP` 은 로그아웃으로 세션과의 연결이 끊기는 시그널을 뜻한다.
+    * kill signal 에 관한 내용은 [여기를 참고](./linux_kill_command.md)
 * `nohup` 은 세션이 끊기더라도 프로세스는 데몬형태로 실행되어 종료되지 않는다.
 * 출력은 따로 리디렉션이 되지 않은 경우, nohup 을 실행시킨 위치에서 nohup.out 이라고 불리는 파일에 쓰여진다.
 
