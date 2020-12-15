@@ -13,7 +13,7 @@
 * [Difference Between Statement & PreparedStatement In JDBC](./database/Difference%20Between%20Statement%20And%20PreparedStatement%20In%20JDBC.md)
 * [조인 SQL](./database/Join%20(SQL).md)
 * [트랜잭션](./database/Transaction.md)
-* [트랜잭션 고립성(isolation) 레벨](./database/Transaction%20Isolation%20Levels.md)
+* [트랜잭션 고립성(isolation) 레벨](./database/Transaction_Isolation_Levels.md)
 
 ### algoritm
 * [geeksforgeeks](https://github.com/pasudo123/Algorithms/tree/master/GeeksForGeeks)
