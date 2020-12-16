@@ -14,6 +14,7 @@
 * [조인 SQL](./database/Join%20(SQL).md)
 * [트랜잭션](./database/Transaction.md)
 * [트랜잭션 고립성(isolation) 레벨](./database/Transaction_Isolation_Levels.md)
+* [mysql truncate](./database/truncate.md)
 
 ### algoritm
 * [geeksforgeeks](https://github.com/pasudo123/Algorithms/tree/master/GeeksForGeeks)
