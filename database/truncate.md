@@ -12,7 +12,12 @@ mysql truncate 알아보기
 * `truncate` 는 `delete` 와 유사하지만 DML 보다는 `DDL` 로 분류된다.
     * truncate operation 은 drop and re-create table 을 수행하는데, 테이블이 큰 경우 데이터를 row one by one 으로 삭제하는 것보다 빠르다.
     * truncate operation 은 `implicit commit` 을 발생시키고 `rollback` 을 수행하지 않는다.
-    * truncate operation 은 `active table lock` 에 대해서 수행할 수 없다.
+    * truncate operation 은 `active table lock` 에 대해서 수행할 수 없다. 
+        * `LOCK TABLES {table-name} READ` 가 걸린 테이블에 대해서는 `동일` 트랜잭션 내 `수행불가`
+        * `LOCK TABLES {table-name} READ` 가 걸린 테이블에 대해서는 `다른` 트랜잭션 내 `수행불가`
+        * `LOCK TABLES {table-name} WRITE` 가 걸린 테이블에 대해서는 `동일` 트랜잭션 내 `수행가능`
+        * `LOCK TABLES {table-name} WRITE` 가 걸린 테이블에 대해서는 `다른` 트랜잭션 내 `수행불가`
+        * LOCK 을 풀려면 `UNLOCK TABLES` 를 수행한다.
     * truncate operation 은 데이터 로우 삭제에 대한 의미있는 값을 반환하지 않는다. 일반적인 결과로 `0 rows affected` 로 해석되고 나타난다.
     * `auto_increment` 는 시작값으로 재설정된다. `MyISAM` 또는 `InnoDB` 에서도 마찬가지이고 시퀀스 값을 재사용하지 않는다.
 * `file-per-table tablespace` 에 있는 InnoDB 테이블을 truncate 하면, 현재 존재하는 `tablespace`를 `drop` 하고 새로운 것을 `create` 한다.
