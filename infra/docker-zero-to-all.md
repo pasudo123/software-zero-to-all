@@ -11,12 +11,14 @@
     * [docker build command](#docker-build-command)
     * [docker build command option](#docker-build-command-option)
     * [docker image command](#docker-image-command)
+        * rm, prune
     * [docker images command option](#docker-images-command-option)
     * [docker container command](#docker-container-command)
     * [docker container command option](#docker-container-command-option)
     * [docker run command](#docker-run-command)
     * [docker run command option](#docker-run-command-option)
     * [docker ps](#docker-ps-command)
+* [컨테이너 접속 이후 ctrl + P,Q 와 exit 의 차이는 무엇인가](#ctrl-vs-exit)
 * [도커 명령어 reference](https://docs.docker.com/engine/reference/commandline/docker/)
 
 <BR>
@@ -150,24 +152,30 @@ $ docker rmi $(docker images -f "dangling=true" -q)
 ## <a id="docker-container-command"></a>docker container command
 * [목차이동](#index)
 ```
+// 특정 이미지에 대한 컨테이너 생성 및 실행
+$ docker create -i -t --name {custom-container-name} {image}
+$ docker create -i -t --name mycustom centos:8
+$ docker start {container-name}
+$ docker start mycustom
+
+
 // 컨테이너 생성 및 실행
 // sour-port : 호스트의 포트번호
 // dest-port : 컨테이너의 포트번호
 $ docker run -p {sour-port}:{dest-port} {image-name}:{tag-name}
 
 
-// 특정한 컨텐이너 접속
+// -d 옵션에 의해 백그라운드로 돌아가는 특정한 컨텐이너 접속 : 배시 셸을 쓸수 있도록 도와준다. (-i 와 -t 옵션이 필요하다.)
 // container-id 입력 시 2~3 자리만 입력하여도 무방, 하지만 다른 동일한 2~3 자리 컨테이너 id 존재 시, 3~4 자리 입력을 권장함
-$ docker exec -it {container-id} /bin/bash
-
+$ docker exec -it {container-id | container-name} /bin/bash
+$ docker exec -i -t {container-id | container-name} /bin/bash
 
 // 특정한 컨테이너 정지
 $ docker stop {container-name}
 
 
 // 특정한 컨테이너 삭제
-// 컨테이너 삭제 시에는 해당 컨테이너가 정지된 상태여야 한다.
-$ docker rm {container-name}
+$ docker rm {container-name} // 해당 컨테이너가 정지 되어 있지 않다면 삭제 안됨
 
 
 // 특정한 컨테이너 [강제] 삭제
@@ -186,6 +194,9 @@ $ docker container prune
 |name(shortcut)|default|description|example|
 |-------------|-------------|-------------|-------------|
 |--detach(-d)||백그라운드에서 컨테이너를 실행하고, 컨테이너 ID 를 출력한다.|`docker run -d -p 23340:14480 pasudo123/springboot-docker-basis`|
+|--interactive(-i)||상호입출력이 가능하도록 한다.||
+|--tty(-t)||tty를 활성화 해서 배시(bash) 셸을 사용하도록 한다.||
+
 
 
 <BR>
@@ -214,6 +225,7 @@ docker run -d --name new_container --volume-from {container-name}
 |-------------|-------------|-------------|-------------|
 |--volume(-v)||볼륨 바인드를 수행한다. <br> 이미지에 안에 디렉토리가 존재하는 상태에서 호스트의 볼륨을 공유하면 __이미지 내 기존 디렉토리는 덮어씌어진다.__ |`docker run -d -v /data/etc:/var/etc -p 23340:14480 pasudo123/springboot-docker-basis`|
 |--volume-from||지정한 컨테이너와 볼륨 바인드를 수행한다.|`docker run  -d  --name new_container --volume-from {container_name}` |
+|--link||타 컨테이너의 내부 ip 를 알 필요없이 컨테이너 alias 만으로도 접근하도록 설정한다. (deprecated 될 예정이고, docker bridge 이용해야한다.)|`docker --link wordpressdb:mysql` (wordpressdb 컨테이너 명칭을 mysql 로 지정하였다. 이렇게하면 wordpressdb 의 ip 를 몰라도 호스트명으로 접근이 가능하다.)|
 
 <BR>
 
@@ -231,6 +243,11 @@ $ docker ps
 
 // 도커 엔진위에 올라간 [전체] 컨테이너 목록 출력 (정지된 컨테이너 포함)
 $ docker ps -a
+
+
+// 전체 도커 컨테이너의 id 값을 출력한다.
+// (--quiet) -q 옵션은 container id 만 표시하는 옵션값이다.
+$ docker ps -a -q
 
 
 // {value} 값을 가진 container 조회
@@ -255,3 +272,15 @@ $ docker ps -a -f status={value}
     * 컨테이너 생성 시, `--name` 옵션으로 이름을 설정하지 않으면 도커엔진이 임의로 이름을 조합한다.
 
 <BR>
+
+## <a id="ctrl-vs-exit"></a>컨테이너 접속 이후 ctrl + P,Q 와 exit 의 차이는 무엇인가
+* [목차이동](#index)   
+
+### ctrl + P,Q
+* 백그라운드로 동작하지 않는 컨테이너에 대해 attach 명령어로 접속이 가능하다. 그리고 ctrl + P,Q 명령어를 통해 컨테이너를 빠져나올때 필요하다. 만약 `exit` 명령어를 수행한다면 해당 컨테이너는 빠져나오는 즉시 컨테이너는 종료된다. 내부에 별도의 포그라운드 프로그램이 없는 상태이다.
+    * 만약 컨테이너 내부에 프로그램이 실행하지 않은 채 컨테이너 실행 명령어 `docker run -d ~` 을 하게된다면 해당 컨테이너는 생성이후 바로 종료된다.
+
+### exit 
+* 컨테이너 내부에 포그라운드로 실행중인 프로그램이 있는 경우에는 `docker exec` 명령어를 통해 접속한다. 이는 `docker run -d ~` 를 통해서 컨테이너를 백그라운드에서 동작하는 애플리케이션으로 실행하였을 때 가능하다. 
+    * `exec` 수행 시, `-i` 와 `-t` 옵션이 없으면 컨테이너 내부에 돌아가는 포그라운드 프로그램에 대한 명령어 결과만 반환받는다.
+* 결과적으로 포그라운드 프로그램이 컨테이너 내부에서 동작하기 때문에 `exit` 명령어를 이용하더라도 컨테이너는 종료되지 않는다.
