@@ -19,6 +19,7 @@
     * [docker run command option](#docker-run-command-option)
     * [docker ps](#docker-ps-command)
 * [컨테이너 접속 이후 ctrl + P,Q 와 exit 의 차이는 무엇인가](#ctrl-vs-exit)
+* [도커 볼륨 : 호스트 볼륨(bind mount) 시, 호스트 디렉토리와 컨테이너 디렉토리 간의 마운트 설명](#host_mount)
 * [도커 명령어 reference](https://docs.docker.com/engine/reference/commandline/docker/)
 
 <BR>
@@ -216,6 +217,33 @@ docker run -d -v /home/wordpress_db:/var/lib/mysql
 
 // 볼륨 컨테이너를 만들고 해당 컨테이너와 볼륨 마운트를 수행
 docker run -d --name new_container --volume-from {container-name}
+
+
+// docker volume 을 이용
+docker volume create --name {volume-name}
+
+
+// docker volume 조회
+docker volume ls
+
+
+// docker 의 볼륨 정보 조회
+docker inspect --type volume {volume-name}
+
+[
+    {
+        "CreatedAt": "2020-12-24T16:35:56Z",
+        "Driver": "local",  // 볼륨이 쓰는 드라이브
+        "Labels": {},       // 볼륨을 구분하는 라벨
+        "Mountpoint": "/var/lib/docker/volumes/customvolume/_data",     // 해당 볼륨이 실제로 호스트의 어디에 저장되었는지 의미
+        "Name": "customvolume",    
+        "Options": {},
+        "Scope": "local"
+    }
+]
+
+// 사용하지 않는 docker volume 제거
+docker volume prune
 ```
 
 <BR>
@@ -223,13 +251,20 @@ docker run -d --name new_container --volume-from {container-name}
 ## <a id="docker-run-command-option"></a>docker run command option
 |name(shortcut)|default|description|example|
 |-------------|-------------|-------------|-------------|
-|--volume(-v)||볼륨 바인드를 수행한다. <br> 이미지에 안에 디렉토리가 존재하는 상태에서 호스트의 볼륨을 공유하면 __이미지 내 기존 디렉토리는 덮어씌어진다.__ |`docker run -d -v /data/etc:/var/etc -p 23340:14480 pasudo123/springboot-docker-basis`|
+|--volume(-v)||bind volume 를 수행한다. <br> 이미지에 안에 디렉토리가 존재하는 상태에서 호스트의 볼륨을 공유하면 __이미지 내 기존 디렉토리는 덮어씌어진다.__ |`docker run -d -v /data/etc:/var/etc -p 23340:14480 pasudo123/springboot-docker-basis`|
 |--volume-from||지정한 컨테이너와 볼륨 바인드를 수행한다.|`docker run  -d  --name new_container --volume-from {container_name}` |
 |--link||타 컨테이너의 내부 ip 를 알 필요없이 컨테이너 alias 만으로도 접근하도록 설정한다. (deprecated 될 예정이고, docker bridge 이용해야한다.)|`docker --link wordpressdb:mysql` (wordpressdb 컨테이너 명칭을 mysql 로 지정하였다. 이렇게하면 wordpressdb 의 ip 를 몰라도 호스트명으로 접근이 가능하다.)|
 
 <BR>
 
 ## volume container 구성
+* 볼륨에는 세가지 구성이 있다.
+    * bind mount : 컨테이너와 호스트간의 디렉토리 및 파일 공유
+    * container volume : 컨테이너와 컨테이너간의 디렉토리 및 파일 공유
+    * docker volume : 도커 자체에서 제공하는 볼륨기능을 활용하는 것
+
+아래는 호스트와 컨테이너간 마운트가 되어있고, 그 컨테이너는 볼륨 컨테이너로서 서비스되는 컨테이너와 마운트가 다시 한번 되어있는 상태이다.
+
 <img src="https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Image/2020-09-19_volume-container.png">
 
 <BR>
@@ -274,7 +309,7 @@ $ docker ps -a -f status={value}
 <BR>
 
 ## <a id="ctrl-vs-exit"></a>컨테이너 접속 이후 ctrl + P,Q 와 exit 의 차이는 무엇인가
-* [목차이동](#index)   
+* [목차이동](#index)
 
 ### ctrl + P,Q
 * 백그라운드로 동작하지 않는 컨테이너에 대해 attach 명령어로 접속이 가능하다. 그리고 ctrl + P,Q 명령어를 통해 컨테이너를 빠져나올때 필요하다. 만약 `exit` 명령어를 수행한다면 해당 컨테이너는 빠져나오는 즉시 컨테이너는 종료된다. 내부에 별도의 포그라운드 프로그램이 없는 상태이다.
@@ -284,3 +319,14 @@ $ docker ps -a -f status={value}
 * 컨테이너 내부에 포그라운드로 실행중인 프로그램이 있는 경우에는 `docker exec` 명령어를 통해 접속한다. 이는 `docker run -d ~` 를 통해서 컨테이너를 백그라운드에서 동작하는 애플리케이션으로 실행하였을 때 가능하다. 
     * `exec` 수행 시, `-i` 와 `-t` 옵션이 없으면 컨테이너 내부에 돌아가는 포그라운드 프로그램에 대한 명령어 결과만 반환받는다.
 * 결과적으로 포그라운드 프로그램이 컨테이너 내부에서 동작하기 때문에 `exit` 명령어를 이용하더라도 컨테이너는 종료되지 않는다.
+
+## <a id="host_mount"></a>도커 볼륨 : 호스트 볼륨(=bind mount) 시, 호스트 디렉토리와 컨테이너 디렉토리 간의 마운트 설명
+* [목차이동](#index)
+
+두 가지 시나리오를 생각해볼수 있다.
+* 볼륨 공유 시, 컨테이너 내 파일을 생성하면 호스트 내 동일 디렉토리에 파일이 자동으로 생성된다. 반대의 경우에도 호스트 내 마운트된 디렉토리 내 파일을 생성하면 컨테이너에 동일하게 생성된다.
+* 호스트 디렉토리에 파일이 있는 상태에서 컨테이너의 비어있는 디렉토리를 마운트 설정 시, 컨테이너의 마운트된 디렉토리는 호스트 디렉토리의 파일들을 자신의 디렉토리로 복사시킨다.
+    * 호스트 파일이 컨테이너로 복사됨. (둘은 동일한 디렉토리)
+
+### 참고
+* `포그라운드` 로 실행되는 프로그램에 대한 `설정파일` 같은 경우는 `호스트의 빈 디렉토리와 마운트` 시키면 구동 시 에러가 발생한다.
