@@ -16,6 +16,7 @@
     * [docker container command](#docker-container-command)
     * [docker container command option](#docker-container-command-option)
     * [docker run command](#docker-run-command)
+        * [docker network](#docker-network)
     * [docker run command option](#docker-run-command-option)
     * [docker ps](#docker-ps-command)
 * [컨테이너 접속 이후 ctrl + P,Q 와 exit 의 차이는 무엇인가](#ctrl-vs-exit)
@@ -248,6 +249,56 @@ docker volume prune
 
 <BR>
 
+## <a id="docker-network"></a> docker-network
+도커는 컨테이너 내부에 `ip` 를 순차적으로 할당하며, 해당 ip 는 컨테이너를 재시작 할 때마다 변경될 수 있다. 이 내부 `ip` 는 설치된 호스트, 즉 내부망에서만 쓸 수 잇는 ip 는 외부와 연결할 필요가 있다. 
+
+이 과정은 컨테이너를 시작할 때마다 호스트에 `veth...` 라는 네트워크 인터페이스를 생성함으로써 이루어진다. `veth` 는 사용자가 직접 생성할 필요가 없으며 `도커엔진` 에 의해서 자동으로 생성된다.
+
+```shell
+// 도커 네트워크 조회
+$ docker network ls 
+
+// 특정 컨테이너 실행 시, 네트워크 모드 설정
+$ docker run -i -t -d --name custom-container \
+--net {net-mode} \
+ubuntu:18.04
+```
+
+윈도우에서 확인한 `virtual eth`  
+<img src="../Image/2020_12_27_veth.png" width="500" />
+
+### bridge network (net-mode : bridge-name)
+<img src="../Image/2020_12_27_docker_bridge.png" width="500" />
+
+* 사용자 정의 브리지를 생성하여 각 컨테이너에 연결하는 네트워크 구조이다.
+* 컨테이너는 연결된 브리지를 통하여 외부와 통신을 수행할 수 있다.
+
+<hr>
+
+### host network (net-mode : host)
+<img src="../Image/2020_12_27_docker_host_net.png" width="500" />
+
+* 호스트 드라이버를 별도로 생성할 필요가 없다.
+* 기존의 host 라는 이름의 네트워크를 바로 사용한다.
+* 특별하게 포트포워딩할 필요가 없이 호스트 내 포트를 사용하는데 충돌에 유의한다.
+    * 실제 호스트를 외부에 노출하는 것과 별반 다르지 않다.
+
+<hr>
+
+### none network(net-mode : none)
+* 아무런 네트워크를 쓰지 않는다.
+
+<hr>
+
+### container network(net-mode : container-name)
+<img src="../Image/2020_12_27_docker_container_net.png" width="500" />
+
+* 다른 컨테이너의 네트워크 네임스페이스 환경을 공유한다.
+* 공유되는 속성은 내부 ip, 네트워크 인터페이스의 mac 주소 등이다.
+* 두 컨테이너의 `eth0` 의 정보가 동일하다.
+
+<BR>
+
 ## <a id="docker-run-command-option"></a>docker run command option
 |name(shortcut)|default|description|example|
 |-------------|-------------|-------------|-------------|
@@ -262,10 +313,12 @@ docker volume prune
     * bind mount : 컨테이너와 호스트간의 디렉토리 및 파일 공유
     * container volume : 컨테이너와 컨테이너간의 디렉토리 및 파일 공유
     * docker volume : 도커 자체에서 제공하는 볼륨기능을 활용하는 것
+* 컨테이너 내부가 아닌 컨테이너 외부에 데이터를 저장하고 컨테이너는 그 데이터로 동작하도록 설계하는 것을 `stateless` 하다고 한다. `stateless` 한 컨테이너 설계가 `best practice` 이다.
+* 컨테이너가 데이터를 저장하고 있는 상태의 경우는 `stateful` 한 설계라고 한다. 해당 설계는 `지양해야` 한다.
 
 아래는 호스트와 컨테이너간 마운트가 되어있고, 그 컨테이너는 볼륨 컨테이너로서 서비스되는 컨테이너와 마운트가 다시 한번 되어있는 상태이다.
 
-<img src="https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Image/2020-09-19_volume-container.png">
+<img src="../Image/2020-09-19_volume-container.png">
 
 <BR>
 
