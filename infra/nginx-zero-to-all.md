@@ -24,6 +24,12 @@
         * [proxy_http_version](#proxy-1)
         * [proxy_set_header](#proxy-2)        
         * [proxy_pass](#proxy-3)
+        * [proxy_cache]
+        * [proxy_no_cache]
+        * [proxy_cache_bypass]
+        * [proxy_cache_valid]
+        * [proxy_cache_use_stale]
+
 
 ## <a id="notice"></a>nginx conf 작성시 유의사항
 * 괄호사이는 항상 `띄어쓰기` 를 넣어준다.
