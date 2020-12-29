@@ -16,11 +16,11 @@
             * `./Dockerfile_nginx` 디렉토리를 이용, Dockerfile 을 통해 이미지 생성 : `docker build -t custom-nginx .`
             * custom-nginx image 가 생성된 이후에 `docker run -it -d --name custom-nginx-container -p 8081:80 custom-nginx`
     * [nginx conf 작성시 유의사항](#notice)
-    * [ nginx-http-core-module ]
+    * [nginx-http-core-module](https://nginx.org/en/docs/http/ngx_http_core_module.html)
         * [location](#core-1)
         * [root](#core-2)
         * [alias](#core-3)
-    * [ nginx-http-proxy-module ]
+    * [nginx-http-proxy-module](https://nginx.org/en/docs/http/ngx_http_proxy_module.html)
         * [proxy_http_version](#proxy-1)
         * [proxy_set_header](#proxy-2)        
         * [proxy_pass](#proxy-3)
