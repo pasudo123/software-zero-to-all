@@ -19,6 +19,7 @@
         * [docker network](#docker-network)
     * [docker run command option](#docker-run-command-option)
     * [docker ps](#docker-ps-command)
+    * [docker start / restart](#docker-start-restart)
 * [컨테이너 접속 이후 ctrl + P,Q 와 exit 의 차이는 무엇인가](#ctrl-vs-exit)
 * [도커 볼륨 : 호스트 볼륨(bind mount) 시, 호스트 디렉토리와 컨테이너 디렉토리 간의 마운트 설명](#host_mount)
 * [도커 명령어 reference](https://docs.docker.com/engine/reference/commandline/docker/)
@@ -258,26 +259,76 @@ docker volume prune
 
 ```shell
 // 도커 네트워크 조회
-$ docker network ls 
+C:\Users\pasudo123>docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+23de2428e6da   bridge    bridge    local
+90dc82501c19   host      host      local
+2f66b7e39ac8   none      null      local
+
+// 사용자 정의 네트워크 생성 : network 이름은 "custom-network" 라고 칭한다.
+C:\Users\pasudo123>docker network create custom-network
+79e883b1e328e7e044a4c0ca6b37d3f070d7386bcbc707fee0a6a5b778b18fab
+
+// 네트워크 조회를 하면 "custom-network" 가 조회되는 것을 확인할 수 있다.
+C:\Users\pasudo123>docker network ls
+NETWORK ID     NAME             DRIVER    SCOPE
+79e883b1e328   custom-network   bridge    local
+
+// "custom-network" 에 대한 상세한 정보 확인.
+C:\Users\pasudo123>docker network inspect custom-network
+[
+    {
+        "Name": "custom-network",
+        "Id": "79e883b1e328e7e044a4c0ca6b37d3f070d7386bcbc707fee0a6a5b778b18fab",
+        "Created": "2020-12-30T05:10:31.7945484Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.19.0.0/16",
+                    "Gateway": "172.19.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {},
+        "Options": {},
+        "Labels": {}
+    }
+]
 
 // 특정 컨테이너 실행 시, 네트워크 모드 설정
 $ docker run -i -t -d --name custom-container \
---net {net-mode} \
+--network {net-mode} \
 ubuntu:18.04
 ```
 
 윈도우에서 확인한 `virtual eth`  
 <img src="../Image/2020_12_27_veth.png" width="500" />
 
-### bridge network (net-mode : bridge-name)
+### 🤭 bridge network (net-mode : bridge-name)
 <img src="../Image/2020_12_27_docker_bridge.png" width="500" />
 
-* 사용자 정의 브리지를 생성하여 각 컨테이너에 연결하는 네트워크 구조이다.
+* __사용자 정의 브리지__ 를 생성하여 각 컨테이너에 연결하는 네트워크 구조이다.
 * 컨테이너는 연결된 브리지를 통하여 외부와 통신을 수행할 수 있다.
+* 도커의 측면에서 `브리지 네트워크` 는 동일한 브리지 네트워크에 연결된 컨테이너가 통신할 수 있도록 하는 소프트웨어 브리지를 사용한다. 그리고 해당 브리지를 사용하지 않는 컨테이너로부터 격리시킨다. 도커 브리지 드라이버는 서로 다른 브리지 네트워크의 컨테이너가 서로 직접적인 통신을 할 수 없도록 호스트 머신에 규칙을 자동으로 설치한다.
+* __사용자 정의 브리지__ 와 __디폴트 브리지__ 간의 차이점
+    * 
+* 자세한 내용은 [여기](https://docs.docker.com/network/bridge/)를 참고한다.
 
 <hr>
 
-### host network (net-mode : host)
+### 🤭 host network (net-mode : host)
 <img src="../Image/2020_12_27_docker_host_net.png" width="500" />
 
 * 호스트 드라이버를 별도로 생성할 필요가 없다.
@@ -287,12 +338,12 @@ ubuntu:18.04
 
 <hr>
 
-### none network(net-mode : none)
+### 🤭 none network(net-mode : none)
 * 아무런 네트워크를 쓰지 않는다.
 
 <hr>
 
-### container network(net-mode : container-name)
+### 🤭 container network(net-mode : container-name)
 <img src="../Image/2020_12_27_docker_container_net.png" width="500" />
 
 * 다른 컨테이너의 네트워크 네임스페이스 환경을 공유한다.

@@ -11,7 +11,10 @@
     * [watch command](./linux_watch_command.md)
 * shell
     * [variable](./shell_variable_command.md)
+* vim
+    * [replace](#)
 * [reference](#reference)
 
 
 ## <a id="reference"></a> reference 🚀
+* [Shell : Conditional statements](https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html)
