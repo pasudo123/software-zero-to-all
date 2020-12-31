@@ -4,8 +4,9 @@
 <BR>
 
 ## <a id="index"></a>index
-* [nginx 관련 블로그 글]
+* [nginx 관련 살펴볼 것]
     * [nginx : reverse-proxy & web-server](https://pasudo123.tistory.com/403)
+    * [advanced nginx config, performance improvements, caching, clustering](https://www.youtube.com/watch?v=WMsqw68DhIg&ab_channel=TechFieldDay)
 * nginx
     * [nginx docker hub](https://hub.docker.com/_/nginx)
         * docker 실행 (1)
@@ -29,6 +30,9 @@
         * [proxy_cache_bypass]
         * [proxy_cache_valid]
         * [proxy_cache_use_stale]
+    * [nginx-http-upstream-module](http://nginx.org/en/docs/http/ngx_http_upstream_module.html)
+        * [upstream](#upstream-1)
+        * [keepalive](#upstream-2)
 
 
 ## <a id="notice"></a>nginx conf 작성시 유의사항
@@ -163,6 +167,50 @@ location /name/ {
     * example) `upstream { ... }`
 
 
+<BR>
+
+### <a id="upstream-1"></a>upstream
+서버의 그룹을 정의한다. 서버는 서로 다른 포트로 `listen` 즉 수신할 수 있다. 추가적으로 TCP 및 UNIX 도메인 소켓에서 수신하는 서버를 혼합할 수 있다.
+
+```shell
+upstream backend {
+    server backend1.example.com weight=5;
+    server 127.0.0.1:8080       max_fails=3 fail_timeout=30s;
+    server unix:/tmp/backend3;
+
+    server backup1.example.com  backup;
+}
+```
+* `weighted round-robin` 을 사용하여 서버 간 요청을 분산시켜 전달된다.
+    * 위의 예시에서 7개의 요청이 들어온다고 생각했을때, `weight=5` 로 설정된 서버에 5개의 요청이 흘러간다. 그리고 나머지 2개의 요청은 127.0.0.1:8080 과 unix:/tmp/backend3 으로 각각 전달된다.
+* 서버와 통신 중 에러가 발생하면, 다음 서버로 해당 요청이 전달된다. (해당 요청은 다음 해당 서버가 작동될때까지 수행된다.) 서버에서 성공적인 응답을 얻을 수 없는 경우에 클라이언트는 마지막 서버와의 결과값을 반환받는다. 
+
+<BR>
+
+### <a id="upstream"></a>keepalive
+업스트림 서버(`애플리케이션 서버`) 에 커넥션을 맺기위한 캐시를 활성화한다. syntax 는 `keepalive {connections}` 로 작성하는데 여기서 connections 파라미터는 각각의 워커 프로세스의 캐시에 보존되는 업스트림 서버에 대한 `idle keepalive connections` 의 최대 숫자 값을 설정한다. (재사용하기 위함이다.) 이후 connections 파라미터가 초과되면 가장 최근에 연결된 커넥션이 닫힌다.
+
+keepalive 는 nginx 의 워커프로세스가 열 수 있는 업스트림 서버에 대한 총 연결 수를 제한하지 않는다. conections 파라미터는 새로운 수신 연결도 처리할 수 있도록 `충분하게 작은 수로 설정` 해야 한다.
+
+```shell
+upstream http_backend {
+    server 127.0.0.1:8080;
+
+    keepalive 16;
+}
+
+server {
+    ...
+
+    location /http/ {
+        proxy_pass http://http_backend;
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
+        ...
+    }
+}
+```
+* http 에서 사용하는 경우에, `proxy_http_version` 을 `1.1` 로 설정함과 동시에 `Connection` 헤더를 비워주어야 한다.
 <BR>
 
 ## reference
