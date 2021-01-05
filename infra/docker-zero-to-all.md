@@ -8,6 +8,7 @@
 * [docker 컨테이너를 외부에 노출](#how-to-expose-to-external-that-container-of-docker)
 * [Dockerfile 작성하기](#how-to-write-way-docker-file)
 * [docker command](#docker-command-text)
+    * [docker attach command](#docker-attach-command)
     * [docker build command](#docker-build-command)
     * [docker build command option](#docker-build-command-option)
     * [docker image command](#docker-image-command)
@@ -18,8 +19,11 @@
     * [docker run command](#docker-run-command)
         * [docker network](#docker-network)
     * [docker run command option](#docker-run-command-option)
+    * [docker inspect command : 도커 로우레벨 정보를 반환한다.](https://docs.docker.com/engine/reference/commandline/inspect/)
     * [docker ps](#docker-ps-command)
     * [docker start / restart](#docker-start-restart)
+    * [docker search : 도커허브에서 이미지를 조회한다.](https://docs.docker.com/engine/reference/commandline/search/)
+    * [docker commit : 컨테이너 변경사항에 대한 새로운 이미지를 생성한다.](https://docs.docker.com/engine/reference/commandline/commit/)
 * [컨테이너 접속 이후 ctrl + P,Q 와 exit 의 차이는 무엇인가](#ctrl-vs-exit)
 * [도커 볼륨 : 호스트 볼륨(bind mount) 시, 호스트 디렉토리와 컨테이너 디렉토리 간의 마운트 설명](#host_mount)
 * [도커 명령어 reference](https://docs.docker.com/engine/reference/commandline/docker/)
@@ -106,6 +110,15 @@ $ docker -v
 
 <BR>
 
+## <a id="docker-attach-command"></a>docker attach command
+* [목차이동](#index)
+```
+// 특정 container 내부 접속
+$ docker attach {container-name}
+```
+
+<BR>
+
 ## <a id="docker-build-command"></a>docker build command
 * [목차이동](#index)
 ```
@@ -172,6 +185,7 @@ $ docker run -p {sour-port}:{dest-port} {image-name}:{tag-name}
 
 // -d 옵션에 의해 백그라운드로 돌아가는 특정한 컨텐이너 접속 : 배시 셸을 쓸수 있도록 도와준다. (-i 와 -t 옵션이 필요하다.)
 // container-id 입력 시 2~3 자리만 입력하여도 무방, 하지만 다른 동일한 2~3 자리 컨테이너 id 존재 시, 3~4 자리 입력을 권장함
+// exec 는 실행중인 컨테이너에 대한 명령이다.
 $ docker exec -it {container-id | container-name} /bin/bash
 $ docker exec -i -t {container-id | container-name} /bin/bash
 
@@ -358,6 +372,8 @@ ubuntu:18.04
 |--volume(-v)||bind volume 를 수행한다. <br> 이미지에 안에 디렉토리가 존재하는 상태에서 호스트의 볼륨을 공유하면 __이미지 내 기존 디렉토리는 덮어씌어진다.__ |`docker run -d -v /data/etc:/var/etc -p 23340:14480 pasudo123/springboot-docker-basis`|
 |--volume-from||지정한 컨테이너와 볼륨 바인드를 수행한다.|`docker run  -d  --name new_container --volume-from {container_name}` |
 |--link||타 컨테이너의 내부 ip 를 알 필요없이 컨테이너 alias 만으로도 접근하도록 설정한다. (deprecated 될 예정이고, docker bridge 이용해야한다.)|`docker --link wordpressdb:mysql` (wordpressdb 컨테이너 명칭을 mysql 로 지정하였다. 이렇게하면 wordpressdb 의 ip 를 몰라도 호스트명으로 접근이 가능하다.)|
+|--interactive, -i||docker attached 하지않고도 STDIN 을 열어둔다||
+|--restart||docker 가 종료되었을 때, 적용할 재시작 정책. ([상세링크](https://docs.docker.com/engine/reference/commandline/run/#restart-policies---restart))|
 
 <BR>
 
@@ -424,7 +440,7 @@ $ docker ps -a -f status={value}
 ### exit 
 * 컨테이너 내부에 포그라운드로 실행중인 프로그램이 있는 경우에는 `docker exec` 명령어를 통해 접속한다. 이는 `docker run -d ~` 를 통해서 컨테이너를 백그라운드에서 동작하는 애플리케이션으로 실행하였을 때 가능하다. 
     * `exec` 수행 시, `-i` 와 `-t` 옵션이 없으면 컨테이너 내부에 돌아가는 포그라운드 프로그램에 대한 명령어 결과만 반환받는다.
-* 결과적으로 포그라운드 프로그램이 컨테이너 내부에서 동작하기 때문에 `exit` 명령어를 이용하더라도 컨테이너는 종료되지 않는다.
+* 결과적으로 포그라운드 프로그램이 컨테이너 내부에서 동작하기 때문에 `exit` 명령어를 이용하더라도 `컨테이너는 종료되지 않는다.`
 
 ## <a id="host_mount"></a>도커 볼륨 : 호스트 볼륨(=bind mount) 시, 호스트 디렉토리와 컨테이너 디렉토리 간의 마운트 설명
 * [목차이동](#index)
