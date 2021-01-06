@@ -24,6 +24,7 @@
     * [docker start / restart](#docker-start-restart)
     * [docker search : 도커허브에서 이미지를 조회한다.](https://docs.docker.com/engine/reference/commandline/search/)
     * [docker commit : 컨테이너 변경사항에 대한 새로운 이미지를 생성한다.](https://docs.docker.com/engine/reference/commandline/commit/)
+    * [docker port : 컨테이너의 port 와 매핑된 호스트 port 조회](https://docs.docker.com/engine/reference/commandline/port/)
 * [컨테이너 접속 이후 ctrl + P,Q 와 exit 의 차이는 무엇인가](#ctrl-vs-exit)
 * [도커 볼륨 : 호스트 볼륨(bind mount) 시, 호스트 디렉토리와 컨테이너 디렉토리 간의 마운트 설명](#host_mount)
 * [도커 명령어 reference](https://docs.docker.com/engine/reference/commandline/docker/)
@@ -122,16 +123,17 @@ $ docker attach {container-name}
 ## <a id="docker-build-command"></a>docker build command
 * [목차이동](#index)
 ```
-// 이미지 빌드 ( dot 표기 필요 ! )
+// 이미지 빌드 ( dot 표기 필요 : 현재 디렉토리의 Dockerfile 을 이용하기 때문)
 $ docker build -t {name}:{tag} .
 ```
 
 <BR>
 
 ## <a id="docker-build-command-option"></a>docker build command option
-|name(shortcut)|default|description|example|
+|name(shortcut)|description|example|
 |-------------|-------------|-------------|-------------|
-|--tag(-t)||{name}:{tag} 형식 이름 지정|`$docker build -t ubuntu:14.04 .`|
+|--tag(-t)|{name}:{tag} 형식 이름 지정|`$docker build -t ubuntu:14.04 .`|
+|--no-cache|image 빌드 시에, 이미지 레이어 캐시를 사용하지 않고 다시 빌드를 수행한다.|`docker build --no-cache -t mybuild:1.0`|
 
 <BR>
 
@@ -210,11 +212,11 @@ $ docker container prune
 ## <a id="docker-container-command-option"></a>docker container command option
 * [목차이동](#index)
 
-|name(shortcut)|default|description|example|
+|name(shortcut)|description|example|
 |-------------|-------------|-------------|-------------|
-|--detach(-d)||백그라운드에서 컨테이너를 실행하고, 컨테이너 ID 를 출력한다.|`docker run -d -p 23340:14480 pasudo123/springboot-docker-basis`|
-|--interactive(-i)||상호입출력이 가능하도록 한다.||
-|--tty(-t)||tty를 활성화 해서 배시(bash) 셸을 사용하도록 한다.||
+|--detach(-d)|백그라운드에서 컨테이너를 실행하고, 컨테이너 ID 를 출력한다.|`docker run -d -p 23340:14480 pasudo123/springboot-docker-basis`|
+|--interactive(-i)|상호입출력이 가능하도록 한다.||
+|--tty(-t)|tty를 활성화 해서 배시(bash) 셸을 사용하도록 한다.||
 
 
 
@@ -374,6 +376,7 @@ ubuntu:18.04
 |--link||타 컨테이너의 내부 ip 를 알 필요없이 컨테이너 alias 만으로도 접근하도록 설정한다. (deprecated 될 예정이고, docker bridge 이용해야한다.)|`docker --link wordpressdb:mysql` (wordpressdb 컨테이너 명칭을 mysql 로 지정하였다. 이렇게하면 wordpressdb 의 ip 를 몰라도 호스트명으로 접근이 가능하다.)|
 |--interactive, -i||docker attached 하지않고도 STDIN 을 열어둔다||
 |--restart||docker 가 종료되었을 때, 적용할 재시작 정책. ([상세링크](https://docs.docker.com/engine/reference/commandline/run/#restart-policies---restart))|
+|-publish, -p||Dockerfile 에 설정된 EXPOSE 의 모든 포트를 호스트에 연결하도록 설정한다. 호스트의 포트는 `무작위` 로 설정된다.| `docker run -d -P --name myserver mybuild:1.0`
 
 <BR>
 
