@@ -77,7 +77,7 @@ PS C:\Users\pasudo123> docker port {container-id}
 ## <a id="how-to-write-way-docker-file"></a>Dockerfile 작성하기
 * [목차이동](#index)
 * [Dockerfile 작성하는 최선의 방법에 대한 관련 링크](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
-* context (컨텐스트)
+* context (컨텍스트)
     * Dockerfile 과 같은 디렉토리에 있는 모든 파일들은 컨텍스트라고 한다. (context)
 * ADD vs COPY 
     ```shell
@@ -88,7 +88,7 @@ PS C:\Users\pasudo123> docker port {container-id}
     * 둘이 사용방법은 동일하다.
         * `COPY test.html /home/`
         * `COPY ["test.html", "/home/"]`
-    * __결론부터 말하면 COPY 를 애용__ 하자.
+    * `결론부터 말하면 COPY 를 애용` 하자.
     * __ADD__
         * 파일을 이미지에 추가한다. 추가하는 파일은 Dockerfile 이 위치한 Context 가 기본경로인 상태에서 추가한다.
         * __외부 URL 및 tar 파일도 추가할 수 있다.__
@@ -98,7 +98,13 @@ PS C:\Users\pasudo123> docker port {container-id}
         * __로컬 파일만 이미지에 추가할 수 있다.__
     * ADD 를 이용하게 되면 실질적으로 이미지에 추가하는 파일이 어떤 것인지 확신하기 어렵다. 
     * COPY 는 Context 로 부터 직접 파일을 추가하기 때문에 명확하다.
-    
+* CMD vs ENTRYPOINT
+    * 
+* [STOPSIGNAL](https://docs.docker.com/engine/reference/builder/#stopsignal)
+    * 컨테이너가 정지될 때 사용될 시스템 콜의 종류를 지정한다.
+    * 숫자도 가능하고 KILL SIGNAL 명칭도 가능하다. (`SIGTERM`, `SIGKILL` 등등)
+* [HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck)
+    * 이미지로부터 생성된 컨테이너에서 동작하는 애플리케이션의 상태를 체크하도록 설정한다. 컨테이너 내부에서 동작중인 애플리케이션의 프로세스가 종료되지는 않았으나 `애플리케이션이 동작하고 있지 않은 상태를 방지하기 위해 사용` 될 수 있다.
 
 <BR>
 
@@ -134,6 +140,7 @@ $ docker build -t {name}:{tag} .
 |-------------|-------------|-------------|-------------|
 |--tag(-t)|{name}:{tag} 형식 이름 지정|`$docker build -t ubuntu:14.04 .`|
 |--no-cache|image 빌드 시에, 이미지 레이어 캐시를 사용하지 않고 다시 빌드를 수행한다.|`docker build --no-cache -t mybuild:1.0`|
+|--build-arg|image 빌드 시에 이미지내 사용할 수 있는 값을 동적으로 할당할 수 있다. Dockerfile 에서 ARG 로 받을 수 있다. |`docker build --build-arg HTTP_PROXY=http://10.20.30.2:1234 --build-arg FTP_PROXY=http://40.50.60.5:4567`|
 
 <BR>
 
