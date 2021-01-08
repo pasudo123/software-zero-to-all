@@ -27,6 +27,7 @@
     * [docker port : 컨테이너의 port 와 매핑된 호스트 port 조회](https://docs.docker.com/engine/reference/commandline/port/)
 * [컨테이너 접속 이후 ctrl + P,Q 와 exit 의 차이는 무엇인가](#ctrl-vs-exit)
 * [도커 볼륨 : 호스트 볼륨(bind mount) 시, 호스트 디렉토리와 컨테이너 디렉토리 간의 마운트 설명](#host_mount)
+* [도커의 두가지 구성 : 도커 클라이언트 및 도커 데몬](#docker-client&docker-daemon)
 * [도커 명령어 reference](https://docs.docker.com/engine/reference/commandline/docker/)
 
 <BR>
@@ -452,6 +453,8 @@ $ docker ps -a -f status={value}
     * `exec` 수행 시, `-i` 와 `-t` 옵션이 없으면 컨테이너 내부에 돌아가는 포그라운드 프로그램에 대한 명령어 결과만 반환받는다.
 * 결과적으로 포그라운드 프로그램이 컨테이너 내부에서 동작하기 때문에 `exit` 명령어를 이용하더라도 `컨테이너는 종료되지 않는다.`
 
+`포그라운드` 로 실행되는 프로그램에 대한 `설정파일` 같은 경우는 `호스트의 빈 디렉토리와 마운트` 시키면 구동 시 에러가 발생한다.
+
 ## <a id="host_mount"></a>도커 볼륨 : 호스트 볼륨(=bind mount) 시, 호스트 디렉토리와 컨테이너 디렉토리 간의 마운트 설명
 * [목차이동](#index)
 
@@ -460,5 +463,51 @@ $ docker ps -a -f status={value}
 * 호스트 디렉토리에 파일이 있는 상태에서 컨테이너의 비어있는 디렉토리를 마운트 설정 시, 컨테이너의 마운트된 디렉토리는 호스트 디렉토리의 파일들을 자신의 디렉토리로 복사시킨다.
     * 호스트 파일이 컨테이너로 복사됨. (둘은 동일한 디렉토리)
 
-### 참고
-* `포그라운드` 로 실행되는 프로그램에 대한 `설정파일` 같은 경우는 `호스트의 빈 디렉토리와 마운트` 시키면 구동 시 에러가 발생한다.
+## <a id="docker-client&docker-daemon"></a>도커의 두가지 구성 : 도커 클라이언트 및 도커 데몬
+일반적으로 개발자는 docker 라는 명령어를 통해 도커 실행에 관여한다. docker 명령어는 실제로 어디에 있는지 확인할 수 있다.
+```shell
+pasudo123@developer1997:/mnt/c/Windows/system32$ which docker
+/usr/bin/docker
+```
+
+실행중인 도커 프로세스를 확인해보자
+```shell
+pasudo123@developer1997:/mnt/c/Windows/system32$ ps aux | grep docker
+pasudo1+   180  0.0  0.1 758952 35448 pts/1    Ssl+ 21:47   0:00 docker serve --address unix:///home/pasudo123/.docker/run/docker-cli-api.sock
+
+root       188  0.0  0.1 1241064 32928 pts/2   Ssl+ 21:47   0:00 /mnt/wsl/docker-desktop/docker-desktop-proxy --distro-name Ubuntu --docker-desktop-root /mnt/wsl/docker-desktop --use-cloud-cli=true
+```
+
+도커의 구조는 크게 두가지로 나뉘고 아키텍처는 아래와 같다.
+* client docker
+    * 개발자와 server docker DAEMON 사이의 미들웨어 역할을 수행한다.
+    * 개발자가 API를 이용할 수 있도록 docker CLI 를 제공한다.
+* server docker
+    * 이미지를 관리하는 주체이다.
+    * 실제 컨테이너를 생성하고 실행한다.
+    * dockerd 프로세스로서 동작한다.
+    * docker engine 은 외부에서 API 를 받아 docker engine 으로서의 기능을 수행한다.
+    * docker process 가 실행되서 서버로서 입력을 받을 준비가 된 상태를 `도커 데몬` 이라고 칭한다.
+
+```shell
++-----------------------------------+   CLI   +-----------+
+| client docker CLI                 | <------ | developer |
+| +-------------------------------+ |         +-----------+
+| | REST API                      | |
+| | +---------------------------+ | |
+| | | server docker DAEMON      | | |
+| | |                           | | |
+| | |                           | | |
+| | +---------------------------+ | |
+| +-------------------------------+ |
++-----------------------------------+
+```
+터미널이나 Putty 등으로 도커가 설치된 호스트에 접속하여 docker CLI 를 입력하면 아래와 같이 동작한다.
+1. `developer` 가 `docker ps` 등의 도커 명령어를 입력한다.
+2. /usr/bin/docker 는 var/run/docker.sock 유닉스 소켓을 사용하여 도커 데몬에게 명령어를 전달한다.
+3. `docker daemon` 은 이 명령어를 파싱하고 명령어에 해당하는 작업을 수행한다.
+4. 수행 결과를 `docker client` 에게 반환하고 `developer` 에게 결과를 출력한다.
+
+
+# reference
+* 책 : 시작하세요! 도커/쿠버네티스 
