@@ -9,6 +9,7 @@
     * [awk command](./linux_awk_command.md)
     * [nohup command](./linux_nohup_command.md)
     * [watch command](./linux_watch_command.md)
+    * [htop command](./linux_htop_command.md)
 * shell
     * [variable](./shell_variable_command.md)
 * vim
