@@ -138,7 +138,7 @@ $ docker build -t {name}:{tag} .
 
 ## <a id="docker-build-command-option"></a>docker build command option
 |name(shortcut)|description|example|
-|-------------|-------------|-------------|-------------|
+|-------------|-------------|-------------|
 |--tag(-t)|{name}:{tag} 형식 이름 지정|`$docker build -t ubuntu:14.04 .`|
 |--no-cache|image 빌드 시에, 이미지 레이어 캐시를 사용하지 않고 다시 빌드를 수행한다.|`docker build --no-cache -t mybuild:1.0`|
 |--build-arg|image 빌드 시에 이미지내 사용할 수 있는 값을 동적으로 할당할 수 있다. Dockerfile 에서 ARG 로 받을 수 있다. |`docker build --build-arg HTTP_PROXY=http://10.20.30.2:1234 --build-arg FTP_PROXY=http://40.50.60.5:4567`|
@@ -187,17 +187,12 @@ $ docker start {container-name}
 $ docker start mycustom
 
 
-// 컨테이너 생성 및 실행
-// sour-port : 호스트의 포트번호
-// dest-port : 컨테이너의 포트번호
-$ docker run -p {sour-port}:{dest-port} {image-name}:{tag-name}
-
-
 // -d 옵션에 의해 백그라운드로 돌아가는 특정한 컨텐이너 접속 : 배시 셸을 쓸수 있도록 도와준다. (-i 와 -t 옵션이 필요하다.)
 // container-id 입력 시 2~3 자리만 입력하여도 무방, 하지만 다른 동일한 2~3 자리 컨테이너 id 존재 시, 3~4 자리 입력을 권장함
 // exec 는 실행중인 컨테이너에 대한 명령이다.
 $ docker exec -it {container-id | container-name} /bin/bash
 $ docker exec -i -t {container-id | container-name} /bin/bash
+
 
 // 특정한 컨테이너 정지
 $ docker stop {container-name}
