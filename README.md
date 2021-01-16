@@ -58,7 +58,6 @@
 * [springboot-event-basis](https://github.com/coding-buddha/springboot-event-basis)
 * [springboot-slackbot-basis](https://github.com/coding-buddha/springboot-slackbot-basis)
 
-
 ### design-pattern 🌼
 * [oop-basis : decorator-pattern](https://github.com/coding-buddha/oop-basis/blob/master/design-pattern-decorator)
 * [oop-basis : adapter-pattern](https://github.com/coding-buddha/oop-basis/blob/master/design-pattern-adapter)
@@ -72,6 +71,8 @@
 * [소스트리에서 git reset(soft, mixed, hard)](https://github.com/pasudo123/GitFlowZero/blob/master/sourcetree-reset.md)
 
 ## 👨‍🚀 infrastructure
+* concept
+  * [hypervisors : blog](https://pasudo123.tistory.com/454)
 * [aws-zero-to-all](./infra/aws-zero-to-all.md)
 * [nginx-applying-ssl(https)](./infra/nginx-ssl.md)
 * [nginx-zero-to-all](./infra/nginx-zero-to-all.md)

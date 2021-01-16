@@ -4,7 +4,7 @@
 
 ### htop 설치
 ```
-// 새로운 프로그램 설치 이전에 update && upgrade 수행
+// 새로운 프로그램 설치 이전에 update && upgrade 수행 (우분투)
 apt-get update
 apt-get upgrade
 
