@@ -72,6 +72,7 @@
 
 ## 👨‍🚀 infrastructure
 * concept
+  * [virtualization : blog](https://pasudo123.tistory.com/455)
   * [hypervisors : blog](https://pasudo123.tistory.com/454)
 * [aws-zero-to-all](./infra/aws-zero-to-all.md)
 * [nginx-applying-ssl(https)](./infra/nginx-ssl.md)
