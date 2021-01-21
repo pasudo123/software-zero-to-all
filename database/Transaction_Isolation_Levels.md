@@ -2,7 +2,7 @@
 격리성 수준은 트랜잭션 터리가 병렬 실행될 때 각 트랜잭션의 격리성을 결정하는 것이다. 트랜잭션 특징의 
 격리성, Isolation 에 대해서 보면 아래의 그림과 같다.
 
-![alt Isolation Levels](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Image/Isolation_Levels%20Image.png)
+![alt Isolation Levels](./Image/Isolation_Levels%20Image.png)
 ```
 Transaction1 과 Transaction2 과 나란히 실행되었다는 것을 전제로 설명.
 ```

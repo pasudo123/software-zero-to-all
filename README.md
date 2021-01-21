@@ -82,7 +82,7 @@
 * [docker-swarm-zero-to-all](./infra/docker-swarm-zero-to-all.md)
 
 ## 👨‍🚀 온라인 강의
-* [인프런, 자바 ORM 표준 JPA 프로그래밍 : atoz](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Inflearn/README.md)
+* [인프런, 자바 ORM 표준 JPA 프로그래밍 : atoz](./Inflearn/README.md)
 * [인프런, querydsl 문법사용 레파지토리](https://github.com/coding-buddha/springboot-querydsl-basis)
   * [querydsl projection 5가지 방법 작성글](https://pasudo123.tistory.com/431)
 * [Udemy, OneToMany & ManyToOne](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20-%20%40OneToMany%20%26%20%40ManyToOne.md)
