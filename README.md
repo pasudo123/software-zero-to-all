@@ -3,8 +3,8 @@
 
 ## 👨‍🚀 Computer Science
 ### network
-* [한양대 Network MOOC 수강 내용 정리](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/network/Network%20MOOC.md)
-* [HTTPS](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Book%20%26%20Memo/HTTP%20%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/HTTPS.md)
+* [한양대 Network MOOC 수강 내용 정리](./network/Network%20MOOC.md)
+* [HTTPS](./Book%20%26%20Memo/HTTP%20%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/HTTPS.md)
 
 ### database
 * [씨아이보드 메뉴얼 스키마 설계 샘플](http://www.ciboard.co.kr/manual/tables)
@@ -23,9 +23,9 @@
 ## 👨‍🚀 Development
 ### OOP : Object Oriented Programming 🌼
 * [초보개발자에게 권장하는 객체지향 모델링 공부방법](https://okky.kr/article/358197)
-* [객체지향 언어 배경](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/object_oriented_programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EB%93%B1%EC%9E%A5.md)
-* [객체지향 언어 이해 : 유연성](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/object_oriented_programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)
-* [객체지향 언어 이해 : 유연성과 객체지향 4대 특성](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/object_oriented_programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)
+* [객체지향 언어 배경](./object_oriented_programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EB%93%B1%EC%9E%A5.md)
+* [객체지향 언어 이해 : 유연성](./object_oriented_programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)
+* [객체지향 언어 이해 : 유연성과 객체지향 4대 특성](./object_oriented_programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EC%98%AC%EB%B0%94%EB%A5%B8%20%EC%9D%B4%ED%95%B4_%EC%9C%A0%EC%97%B0%EC%84%B1%20%EB%B0%8F%20%EC%B6%94%EA%B0%80%ED%8A%B9%EC%A7%95.md)
 
 ### java basis 🌼
 * [abstract keyword](https://github.com/pasudo123/LearnJava/blob/master/JavaBasics/AbstractEx.java)
@@ -59,6 +59,9 @@
 * [springboot-slackbot-basis](https://github.com/coding-buddha/springboot-slackbot-basis)
 * [springboot-cloud-basis](https://github.com/coding-buddha/springboot-cloud-basis)
 
+### kotlin-basis
+* [kotlin-zero-to-all](https://github.com/coding-buddha/kotlin-zero-to-all)
+
 ### design-pattern 🌼
 * [oop-basis : decorator-pattern](https://github.com/coding-buddha/oop-basis/blob/master/design-pattern-decorator)
 * [oop-basis : adapter-pattern](https://github.com/coding-buddha/oop-basis/blob/master/design-pattern-adapter)
@@ -85,33 +88,33 @@
 * [인프런, 자바 ORM 표준 JPA 프로그래밍 : atoz](./Inflearn/README.md)
 * [인프런, querydsl 문법사용 레파지토리](https://github.com/coding-buddha/springboot-querydsl-basis)
   * [querydsl projection 5가지 방법 작성글](https://pasudo123.tistory.com/431)
-* [Udemy, OneToMany & ManyToOne](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20-%20%40OneToMany%20%26%20%40ManyToOne.md)
-* [Udemy, Spring MVC Validation](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Spring%20MVC%20Validation.md)
-* [Udemy, Hibernate Tutorial](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Udemy/Hibernate%20tutorial.md)
+* [Udemy, OneToMany & ManyToOne](./Udemy/Hibernate%20-%20%40OneToMany%20%26%20%40ManyToOne.md)
+* [Udemy, Spring MVC Validation](./Udemy/Spring%20MVC%20Validation.md)
+* [Udemy, Hibernate Tutorial](./Udemy/Hibernate%20tutorial.md)
 
 ## 👨‍🚀 단편지식
-* [gradle](https://github.com/pasudo123/SoftwareZeroToALL/tree/master/Piece/gradle)
-* [password 저장 방식](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/20191027%20%ED%8C%A8%EC%8A%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%A5.md)
-* [개인서버 할당 후 기록물 : 코노하 VPS](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/20191114%20VPS.md)
-* [nginx 정리](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/Piece/nginx%20%EC%A0%95%EB%A6%AC.md)
+* [gradle](./Piece/gradle)
+* [password 저장 방식](./Piece/20191027%20%ED%8C%A8%EC%8A%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%A5.md)
+* [개인서버 할당 후 기록물 : 코노하 VPS](./Piece/20191114%20VPS.md)
+* [nginx 정리](./Piece/nginx%20%EC%A0%95%EB%A6%AC.md)
 
 ## 👨‍🚀 leetcode
-* [leetcode](https://github.com/pasudo123/SoftwareZeroToALL/tree/master/leetcode)
+* [leetcode](./leetcode)
 
 ## 👨‍🚀 linux
-* [linux command](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/linux%20%26%20shell/README.md)
+* [linux command](./linux%20%26%20shell/README.md)
 * [cron, scheduling, linux](https://crontab.guru/)
 
 ## 👨‍🚀 실무관련
-* [신규서비스를 진행하면서 (서술)](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%8B%A0%EA%B7%9C%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%A7%84%ED%96%89%ED%95%98%EB%A9%B4%EC%84%9C%20(%EC%84%9C%EC%88%A0).md)
-* [내가 사용하는 키맵](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%9D%B8%ED%85%94%EB%A6%AC%EC%A0%9C%EC%9D%B4%20%EB%82%B4%EA%B0%80%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%20%ED%82%A4%EB%A7%B5.md)
+* [신규서비스를 진행하면서 (서술)](./%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%8B%A0%EA%B7%9C%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%A7%84%ED%96%89%ED%95%98%EB%A9%B4%EC%84%9C%20(%EC%84%9C%EC%88%A0).md)
+* [내가 사용하는 키맵](./%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%9D%B8%ED%85%94%EB%A6%AC%EC%A0%9C%EC%9D%B4%20%EB%82%B4%EA%B0%80%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%20%ED%82%A4%EB%A7%B5.md)
 
 ## 👨‍🚀 Wonder That (바보같은 질문일지라도)
-* [왜 정적팩토리 메소드를 쓰는걸까?](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/personal/%EC%99%9C%20%EC%A0%95%EC%A0%81%20%ED%8C%A9%ED%86%A0%EB%A6%AC%20%EB%A9%94%EC%86%8C%EB%93%9C%20%ED%8C%A8%ED%84%B4%EC%9D%84%20%EC%93%B0%EB%8A%94%EA%B0%80.md)
-* [서비스 레이어 vs 비즈니스 로직](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/personal/%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EB%A1%9C%EC%A7%81%EA%B3%BC%EC%9D%98%20%EA%B4%80%EA%B3%84.md)
-* [객체지향의 TDA : Tell Don't ASK](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/personal/Tell%20Don't%20ASK.md)
-* [서비스레이어와 비즈니스 로직과의 관계](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/personal/%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EB%A1%9C%EC%A7%81%EA%B3%BC%EC%9D%98%20%EA%B4%80%EA%B3%84.md)
-* [SPA vs MPA](https://github.com/pasudo123/SoftwareZeroToALL/blob/master/personal/SPA%20vs%20MPA.md)
+* [왜 정적팩토리 메소드를 쓰는걸까?](./personal/%EC%99%9C%20%EC%A0%95%EC%A0%81%20%ED%8C%A9%ED%86%A0%EB%A6%AC%20%EB%A9%94%EC%86%8C%EB%93%9C%20%ED%8C%A8%ED%84%B4%EC%9D%84%20%EC%93%B0%EB%8A%94%EA%B0%80.md)
+* [서비스 레이어 vs 비즈니스 로직](./personal/%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EB%A1%9C%EC%A7%81%EA%B3%BC%EC%9D%98%20%EA%B4%80%EA%B3%84.md)
+* [객체지향의 TDA : Tell Don't ASK](./personal/Tell%20Don't%20ASK.md)
+* [서비스레이어와 비즈니스 로직과의 관계](./personal/%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EB%A1%9C%EC%A7%81%EA%B3%BC%EC%9D%98%20%EA%B4%80%EA%B3%84.md)
+* [SPA vs MPA](./personal/SPA%20vs%20MPA.md)
 * [WAS 자원과 DB 자원](#)
 * [네트워크 IO 비용 및 디스크 IO 비용](#)
 
