@@ -33,7 +33,7 @@ my-nginx-pod   1/1     Running   0          8m32s
 
 ## 생성된 nginx pod 에 대한 자세한 리소스 정보를 확인
 ```
-$ kubectl describe pods my-nginx-pod
+// kubectl describe pods {pod-name}
 $ kubectl describe pods my-nginx-pod
 Name:         my-nginx-pod
 Namespace:    default
