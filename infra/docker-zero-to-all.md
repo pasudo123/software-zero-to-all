@@ -25,9 +25,15 @@
     * [docker search : 도커허브에서 이미지를 조회한다.](https://docs.docker.com/engine/reference/commandline/search/)
     * [docker commit : 컨테이너 변경사항에 대한 새로운 이미지를 생성한다.](https://docs.docker.com/engine/reference/commandline/commit/)
     * [docker port : 컨테이너의 port 와 매핑된 호스트 port 조회](https://docs.docker.com/engine/reference/commandline/port/)
-* [컨테이너 접속 이후 ctrl + P,Q 와 exit 의 차이는 무엇인가](#ctrl-vs-exit)
-* [도커 볼륨 : 호스트 볼륨(bind mount) 시, 호스트 디렉토리와 컨테이너 디렉토리 간의 마운트 설명](#host_mount)
-* [도커의 두가지 구성 : 도커 클라이언트 및 도커 데몬](#docker-client&docker-daemon)
+* [도커 컴포즈](#docker-compose)
+    * [도커 컴포즈 개념 및 설치](#docker-compose-concept-install)
+
+    * [도커 컴포즈 기본 명령어](#docker-compose-cmd)
+    * [도커 컴포즈 활용 명령어](#docker-compose-advanced-cmd)
+* [궁금한 것들](#wonder)
+    * [컨테이너 접속 이후 ctrl + P,Q 와 exit 의 차이는 무엇인가](#ctrl-vs-exit)
+    * [도커 볼륨 : 호스트 볼륨(bind mount) 시, 호스트 디렉토리와 컨테이너 디렉토리 간의 마운트 설명](#host_mount)
+    * [도커의 두가지 구성 : 도커 클라이언트 및 도커 데몬](#docker-client&docker-daemon)
 * [도커 명령어 reference](https://docs.docker.com/engine/reference/commandline/docker/)
 
 <BR>
@@ -341,9 +347,24 @@ ubuntu:18.04
 * __사용자 정의 브리지__ 를 생성하여 각 컨테이너에 연결하는 네트워크 구조이다.
 * 컨테이너는 연결된 브리지를 통하여 외부와 통신을 수행할 수 있다.
 * 도커의 측면에서 `브리지 네트워크` 는 동일한 브리지 네트워크에 연결된 컨테이너가 통신할 수 있도록 하는 소프트웨어 브리지를 사용한다. 그리고 해당 브리지를 사용하지 않는 컨테이너로부터 격리시킨다. 도커 브리지 드라이버는 서로 다른 브리지 네트워크의 컨테이너가 서로 직접적인 통신을 할 수 없도록 호스트 머신에 규칙을 자동으로 설치한다.
-* __사용자 정의 브리지__ 와 __디폴트 브리지__ 간의 차이점
-    * 
-* 자세한 내용은 [여기](https://docs.docker.com/network/bridge/)를 참고한다.
+* `사용자 정의 브리지` 와 `디폴트 브리지` 간의 차이점
+    * `사용자 정의 브리지` 는 컨테이너 간의 자동 dns 를 설정시켜준다.
+        * 디폴트 브리지 네트워크의 경우에는 `--link(deprecated)` 를 사용하지 않는한 서로 ip address 를 가지고 접근이 가능하다. 하지만 `사용자 정의 브리지` 의 경우에는 컨테이너의 이름 또는 `alias` 를 통해서 접근이 가능하다.
+    * `사용자 정의 브리지` 는 더 나은 `isolation` 을 제공하고 있다.
+        * 모든 컨테이너는 `--network` 를 설정하지 않는다면 `디폴트 브리지` 에 연결된다. 이건 꽤나 `위험성` 있는데 연관성이 없는 `stack/services/containers` 가 서로 통신할 수 있기 때문이다.
+    * 자세한 내용은 [여기](https://docs.docker.com/network/bridge/)를 참고한다.
+
+#### 사용자 정의 브리지 관리
+```
+// 사용자 정의 브리지 생성
+$ docker netowrk create {user-defined-bridge-name}
+
+// 사용자 정의 브리지 삭제
+$ docker network rm {user-defined-bridge-name}
+
+// 사용자 정의 브리지 연결 해제
+$ docker network disconnect {user-defined-bridge-name} {container-name}
+```
 
 <hr>
 
@@ -436,6 +457,143 @@ $ docker ps -a -f status={value}
 
 <BR>
 
+# <a id="docker-compose"></a> 도커 컴포즈
+## <a id="docker-compose-concept-install"></a> 도커 컴포즈 개념 및 설치
+* 컨테이너를 이용한 서비스의 개발과 CI 를 위하여 여러 개의 컨테이너를 하나의 프로젝트로서 다룰 수 있는 작업환경을 제공한다.
+* 도커 컴포즈는 여러 개의 컨테이너의 옵션과 환경을 정의한 파일을 읽어 컨테이너를 순차적으로 생성하는 방식으로 동작한다.
+* 설정파일에 정의된 서비스의 컨테이너 수를 유동적으로 조절할 수 있다.
+* `docker-compose -v` 명령어를 통해 확인할 수 있다.
+```
+$ docker-compose -v
+docker-compose version 1.27.4, build 40524192
+```
+
+## <a id="docker-compose-cmd"></a> 도커 컴포즈 기본 명령어
+* `docker-compose up -d` 를 통해서 실행할 수 있다.
+    * 도커 컴포즈는 컨테이너를 각 프로젝트 및 서비스 단위로 구분하므로 컨테이너의 이름은 일반적으로 아래과 같다.
+        * `{project_name}_{service_name}_{container_number_by_service}`
+        * `{프로젝트 이름}_{서비스 이름}_{서비스 내에서 컨테이너의 번호}`
+* `docker-compose up -d {service-name}` 을 통해서 특정 서비스 명에 대한 컨테이너만 실행할 수 있다.
+* 생성된 컨테이너는 `docker-compose ps` 로도 확인할 수 있다.
+```
+$ docker-compose ps
+       Name                     Command               State                   Ports
+----------------------------------------------------------------------------------------------------
+dockerfile_mysql_1   docker-entrypoint.sh --def ...   Up      3306/tcp, 33060/tcp
+dockerfile_web_1     /opt/bitnami/scripts/apach ...   Up      0.0.0.0:80->80/tcp, 8080/tcp, 8443/tcp
+```
+* `docker-compose scale {service-name}={number}` 를 통해서 차례대로 증가하는 컨테이너의 번호를 붙여서 서비스 내의 컨테이너를 구별시킬 수 있다.
+```
+$ docker-compose scale mysql=2
+The scale command is deprecated. Use the up command with the --scale flag instead.
+Creating dockerfile_mysql_2 ... done
+
+$ docker-compose ps
+       Name                     Command                State                     Ports
+-------------------------------------------------------------------------------------------------------
+dockerfile_mysql_1   docker-entrypoint.sh --def ...   Up         3306/tcp, 33060/tcp
+dockerfile_mysql_2   docker-entrypoint.sh --def ...   Up         3306/tcp, 33060/tcp
+dockerfile_web_1     /opt/bitnami/scripts/apach ...   Up         0.0.0.0:80->80/tcp, 8080/tcp, 8443/tcp
+```
+* `docker-compose down` 을 통해서 생성된 프로젝트를 삭제할 수 있다.
+    * 서비스 컨테이너 또한 전부 정지된 이후에 삭제된다.
+* `-p` 옵션을 통해서 서로 이름이 다른 여러 개의 프로젝트를 생성 및 제어가 가능하다.
+```
+// {service-name} 에 대한 컨테이너를 정지 및 삭제한다. (dockerfile)
+$ docker-compose -p dockerfile down
+Stopping dockerfile_mysql_2 ... done
+Stopping dockerfile_web_1   ... done
+Stopping dockerfile_mysql_1 ... done
+Removing dockerfile_mysql_2 ... done
+Removing dockerfile_web_1   ... done
+Removing dockerfile_mysql_1 ... done
+Removing network dockerfile_default     // network 도 같이 삭제되는 상태이다.
+```
+* `-f` 옵션을 주고 yml 파일의 위치와 이름을 지정할 수 있다.
+```
+$ docker-compose \
+-f /dev/my_docker_compse.yml \
+up -d
+```
+
+## <a id="docker-compose-advanced-cmd"></a> 도커 컴포즈 활용 명령어
+* yml 파일은 총 4가지로 정의된다.
+    * 버전 정의 : version
+    * 서비스 정의 : service
+    * 볼륨 정의 : volume (선택)
+    * 네트워크 정의 : network (선택)
+
+### 버전 정의
+* 기본적으로 도커 컴포즈 버전은 최신으로 하는 것이 좋다. 
+* 버전 3이 도커 스웜과 호환되는 버전이므로 3버전 이상부터 사용하는걸 권장한다.
+
+### 서비스 정의
+* `images`
+* `links`
+    * docker run --link 의 옵션과 동일하다. (하지만 --link 옵션은 `deprecated` 될 예정이다.)
+* `environment`
+    * docker run 의 --env, -e 옵션과 동일하다.
+    * 서비스의 컨테이너 내부에[서 사용할 환경변수를 지정할 수 있다.
+    ```
+    services:
+        web:
+            environment:
+                - MYSQL_ROOT_PASSWORD={password}
+            // 또는 아래와 같이 사용할 수 있다.
+            environment:
+                MYSQL_ROOT_PASSWORD: {password}
+    ```
+* `command`
+    * 컨테이너가 실행될 때 수행할 명령어를 설정할 수 있다.
+    * docker run 명령어의 마지막에 붙는 커맨드와 동일하다.
+    ```
+    services:
+        web:
+            image: {}
+            command: apachectl -DFORGROUND
+            // 또는 아래와 같이 사용할 수 있다.
+            command: [apachectl, -DFORGROUND]
+    ```
+* `depends_on`
+* `ports`
+
+### 네트워크 정의
+* 자세한 내용은 [Network configuration reference](https://docs.docker.com/compose/compose-file/compose-file-v3/#network-configuration-reference) 와 [networking](https://docs.docker.com/compose/networking/) 을 참고한다.
+아래는 `docker-compose up -d` 수행시 mynetwork 라는 overlay 타입의 네트워크도 같이 생성하고 해당 컨테이너가 mynetwork 네트워크도 같이 이용할 수 있도록 하는 예제이다.
+```
+version: '3.0'
+services:
+        web:
+            image: nginx
+            network: 
+                - mynetwork
+
+networks:
+    mynetwork:
+        driver: overlay
+        driver_opts:
+            subnet: "255.255.255.0"
+            IPAddress: "10.0.0.2"
+```
+
+<BR>
+
+아래는 컨테이너가 기존의 네트워크를 사용하려는 경우 `external` 이라는 옵션을 이용한 경우이다.
+```
+version: '3.0'
+services:
+        web:
+            image: nginx
+
+networks:
+    default:
+        name: {existing-network}
+```
+
+### 볼륨정의
+
+
+# <a id="wonder"></a> 궁금한 것들
 ## <a id="ctrl-vs-exit"></a>컨테이너 접속 이후 ctrl + P,Q 와 exit 의 차이는 무엇인가
 * [목차이동](#index)
 
