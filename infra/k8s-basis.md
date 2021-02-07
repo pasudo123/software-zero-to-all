@@ -86,3 +86,15 @@ Events:
 
 ```
 
+## pod 컨테이너 내부 접근
+https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/ 참고.
+```
+$ kubectl exec -it my-nginx-pod -- /bin/bash
+root@my-nginx-pod:/#
+```
+
+## nginx pod 오브젝트 삭제
+```
+$ kubectl delete -f nginx-pod.yaml
+pod "my-nginx-pod" deleted
+```
