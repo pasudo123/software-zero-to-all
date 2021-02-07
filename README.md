@@ -83,6 +83,7 @@
 * [nginx-zero-to-all](./infra/nginx-zero-to-all.md)
 * [docker-zero-to-all](./infra/docker-zero-to-all.md)
 * [docker-swarm-zero-to-all](./infra/docker-swarm-zero-to-all.md)
+* [kubenetes-zero-to-all](./infra/k8s-zero-to-all.md)
 
 ## 👨‍🚀 온라인 강의
 * [인프런, 자바 ORM 표준 JPA 프로그래밍 : atoz](./Inflearn/README.md)
