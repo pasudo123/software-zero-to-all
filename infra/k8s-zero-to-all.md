@@ -35,6 +35,7 @@ Server Version: v1.19.3
   * `kubectl explain {object-name}` 을 통해서 특정한 오브젝트의 설명을 볼 수 있다.
 
 ```
+// 오브젝트 조회
 $ kubectl api-resources
 NAME                              SHORTNAMES   APIGROUP                       NAMESPACED   KIND
 bindings                                                                      true         Binding
@@ -43,7 +44,7 @@ configmaps                        cm                                          tr
 endpoints                         ep                                          true         Endpoints
 ... (훨씬 많음)
 
-
+// 특정한 
 $ kubectl explain pod
 KIND:     Pod
 VERSION:  v1
