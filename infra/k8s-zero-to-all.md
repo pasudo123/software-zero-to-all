@@ -22,7 +22,7 @@ Server Version: v1.19.3
 ### 기본설정을 이용하여 버추얼 박스로 minikube 설치
 * `wsl` 로 `apt-get install virtualbox` 를 입력한다.
   * wsl 에 `No network connection` 이란 문구가 나오는데 [여기서](https://github.com/microsoft/WSL/issues/5336) 해결하였다.
-* 
+* `책을 따라서` 여기까지 수행하다가 바로 https://kubernetes.io/blog/2020/05/21/wsl-docker-kubernetes-on-the-windows-desktop/ 여기 링크로 넘어가서 따로 진행했다.
 
 ## <a id="concept"></a>개념
 * 컨테이너 오케스트레이션 툴
