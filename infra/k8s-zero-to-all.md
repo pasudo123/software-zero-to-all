@@ -6,6 +6,7 @@
 * [개념](#concept)
 * [고유특징](#feature)
 * [Pod, 파드 : 컨테이너를 다루는 기본단위](#pod)
+  * [pod vs docker container](#pod-vs-docker-container)
 
 ## <a id="install"></a>설치
 Docker for windows 에서 setting 메뉴에서 `enable kubernetes` 선택 및 `apply & restart` 수행.
@@ -70,6 +71,11 @@ DESCRIPTION:
 * 1개의 `파드` 에는 1개의 `컨테이너` 가 존재할 숴 있고, 여러 개의 `컨테이너` 가 존재할 수 있다.
   * 가령, nginx 컨테이너가 하나의 파드안에 있다고 가정했을 때, nginx 컨테이너를 여러 개 띄우려고 한다면 nginx 컨테이너를 포함하는 여러 개의 파드를 생성하여야 한다.
 * 결국 `파드` 는 컨테이너 애플리케이션을 나타내기위한 기본적인 구성요소가 된다.
+
+### <a id="pod-vs-docker-container"></a> 파드와 도커 컨테이너 간의 차이점
+* 도커 컨테이너같의 통신을 위한 네트워크 네임스페이스의 역할을 파드가 대신 해주고 있다.
+  * 리눅스 네임 스페이스 공유 역할을 파드가 해주기 때문에 따로 컨테이너간 네트워크 설정은 필요하지 않다.
+* 좀 더 상세한 내용은 추가할 예정.
 
 # reference
 * 책 : 시작하세요! 도커/쿠버네티스
