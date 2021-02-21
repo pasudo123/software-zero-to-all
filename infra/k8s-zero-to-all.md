@@ -7,7 +7,9 @@
 * [고유특징](#feature)
 * [Pod, 파드 : 컨테이너를 다루는 기본단위](#pod)
   * [pod vs docker container](#pod-vs-docker-container)
-* [레플리카셋](#replicaset)
+* [replicaset, 레플리카셋 : 일정 개수의 포드를 유지하는 컨트롤러](#replicaset)
+* [deployment, 디플로이먼트 : 레플리카셋 및 포드의 배포를 관리](#deployment)
+* [service, 서비스 : 포드를 연결하고 외부에 노출](#service)
 
 ## <a id="install"></a>설치
 Docker for windows 에서 setting 메뉴에서 `enable kubernetes` 선택 및 `apply & restart` 수행.
@@ -115,9 +117,32 @@ $ kubectl apply -f {yaml-file-name}
 
 ### 사용이유
 * 디플로이먼트를 이용함으로써, 레플리카셋과 포드의 버저닝할 수 있다.
+  * 버저닝이 가능한 이유는 디플로이먼트가 생성하는 레플리카셋과 포드의 `해시값` 덕분이다.
   * 디플로이먼트를 이용하여 포드의 정보를 업데이트함으로써 이전버전의 레플리카셋을 삭제하지 않고 남겨두고 있다.
   * `--record=true` 옵션을 이용하여, 디플로이먼트를 변경하면 변경사항을 디플로이먼트에 기록함으로써 해당 버전의 레플리카셋을 보존한다.
   * 만약 이전버전의 레플리카셋으로 되돌리려고 하는 경우에 `--to-revision={revision-number}` 을 통하여 리비전 번호를 입력하면 된다.reco
+
+## <a id="service"></a>서비스(service) : 포드를 연결하고 외부에 노출
+* pod 의 ip 는 영속적이지 않기 때문에 항상 변할 수 있다. 따라서 여러 개의 디플로이먼트를 하나의 애플리케이션처럼 만들기 위해선 ip 연동이 아닌 다른 방법이 필요하다.
+
+### (1) type, clusterIP : k8s 내부에서만 포드에 접근할 수 있다.
+* `kind` 를 `Service` 로 설정된 yaml 파일을 만든다.
+* `type` 은 `ClusterIP` 로 설정한다.
+
+### (2) type, NodePort : 서비스를 이용하여 포드를 외부에 노출한다.
+* `type` 은 `NodePort` 로 설정한다.
+* NodePort 타입의 서비스는 ClusterIP 의 기능을 포함하고 있다. 
+  * NodePort 타입의 서비스를 생성하면, 자동으로 ClusterIP 의 기능을 사용할 수 있다.
+  * 쿠버네티스 클러스터에서 서비스의 내부 IP 와 DNS 이름을 사용해 접근할 수 있다.
+  * 결과적으로 NodePort 타입의 서비스는 `내부/외부` 네트워크 양쪽에서 접근이 가능하다.
+* `실제 운영 환경` 에서는 NodePort를 외부에 제공하는 경우는 거의 없다. 
+  * NodePort 를 80/443 으로 설정하는 것은 적절치 못하며 복잡한 설정이 별도로 필요하다.
+  * `Ingress` 라고 부르는 쿠버네티스 오브젝트에서 간접적으로 사용되는 경우가 많다.
+    * 외부의 요청을 실제로 받아들이는 관문으로 생각하면 된다.
+    * LoadBalancer 와 NodePort 를 합치면 인그레스 오브젝트를 사용할 수 있다.
+
+### (3) type, LoadBalancer : 클라우드 플랫폼의 로드밸런서와 연동한다.
+* `type` 은 `LoadBalancer` 로 설정한다.
 
 # reference
 * 책 : 시작하세요! 도커/쿠버네티스
