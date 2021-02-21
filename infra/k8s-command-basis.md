@@ -15,6 +15,17 @@ spec:
         - containerPort: 80
           protocol: TCP
 ```
+* `appVersion`
+  * yaml 파일에서 정의한 오브젝트의 api version 을 나타낸다. 오브젝트의 종류 및 개발의 성숙도에 따라서 apiVersion 의 설정값이 달라질 수 있다.
+* `kind`
+  * 리소스의 종류를 나타낸다.
+  * 위의 구문에서는 생성하려는 것이 pod 이기 때문에 pod 로 입력되었다.
+* `metadata`
+  * 라벨, 주석, 이름 등과 같은 리로스의 부가정보들을 입력한다.
+  * 위의 경우에서는 name 을 my-nginx-pod 로 설정해두었다.
+* `spec`
+  * 리소스를 생성하기 위한 자세한 정보를 입력한다.
+  * 위의 경우에서는 포드에서 실핼될 컨테이너 정보를 정의하는 containers 항목을 만든 뒤, 하위 항목인 image 에서 사용할 도커 이미지를 지정했다. name 항목에는 컨테이너의 이름을, ports 항목에서는 nginx 컨테이너가 사용할 포트인 80 을 입력했다.
 
 ## nginx pod 생성 명령어 작성
 ```
@@ -98,3 +109,34 @@ root@my-nginx-pod:/#
 $ kubectl delete -f nginx-pod.yaml
 pod "my-nginx-pod" deleted
 ```
+
+## nginx replicaset 을 생성하기 위한 yaml 파일 생성
+```
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-nginx
+spec:                                 ^
+  replica: 3                          |
+  selector:                           | 레플리카 셋을 정의한다.
+    matchLabels:                      |
+      app: my-nginx-pods-label        |
+                                      --------------------------------------
+  template:                           |
+    metadata:                         |
+      name: my-nginx-pod              |
+      labels:                         |
+        app: my-nginx-pods-label      |
+    spec:                             | 포드를 정의한다.
+      containers:                     |
+        - name: nginx                 |
+          image: nginx:latest         |
+          ports:                      |
+            - containerPort: 80       v
+```
+* `spec.replicas`
+  * 동일한 포드를 몇 개 유지시킬 것인지 설정한다.
+  * 위의 예시에서는 3개의 포드를 유지시킨다.
+* `spec.template` 아래의 내용들
+  * 포드를 생성할 때, 사용할 템플릿을 정의한다.
+  * 이전에 작성했던 pod 의 spec 과 동일하다.
