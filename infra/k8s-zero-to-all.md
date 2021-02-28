@@ -10,6 +10,10 @@
 * [replicaset, 레플리카셋 : 일정 개수의 포드를 유지하는 컨트롤러](#replicaset)
 * [deployment, 디플로이먼트 : 레플리카셋 및 포드의 배포를 관리](#deployment)
 * [service, 서비스 : 포드를 연결하고 외부에 노출](#service)
+* [쿠버네티스 리소스의 관리와 설정]
+  * [namespace](#namespace)
+  * [configmap](#configmap)
+  * [secrets](#secrets)
 
 ## <a id="install"></a>설치
 Docker for windows 에서 setting 메뉴에서 `enable kubernetes` 선택 및 `apply & restart` 수행.
@@ -143,6 +147,26 @@ $ kubectl apply -f {yaml-file-name}
 
 ### (3) type, LoadBalancer : 클라우드 플랫폼의 로드밸런서와 연동한다.
 * `type` 은 `LoadBalancer` 로 설정한다.
+
+## 쿠버네티스 리소스의 관리와 설정
+### <a id="namespace"></a> 네임스페이스 : 리소스를 논리적으로 구분하는 장벽
+* 포드, 레플리케이션, 디플로이먼트, 서비스 등과 같은 쿠버네티스 리소스들이 묶여있는 하나의 가상공간 또는 그룹이다.
+* 일반적으로 네임스페이스를 사용하는 경우는 대부분 `모니터링`, `로드밸런싱 인그레스` 등의 특정목적을 위한 용도가 대부분일 것이다.
+* 각각의 네임스페이스의 리소스들은 논리적으로 구분된 것일 뿐, 물리적으로 격리된 것이 아니다.
+  * 예를 들어 서로 다른 네임스페이스에서 생성된 포드가 같은 노드에 존재할 수 있다. 
+
+### <a id="configmap"></a> 컨피그맵 : 설정값을 포드에 전달
+* k8s 는 yaml 파일과 설정값을 분리할 수 있는 컨피그맵을 제공한다.
+* `kubectl create configmap {configmap-name} --from-literal {key}={value}`
+  * 문자열 리터럴을 통해서 configmap 생성
+* `kubectl create configmap {configmap-name} --from-file {file-name}`
+  * 파일로부터 configmap 생성 
+* 컨피그맵 값을 컨테이너의 환경변수로 사용가능
+* 컨피그맵 값을 포드 내부의 파일로 마운트하여 사용가능
+
+### <a id="secrets"></a> 시크릿 : 설정값을 포드에 전달 (base64 로 인코딩되어 저장)
+* 컨피그맵과 마찬가지로 동작하지만 `민감한 정보를 저장하기 위하여` 사용한다.
+* 시크릿에 저장된 값을 포드에 제공하는 것 또한 가능하다.
 
 # reference
 * 책 : 시작하세요! 도커/쿠버네티스
