@@ -1,28 +1,29 @@
 class Solution {
-    fun sumOddLengthSubarrays(arr: IntArray): Int {
-        var sum = 0
+    public int sumOddLengthSubarrays(int[] arr) {
         
-        for(index in 0 until arr.count()) {
-            sum += arr[index]
-            sum += sumByOddLength(index, index + 2, arr)
+        int sum = 0;
+        
+        for(int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+            sum += sumByOddLength(i, i + 2, arr);
         }
         
-        return sum
+        return sum;
     }
     
-    fun sumByOddLength(start: Int, end: Int, arr:IntArray): Int {
+    private int sumByOddLength(final int start, final int end, final int[] arr) {
         
-        if(end >= arr.count()) {
-            return 0
+        int sum = 0;
+        
+        if(end >= arr.length) {
+            return sum;
         }
         
-        var sum = 0
-        
-        for(index in start..end) {
-            sum += arr[index]
+        for(int i = start; i <= end; i++) {
+            sum += arr[i];    
         }
         
-        sum += sumByOddLength(start, end + 2, arr)
-        return sum
+        sum += sumByOddLength(start, end + 2, arr);
+        return sum;
     }
 }
