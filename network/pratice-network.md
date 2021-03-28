@@ -20,8 +20,8 @@
 A Server ----- SW1 ----- Router1 ----- SW2 ----- B Server
 ```
 * 종류
-  * standard ACL(1~99, 1300~1999)
+  * standard ACL(1 ~ 99, 1300 ~ 1999)
     * L3헤더 (IP 헤더) source address 를 조건으로 패킷을 분류하고 정책을 정의 (출발지가 어디인지 결정)
     * 검사 결과에 따라 전체 protocol suite 에 대한 packet 출력을 허용하거나 거부
-  * extended ACL(100~199, 2000~2699)
+  * extended ACL(100 ~ 199, 2000 ~ 2699)
     * source address, destination address, protocol, TTL 등의 정보과 L4헤더의 source port, destination port, TCP flag 등의 정보를 기반으로 패킷을 분류하고 정책을 정희
