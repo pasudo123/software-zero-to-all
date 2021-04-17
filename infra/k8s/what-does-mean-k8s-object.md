@@ -28,6 +28,7 @@
 * `오브젝트` 를 생성하기 위해 (직접적 또는 kubectl을 통해서든) k8s API 를 이용할 때, API 요청은 요청 내용안에 JSON 형식으로 정보를 포함시켜 주어야 한다.
   * 대부분의 경우 정보는 .yaml 파일에 kubectl 에 제공한다.
   * kubectl 은 API 요청이 이루어질 때 JSON 형식으로 정보를 변환시켜 준다.
+  * `kubectl` 은 쿠버네티스시ㅌ
   * `kubectl 을 통해 .yaml 파일을 읽고, .yaml 파일을 JSON 형식으로 변환해서 정보를 k8s api 로 보낸다.` 라고 이해하면 될까??
 
 # reference
