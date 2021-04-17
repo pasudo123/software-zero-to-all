@@ -28,8 +28,34 @@
 * `오브젝트` 를 생성하기 위해 (직접적 또는 kubectl을 통해서든) k8s API 를 이용할 때, API 요청은 요청 내용안에 JSON 형식으로 정보를 포함시켜 주어야 한다.
   * 대부분의 경우 정보는 .yaml 파일에 kubectl 에 제공한다.
   * kubectl 은 API 요청이 이루어질 때 JSON 형식으로 정보를 변환시켜 준다.
-  * `kubectl` 은 쿠버네티스시ㅌ
+  * `kubectl` 은 쿠버네티스 시스템을 제어하기 위한 커맨드라인 도구이다.
+    * k8s 시스템에 접근하여 api 를 사용할 수 있다.
   * `kubectl 을 통해 .yaml 파일을 읽고, .yaml 파일을 JSON 형식으로 변환해서 정보를 k8s api 로 보낸다.` 라고 이해하면 될까??
+
+## yaml 파일로 제공되는 오브젝트 기술 내용
+```yaml
+apiVersion: apps/v1     # 해당 오브젝트를 생성하기 위해 사용하고 있는 쿠버네티스 API 버전 명시
+kind: Deployment        # 어떤 종류의 오브젝트를 생성하고자 하는지
+metadata:               # 이름 문자열, UID, 선택적인 네임스페이스를 포함하여 오브젝트를 유일하게 구분지어 줄 데이터
+  name: nginx-deployment
+spec:                   # 오브젝트에 대해 어떤 상태를 의도하는지 기술 ***
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+```
+* 오브젝트 `spec` 에 대한 정확한 포맷은 모든 쿠버네티스 오브젝트마다 다르고, 그 오브젝트 특유의 중첩된 필드를 포함한다.
+* 
 
 # reference
 * [쿠버네티스 오브젝트 이해하기](https://kubernetes.io/ko/docs/concepts/overview/working-with-objects/kubernetes-objects/)
