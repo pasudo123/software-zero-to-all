@@ -23,8 +23,12 @@ deployment.apps/nginx created
 NAME                     READY   STATUS    RESTARTS   AGE
 nginx-6799fc88d8-d6bm5   1/1     Running   0          2m24s
 
+// 이렇게 삭제해도 레플리카셋 때문에 다시 pod이 뜨기 때문에 deployment 오브젝트를 지워주어야 한다.
 ❯ kubectl delete pods nginx-6799fc88d8-d6bm5
 pod "nginx-6799fc88d8-d6bm5" deleted
+
+❯ kubectl delete deployments nginx
+deployment.apps "nginx" deleted
 ```
 * 장점
   * 커맨드는 하나의 동작을 나타내는 단어로 표현된다.
@@ -70,7 +74,20 @@ deployment.apps/nginx-deployment created
 NAME                                READY   STATUS    RESTARTS   AGE
 nginx-deployment-66b6c48dd5-d4w46   1/1     Running   0          6m34s
 nginx-deployment-66b6c48dd5-scd6r   1/1     Running   0          6m34s
+
+// nginx.yaml 에 지정된 명세를 이용하여 오브젝트를 삭제한다.
+❯ kubectl delete -f nginx.yaml
+deployment.apps "nginx-deployment" deleted
+
+❯ kubectl get pods
+NAME                                READY   STATUS        RESTARTS   AGE
+nginx-deployment-66b6c48dd5-d4w46   0/1     Terminating   0          15m
+nginx-deployment-66b6c48dd5-scd6r   0/1     Terminating   0          15m
 ```
+* 장점
+  * 오브젝트 구성은 git 과 같은 소스 컨트롤 시스템에 보관할 수 있다.
+  * 오브젝트 구성은 푸시와 감시 추적(audit trail) 전에 변경사항을 검토하는 것과 같은 프로세스들과 통합할 수 있다.
+  * 오브젝트 구성은 새로운 오브젝트 생성을 위한 템플릿을 제공한다. 
 
 ## reference
 * [쿠버네티스 오브젝트 관리](https://kubernetes.io/ko/docs/concepts/overview/working-with-objects/object-management/)
