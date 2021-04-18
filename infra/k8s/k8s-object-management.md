@@ -35,8 +35,42 @@ pod "nginx-6799fc88d8-d6bm5" deleted
 
 ## 명령형 오브젝트 구성 : Imperative object configuration
 > `개발환경 및 프로덕션환경에서 수행하는 것을 권장`   
-> 명령형 오브젝트 구성에서는 kubectl 커맨드로 작업, 선택적 플래그, 최소 하나의 파일 이름 지정을 한다.
-> 그 파일은 yaml 또는 json 형식으로 오브젝트의 `완전한 정의` 를 포함해야 한다.
+> 명령형 오브젝트 구성에서는 kubectl 커맨드로 작업, 선택적 플래그, 최소 하나의 파일 이름 지정을 한다.   
+> 그 파일은 yaml 또는 json 형식으로 오브젝트의 `완전한 정의` 를 포함해야 한다.   
+
+적당한 위치에 nginx.yaml 파일을 아래와 같이 만들어준다. 디플로이먼트 오브젝트를 만들기 위한 구성파일이다.
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+```
+
+명령을 아래와 같이 실행한다.
+```shell
+❯ kubectl create -f nginx.yaml
+deployment.apps/nginx-deployment created
+
+❯ kubectl get pods
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-66b6c48dd5-d4w46   1/1     Running   0          6m34s
+nginx-deployment-66b6c48dd5-scd6r   1/1     Running   0          6m34s
+```
 
 ## reference
 * [쿠버네티스 오브젝트 관리](https://kubernetes.io/ko/docs/concepts/overview/working-with-objects/object-management/)
