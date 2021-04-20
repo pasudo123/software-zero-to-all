@@ -56,7 +56,32 @@
 * [데몬셋 (DaemonSet)](https://kubernetes.io/ko/docs/concepts/workloads/controllers/daemonset/)
 
 ## 파드 템플릿
+* 파드템플릿은 파드를 생성하기 위한 명세(spec) 이며, 디플로이먼트, 잡, 데몬셋과 같은 워크로드 리소스에 포함된다.
+* 워크로드 리소스의 각 컨트롤러는 `워크로드 오브젝트 내부의 PodTemplate 을 사용하여 실제 파드를 생성` 한다.
+* PodTemplate 은 앱을 실행하는데 사용되는 워크로드 리소스가 무엇이든지 원하는 상태의 일부이다.
 
+아래는 하나의 컨테이너를 시작하는 `template` 이 있는 간단한 잡의 매니페스트(k8s 의 여러가지 리소스를 정의하는 파일) 이다.   
+해당 파드의 컨테이너는 메시지를 출력한 다음 일시중지한다.
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello
+spec:
+  template:
+    # ==== 여기서부터 파드 템플릿이다
+    spec:
+      containers:
+      - name: hello
+        image: busybox
+        command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
+      restartPolicy: OnFailure
+    # ==== 여기까지 파드 템플릿이다
+```
+* 파드템플릿을 수정하거나 새로운 파드 템플릿을 바꾸어도 `이미 존재하는 파드에는 직접적인 영향을 끼치지 않는다.`
+* 워크로드 리소스의 파드 템플릿을 변경하는 경우에, 해당 리소스는 수정된 템플릿을 사용하는 대체 파드를 생성하여야 한다.
+
+## 추가 공부가 필요
 
 ## reference
 * [파드](https://kubernetes.io/ko/docs/concepts/workloads/pods/)
