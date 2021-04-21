@@ -5,3 +5,4 @@
 
 ## 파드
 * [쿠버네티스 파드란](./what-does-mean-k8s-pod.md)
+* [파드의 라이프사이클](./pod-life-cycle.md)
