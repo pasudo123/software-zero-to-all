@@ -31,7 +31,9 @@
 노드가 죽거나 클러스터의 나머지와의 연결이 끊어지면, 쿠버네티스는 손실된 노드의 모든 파드의 phase 를 `failed` 로 설정하는 정책을 적용한다.
 
 ## 컨테이너 상태
-* 
+전체 파드의 단계 (phase : pending, running, succeeded, failed, unknown) 뿐만 아니라, `쿠버네티스는 파드 내부의 각 컨테이너 상태를 추적` 한다. 컨테이너 라이프사이클 훅을 사용하여 컨테이너 라이프사이클의 `특정 지점에서 실행할 이벤트를 트리거` 할 수 있다.
+
+
 
 ## reference
 * [파드 라이프사이클](https://kubernetes.io/ko/docs/concepts/workloads/pods/pod-lifecycle/#%ED%8C%8C%EB%93%9C%EC%9D%98-%EB%8B%A8%EA%B3%84)
