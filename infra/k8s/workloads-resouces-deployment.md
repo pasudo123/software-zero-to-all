@@ -31,6 +31,29 @@ spec:
         ports:
         - containerPort: 80
 ```
-실행시켜본다.
 
-> `kubectl apply -f {}`
+실행시켜본다.   
+```shell
+❯ kubectl apply -f deployment01.yaml
+deployment.apps/nginx-deployment created
+```
+
+```shell
+❯ kubectl get deployments
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   3/3     3            3           12s
+
+// NAME : metadata.name 의 항목이다.
+// READY : 사용자가 사용할 수 있는 애플리케이션의 레플리카의 수를 표시 ready/desired (spec.replicas 가 3이라서 3개가 띄어짐)
+// AVAILABLE : 사용자가 사용할 수 있는 애플리케이션 레플리카의 수를 표시
+// AGE : 애플리케이션의 실행된 시간을 표시 (12초 실행됨)
+```
+
+```shell
+❯ kubectl get replicasets
+NAME                          DESIRED   CURRENT   READY   AGE
+nginx-deployment-66b6c48dd5   3         3         3       108s
+
+nginx-deployment-66b6c48dd5   3         3         3       108s
+// DESIRED : 
+```
