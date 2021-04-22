@@ -43,8 +43,17 @@
 > ... (중략)
 > OCI(Open Container Initiative) 스펙에 맞추어서 구현된 컨테이너 런타임을 별도로 CRI 구현이 없이 OCI 를 지원하는 CRI 구현체에 의해서 관리가 가능해진다.
 
-파드
+파드 내의 컨테이너의 상태를 확인하려면, `kubectl describe pod <name-of-pod>` 을 사용하면 된다.
+출력 결과는 해당 파드 내의 각 컨테이너 상태가 표시된다.
 
+* waiting
+ * 만약 컨테이너가 `running` 또는 `terminated` 상태가 아니면 `waiting` 상태이다.
+ * `waiting` 상태의 컨테이너는 시작을 완료하는 데, 필요한 작업(컨테이너 이미지 레지스트리에서 컨테이너 이미지를 가져오거나, 시크릿 데이터를 적용하는 작업) 을 계속 실행하고 있는 중이다.
+* running
+ * `running` 상태는 컨테이너가 문제없이 실행되고 있음을 나타낸다. `postStart(컨테이너가 생성된 직후에 실행된다.)` 훅이 구성되어 있다면, 이미 실행되고 완료되었다. `kubectl` 을 사용하여 컨테이너가 `running` 인 파드를 쿼리하면, 컨테이너가 `running` 상태에 진입한 시기에 대한 정보도 볼 수 있다.
+* terminated
+ * `terminated` 상태의 컨테이너는 실행을 시작한 다음 완료될 때까지 실행되었거나 어떤 이유로 실패했다.
+ * kubectl 을 사용하여 컨테이너가 `terminated` 인 파드를 쿼리하면, 컨테이너가 `running` 상태에 들어가기 전에 실행된다.
 
 ## reference
 * [파드 라이프사이클](https://kubernetes.io/ko/docs/concepts/workloads/pods/pod-lifecycle/#%ED%8C%8C%EB%93%9C%EC%9D%98-%EB%8B%A8%EA%B3%84)
