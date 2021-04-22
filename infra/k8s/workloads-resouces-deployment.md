@@ -17,18 +17,20 @@ metadata: // 리소스에 대한 부가적인 정보들을 입력한다.
     app: nginx
 spec:
   replicas: 3 // spec.replicas 필드에 따라 디플로이먼트는 3개의 레플리카 파드를 생성한다.
-  selector: // spec.selector 디플로이먼틀가 관리할 파드를 찾는 방법을 정의한다. 여기선 파드 템플릿에 정의된 app: nginx 를 선택한다.
+  selector: // spec.selector 디플로이먼트가 관리할 파드를 찾는 방법을 정의한다. 여기선 파드 템플릿(파드를 생성하기 위한 명세, spec) 에 정의된 app: nginx 를 선택한다.
     matchLabels:
       app: nginx
   template:
     metadata:
       labels:
-        app: nginx
-    spec:
+        app: nginx   // 파드 템플릿에 명시된 label 이다.
+    spec:            // 파드 템플릿의 사양 또는 .template.spec 필드는 파드가 도커허브의 nginx 1.14.2 버전 이미지를 실행하는 nginx 컨테이너 1개를 실행하는 것을 나타낸다.
       containers:
-      - name: nginx
+      - name: nginx  // 컨테이너 한 개를 생성하고, .spec.template.spec.container[0].name 필드를 사용하여 nginx 이름을 붙인다.
         image: nginx:1.14.2
         ports:
         - containerPort: 80
-
 ```
+실행시켜본다.
+
+> `kubectl apply -f {}`
