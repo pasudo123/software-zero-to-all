@@ -31,6 +31,7 @@ spec:
         ports:
         - containerPort: 80
 ```
+* 디플로이먼트에 파드 템플릿 레이블과 셀렉터를 반드시 명시해주어야 한다. 위의 예제에서 `app: nginx` 가 그러하다 label 을 일치시키는 것이다.
 
 실행시켜본다.   
 ```shell
@@ -55,5 +56,8 @@ NAME                          DESIRED   CURRENT   READY   AGE
 nginx-deployment-66b6c48dd5   3         3         3       108s
 
 nginx-deployment-66b6c48dd5   3         3         3       108s
-// DESIRED : 
+
+// DESIRED : 디플로이먼트의 생성 시, 정의한 의도에 따른 애플리케이션 레플리카의 수를 표시한다. (의도한 상태)
+// CURRENT : 현재 실행 중인 레플리카의 수를 표시한다.
+// READY : 사용자가 사용할 수 있는 애플리케이션의 레플리카의 수를 표시한다.
 ```
