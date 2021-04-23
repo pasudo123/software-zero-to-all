@@ -78,3 +78,6 @@ nginx-deployment-66b6c48dd5-vgvhc   1/1     Running   0          2m14s   app=ngi
    * 레플리카셋의 PodTemplate 을 해싱하고, 해시 결과를 레플리카셋 셀렉터, 파드 템플릿 레이블 및 레플리카셋이 가질 수 있는 기존의 모든 파드에 레이블 값으로 추가해서 사용하도록 생성한다.
 
 ## 뒤에는 추가적인 공부가 더 필요하다.
+
+## reference
+* https://kubernetes.io/ko/docs/concepts/workloads/controllers/deployment/
