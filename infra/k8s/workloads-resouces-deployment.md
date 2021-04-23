@@ -31,7 +31,7 @@ spec:
         ports:
         - containerPort: 80
 ```
-* 디플로이먼트에 파드 템플릿 레이블과 셀렉터를 반드시 명시해주어야 한다. 위의 예제에서 `app: nginx` 가 그러하다 label 을 일치시키는 것이다.
+* 디플로이먼트에 파드 템플릿 레이블과 셀렉터를 `반드시` 명시해주어야 한다. 위의 예제에서 `app: nginx` 가 그러하다 label 을 일치시키는 것이다.
 
 실행시켜본다.   
 ```shell
@@ -57,7 +57,24 @@ nginx-deployment-66b6c48dd5   3         3         3       108s
 
 nginx-deployment-66b6c48dd5   3         3         3       108s
 
+// NAME : 네임스페이스에 있는 레플리카셋 이름의 목록
 // DESIRED : 디플로이먼트의 생성 시, 정의한 의도에 따른 애플리케이션 레플리카의 수를 표시한다. (의도한 상태)
 // CURRENT : 현재 실행 중인 레플리카의 수를 표시한다.
 // READY : 사용자가 사용할 수 있는 애플리케이션의 레플리카의 수를 표시한다.
+// AGE : 애플리케이션이 실행한 시간을 표시한다.
 ```
+
+각 파드에 자동으로 생성된 레이블을 볼 수 있다.   
+만들어진 레플리카셋은 실행 중인 3개의 nginx 파드를 보장한다.
+```shell
+❯ kubectl get pods --show-labels
+NAME                                READY   STATUS    RESTARTS   AGE     LABELS
+nginx-deployment-66b6c48dd5-7z2dc   1/1     Running   0          2m14s   app=nginx,pod-template-hash=66b6c48dd5
+nginx-deployment-66b6c48dd5-nrv9n   1/1     Running   0          2m14s   app=nginx,pod-template-hash=66b6c48dd5
+nginx-deployment-66b6c48dd5-vgvhc   1/1     Running   0          2m14s   app=nginx,pod-template-hash=66b6c48dd5
+```
+* pod-template-hash 레이블은 디플로이먼트 컨트롤러에 의해서 디플로이먼트가 생성 또는 채택한 모든 레플리카셋에 추가된다.
+* 해당 레이블은 디플로이먼트의 자식 레플리카셋이 겹치지 않도록 보장한다. 
+   * 레플리카셋의 PodTemplate 을 해싱하고, 해시 결과를 레플리카셋 셀렉터, 파드 템플릿 레이블 및 레플리카셋이 가질 수 있는 기존의 모든 파드에 레이블 값으로 추가해서 사용하도록 생성한다.
+
+## 뒤에는 추가적인 공부가 더 필요하다.
