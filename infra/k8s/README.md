@@ -8,5 +8,5 @@
 * [파드의 라이프사이클](./pod-life-cycle.md)
 
 ## 워크로드 리소스
-* [디플로이먼트](./workloads-resouces-deployment.md)
+* [디플로이먼트](./workloads-resources-deployment.md)
 * [레플리카셋](./workloads-resources-replicaset.md)
