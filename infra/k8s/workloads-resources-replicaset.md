@@ -25,21 +25,22 @@ metadata:
   labels:
     app: guestbook
     tier: frontend
-spec:
+spec:  # 레플리카셋에 대한 spec 영역
   # 케이스에 따라 레플리카를 수정한다.
-  # 파드의 개수를 3개로 설정한다.
-  replicas: 3
-  selector:
+  replicas: 3 # 파드의 개수를 3개로 설정한다. (기본값은 1이다.)
+  selector: # 파드에 대한 셀렉터
     matchLabels:
-      tier: frontend
+      tier: frontend # 파드 셀렉터 (spec.selector.matchLabels.tier 와 spec.tepmlate.metadata.labels.tier 는 서로 일치하여야 한다.)
+  #### (1) 파드 템플릿 시작 영역
   template:
     metadata:
       labels:
-        tier: frontend
+        tier: frontend # 해당 파드를 다른 컨트롤러에서 취하지 않도록 셀렉터와 겹치지 않아야 한다. 조심하기.
     spec:
       containers:
       - name: php-redis
         image: gcr.io/google_samples/gb-frontend:v3
+  #### (1) 파드 템플릿 종료 영역
 ```
 
 ### kubectl 을 통한 레플리카셋 생성, 조회, 상태확인
@@ -94,11 +95,31 @@ frontend-k9jhp   1/1     Running   0          26s
 frontend-sbzqr   1/1     Running   0          26s  
 ```
 
-## 레플리카셋 매니페스트 작성하기
+## 레플리카셋 매니페스트 작성하기 (레퍼런스 참고)
 여기서, 매니페스트란 k8s 리소스를 정의하는 파일을 뜻한다.   
 레플리카셋은 모든 쿠버네티스 api 오브젝트와 마찬가지로 apiVersion, kind, metadata 필드가 필요하다.   
 레플리카셋에 대한 kind 필드의 값은 항상 레플리카셋이다. `쿠버네티스 1.9` 에서 레플리카셋의 kind 에 있는 API version `apps/v1` 은 현재버전이며, 기본으로 활성화 되어있다.
-`apps/v1beta2` 
+`apps/v1beta2` 는 사용중단(deprecated) 되었다. 
+
+### 레플리카셋에서 파드 격리
+레이블을 변경하면 레플리카셋에서 파드를 제거할 수 있다. 해당 방식은 디버깅과 데이터 복구 등을 위해 서비스에서 파드를 제거하는데 사용할 수 있다.   
+이 방식으로 제거된 파드는 자동으로 교체된다.
+
+### 레플리카셋의 스케일링
+레플리카셋을 손쉽게 스케일 업 또는 다운하는 방법은 단순히 `.spec.replicas` 필드를 업데이트 하면 된다.   
+레플리카셋 컨트롤러는 일치하는 레이블 셀렉터가 있는 파드가 의도한 수 만큼 가용하고 운영가능하도록 보장한다.
+
+## 레플리카셋 대안
+### 디플로이먼트 (권장하는 방식)
+* `디플로이먼트` 는 레플리카셋을 소유하거나 업데이트한다.   
+  * 파드의 선언적인 업데이트와 서버 측 롤링 업데이트를 할 수 있는 오브젝트이다.
+  * 레플리카셋은 단독으로 사용할 수 있지만, 오늘날 주로 디플로이먼트로 파드의 생성과 삭제 그리고 업데이트를 오케스트레이션하는 메커니즘으로 사용한다.
+  * 디플로이먼트를 이용해서 배포할 때 생성되는 레플리카셋을 관리하는 것에 대해 걱정하지 않아도 된다. 디플로이먼트는 레플리카셋을 소유하거나 관리한다. 따라서 레플리카셋을 원한다면 디플로이먼트를 사용하는 것을 권장한다.
+
+### 기본파드
+* 사용자는 직접 파드를 생성하는 경우와는 다르게, 레플리카셋은 노드 장애 또는 노드의 커널 업그레이드와 같은 관리 목적의 중단 등 `어떤 이유로든 종료되거나 삭제된 파드를 교체` 한다.
+  * 이런 
+
 
 ## reference
 * https://kubernetes.io/ko/docs/concepts/workloads/controllers/replicaset/
