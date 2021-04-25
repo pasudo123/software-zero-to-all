@@ -42,16 +42,22 @@ spec:
         image: gcr.io/google_samples/gb-frontend:v3
 ```
 
-kubectl 을 통한 레플리카셋 생성, 조회, 상태확인
+### kubectl 을 통한 레플리카셋 생성, 조회, 상태확인
+#### 생성
 ```shell
 ❯ kubectl apply -f frontend.yaml
 replicaset.apps/frontend created
+```
 
+#### 레플리카셋 조회
+```shell
 ❯ kubectl get rs
 NAME       DESIRED   CURRENT   READY   AGE
 frontend   3         3         3       35s
+```
 
-// 상태확인
+#### 상태확인
+```shell
 ❯ kubectl describe rs/frontend
 Name:         frontend
 Namespace:    default
@@ -77,15 +83,22 @@ Events:
   Normal  SuccessfulCreate  2m34s  replicaset-controller  Created pod: frontend-sbzqr
   Normal  SuccessfulCreate  2m34s  replicaset-controller  Created pod: frontend-k9jhp
   Normal  SuccessfulCreate  2m34s  replicaset-controller  Created pod: frontend-gx2jl
+```
 
-// 파드가 올라가있는지 확인
-
+#### 파드 조회
+```shell
 ❯ kubectl get pods
 NAME             READY   STATUS    RESTARTS   AGE
 frontend-gx2jl   1/1     Running   0          26s
 frontend-k9jhp   1/1     Running   0          26s
 frontend-sbzqr   1/1     Running   0          26s  
 ```
+
+## 레플리카셋 매니페스트 작성하기
+여기서, 매니페스트란 k8s 리소스를 정의하는 파일을 뜻한다.   
+레플리카셋은 모든 쿠버네티스 api 오브젝트와 마찬가지로 apiVersion, kind, metadata 필드가 필요하다.   
+레플리카셋에 대한 kind 필드의 값은 항상 레플리카셋이다. `쿠버네티스 1.9` 에서 레플리카셋의 kind 에 있는 API version `apps/v1` 은 현재버전이며, 기본으로 활성화 되어있다.
+`apps/v1beta2` 
 
 ## reference
 * https://kubernetes.io/ko/docs/concepts/workloads/controllers/replicaset/
