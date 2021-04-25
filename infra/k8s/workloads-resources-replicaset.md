@@ -12,10 +12,36 @@
 > 레플리카셋이 새로운 파드를 생성해야할 경우, 명시된 파드 템플릿을 이용한다.
 
 ## 레플리카셋을 사용하는 시기
-* 레플리카셋은 항상 지정된 개수의 파드가 실행되도록 보장한다.
+* 레플리카셋은 `항상 지정된 개수의 파드가 실행되도록 보장` 한다.
   * 그러나 디플로이먼트는 레플리카셋을 관리하고 다른 유용한 기능과 함께 파드에 대한 선언적 업데이트를 제공하는 상위 개념이다.
   * 따라서 우리가 사용자 지정 오케스트레이션이 필요하거나 업데이트가 전혀 필요하지 않은 경우라면 레플리카셋을 직접적으로 사용하기보다는 `디플로이먼트를 사용하는 것을 권장` 한다.
 * `결론적으로` 우리가 레플리카셋 오브젝트를 직접적으로 조작할 필요가 없음을 뜻한다. 대신 디플로이먼트를 이용하고 사양부분에서 애플리케이션을 정의하면 된다.
+
+```yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend
+  labels:
+    app: guestbook
+    tier: frontend
+spec:
+  # 케이스에 따라 레플리카를 수정한다.
+  # 파드의 개수를 3개로 설정한다.
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: php-redis
+        image: gcr.io/google_samples/gb-frontend:v3
+
+```
 
 ## reference
 * https://kubernetes.io/ko/docs/concepts/workloads/controllers/replicaset/
