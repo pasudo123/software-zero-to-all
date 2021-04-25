@@ -40,7 +40,51 @@ spec:
       containers:
       - name: php-redis
         image: gcr.io/google_samples/gb-frontend:v3
+```
 
+kubectl 을 통한 레플리카셋 생성, 조회, 상태확인
+```shell
+❯ kubectl apply -f frontend.yaml
+replicaset.apps/frontend created
+
+❯ kubectl get rs
+NAME       DESIRED   CURRENT   READY   AGE
+frontend   3         3         3       35s
+
+// 상태확인
+❯ kubectl describe rs/frontend
+Name:         frontend
+Namespace:    default
+Selector:     tier=frontend
+Labels:       app=guestbook
+              tier=frontend
+Annotations:  <none>
+Replicas:     3 current / 3 desired
+Pods Status:  3 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  tier=frontend
+  Containers:
+   php-redis:
+    Image:        gcr.io/google_samples/gb-frontend:v3
+    Port:         <none>
+    Host Port:    <none>
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Events:
+  Type    Reason            Age    From                   Message
+  ----    ------            ----   ----                   -------
+  Normal  SuccessfulCreate  2m34s  replicaset-controller  Created pod: frontend-sbzqr
+  Normal  SuccessfulCreate  2m34s  replicaset-controller  Created pod: frontend-k9jhp
+  Normal  SuccessfulCreate  2m34s  replicaset-controller  Created pod: frontend-gx2jl
+
+// 파드가 올라가있는지 확인
+
+❯ kubectl get pods
+NAME             READY   STATUS    RESTARTS   AGE
+frontend-gx2jl   1/1     Running   0          26s
+frontend-k9jhp   1/1     Running   0          26s
+frontend-sbzqr   1/1     Running   0          26s  
 ```
 
 ## reference
