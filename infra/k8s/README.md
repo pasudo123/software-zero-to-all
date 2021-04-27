@@ -10,3 +10,6 @@
 ## 워크로드 리소스
 * [디플로이먼트](./workloads-resources-deployment.md)
 * [레플리카셋](./workloads-resources-replicaset.md)
+
+## yml 파일 작성
+* [yaml 파일에 있는 내용](./understanding-yaml.md)
