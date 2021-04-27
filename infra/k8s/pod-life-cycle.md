@@ -68,7 +68,15 @@
 `restartPolicy` 는 파드의 모든 컨테이너에 적용된다. restartPolicy 는 `동일한 노드에서 kubelet 에 의한 컨테이너 재시작` 만을 의미한다.   
 파드의 컨테이너가 종료된 이후에 kubelet 은 5분으로 제한되는 지수 백오프 지연으로 컨테이너를 재시작한다.
 
-### 
+### restartPolicy: Always
+항상 컨테이너를 재실행한다는건, zero exit 으로 정상적인 종료를 하더라도 재실행함을 의미한다. 컨테이너의 종료에 대해서 신경쓰지 않아도 된다.
+웹서버와 같이 항상 동작해야하는 애플리케이션에 대해서 유용하다. 해당 값은 디폴트이다.
+
+### restartPolicy : OnFailure
+컨테이너가 non-zero exit 으로 비정상적인 종료를 하였을 때 재실행함을 의미한다. 파드가 특정한 작업을 수행하고 성공적으로 완료되었는지에 대해서 유용하다.
+
+### restartPolicy : Never
+컨테이너가 어느종료에 상관없이 항상 종료됨을 의미한다.
 
 ## reference
 * [파드 라이프사이클](https://kubernetes.io/ko/docs/concepts/workloads/pods/pod-lifecycle/#%ED%8C%8C%EB%93%9C%EC%9D%98-%EB%8B%A8%EA%B3%84)
