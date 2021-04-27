@@ -58,13 +58,17 @@
 ## 컨테이너 재시작정책 (restartPolicy)
 `파드가 아니다. 파드 내의 컨테이너` 이다.   
 파드의 `spec` 에는 `restartPolicy` 가 있다. 사용가능한 값은 아래와 같다.
-* Always
-* OnFailure
-* Never
+
+* Always : 항상 컨테이너를 재시작한다.
+* OnFailure : 실패하는 경우에만 컨테이너를 재시작한다.
+* Never : 재시작을 하지 않는다.
+
 기본 값은 `Always` 이다. 
 
 `restartPolicy` 는 파드의 모든 컨테이너에 적용된다. restartPolicy 는 `동일한 노드에서 kubelet 에 의한 컨테이너 재시작` 만을 의미한다.   
 파드의 컨테이너가 종료된 이후에 kubelet 은 5분으로 제한되는 지수 백오프 지연으로 컨테이너를 재시작한다.
+
+### 
 
 ## reference
 * [파드 라이프사이클](https://kubernetes.io/ko/docs/concepts/workloads/pods/pod-lifecycle/#%ED%8C%8C%EB%93%9C%EC%9D%98-%EB%8B%A8%EA%B3%84)
