@@ -88,7 +88,7 @@ probe 가 `failureThreshold` 설정한만큼 실패가 된다면 이후에는 �
    * 스타트업 프로브가 주어진 경우, 성공할 때까지 다른 나머지 프로브는 활성화되지 않는다.
    * 만약 스타트업 프로브가 실패하면, kubelet 이 컨테이너를 죽이고, 컨테이너는 재시작 정책에 따라 처리된다.
 
-## strategy 관련
+## 🟠 strategy : 이전 파드를 새로운 파드로 대체하는 전략
 
 deployments yaml 명세
 ```yaml
@@ -110,6 +110,19 @@ spec:
       maxUnavailable: 1
     type: RollingUpdate
 ```
+* `.spec.strategy` 는 이전 파드를 새로운 파드로 대체하는 전략을 명세할 수 있다.
+   * `.spec.strategy.type` 의 값은 `재생성` 또는 `롤링업데이트` 가 될 수 있다.
+      * `RollingUpdate` : 새로운 파드가 점진적으로 추가되고, 이전 파드는 중지된다. (디플로이먼트의 기본적인 배포전략이다.)
+      * `Recreate` : 새로운 파드가 추가되기 이전에 이전 파드가 한번에 중지된다.
+   * `롤링업데이트` 가 기본값이다.
+* `.spec.strategy.rollingUpdate.maxSurge`
+   * 업데이트 중에, 동시에 최대로 추가할 수 있는 파드의 수 (% 로 설정할 시, 원하는 개수의 파드의 비율이 반올림되어 지정된다.)
+* `.spec.strategy.rollingUpdate.maxUnavailable`
+   * 업데이트 중에, 동시에 사용불가능한 상태가 될 수 있는 파드의 수
+
+#### 롤링업데이트
+> 새 버전을 배포하면서, 새 버전 인스턴스를 하나씩 늘려가고 기존 버전의 인스턴스를 하나식 줄여나가는 방식입니다. 이러한 경우 새 버전의 인스턴스로 트래픽이 이전되기 전까지 이전 버전과 새 버전의 인스턴스가 동시에 존재할 수 있다는 단점이 있지만, 시스템을 무중단으로 업데이트 할 수 있다는 장점이 있습니다.   
+[참고](https://ooeunz.tistory.com/124)
 
 ## reference
 * https://kubernetes.io/ko/docs/concepts/containers/images/
