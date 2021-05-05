@@ -124,6 +124,25 @@ spec:
 > 새 버전을 배포하면서, 새 버전 인스턴스를 하나씩 늘려가고 기존 버전의 인스턴스를 하나식 줄여나가는 방식입니다. 이러한 경우 새 버전의 인스턴스로 트래픽이 이전되기 전까지 이전 버전과 새 버전의 인스턴스가 동시에 존재할 수 있다는 단점이 있지만, 시스템을 무중단으로 업데이트 할 수 있다는 장점이 있습니다.   
 [참고](https://ooeunz.tistory.com/124)
 
+## 서비스 yaml
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: helloworld
+  name: helloworld
+spec:
+  ports:
+    - name: 8080-8080
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: helloworld
+  type: ClusterIP
+```
+
 ## reference
 * https://kubernetes.io/ko/docs/concepts/containers/images/
 * https://kubernetes.io/ko/docs/concepts/configuration/manage-resources-containers/
