@@ -3,13 +3,16 @@ k8s 명령어 정리
 
 ### pod 를 조회한다.
 ```shell
-kubectl get pod
+kubectl get pods
 
 // pod 를 상세하게 조회한다.
-kubectl get pod -o wide
+kubectl get pods -o wide
 
 // pod 목록 조회시, 타임스탬프로 정렬해서 조회한다.
 kubectl get pods --sort-by=.metadata.creationTimestamp
+
+// -l 옵션을 주어 셀렉터 필터링을 수행한다.
+kubectl get pods -l app={label-app-name}
 ```
 
 ### deployments 를 조회한다.
@@ -32,7 +35,7 @@ kubectl get ingress
 ### k8s 클러스터 내 노드를 조회한다.
 ```shell
 // k8s 클러스터 내의 노드 구성을 조회한다.
-kubectl get node
+kubectl get nodes
 ```
 
 ### 특정 오브젝트에 대한 로그를 확인한다.
