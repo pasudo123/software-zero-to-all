@@ -88,6 +88,28 @@ probe 가 `failureThreshold` 설정한만큼 실패가 된다면 이후에는 �
    * 스타트업 프로브가 주어진 경우, 성공할 때까지 다른 나머지 프로브는 활성화되지 않는다.
    * 만약 스타트업 프로브가 실패하면, kubelet 이 컨테이너를 죽이고, 컨테이너는 재시작 정책에 따라 처리된다.
 
+## strategy 관련
+
+deployments yaml 명세
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: helloworld
+  name: helloworld
+spec:
+  replicas: 3
+  minReadySeconds: 0
+  selector:
+    matchLabels:
+      app: helloworld
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 1
+    type: RollingUpdate
+```
 
 ## reference
 * https://kubernetes.io/ko/docs/concepts/containers/images/
