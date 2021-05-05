@@ -70,7 +70,7 @@ spec:
 ❯ kubectl create -f nginx.yaml
 deployment.apps/nginx-deployment created
 
-❯ kubectl get pods
+❯ kubectl get pod
 NAME                                READY   STATUS    RESTARTS   AGE
 nginx-deployment-66b6c48dd5-d4w46   1/1     Running   0          6m34s
 nginx-deployment-66b6c48dd5-scd6r   1/1     Running   0          6m34s
@@ -79,7 +79,7 @@ nginx-deployment-66b6c48dd5-scd6r   1/1     Running   0          6m34s
 ❯ kubectl delete -f nginx.yaml
 deployment.apps "nginx-deployment" deleted
 
-❯ kubectl get pods
+❯ kubectl get pod
 NAME                                READY   STATUS        RESTARTS   AGE
 nginx-deployment-66b6c48dd5-d4w46   0/1     Terminating   0          15m
 nginx-deployment-66b6c48dd5-scd6r   0/1     Terminating   0          15m
