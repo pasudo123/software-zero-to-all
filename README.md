@@ -16,6 +16,9 @@
 * [트랜잭션 고립성(isolation) 레벨](./database/Transaction_Isolation_Levels.md)
 * [mysql truncate](./database/truncate.md)
 
+### 소프트웨어 아키텍처
+* [c4 modeling](https://pasudo123.tistory.com/469)
+
 ### algoritm
 * [geeksforgeeks](https://github.com/pasudo123/Algorithms/tree/master/GeeksForGeeks)
 * [etc repository](https://github.com/pasudo123/Algorithms)
