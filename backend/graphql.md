@@ -22,3 +22,6 @@ SELECT plot_id, species_id, sex, weight, ROUND(weight / 1000.0, 2) FROM surveys;
   }
 }
 ```
+
+## reference
+* https://tech.kakao.com/2019/08/01/graphql-basic/
