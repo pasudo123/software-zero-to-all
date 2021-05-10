@@ -6,3 +6,6 @@
 ### 주의
 만약 스케줄된 시간동안 잡이 일시중지 되었다면, 누락된 잡으로 간주한다.   
 `.spec.suspend` 의 값을 true 에서 false 로 변경하면 누락된 잡들은 즉시 스케쥴된다.
+
+## reference
+* https://kubernetes.io/ko/docs/tasks/job/automated-tasks-with-cron-jobs/#%EC%9D%BC%EC%8B%9C-%EC%A0%95%EC%A7%80
