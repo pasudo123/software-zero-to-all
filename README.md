@@ -98,7 +98,7 @@
 * [Udemy, Hibernate Tutorial](./Udemy/Hibernate%20tutorial.md)
 
 ## 👨‍🚀 백엔드
-* [graphql](./backend/graphql.md)
+* [graphql](./backend/graphql/youtube-tutorial-record.md)
 
 ## 👨‍🚀 단편지식
 * [gradle](./Piece/gradle)
