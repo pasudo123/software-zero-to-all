@@ -2,6 +2,7 @@
 Graph QL 이란 sql 과 마찬가지로 쿼리언어이다.
 
 ## graphql 시작하기
+수행 프로젝트 : https://github.com/coding-buddha/graphql-helllo-world
 
 #### sql 과 gql 의 차이
 * sql 의 경우에는 데이터베이스 시스템에 저장된 데이터를 효율적으로 가져오는 것이 목적이다. 
