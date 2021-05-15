@@ -27,6 +27,8 @@ query {
 }
 ```
 
+![image](../../Image/2021-05-16_grapql_vs_restful-api.png)
+
 ## reference
 * https://github.com/benawad
 * https://tech.kakao.com/2019/08/01/graphql-basic/
