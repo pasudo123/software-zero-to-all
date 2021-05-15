@@ -11,8 +11,8 @@ Graph QL 이란 sql 과 마찬가지로 쿼리언어이다.
 
 #### graphql 의 query 와 mutation 의 차이
 query 의 경우에는 데이터 조회할 때 (read) 시에 사용하고, mutation 의 경우에는 데이터 조작(create, update, delete) 할 때 사용한다고 한다.   
-둘의 차이는 크게 없지만, 개념적으로 사용하는 방법에 대한 규약을 정해놓은 상태라고 한다. (
-```ts
+둘의 차이는 크게 없지만, 개념적으로 사용하는 방법에 대한 규약을 정해놓은 상태라고 한다.
+```
 mutation {
   register {
     id
@@ -21,7 +21,7 @@ mutation {
 }
 ```
 
-```ts
+```
 query {
   hello
 }
