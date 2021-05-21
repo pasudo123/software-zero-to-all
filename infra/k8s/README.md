@@ -11,6 +11,7 @@
 ## 워크로드 리소스
 * [디플로이먼트](./workloads-resources-deployment.md)
 * [레플리카셋](./workloads-resources-replicaset.md)
+* [잡](./workloads-resources-job.md)
 
 ## 서비스, 로드밸런싱, 네트워킹
 * [인그레스(ingress)](./networking-ingress.md)
