@@ -29,27 +29,37 @@ spec:
 // metadata.name 의 이름으로 파드가 생성되었음
 ❯ kubectl apply -f sample.yaml
 pod/label-demo created
+```
 
-// pod 조회 시, metadata.name 으로 설정된 이름으로 파드 이름으 설정됨
+pod 조회 시, metadata.name 으로 설정된 이름으로 파드 이름으로 설정됨
+```shell
 ❯ kubectl get pods -o wide
 NAME         READY   STATUS    RESTARTS   AGE     IP          NODE             NOMINATED NODE   READINESS GATES
 label-demo   1/1     Running   0          2m21s   10.1.0.79   docker-desktop   <none>           <none>
-
-// [1] metadata.labels.app 으로 특정 파드를 검색한다.
+```
+  
+[1] metadata.labels.app 으로 특정 파드를 검색한다.
+```
 ❯ kubectl get pods -l app=nginx
 NAME         READY   STATUS    RESTARTS   AGE
 label-demo   1/1     Running   0          3m2s
-
-// [2] metadata.labels.environment 으로 특정 파드를 검색한다.
+```
+  
+[2] metadata.labels.environment 으로 특정 파드를 검색한다.
+```
 ❯ kubectl get pods -l environment=production
 NAME         READY   STATUS    RESTARTS   AGE
 label-demo   1/1     Running   0          3m13s
+```
 
-// [3] metadata.labels.environment 으로 production labels 가 아닌 파드를 검색한다.
+[3] metadata.labels.environment 으로 production labels 가 아닌 파드를 검색한다.
+```
 ❯ kubectl get pods -l environment!=production
 No resources found in default namespace.
+```
 
-// [4] metadata.labels.app 으로 nginx labels 가 아닌 파드를 검색한다.
+[4] metadata.labels.app 으로 nginx labels 가 아닌 파드를 검색한다.
+```
 ❯ kubectl get pods -l app!=nginx
 No resources found in default namespace.
 ```
