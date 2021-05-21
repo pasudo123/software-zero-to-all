@@ -90,15 +90,22 @@ nginx-deployment-66b6c48dd5-scd6r   0/1     Terminating   0          15m
   * 오브젝트 구성은 새로운 오브젝트 생성을 위한 템플릿을 제공한다. 
 
 ## 3. 선언형 오브젝트 구성 (Declarative object configuration)
-선언형 오브젝트 구성을 사용할 경우, 사용자는 `로컬에 있는 오브젝트 구성 파일` 을 구동시키지만 사용자는 파일에서 수행할 작업을 정의하지 않는다.   
+선언형 오브젝트 구성을 사용할 경우, 사용자는 `로컬에 있는 오브젝트 구성 파일` 을 구동시키지만 사용자는 `파일에서 수행할 작업을 정의` 하지 않는다.   
+(내가 이해하기론, 디렉토리 대상으로 실행하기 때문에 그런듯)      
 `생성`, `업데이트`, `삭제` 작업은 `kubectl` 에 의해서 오브젝트마다 자동으로 감지된다. 
    
-아래와 같은 명령어로 실행된다.
+아래와 같은 명령어로 실행한다.
 ```shell
 // configs/ 디렉토리내 모든 구성파일들을 생성 또는 패치를 수행한다.
 // 어떤 변경이 일어날지 모르는 경우에는 우선적으로 diff 를 하고나서 적용할 수 있다.
-kubectl diif -f configs/
+kubectl diff -f configs/
 kubectl apply -f configs/
+```
+
+아래와 같은 명령어는 디렉토리를 재귀적으로 실행한다.
+```shell
+kubectl diff -R -f configs/
+kubectl apply -R -f configs/
 ```
 
 ## reference
