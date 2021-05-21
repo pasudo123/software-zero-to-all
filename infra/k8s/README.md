@@ -12,6 +12,9 @@
 * [디플로이먼트](./workloads-resources-deployment.md)
 * [레플리카셋](./workloads-resources-replicaset.md)
 
+## 서비스, 로드밸런싱, 네트워킹
+* [인그레스(ingress)](./networking-ingress.md)
+
 ## kubectl 명령어
 * [kubectl command](./kubectl-commands.md)
 
