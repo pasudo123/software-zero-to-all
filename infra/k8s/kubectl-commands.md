@@ -27,9 +27,13 @@ kubectl get replicasets
 kubectl get rs
 ```
 
-### 인그레스를 조회한다.
+### 인그레스 명령어
 ```shell
+// 인그레스를 조회한다.
 kubectl get ingress
+
+// 인그레스를 상세 조회한다.
+kubectl describe ingress {ingress-name}
 ```
 
 ### k8s 클러스터 내 노드를 조회한다.
