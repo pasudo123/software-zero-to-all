@@ -23,4 +23,4 @@
 * [yaml 파일에 있는 내용](./understanding-yaml.md)
 
 ## k8s 토막지식
-* [k8s 대시보드에서 크론잡을 잠시 일시중지 시키려면](./spec-suspend.md)
+* [k8s 대시보드에서 크론잡을 잠시 일시중지 시키려면](./knowledge-spec-suspend.md)
