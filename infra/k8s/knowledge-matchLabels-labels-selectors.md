@@ -53,5 +53,13 @@ spec:
   * `spec.template.metadata.labels` 은 replicatSet/Pod 을 만들 때, 해당 레이블에 할당함을 의미한다.
   * 여튼 두 값이 일치되어야 한다.
 
+```
+레플리카셋은 파드와 연결되어 있지 않다.
+둘은 서로 느슨한 결합을 맺고 있다.
+둘은 라벨 셀렉터 에 의해서 정의되고 있다.
+
+위의 내용에서는 레플리카셋 정의과 파드템플릿 정의를 따로 구분해서 사용하고 있다.
+```
+
 ## reference
 * https://medium.com/@zwhitchcox/matchlabels-labels-and-selectors-explained-in-detail-for-beginners-d421bdd05362
