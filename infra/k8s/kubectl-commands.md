@@ -48,6 +48,12 @@ kubectl logs {object-name}
 
 // 로그를 실시간으로 보고 싶다면, 아래와 같은 명령어를 입력한다.
 kubectl logs -f
+
+// 특정 오브젝트의 앱 레이블에 대한 로그를 보고 싶다면 아래와 같이 입력한다.
+kubectl logs -f -l app={app-name}
+
+// 특정 오브젝트의 앱 레이블에 대한 로그를 15 라인만큼 실시간으로 보고 싶다면 아래와 같이 입력한다.
+kubectl logs -f --tail=15 -l app={app-name}
 ```
 
 ### 크론잡을 조회한다.
