@@ -14,6 +14,7 @@
 * [잡](./workloads-resources-job.md)
 
 ## 서비스, 로드밸런싱, 네트워킹
+* [서비스(service)](./networking-service.md)
 * [인그레스(ingress)](./networking-ingress.md)
 
 ## kubectl 명령어
