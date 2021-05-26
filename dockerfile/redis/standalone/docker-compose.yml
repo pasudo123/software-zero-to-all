@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  redis:
+    image: redis:5.0.3
+    command: redis-server /data/redis.conf
+    labels:
+      - "name=redis"
+      - "mode=standalone"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    container_name: redis
+    ports:
+      - 16379:6379
