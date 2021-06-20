@@ -118,6 +118,9 @@
 * [신규서비스를 진행하면서 (서술)](./%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%8B%A0%EA%B7%9C%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%A7%84%ED%96%89%ED%95%98%EB%A9%B4%EC%84%9C%20(%EC%84%9C%EC%88%A0).md)
 * [내가 사용하는 키맵](./%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%9D%B8%ED%85%94%EB%A6%AC%EC%A0%9C%EC%9D%B4%20%EB%82%B4%EA%B0%80%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%20%ED%82%A4%EB%A7%B5.md)
 
+## 👨‍🚀  개발서적 본 것들 정리
+* [오브젝트](https://github.com/coding-buddha/object-by-kotlin)
+
 ## 👨‍🚀 Wonder That (바보같은 질문일지라도)
 * [왜 정적팩토리 메소드를 쓰는걸까?](./personal/%EC%99%9C%20%EC%A0%95%EC%A0%81%20%ED%8C%A9%ED%86%A0%EB%A6%AC%20%EB%A9%94%EC%86%8C%EB%93%9C%20%ED%8C%A8%ED%84%B4%EC%9D%84%20%EC%93%B0%EB%8A%94%EA%B0%80.md)
 * [서비스 레이어 vs 비즈니스 로직](./personal/%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EB%A1%9C%EC%A7%81%EA%B3%BC%EC%9D%98%20%EA%B4%80%EA%B3%84.md)
