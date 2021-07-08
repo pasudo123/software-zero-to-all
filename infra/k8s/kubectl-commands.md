@@ -5,7 +5,7 @@ k8s 명령어 정리
 ```shell
 kubectl get pods
 
-// pod 를 상세하게 조회한다.
+// pod 를 조회한다.
 kubectl get pods -o wide
 
 // pod 목록 조회시, 타임스탬프로 정렬해서 조회한다.
@@ -13,6 +13,9 @@ kubectl get pods --sort-by=.metadata.creationTimestamp
 
 // -l 옵션을 주어 셀렉터 필터링을 수행한다.
 kubectl get pods -l app={label-app-name}
+
+// pod 를 상세하게 조회한다.
+kubectl describe pods {pod-name}
 ```
 
 ### deployments 를 조회한다.
@@ -115,5 +118,6 @@ kubectl exec ${POD_NAME} -- hostname
 
 // -i 와 -t 그리고 bash 를 사용하여 해당 파드 내에 접속한다.
 // 하지만 해당 파드가 bash 또는 zsh 와 같은 쉘을 제공해주어야 한다.
-kubectl exec -it ${POD_NAME} -- bash
+kubectl exec -it ${POD_NAME} -- bash 또는
+kubectl exec -it ${POD_NAME} -- /bin/bash
 ```
