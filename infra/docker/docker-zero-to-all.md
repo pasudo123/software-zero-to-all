@@ -137,6 +137,9 @@ $ docker attach {container-name}
 ```
 // 이미지 빌드 ( dot 표기 필요 : 현재 디렉토리의 Dockerfile 을 이용하기 때문)
 $ docker build -t {name}:{tag} .
+
+// 이미지 빌드 (만약 Dockerfile 명칭이 아닌 Dockerfile.real 인 경우, 끝에 온점을 붙여주도록 한다.)
+$ docker build -t {name}:{tag} -f Dockerfile.real .
 ```
 
 <BR>
