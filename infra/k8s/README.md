@@ -7,6 +7,7 @@
 ## 파드
 * [쿠버네티스 파드란](./what-does-mean-k8s-pod.md)
 * [파드의 라이프사이클](./pod-life-cycle.md)
+* [초기화 컨테이너](./initContainers.md)
 
 ## 워크로드 리소스
 * [디플로이먼트](./workloads-resources-deployment.md)
