@@ -341,10 +341,10 @@ ubuntu:18.04
 ```
 
 윈도우에서 확인한 `virtual eth`  
-<img src="../Image/2020_12_27_veth.png" width="500" />
+<img src="../../Image/2020_12_27_veth.png" width="500" />
 
 ### 🤭 bridge network (net-mode : bridge-name)
-<img src="../Image/2020_12_27_docker_bridge.png" width="500" />
+<img src="../../Image/2020_12_27_docker_bridge.png" width="500" />
 
 * __사용자 정의 브리지__ 를 생성하여 각 컨테이너에 연결하는 네트워크 구조이다.
 * 컨테이너는 연결된 브리지를 통하여 외부와 통신을 수행할 수 있다.
@@ -371,7 +371,7 @@ $ docker network disconnect {user-defined-bridge-name} {container-name}
 <hr>
 
 ### 🤭 host network (net-mode : host)
-<img src="../Image/2020_12_27_docker_host_net.png" width="500" />
+<img src="../../Image/2020_12_27_docker_host_net.png" width="500" />
 
 * 호스트 드라이버를 별도로 생성할 필요가 없다.
 * 기존의 host 라는 이름의 네트워크를 바로 사용한다.
@@ -386,7 +386,7 @@ $ docker network disconnect {user-defined-bridge-name} {container-name}
 <hr>
 
 ### 🤭 container network(net-mode : container-name)
-<img src="../Image/2020_12_27_docker_container_net.png" width="500" />
+<img src="../../Image/2020_12_27_docker_container_net.png" width="500" />
 
 * 다른 컨테이너의 네트워크 네임스페이스 환경을 공유한다.
 * 공유되는 속성은 내부 ip, 네트워크 인터페이스의 mac 주소 등이다.
@@ -416,7 +416,7 @@ $ docker network disconnect {user-defined-bridge-name} {container-name}
 
 아래는 호스트와 컨테이너간 마운트가 되어있고, 그 컨테이너는 볼륨 컨테이너로서 서비스되는 컨테이너와 마운트가 다시 한번 되어있는 상태이다.
 
-<img src="../Image/2020-09-19_volume-container.png">
+<img src="../../Image/2020-09-19_volume-container.png">
 
 <BR>
 
