@@ -118,7 +118,7 @@
 * [신규서비스를 진행하면서 (서술)](./%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%8B%A0%EA%B7%9C%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%A7%84%ED%96%89%ED%95%98%EB%A9%B4%EC%84%9C%20(%EC%84%9C%EC%88%A0).md)
 * [내가 사용하는 키맵](./%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%9D%B8%ED%85%94%EB%A6%AC%EC%A0%9C%EC%9D%B4%20%EB%82%B4%EA%B0%80%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%20%ED%82%A4%EB%A7%B5.md)
 
-## 👨‍🚀  개발서적 본 것들 정리
+## 👨‍🚀  book : 개발서적(책) 본 것들 정리
 * [오브젝트](https://github.com/coding-buddha/object-by-kotlin/blob/main/README-object.md)
 
 ## 👨‍🚀 Wonder That (바보같은 질문일지라도)
