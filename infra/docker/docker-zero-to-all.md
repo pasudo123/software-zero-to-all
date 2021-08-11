@@ -25,6 +25,7 @@
     * [docker search : 도커허브에서 이미지를 조회한다.](https://docs.docker.com/engine/reference/commandline/search/)
     * [docker commit : 컨테이너 변경사항에 대한 새로운 이미지를 생성한다.](https://docs.docker.com/engine/reference/commandline/commit/)
     * [docker port : 컨테이너의 port 와 매핑된 호스트 port 조회](https://docs.docker.com/engine/reference/commandline/port/)
+    * [docker system df](#docker-system-df)
 * [도커 컴포즈](#docker-compose)
     * [도커 컴포즈 개념 및 설치](#docker-compose-concept-install)
     * [도커 컴포즈 기본 명령어](#docker-compose-cmd)
@@ -77,7 +78,7 @@ PS C:\Users\pasudo123> docker port {container-id}
 // 0.0.0.0 은 호스트의 활용 가능한 모든 네트워크 인터페이스에 바인딩함을 의미.
 // 호스트의 어떤 IP 로 {sour-port} 를 접근하든 컨테이너의 {dest-port} 에 연결
 ```
-
+   
 <BR>
 
 ## <a id="how-to-write-way-docker-file"></a>Dockerfile 작성하기
@@ -459,6 +460,14 @@ $ docker ps -a -f status={value}
 
 <BR>
 
+## <a id="docker-system-df"></a> docker system df
+https://docs.docker.com/engine/reference/commandline/system_df/ 
+* 도커 데몬이 사용하는 디스크 용량을 표현하기 위해 사용한다.
+* 연관된 명령어로 `docker system prune` 이 존재한다.
+   * 미사용중인 모든 컨테이너를 제거한다.
+   
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+   
 # <a id="docker-compose"></a> 도커 컴포즈
 ## <a id="docker-compose-concept-install"></a> 도커 컴포즈 개념 및 설치
 * 컨테이너를 이용한 서비스의 개발과 CI 를 위하여 여러 개의 컨테이너를 하나의 프로젝트로서 다룰 수 있는 작업환경을 제공한다.
@@ -591,7 +600,7 @@ networks:
     default:
         name: {existing-network}
 ```
-
+   
 ### 볼륨정의
 
 
