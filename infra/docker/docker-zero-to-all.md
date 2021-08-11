@@ -225,7 +225,7 @@ $ docker container prune
 * [목차이동](#index)
 
 |name(shortcut)|description|example|
-|-------------|-------------|-------------|-------------|
+|-------------|-------------|-------------|
 |--detach(-d)|백그라운드에서 컨테이너를 실행하고, 컨테이너 ID 를 출력한다.|`docker run -d -p 23340:14480 pasudo123/springboot-docker-basis`|
 |--interactive(-i)|상호입출력이 가능하도록 한다.||
 |--tty(-t)|tty를 활성화 해서 배시(bash) 셸을 사용하도록 한다.||
