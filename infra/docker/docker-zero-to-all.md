@@ -404,7 +404,9 @@ $ docker network disconnect {user-defined-bridge-name} {container-name}
 |--interactive, -i||docker attached 하지않고도 STDIN 을 열어둔다||
 |--restart||docker 가 종료되었을 때, 적용할 재시작 정책. ([상세링크](https://docs.docker.com/engine/reference/commandline/run/#restart-policies---restart))|
 |-publish, -p||Dockerfile 에 설정된 EXPOSE 의 모든 포트를 호스트에 연결하도록 설정한다. 호스트의 포트는 `무작위` 로 설정된다.| `docker run -d -P --name myserver mybuild:1.0`
-
+* restart 정책 네가지
+   * always :: 컨테이너의 exit status 값에 상관없이 항상 재시작을 수행한다.
+   
 <BR>
 
 ## volume container 구성
