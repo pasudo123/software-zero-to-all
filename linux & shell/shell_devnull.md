@@ -8,3 +8,6 @@ Hello World
 ~                                                                                                                                  
 ❯ echo "Hello World" &> /dev/null
 ```
+
+첨고
+* http://minsone.github.io/shell/shell-dev-null
