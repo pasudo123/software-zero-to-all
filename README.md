@@ -110,9 +110,9 @@
 * [leetcode](./leetcode)
 * [programmers](./programmers)
 
-## 👨‍🚀 linux
+## 👨‍🚀 linux & shell
 * [linux command](./linux%20%26%20shell/README.md)
-* [cron, scheduling, linux](https://crontab.guru/)
+* https://crontab.guru/
 
 ## 👨‍🚀 실무관련
 * [신규서비스를 진행하면서 (서술)](./%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%8B%A0%EA%B7%9C%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%A7%84%ED%96%89%ED%95%98%EB%A9%B4%EC%84%9C%20(%EC%84%9C%EC%88%A0).md)
