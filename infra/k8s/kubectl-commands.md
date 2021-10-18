@@ -79,8 +79,6 @@ kubectl config use-context {context-name}
 
 ### 서비스를 조회한다.
 ```shell
-// namespace 내 모든 서비스 조회
-kubectl get services
 ```
 
 ### 오브젝트 또는 워크로드 리소스 삭제
@@ -103,7 +101,8 @@ kubectl apply -k {directory}
 
 ### k8s 서비스 목록을 조회
 ```shell
-kubectl get service
+kubectl get services --all-namespaces
+kubectl get service --namespace=default
 kubectl get svc
 ```
 
