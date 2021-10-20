@@ -1,3 +1,54 @@
 # 컨테이너 인프라 환경 구축을 위한 쿠버네티스/도커
 
-## 작성해본 커맨드 나열
+### 사용 커맨드
+
+```shell
+$ kubectl get pods 
+
+$ kubectl delete pods {nginx-pod : pod-ame}
+
+$ kubectl delete deployment {deployment-name}
+
+$ kubectl apply -f {file-name}.yaml
+
+// https://kubernetes.io/ko/docs/reference/kubectl/cheatsheet/#%EB%A6%AC%EC%86%8C%EC%8A%A4-%EC%8A%A4%EC%BC%80%EC%9D%BC%EB%A7%81
+// 리소스 스케일링 방식
+$ kubectl scale deployment {deployment-name} --replicas=9
+
+// 배포된 파드의 특정 값 확인
+$ kubectl get pods\
+-o=custom-columns=NAME:.metadata.name,IP:.status.podIP,STATUS:.status.phase,NODE:.spec.nodeName
+
+// -o yaml 옵션을 주어서 pod.yaml 파일에 저장
+$ kubectl get pods {pod-name} -o yaml > pod.yaml
+
+$ kubectl scale deployment {deployment-name} --replicas=3
+
+// node 를 스케줄 되지 않는 상태로 설정/해제 : 파드가 더 이상 해당 노드에 배포되지 않는다.
+$ kubectl cordon {node-name}
+$ kubectl uncordon {node-name}
+$ kubectl cordon w1-k8s
+$ kubectl uncordon w1-k8s
+
+$ kubectl get nodes
+
+// node 를 스케줄 되지 않은 상태로 변경시키는 것과 동일
+$ kubectl drain {node-name}
+$ kubectl drain w3-k8s
+$ kubectl drain w3-k8s --ignore-daemonsets (daemonsets 을 무시하고 drain 을 수행한다.)
+$ kubectl uncordon w3-k8s (스케줄 비활성화를 활성화로 변경)
+
+// --record 는 배포한 정보의 히스토리를 기록한다.
+$ kubectl apply -f {file-name}.yaml --record
+
+```
+
+# 개념
+### cordon
+* 특정한 노드에 파드를 더 이상 할당하지 않게 한다.
+* node 의 상태는 `SchedulingDisabled` 가 된다. 
+
+### drain
+* 지정한 노드 내 파드를 전부 다른 노드로 이동시킨다.
+* 이동의 개념보단 지정된 노드 내 파드를 삭제하고, 다른 노드 내에 파드를 생성한다.
+* drain 된 node 의 상태는 `SchedulingDisabled` 가 된다. 
