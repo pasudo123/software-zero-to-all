@@ -48,7 +48,7 @@ spec:
         tier: backend
 ```
 * deployment 에게 현재 배포하는 pod 가 무엇인지 알려줄 필요가 있다.
-* 따라서 `spec.selector.matchLabels.app` 와 `spec.template.metadata.labels.app` 라벨이 일치되어야 한다. 그래야 k8s 기능을 온전히 사용할 수 있다.
+* 따라서 `spec.selector.matchLabels.app` 와 `spec.template.metadata.labels.app` `라벨이 일치` 되어야 한다. 그래야 k8s 기능을 온전히 사용할 수 있다.
   * `spec.selector.matchLabels` 는 replicatSet/Pod 를 의미한다.
   * `spec.template.metadata.labels` 은 replicatSet/Pod 을 만들 때, 해당 레이블에 할당함을 의미한다.
   * 여튼 두 값이 일치되어야 한다.
