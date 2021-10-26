@@ -62,6 +62,17 @@ $ kubectl create deployment np-pods --images=sysnet4admin/echo-home
 $ kubectl get services
 
 $ kubectl get nodes -o wide
+
+// {deployment-name} 에 해당하는 파드의 개수를 3개로 설정한다.
+$ kubectl scale deployment {deployment-name} --replicas=3
+
+// {deployment-name} 에 해당하는 디플로이먼트는 서비스 svc-v2 와 연결되어있다.
+// 서비스 svc-v2 는 파드로 보내줄 연결포트를 80으로 설정한다.
+$ kubectl expose deployment {deployment-name} --type=NodePort --name=svc-v2 --port=80
+
+$ kubectl get services
+$ kubectl delete deployment {deployment-name}
+$ kubectl delete services {service-name}
 ```
 
 # 개념
