@@ -32,9 +32,8 @@ spec:
       port: 80            # service 의 80 포트는 파드집합 9376 포트와 연결된다.
       targetPort: 9376
 ```
-
-> 서비스는 모든 수신 port 를 targetPort 와 매핑할 수 있다.
-> 그리고 일반적으로 편의상 port 와 targetPort 의 값은 동일하게 설정된다.
+* 서비스는 모든 수신 port 를 targetPort 와 매핑할 수 있다.
+* 그리고 일반적으로 편의상 port 와 targetPort 의 값은 `동일하게 설정`된다.
 
 
 ## 가상 IP 와 서비스 프록시
