@@ -87,5 +87,3 @@ $ kubectl delete services {service-name}
 
 ### 쿠버네티스 연결을 담당하는 service
 * 외부의 요청이 k8s 클러스터에 접속하는 방법을 의미
-* NodePort
-  *   
