@@ -73,6 +73,19 @@ $ kubectl expose deployment {deployment-name} --type=NodePort --name=svc-v2 --po
 $ kubectl get services
 $ kubectl delete deployment {deployment-name}
 $ kubectl delete services {service-name}
+
+$ kubectl create deployment {deployment-name} --image={image-name}
+$ kubectl apply -f {file-name}.yaml
+
+// ingress-nginx namespace 에서 파드 조회
+$ kubectl get pods -n ingress-nginx
+
+$ kubectl get ingress
+
+// 인그레스에 요청한 내용이 모두 적용되었는지 여부 확인 : yaml 형식으로 출력해서 적용된 내용을 확인할 수 있도록 해준다.
+$ kubectl get ingress -o yaml
+
+$ kubectl get services -n ingress-nginx
 ```
 
 # 개념
