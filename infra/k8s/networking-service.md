@@ -23,10 +23,10 @@ k8s 에서 서비스는 클러스터 내 파드의 논리적 집합과 그것들
 apiVersion: v1
 kind: Service             # serivce 오브젝트 정의
 metadata:       
-  name: my-service        # serivce 오브젝트의 dns 네임은 my-service 로 한다.
+  name: my-service        # serivce 오브젝트의 `dns 네임` 은 my-service 로 한다.
 spec:
   selector:
-    app: MyApp            # service 와 연결할 파드집합의 레이블은 MyApp 이다. [[service] -> [pods ...]] : service 와 pod 집합을 연결한다.
+    app: MyApp            # service 와 연결할 `파드집합의 레이블은 MyApp` 이다. [[service] -> [pods ...]] : service 와 pod 집합을 연결한다.
   ports:
     - protocol: TCP       # service 오브젝트는 TCP 의 파드 9376 포트를 대상으로 한다.
       port: 80            # service 의 80 포트는 파드집합 9376 포트와 연결된다.
@@ -66,3 +66,4 @@ reference 를 참고한다.
 
 ## reference
 * https://kubernetes.io/ko/docs/concepts/services-networking/service/
+* [service 의 port 와 targetPort 의 차이점은 무엇인가?](https://stackoverflow.com/questions/49981601/difference-between-targetport-and-port-in-kubernetes-service-definition)
