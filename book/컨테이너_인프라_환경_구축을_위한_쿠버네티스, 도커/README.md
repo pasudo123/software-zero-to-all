@@ -86,6 +86,11 @@ $ kubectl get ingress
 $ kubectl get ingress -o yaml
 
 $ kubectl get services -n ingress-nginx
+
+$ kubectl expose deployment ex-lb --type=LoadBalancer --name=ex-svc
+service/ex-svc exposed
+
+$ kubectl get services ex-svc
 ```
 
 # 개념
