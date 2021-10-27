@@ -91,6 +91,9 @@ $ kubectl expose deployment ex-lb --type=LoadBalancer --name=ex-svc
 service/ex-svc exposed
 
 $ kubectl get services ex-svc
+
+// pod 의 부하를 확인한다.
+$ kubectl top pods
 ```
 
 # 개념
