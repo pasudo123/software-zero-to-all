@@ -104,6 +104,9 @@ $ kubectl autoscale deployment {deployment-name} --min=1 --max=30 --cpu-percent=
 
 // -w 는 watch 의 약어로 오브젝트 상태에 변화가 감지되면 해당 변화를 출력해준다.
 $ kubectl get pods -n metallb-system -o wide -w
+
+// --all 옵션은 모든 파드를 삭제하는 옵션이다.
+$ kubectl delete pods --all -n metallb-system
 ```
 
 # 개념
