@@ -13,6 +13,8 @@
 * [workloads-resources-deployment : 디플로이먼트](./workloads-resources-deployment.md)
 * [workloads-resources-replicaset : 레플리카셋](./workloads-resources-replicaset.md)
 * [workloads-resources-job : 잡](./workloads-resources-job.md)
+* [workloads-resources-configmap : 컨피그맵](./workloads-resources-configmap.md)
+* [workloads-resources-daemonSet : 데몬셋](./workloads-resources-daemonSet.md)
 
 ## 서비스, 로드밸런싱, 네트워킹
 * [networking-service : 서비스(service)](./networking-service.md)
