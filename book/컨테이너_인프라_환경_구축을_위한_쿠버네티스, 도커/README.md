@@ -94,6 +94,9 @@ $ kubectl get services ex-svc
 
 // pod 의 부하를 확인한다.
 $ kubectl top pods
+
+// deployment 를 수정한다.
+$ kubectl edit deployment {deployment-name}
 ```
 
 # 개념
