@@ -101,6 +101,9 @@ $ kubectl edit deployment {deployment-name}
 // deployment 를 autoscale 하여 특정조건이 만족되는 경우에 자동으로 scale 되도록 한다.
 // min 은 최소 파드의 개수, max 는 최대 파드의 개수, cpu-percent 는 cpu 사용량이 50% 를 넘으면 autoscale 하겠다는 의미다.
 $ kubectl autoscale deployment {deployment-name} --min=1 --max=30 --cpu-percent=50
+
+// -w 는 watch 의 약어로 오브젝트 상태에 변화가 감지되면 해당 변화를 출력해준다.
+$ kubectl get pods -n metallb-system -o wide -w
 ```
 
 # 개념
