@@ -251,16 +251,17 @@ docker run -d -v /home/wordpress_db:/var/lib/mysql
 docker run -d --name new_container --volume-from {container-name}
 
 
-// docker volume 을 이용
-docker volume create --name {volume-name}
-
+// docker volume 생성 : 호스트와 컨테이너 간의 연결
+$ docker volume create --name {volume-name}
+$ docker volume create {volume-name}
 
 // docker volume 조회
-docker volume ls
+$ docker volume ls
 
 
 // docker 의 볼륨 정보 조회
-docker inspect --type volume {volume-name}
+$ docker volume inspect {volume-name}
+$ docker inspect --type volume {volume-name}
 
 [
     {
