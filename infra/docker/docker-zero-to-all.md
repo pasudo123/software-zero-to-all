@@ -258,6 +258,8 @@ $ docker volume create {volume-name}
 // docker volume 조회
 $ docker volume ls
 
+// docker volume 삭제
+$ docker volume rm {volume-name}
 
 // docker 의 볼륨 정보 조회
 $ docker volume inspect {volume-name}
