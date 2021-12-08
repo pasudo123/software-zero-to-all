@@ -62,8 +62,9 @@
 * [springboot-slackbot-basis](https://github.com/coding-buddha/springboot-slackbot-basis)
 * [springboot-cloud-basis](https://github.com/coding-buddha/springboot-cloud-basis)
 
-### kotlin-basis
+### kotlin & kopring🌼
 * [kotlin-zero-to-all](https://github.com/coding-buddha/kotlin-zero-to-all)
+* [kotlin-spring-zero-to-all](https://github.com/pasudo123/springboot-kotlin-zerotoall)
 
 ### design-pattern 🌼
 * [oop-basis : decorator-pattern](https://github.com/coding-buddha/oop-basis/blob/master/design-pattern-decorator)
