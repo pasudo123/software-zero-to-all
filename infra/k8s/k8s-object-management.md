@@ -7,7 +7,7 @@
 2. 명령형 오브젝트 구성 (Imperative object configuration)
 3. 선언형 오브젝트 구성 (Declarative object configuration)
 
-## 명령형 커맨드 : Imperative commands
+## 1. 명령형 커맨드 : Imperative commands
 > `개발환경에서 수행하는 것을 권장`   
 > 명령형 커맨드를 사용할 경우, 사용자는 클러스터 내 활성 오브젝트를 대상으로 직접 동작시킨다.   
 > 사용자는 실행할 작업을 인수 또는 플래그로 `kubectl` 커맨드에 지정한다.   
@@ -37,7 +37,7 @@ deployment.apps "nginx" deleted
   * 변경에 대한 감시 추적 (audit trail) 을 제공하지 않는다.
   * 새로운 오브젝트 생성을 위한 템플릿을 제공하지 않는다.
 
-## 명령형 오브젝트 구성 : Imperative object configuration
+## 2. 명령형 오브젝트 구성 : Imperative object configuration
 > `개발환경 및 프로덕션환경에서 수행하는 것을 권장`   
 > 명령형 오브젝트 구성에서는 kubectl 커맨드로 작업, 선택적 플래그, 최소 하나의 파일 이름 지정을 한다.   
 > 그 파일은 yaml 또는 json 형식으로 오브젝트의 `완전한 정의` 를 포함해야 한다.   
@@ -88,6 +88,25 @@ nginx-deployment-66b6c48dd5-scd6r   0/1     Terminating   0          15m
   * 오브젝트 구성은 git 과 같은 소스 컨트롤 시스템에 보관할 수 있다.
   * 오브젝트 구성은 푸시와 감시 추적(audit trail) 전에 변경사항을 검토하는 것과 같은 프로세스들과 통합할 수 있다.
   * 오브젝트 구성은 새로운 오브젝트 생성을 위한 템플릿을 제공한다. 
+
+## 3. 선언형 오브젝트 구성 (Declarative object configuration)
+선언형 오브젝트 구성을 사용할 경우, 사용자는 `로컬에 있는 오브젝트 구성 파일` 을 구동시키지만 사용자는 `파일에서 수행할 작업을 정의` 하지 않는다.   
+(내가 이해하기론, 디렉토리 대상으로 실행하기 때문에 그런듯)      
+`생성`, `업데이트`, `삭제` 작업은 `kubectl` 에 의해서 오브젝트마다 자동으로 감지된다. 
+   
+아래와 같은 명령어로 실행한다.
+```shell
+// configs/ 디렉토리내 모든 구성파일들을 생성 또는 패치를 수행한다.
+// 어떤 변경이 일어날지 모르는 경우에는 우선적으로 diff 를 하고나서 적용할 수 있다.
+kubectl diff -f configs/
+kubectl apply -f configs/
+```
+
+아래와 같은 명령어는 디렉토리를 재귀적으로 실행한다.
+```shell
+kubectl diff -R -f configs/
+kubectl apply -R -f configs/
+```
 
 ## reference
 * [쿠버네티스 오브젝트 관리](https://kubernetes.io/ko/docs/concepts/overview/working-with-objects/object-management/)

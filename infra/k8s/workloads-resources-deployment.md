@@ -55,8 +55,6 @@ nginx-deployment   3/3     3            3           12s
 NAME                          DESIRED   CURRENT   READY   AGE
 nginx-deployment-66b6c48dd5   3         3         3       108s
 
-nginx-deployment-66b6c48dd5   3         3         3       108s
-
 // NAME : 네임스페이스에 있는 레플리카셋 이름의 목록
 // DESIRED : 디플로이먼트의 생성 시, 정의한 의도에 따른 애플리케이션 레플리카의 수를 표시한다. (의도한 상태)
 // CURRENT : 현재 실행 중인 레플리카의 수를 표시한다.

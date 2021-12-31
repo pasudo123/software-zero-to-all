@@ -62,8 +62,9 @@
 * [springboot-slackbot-basis](https://github.com/coding-buddha/springboot-slackbot-basis)
 * [springboot-cloud-basis](https://github.com/coding-buddha/springboot-cloud-basis)
 
-### kotlin-basis
+### kotlin & kopring🌼
 * [kotlin-zero-to-all](https://github.com/coding-buddha/kotlin-zero-to-all)
+* [kotlin-spring-zero-to-all](https://github.com/pasudo123/springboot-kotlin-zerotoall)
 
 ### design-pattern 🌼
 * [oop-basis : decorator-pattern](https://github.com/coding-buddha/oop-basis/blob/master/design-pattern-decorator)
@@ -74,8 +75,10 @@
 * [스프링 JPA 가이드 : cheese10yun](https://github.com/cheese10yun/spring-jpa-best-practices)
 * [롬복 애노테이션 사용 전략 : cheese10yun](https://www.popit.kr/%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-lombok-%EC%82%AC%EC%9A%A9%EB%B2%95/)
 
-### Git
+## 👨‍🚀 Git 사용하기
 * [소스트리에서 git reset(soft, mixed, hard)](https://github.com/pasudo123/GitFlowZero/blob/master/sourcetree-reset.md)
+* [git reset command]
+* [git revert command](./git/revert.md)
 
 ## 👨‍🚀 infrastructure
 * concept
@@ -98,7 +101,7 @@
 * [Udemy, Hibernate Tutorial](./Udemy/Hibernate%20tutorial.md)
 
 ## 👨‍🚀 백엔드
-* [graphql](./backend/graphql.md)
+* [graphql](./backend/graphql/youtube-tutorial-record.md)
 
 ## 👨‍🚀 단편지식
 * [gradle](./Piece/gradle)
@@ -110,13 +113,18 @@
 * [leetcode](./leetcode)
 * [programmers](./programmers)
 
-## 👨‍🚀 linux
+## 👨‍🚀 linux & shell
 * [linux command](./linux%20%26%20shell/README.md)
-* [cron, scheduling, linux](https://crontab.guru/)
+* https://crontab.guru/
 
 ## 👨‍🚀 실무관련
 * [신규서비스를 진행하면서 (서술)](./%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%8B%A0%EA%B7%9C%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%A7%84%ED%96%89%ED%95%98%EB%A9%B4%EC%84%9C%20(%EC%84%9C%EC%88%A0).md)
 * [내가 사용하는 키맵](./%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%9D%B8%ED%85%94%EB%A6%AC%EC%A0%9C%EC%9D%B4%20%EB%82%B4%EA%B0%80%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%20%ED%82%A4%EB%A7%B5.md)
+
+## 👨‍🚀  book : 개발서적(책) 본 것들 정리
+* [오브젝트](https://github.com/coding-buddha/object-by-kotlin/blob/main/README-object.md)
+* [클린코드](https://github.com/pasudo123/mango-banana-clean-code)
+* [ddd : 도메인 주도 설계 철저 입문](https://github.com/pasudo123/ddd)
 
 ## 👨‍🚀 Wonder That (바보같은 질문일지라도)
 * [왜 정적팩토리 메소드를 쓰는걸까?](./personal/%EC%99%9C%20%EC%A0%95%EC%A0%81%20%ED%8C%A9%ED%86%A0%EB%A6%AC%20%EB%A9%94%EC%86%8C%EB%93%9C%20%ED%8C%A8%ED%84%B4%EC%9D%84%20%EC%93%B0%EB%8A%94%EA%B0%80.md)

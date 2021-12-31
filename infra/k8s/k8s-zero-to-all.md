@@ -112,6 +112,7 @@ $ kubectl apply -f {yaml-file-name}
 * 라벨은 파드 등의 `쿠버네티스 리소스를 분류할 때 유용하게 사용할 수 있는 메타데이터` 이다
   * 쿠버네티스 리소스의 부가적인 정보를 표현할 수 있다.
   * 서로 다른 오브젝트가 서로를 찾아야할 때 사용되기도 한다.
+  * 이거 참고, https://github.com/pasudo123/SoftwareZeroToALL/blob/main/infra/k8s/k8s-label-and-selector.md
 * 레플리카셋은 `selector.matchLabel` 의 항목처럼 두 리소스간의 라벨을 일치시킴으로써 쿠버네티스의 기능을 사용하게 될 것이다.
 * 레플리카셋 vs 레플리케이션 컨트롤러 (deprecated) 
   * 레플리카셋이 더 많은 기능을 내장하고 있다. (+ 표현식이 가능하다.)

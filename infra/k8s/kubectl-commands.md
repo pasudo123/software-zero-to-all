@@ -5,7 +5,7 @@ k8s 명령어 정리
 ```shell
 kubectl get pods
 
-// pod 를 상세하게 조회한다.
+// pod 를 조회한다.
 kubectl get pods -o wide
 
 // pod 목록 조회시, 타임스탬프로 정렬해서 조회한다.
@@ -13,6 +13,9 @@ kubectl get pods --sort-by=.metadata.creationTimestamp
 
 // -l 옵션을 주어 셀렉터 필터링을 수행한다.
 kubectl get pods -l app={label-app-name}
+
+// pod 를 상세하게 조회한다.
+kubectl describe pods {pod-name}
 ```
 
 ### deployments 를 조회한다.
@@ -27,9 +30,13 @@ kubectl get replicasets
 kubectl get rs
 ```
 
-### 인그레스를 조회한다.
+### 인그레스 명령어
 ```shell
+// 인그레스를 조회한다.
 kubectl get ingress
+
+// 인그레스를 상세 조회한다.
+kubectl describe ingress {ingress-name}
 ```
 
 ### k8s 클러스터 내 노드를 조회한다.
@@ -44,6 +51,12 @@ kubectl logs {object-name}
 
 // 로그를 실시간으로 보고 싶다면, 아래와 같은 명령어를 입력한다.
 kubectl logs -f
+
+// 특정 오브젝트의 앱 레이블에 대한 로그를 보고 싶다면 아래와 같이 입력한다.
+kubectl logs -f -l app={app-name}
+
+// 특정 오브젝트의 앱 레이블에 대한 로그를 15 라인만큼 실시간으로 보고 싶다면 아래와 같이 입력한다.
+kubectl logs -f --tail=15 -l app={app-name}
 ```
 
 ### 크론잡을 조회한다.
@@ -66,8 +79,6 @@ kubectl config use-context {context-name}
 
 ### 서비스를 조회한다.
 ```shell
-// namespace 내 모든 서비스 조회
-kubectl get services
 ```
 
 ### 오브젝트 또는 워크로드 리소스 삭제
@@ -90,7 +101,8 @@ kubectl apply -k {directory}
 
 ### k8s 서비스 목록을 조회
 ```shell
-kubectl get service
+kubectl get services --all-namespaces
+kubectl get service --namespace=default
 kubectl get svc
 ```
 
@@ -105,5 +117,6 @@ kubectl exec ${POD_NAME} -- hostname
 
 // -i 와 -t 그리고 bash 를 사용하여 해당 파드 내에 접속한다.
 // 하지만 해당 파드가 bash 또는 zsh 와 같은 쉘을 제공해주어야 한다.
-kubectl exec -it ${POD_NAME} -- bash
+kubectl exec -it ${POD_NAME} -- bash 또는
+kubectl exec -it ${POD_NAME} -- /bin/bash
 ```

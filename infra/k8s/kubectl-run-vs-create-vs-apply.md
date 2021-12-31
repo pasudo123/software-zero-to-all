@@ -1,10 +1,21 @@
-# kubectl create vs apply 차이
+# `kubectl run` vs `kubectl create` vs `kubectl apply`
+
+## kubectl run 
+* 쉽게 파드를 생성할 수 있는 방법
+* 단일 파드 1개가 생성되고 작동 및 관리된다.
+```shell
+$ kubectl run nginx-pod --image=nginx
+```
 
 ## kubectl create
 * imprative (명령형) command 를 사용할 때, 사용자는 직접적으로 클러스터 내 live object 에 접근할 수 있다.
 * 클러스터에 __일회성__ 작업을 시작/실행 하는데 권장되는 방법이다.
+* deployment 안에 파드를 생성한다.
 ```
-kubectl create -f nginx.yaml
+$ kubectl create -f nginx.yaml
+
+// deployment 객체를 생성하여 nginx 컨테이너를 띄운다.
+$ kubectl create deployment nginx-pod --image=nginx
 ```
 
 ## kubectl apply

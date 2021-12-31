@@ -25,6 +25,7 @@
     * [docker search : 도커허브에서 이미지를 조회한다.](https://docs.docker.com/engine/reference/commandline/search/)
     * [docker commit : 컨테이너 변경사항에 대한 새로운 이미지를 생성한다.](https://docs.docker.com/engine/reference/commandline/commit/)
     * [docker port : 컨테이너의 port 와 매핑된 호스트 port 조회](https://docs.docker.com/engine/reference/commandline/port/)
+    * [docker system df](#docker-system-df)
 * [도커 컴포즈](#docker-compose)
     * [도커 컴포즈 개념 및 설치](#docker-compose-concept-install)
     * [도커 컴포즈 기본 명령어](#docker-compose-cmd)
@@ -77,7 +78,7 @@ PS C:\Users\pasudo123> docker port {container-id}
 // 0.0.0.0 은 호스트의 활용 가능한 모든 네트워크 인터페이스에 바인딩함을 의미.
 // 호스트의 어떤 IP 로 {sour-port} 를 접근하든 컨테이너의 {dest-port} 에 연결
 ```
-
+   
 <BR>
 
 ## <a id="how-to-write-way-docker-file"></a>Dockerfile 작성하기
@@ -137,6 +138,9 @@ $ docker attach {container-name}
 ```
 // 이미지 빌드 ( dot 표기 필요 : 현재 디렉토리의 Dockerfile 을 이용하기 때문)
 $ docker build -t {name}:{tag} .
+
+// 이미지 빌드 (만약 Dockerfile 명칭이 아닌 Dockerfile.real 인 경우, 끝에 온점을 붙여주도록 한다.)
+$ docker build -t {name}:{tag} -f Dockerfile.real .
 ```
 
 <BR>
@@ -221,7 +225,7 @@ $ docker container prune
 * [목차이동](#index)
 
 |name(shortcut)|description|example|
-|-------------|-------------|-------------|-------------|
+|-------------|-------------|-------------|
 |--detach(-d)|백그라운드에서 컨테이너를 실행하고, 컨테이너 ID 를 출력한다.|`docker run -d -p 23340:14480 pasudo123/springboot-docker-basis`|
 |--interactive(-i)|상호입출력이 가능하도록 한다.||
 |--tty(-t)|tty를 활성화 해서 배시(bash) 셸을 사용하도록 한다.||
@@ -247,16 +251,19 @@ docker run -d -v /home/wordpress_db:/var/lib/mysql
 docker run -d --name new_container --volume-from {container-name}
 
 
-// docker volume 을 이용
-docker volume create --name {volume-name}
-
+// docker volume 생성 : 호스트와 컨테이너 간의 연결
+$ docker volume create --name {volume-name}
+$ docker volume create {volume-name}
 
 // docker volume 조회
-docker volume ls
+$ docker volume ls
 
+// docker volume 삭제
+$ docker volume rm {volume-name}
 
 // docker 의 볼륨 정보 조회
-docker inspect --type volume {volume-name}
+$ docker volume inspect {volume-name}
+$ docker inspect --type volume {volume-name}
 
 [
     {
@@ -338,10 +345,10 @@ ubuntu:18.04
 ```
 
 윈도우에서 확인한 `virtual eth`  
-<img src="../Image/2020_12_27_veth.png" width="500" />
+<img src="../../Image/2020_12_27_veth.png" width="500" />
 
 ### 🤭 bridge network (net-mode : bridge-name)
-<img src="../Image/2020_12_27_docker_bridge.png" width="500" />
+<img src="../../Image/2020_12_27_docker_bridge.png" width="500" />
 
 * __사용자 정의 브리지__ 를 생성하여 각 컨테이너에 연결하는 네트워크 구조이다.
 * 컨테이너는 연결된 브리지를 통하여 외부와 통신을 수행할 수 있다.
@@ -368,7 +375,7 @@ $ docker network disconnect {user-defined-bridge-name} {container-name}
 <hr>
 
 ### 🤭 host network (net-mode : host)
-<img src="../Image/2020_12_27_docker_host_net.png" width="500" />
+<img src="../../Image/2020_12_27_docker_host_net.png" width="500" />
 
 * 호스트 드라이버를 별도로 생성할 필요가 없다.
 * 기존의 host 라는 이름의 네트워크를 바로 사용한다.
@@ -383,7 +390,7 @@ $ docker network disconnect {user-defined-bridge-name} {container-name}
 <hr>
 
 ### 🤭 container network(net-mode : container-name)
-<img src="../Image/2020_12_27_docker_container_net.png" width="500" />
+<img src="../../Image/2020_12_27_docker_container_net.png" width="500" />
 
 * 다른 컨테이너의 네트워크 네임스페이스 환경을 공유한다.
 * 공유되는 속성은 내부 ip, 네트워크 인터페이스의 mac 주소 등이다.
@@ -400,7 +407,9 @@ $ docker network disconnect {user-defined-bridge-name} {container-name}
 |--interactive, -i||docker attached 하지않고도 STDIN 을 열어둔다||
 |--restart||docker 가 종료되었을 때, 적용할 재시작 정책. ([상세링크](https://docs.docker.com/engine/reference/commandline/run/#restart-policies---restart))|
 |-publish, -p||Dockerfile 에 설정된 EXPOSE 의 모든 포트를 호스트에 연결하도록 설정한다. 호스트의 포트는 `무작위` 로 설정된다.| `docker run -d -P --name myserver mybuild:1.0`
-
+* restart 정책 네가지
+   * always :: 컨테이너의 exit status 값에 상관없이 항상 재시작을 수행한다.
+   
 <BR>
 
 ## volume container 구성
@@ -413,7 +422,7 @@ $ docker network disconnect {user-defined-bridge-name} {container-name}
 
 아래는 호스트와 컨테이너간 마운트가 되어있고, 그 컨테이너는 볼륨 컨테이너로서 서비스되는 컨테이너와 마운트가 다시 한번 되어있는 상태이다.
 
-<img src="../Image/2020-09-19_volume-container.png">
+<img src="../../Image/2020-09-19_volume-container.png">
 
 <BR>
 
@@ -456,6 +465,14 @@ $ docker ps -a -f status={value}
 
 <BR>
 
+## <a id="docker-system-df"></a> docker system df
+https://docs.docker.com/engine/reference/commandline/system_df/ 
+* 도커 데몬이 사용하는 디스크 용량을 표현하기 위해 사용한다.
+* 연관된 명령어로 `docker system prune` 이 존재한다.
+   * 미사용중인 모든 컨테이너를 제거한다.
+   
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+   
 # <a id="docker-compose"></a> 도커 컴포즈
 ## <a id="docker-compose-concept-install"></a> 도커 컴포즈 개념 및 설치
 * 컨테이너를 이용한 서비스의 개발과 CI 를 위하여 여러 개의 컨테이너를 하나의 프로젝트로서 다룰 수 있는 작업환경을 제공한다.
@@ -588,7 +605,7 @@ networks:
     default:
         name: {existing-network}
 ```
-
+   
 ### 볼륨정의
 
 
