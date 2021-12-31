@@ -75,8 +75,10 @@
 * [스프링 JPA 가이드 : cheese10yun](https://github.com/cheese10yun/spring-jpa-best-practices)
 * [롬복 애노테이션 사용 전략 : cheese10yun](https://www.popit.kr/%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-lombok-%EC%82%AC%EC%9A%A9%EB%B2%95/)
 
-### Git
+## 👨‍🚀 Git 사용하기
 * [소스트리에서 git reset(soft, mixed, hard)](https://github.com/pasudo123/GitFlowZero/blob/master/sourcetree-reset.md)
+* [git reset command]
+* [git revert command](./git/revert.md)
 
 ## 👨‍🚀 infrastructure
 * concept
