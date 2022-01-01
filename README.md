@@ -77,7 +77,7 @@
 
 ## 👨‍🚀 Git 사용하기
 * [소스트리에서 git reset(soft, mixed, hard)](https://github.com/pasudo123/GitFlowZero/blob/master/sourcetree-reset.md)
-* [git reset command]
+* [git reset command](./git/reset.md)
 * [git revert command](./git/revert.md)
 
 ## 👨‍🚀 infrastructure
