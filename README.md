@@ -77,13 +77,12 @@
 
 ## 👨‍🚀 Git 사용하기
 * [소스트리에서 git reset(soft, mixed, hard)](https://github.com/pasudo123/GitFlowZero/blob/master/sourcetree-reset.md)
-* [git reset command](./git/reset.md)
-* [git revert command](./git/revert.md)
+* [git reset](./git/reset.md)
+* [git revert](./git/revert.md)
 
 ## 👨‍🚀 infrastructure
-* concept
-  * [virtualization : blog](https://pasudo123.tistory.com/455)
-  * [hypervisors : blog](https://pasudo123.tistory.com/454)
+* [virtualization(가상화) : blog](https://pasudo123.tistory.com/455)
+* [hypervisors(하이퍼바이저) : blog](https://pasudo123.tistory.com/454)
 * [aws-zero-to-all](./infra/aws-zero-to-all.md)
 * [nginx-applying-ssl(https)](./infra/nginx/nginx-ssl.md)
 * [nginx-zero-to-all](./infra/nginx/nginx-zero-to-all.md)
@@ -113,8 +112,15 @@
 * [leetcode](./leetcode)
 * [programmers](./programmers)
 
-## 👨‍🚀 linux & shell
-* [linux command](./linux%20%26%20shell/README.md)
+## 👨‍🚀 리눅스, 쉘, 터미널 커맨드 등
+* [ln command : hard link & symbolic link](./command/linux_ln_command.md)
+* [kill command](./command/linux_kill_command.md)
+* [awk command](./command/linux_awk_command.md)
+* [nohup command](./command/linux_nohup_command.md)
+* [watch command](./command/linux_watch_command.md)
+* [htop command](./command/linux_htop_command.md)
+* [shell :: variable](./command/shell_variable_command.md)
+* [shell :: &> dev/null/](./command/shell_devnull.md)
 * https://crontab.guru/
 
 ## 👨‍🚀 실무관련
