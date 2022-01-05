@@ -113,6 +113,7 @@
 * [programmers](./programmers)
 
 ## 👨‍🚀 리눅스, 쉘, 터미널 커맨드 등
+* [jq command](./command/jq_command.md)
 * [ln command : hard link & symbolic link](./command/linux_ln_command.md)
 * [kill command](./command/linux_kill_command.md)
 * [awk command](./command/linux_awk_command.md)
