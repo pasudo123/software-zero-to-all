@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  rabbitmq:
+    image: 'rabbitmq:3-management-alpine'
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      # https://www.rabbitmq.com/configure.html#supported-environment-variables
+      RABBITMQ_DEFAULT_USER: "admin"
+      RABBITMQ_DEFAULT_PASS: "admin"gi

@@ -10,4 +10,4 @@ services:
       - MYSQL_DATABASE=testdb
     container_name: mysql-container
     ports:
-      - 13309:3306
+      - "3306:3306"
