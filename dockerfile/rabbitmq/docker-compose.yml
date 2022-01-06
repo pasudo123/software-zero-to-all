@@ -9,4 +9,4 @@ services:
     environment:
       # https://www.rabbitmq.com/configure.html#supported-environment-variables
       RABBITMQ_DEFAULT_USER: "admin"
-      RABBITMQ_DEFAULT_PASS: "admin"gi
+      RABBITMQ_DEFAULT_PASS: "admin"
