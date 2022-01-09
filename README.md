@@ -102,8 +102,12 @@
 ## 👨‍🚀 백엔드
 * [graphql](./backend/graphql/youtube-tutorial-record.md)
 
+## 👨‍🚀 gradle(그래들)
+* [gradle concept](./gradle/gradle_concept.md)
+* [gradle build](./gradle/gradle_build.md)
+* [gradle multi module project](./gradle/gradle_multi_module.md)
+
 ## 👨‍🚀 단편지식
-* [gradle](./Piece/gradle)
 * [password 저장 방식](./Piece/20191027%20%ED%8C%A8%EC%8A%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%A5.md)
 * [개인서버 할당 후 기록물 : 코노하 VPS](./Piece/20191114%20VPS.md)
 * [nginx 정리](./Piece/nginx%20%EC%A0%95%EB%A6%AC.md)
