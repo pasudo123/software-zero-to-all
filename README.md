@@ -106,6 +106,7 @@
 * [gradle concept](./gradle/gradle_concept.md)
 * [gradle build](./gradle/gradle_build.md)
 * [gradle multi module project](./gradle/gradle_multi_module.md)
+* [gradle properties with variable](./gradle/gradle_properties_variables.md)
 
 ## 👨‍🚀 단편지식
 * [password 저장 방식](./Piece/20191027%20%ED%8C%A8%EC%8A%A4%EC%9B%8C%EB%93%9C%20%EC%A0%80%EC%9E%A5.md)
