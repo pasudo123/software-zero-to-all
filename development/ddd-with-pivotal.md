@@ -89,6 +89,8 @@
 * BFF 는 Backend For FrontEnd 로써, 화면을 그려주기 위한 backend 인데, 기존에 만들어진 api 를 이용하려 처리할 수 있도록 한다.
 
 # 8. SnapE
-<img alt="" src="images/img09.png" width="400px" style="border: 3px solid green;">
+<kbd>
+  <img alt="" src="images/img09.png" width="400px" style="border: 1px solid black;">
+</kbd>
 
 * user story 는 백로그로 들어가기 때문에 상세하게 명세할 필요가 있다.
