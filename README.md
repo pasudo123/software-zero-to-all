@@ -24,6 +24,8 @@
 * [etc repository](https://github.com/pasudo123/Algorithms)
 
 ## 👨‍🚀 Development
+* [ddd with pivotal : 은행 시스템으로 살펴보는 DDD 약식](./development/ddd-with-pivotal.md)
+
 ### OOP : Object Oriented Programming 🌼
 * [초보개발자에게 권장하는 객체지향 모델링 공부방법](https://okky.kr/article/358197)
 * [객체지향 언어 배경](./object_oriented_programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%96%B8%EC%96%B4%EC%9D%98%20%EB%93%B1%EC%9E%A5.md)
