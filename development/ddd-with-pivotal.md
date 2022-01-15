@@ -14,7 +14,9 @@
 * DDD 를 통해 이벤트 스토밍 및 일련의 과정은 반복적인 과정을 통해서 일어나야함 -> 변경이 잦음
 
 # 3 이벤트 스토밍
+<kbd>
 <img alt="" src="images/img.png" width="600px" style="border: 1px solid black;">
+</kbd>
 
 * 비즈니스 + IT 를 같이 맞춘다.
 * 비즈니스에 일어나는 이벤트들을 쭉쭉쭉 그려나간다. 그리고 큰 범주로 불리는 바운디드 컨텍스트로 나눈다.
@@ -31,13 +33,17 @@
     * command 가 object 에 영향을 주고, 그것이 event 로 간다.
 
 ### 3.1 command, aggregate, event
+<kbd>
 <img alt="" src="images/img02.png" width="600px" style="border: 1px solid black;">
+</kbd>
  
 * command 가 object 를 조작하고, 그것은 event 가 된다.
 * event 가 일어난다는 것은 item 의 state change 가 일어난다.
 
 ### 3.2 command, aggregate, event is pair
+<kbd>
 <img alt="" src="images/img03.png" width="600px" style="border: 1px solid black;">
+</kbd>
 
 * 위의 세가지가 하나의 쌍이 된다.
 * command 가 영향을 끼치는 aggregate, 해당 aggregate 가 event 를 일으킴.
@@ -47,12 +53,16 @@
 이를 Boris 다이어그램이라고 칭한다. sync 는 어디로 할 것인지, async 는 어디로 할 것인지 등을 구분한다.
 
 ### 4.1 테크니컬 implementation
+<kbd>
 <img alt="" src="images/img04.png" width="600px" style="border: 1px solid black;">
+</kbd>
 
 * 분홍색은 외부 시스템
 
 # 5. SnapE  
+<kbd>
 <img alt="" src="images/img05.png" width="600px" style="border: 1px solid black;">
+</kbd>
 
 서비스들 중에서 일부 서비스들중에서 상세 스펙들을 정의한다.
 * 어떤 api 를 가져야 하는지
@@ -61,7 +71,9 @@
 * 연동시 risk 는 없는지
 
 # 6. 이벤트들의 나열
+<kbd>
 <img alt="" src="images/img06.png" width="600px" style="border: 1px solid black;">
+</kbd>
 
 * command & event 로 표현해서 나열한다.
 * 해당 작업들은 IT 전문가와 도메인 전문가가 만나서 같이 할 수 있는 장점이 있다.
@@ -72,7 +84,9 @@
 * 그룹핑이 되면 이후에 애그리게이트를 기준으로 컨텍스트를 나눌 수 있다.
 
 ## 6.1. bounded context
+<kbd>
 <img alt="" src="images/img07.png" width="600px" style="border: 1px solid black;">  
+</kbd>
 
 * 파란색으로 되어있는 게 bounded context 이다.
 * 노란색은 aggregate 이다.
@@ -83,7 +97,9 @@
 이벤트 스토밍을 통해서 전체적인 서비스 키워드 및 candidate 를 정의했으면 서로간의 상관관계를 정의할 수 있다.   
 서비스와 서비스 사이의 요청방식을 동기 혹은 비동기 어떤 방식으로 할 것인지 결정한다.
 
-<img alt="" src="images/img08.png" width="600px" style="border: 1px solid black;">   
+<kbd>
+  <img alt="" src="images/img08.png" width="600px" style="border: 1px solid black;">   
+</kbd>
 * 빨간색은 비동기 호출이다.
 * 파란색은 동기 호출이다.
 * BFF 는 Backend For FrontEnd 로써, 화면을 그려주기 위한 backend 인데, 기존에 만들어진 api 를 이용하려 처리할 수 있도록 한다.
