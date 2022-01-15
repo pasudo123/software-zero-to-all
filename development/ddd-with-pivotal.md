@@ -72,7 +72,7 @@
 
 # 6. 이벤트들의 나열
 <kbd>
-<img alt="" src="images/img06.png" width="600px" style="border: 1px solid black;">
+<img alt="" src="images/img06.png" width="800px" style="border: 1px solid black;">
 </kbd>
 
 * command & event 로 표현해서 나열한다.
@@ -85,7 +85,7 @@
 
 ## 6.1. bounded context
 <kbd>
-<img alt="" src="images/img07.png" width="600px" style="border: 1px solid black;">  
+<img alt="" src="images/img07.png" width="800px" style="border: 1px solid black;">  
 </kbd>
 
 * 파란색으로 되어있는 게 bounded context 이다.
@@ -98,8 +98,9 @@
 서비스와 서비스 사이의 요청방식을 동기 혹은 비동기 어떤 방식으로 할 것인지 결정한다.
 
 <kbd>
-  <img alt="" src="images/img08.png" width="600px" style="border: 1px solid black;">   
+  <img alt="" src="images/img08.png" width="800px" style="border: 1px solid black;">   
 </kbd>
+
 * 빨간색은 비동기 호출이다.
 * 파란색은 동기 호출이다.
 * BFF 는 Backend For FrontEnd 로써, 화면을 그려주기 위한 backend 인데, 기존에 만들어진 api 를 이용하려 처리할 수 있도록 한다.
