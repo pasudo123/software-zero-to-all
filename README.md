@@ -141,14 +141,13 @@
 * [클린코드](https://github.com/pasudo123/mango-banana-clean-code)
 * [ddd : 도메인 주도 설계 철저 입문](https://github.com/pasudo123/ddd)
 
-## 👨‍🚀 Wonder That (바보같은 질문일지라도)
+## 👨‍🚀 궁금증
+* [왜 jvm 인자값은 -D 로 시작하는가?](./personal/jvm_d_option.md)
 * [왜 정적팩토리 메소드를 쓰는걸까?](./personal/%EC%99%9C%20%EC%A0%95%EC%A0%81%20%ED%8C%A9%ED%86%A0%EB%A6%AC%20%EB%A9%94%EC%86%8C%EB%93%9C%20%ED%8C%A8%ED%84%B4%EC%9D%84%20%EC%93%B0%EB%8A%94%EA%B0%80.md)
 * [서비스 레이어 vs 비즈니스 로직](./personal/%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EB%A1%9C%EC%A7%81%EA%B3%BC%EC%9D%98%20%EA%B4%80%EA%B3%84.md)
 * [객체지향의 TDA : Tell Don't ASK](./personal/Tell%20Don't%20ASK.md)
 * [서비스레이어와 비즈니스 로직과의 관계](./personal/%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EB%A1%9C%EC%A7%81%EA%B3%BC%EC%9D%98%20%EA%B4%80%EA%B3%84.md)
 * [SPA vs MPA](./personal/SPA%20vs%20MPA.md)
-* [WAS 자원과 DB 자원](#)
-* [네트워크 IO 비용 및 디스크 IO 비용](#)
 
 ## 👨‍🚀 bolierplate
 * [[ java ] classpath 의 json 파일 읽어들이기](boilerplate/reading_json_file_of_classpath.md)
