@@ -19,7 +19,9 @@ services:
 ```
 
 ### 아키텍처
-<img alt="" src="../image/realmysq8.0_chapter04_1.drawio.png" />
+<kbd>
+  <img alt="" src="../Image/realmysq8.0_chapter04_1.drawio.png" />
+</kbd>
 
 ### 인덱스를 잘못 적용한 케이스
 index 값을 조작한 경우
