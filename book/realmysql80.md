@@ -1,7 +1,7 @@
 # real mysql 8.0
 real mysql 을 읽으면서 기록.
 
-### 테스트를 위한 mysql 설치
+### 0.0 테스트를 위한 mysql 설치
 ```yml
 version: '3.7'
 services:
@@ -18,12 +18,12 @@ services:
       - "33666:3306"
 ```
 
-### 아키텍처
+### 1.0 아키텍처
 <kbd>
   <img alt="" src="../Image/realmysq8.0_chapter04_1.drawio.png" />
 </kbd>
 
-### 인덱스를 잘못 적용한 케이스
+### 20.0 인덱스를 잘못 적용한 케이스
 index 값을 조작한 경우
 ```sql
 ## salary 는 인덱스 설정이 되어있음
