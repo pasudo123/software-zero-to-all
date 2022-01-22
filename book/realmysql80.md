@@ -18,6 +18,8 @@ services:
       - "33666:3306"
 ```
 
+### 아키텍처
+<img alt="" src="../image/realmysq8.0_chapter04_1.drawio.png" />
 
 ### 인덱스를 잘못 적용한 케이스
 index 값을 조작한 경우
