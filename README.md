@@ -15,6 +15,7 @@
 * [트랜잭션](./database/Transaction.md)
 * [트랜잭션 고립성(isolation) 레벨](./database/Transaction_Isolation_Levels.md)
 * [mysql truncate](./database/truncate.md)
+* [mysql query : show processlist](./database/show_processlist.md)
 
 ### 소프트웨어 아키텍처
 * [c4 modeling](https://pasudo123.tistory.com/469)
