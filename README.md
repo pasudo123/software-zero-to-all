@@ -15,7 +15,7 @@
 * [transaction](./database/Transaction.md)
 * [transaction isolation level](./database/Transaction_Isolation_Levels.md)
 * [mysql truncate](./database/truncate.md)
-* [mysql clustered index & secondary indexes](./database/clustered_index_and_secondary_indexes)
+* [mysql clustered index & secondary indexes](./database/clustered_index_and_secondary_indexes.md)
 * [mysql query : show processlist](./database/show_processlist.md)
 
 ### 소프트웨어 아키텍처
