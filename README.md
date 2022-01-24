@@ -9,12 +9,13 @@
 ### database
 * [씨아이보드 메뉴얼 스키마 설계 샘플](http://www.ciboard.co.kr/manual/tables)
 * [데이터베이스 정의](./database/Database.md)
-* [Db Index](./database/Index.md)
 * [Difference Between Statement & PreparedStatement In JDBC](./database/Difference%20Between%20Statement%20And%20PreparedStatement%20In%20JDBC.md)
-* [조인 SQL](./database/Join%20(SQL).md)
-* [트랜잭션](./database/Transaction.md)
-* [트랜잭션 고립성(isolation) 레벨](./database/Transaction_Isolation_Levels.md)
+* [index](./database/Index.md)
+* [join sql](./database/Join%20(SQL).md)
+* [transaction](./database/Transaction.md)
+* [transaction isolation level](./database/Transaction_Isolation_Levels.md)
 * [mysql truncate](./database/truncate.md)
+* [mysql clustered index & secondary indexes](./database/clustered_index_and_secondary_indexes)
 * [mysql query : show processlist](./database/show_processlist.md)
 
 ### 소프트웨어 아키텍처
