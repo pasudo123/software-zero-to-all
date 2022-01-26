@@ -58,6 +58,17 @@ services:
   * 경우에 동시성이 상당히 떨어질 수 있다. (p.171)
 * 잠금을 해제하기 위해선 processlist 에서 kill 명령을 통해 해당하는 pid 를 죽여야 한다.
 
+#### 2.4 MySQL 격리수준
+* 격리수준 : 여러 트랜잭션이 동시에 처리될 때, 특정 트랜잭션이 다른 트랜잭션에서 변경하거나 조회되는 데이터를 볼 수 있게 허용할지 말지를 결정
+* `SERIALIZABLE` 격리수준이 아니라면, 크게 성능의 개선이나 저하는 발생하지 않는다.
+* 격리수준
+  * READ UNCOMMITTED
+  * READ COMMITTED
+  * REPEATABLE READ
+  * SERIALIZABLE
+  * [자세한 내용은 여기를 참고](../database/Transaction_Isolation_Levels.md)
+
+
 ### 20.0 인덱스를 잘못 적용한 케이스
 index 값을 조작한 경우
 ```sql

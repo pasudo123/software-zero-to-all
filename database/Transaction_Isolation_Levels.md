@@ -15,11 +15,13 @@ __이때 트랜잭션 2는 갱신된 데이터를 읽어와도 되는가 하는 
 
 ## 병렬 수행되는 트랜잭션에서 데이터가 모순되는 대표적 세가지 상태
 ### __1.  Dirty Read__<BR />
-다른 트랜잭션이 변경했지만, 아직 커밋하지 않은 데이터를 읽어내는 것이다. Dirty 는 흑백이 구분되지 않은 어중간한 데이터라는 느낌을 나타낸다.
+다른 트랜잭션이 COMMIT 이나 ROLLBACK 을 하지 않았음에도 불구하고, 또 다른 트랜잭션에서 해당 데이터를 읽어내는 것이다. Dirty 는 흑백이 구분되지 않은 어중간한 데이터라는 느낌을 나타낸다. 정합성에 문제가 많은 격리 수준.
 
 
 ### __2.  Unrepeatable Read__<BR />
-트랜잭션 내에서 같은 데이터를 여러 번 읽을 때, 다른 트랜잭션이 해당 데이터를 `변경` 하면 이전에 읽은 데이터와 `다른` 데이터를 읽어내는 것이다. 같은 값을 반복해서 읽을 수 없다는 의미에서 __Unrepeatable__ 이라는 표현이 사용되었다.
+트랜잭션 내에서 같은 데이터를 여러 번 읽을 때, 다른 트랜잭션이 해당 데이터를 `변경` 하면 이전에 읽은 데이터와 `다른` 데이터를 읽어내는 것이다. `같은 값을 반복해서 읽을 수 없다` 는 의미에서 __Unrepeatable__ 이라는 표현이 사용되었다.
+* A 라는 트랜잭션이 SELECT 를 간격을 두고하고 있는 와중에 B 라는 트랜잭션이 그 사이에 UPDATE 를 친 경우를 생각하면 된다. (이해안되면 real mysql p.179 를 본다.)
+
 
 ### __3.  Phantom Read__<BR />
 트랜잭션 내에서 같은 데이터를 여러 번 읽을 때, 다른 트랜잭션이 새로 레코드를 `추가` 하면 새로이 추가된 레코드를 읽어내는 것이다. Phantom 은 유령이라는 의미로 없던 내용이 다시 나타남을 생각하면 된다.
@@ -28,22 +30,22 @@ __이때 트랜잭션 2는 갱신된 데이터를 읽어와도 되는가 하는 
 ## 격리성 (Isolcation) 수준의 종류
 |                  독립성 수준                     |           의미            |
 |------------------------------------------------|--------------------------|
-| __Isolation : Read UnCommitted__ |다른 트랜잭션이 변경하였고, 아직 커밋하지 않은 데이터도 읽어낼 수 `있음`|
+| __Isolation : Read UnCommitted__ |다른 트랜잭션이 커밋되기 전에 데이터를 변경하였고, 또다른 트랜잭션에서 아직 커밋하지 않은 데이터도 읽어낼 수 `있음`|
 | __Isolation : Read Committed__ |다른 트랜잭션이 변경하였지만, 커밋을 하지 않았기 때문에 읽을 수가 `없음`. 대신 커밋 수행 시 읽어들일 수 있음|
 | __Isolation : Repeatable Read__ |트랜잭션 내에서 여러 번 데이터를 읽어올 때, <BR /> 다른 트랜잭션이 도중에 데이터를 갱신해도 여전히 같은 값을 읽어낼 수 있음 (이렇게 하는 이유는 스냅샷이 특정시점에 기록되기 때문에) |
 | __Isolation : Serializable__ |트랜잭션을 하나씩 순서대로 처리해서 독립시킴|
 
 ## 격리성 수준(isolation level) 과 데이터가 모순된 상태 (O : 허용, X : 불허)
-|           독립성 수준          |   Dirty Read   |    Unrepeatable Read     |    Phantom Read    |
+|           격리성 수준          |   Dirty Read   |    Unrepeatable Read     |    Phantom Read    |
 |------------------------------|------|------|------|
 | __Isolation Read UnCommitted__ | O | O | O |
 | __Isolation Read Committed__ | X | O | O |
-| __Isolation Repeatable Read__ | X | X | O (mysql 에서 X 이기도 함) |
+| __Isolation Repeatable Read__ | X | X | O (mysql 의 InnoDB 스토리지 엔진은 해당사항이 아니다.) |
 | __Isolation Serializable__ | X | X | X |
    
 아래로 내려올수록 모순된 상태를 허용하지 않고 격리성의 수준은 높아진다. 여기서 항상 격리성이 높은 __Isolation Serializable__ 을 생각할 수 있지만, 격리성이 높아지면 그만큼 성능이 나빠진다. 
 * 격리성이 높아지다는 것은 트랜잭션이 데이터에 동시에 접근하는 동시성이 떨어진다. 결국 이는 퍼포먼스 하락으로 이어진다. 반면 데이터는 일관된다.
-* 추가적으로 다른 블로그의 글을 살펴보니 mysql 의 `REPEATABLE READ` 에서 `phantom read` 또한 발생되지 않는다고 하였다. 왜 그런지에 대한 설명은 실제 mysql document 에 보면 나와있었다.
+* 추가적으로 다른 블로그의 글을 살펴보니 mysql 의 InnoDB 스토리지 엔진은 갭락과 넥스트 키락 덕분에 `REPEATABLE READ` 에서 `phantom read` 또한 발생되지 않는다고 하였다. 왜 그런지에 대한 설명은 실제 mysql document 에 보면 나와있었다. (이해가 안되면 real mysql 8.0 의 p.183 을 살핀다.)
 
 ### `READ COMMITTED` 
 > Each consistent read, even within the same transaction, sets and reads its own fresh snapshot.
@@ -69,3 +71,4 @@ __이때 트랜잭션 2는 갱신된 데이터를 읽어와도 되는가 하는 
 * [transaction isolation level](https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html)
 * [set transaction statement](https://dev.mysql.com/doc/refman/8.0/en/set-transaction.html#set-transaction-access-mode)
 * [누군가의 글 : isolation level](https://jupiny.com/2018/11/30/mysql-transaction-isolation-levels/)
+* [real mysql 8.0](#)
