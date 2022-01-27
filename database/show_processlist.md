@@ -32,10 +32,14 @@ mysql> show processlist;
     * 스레드의 기본 데이터베이스, null 이라면 아무것도 선택하지 않은 상태를 의미한다.
 * Command
     * 클라이언트를 대신하여 스레드가 실행하는 명령타입.
+    * `SLEEP` : 클라이언트가 새 명령을 보내기를 기다리고 있는 상태
+    * `QUERY` : 스레드에 의해서 사용자 클라이언트가 쿼리를 실행한 것을 표현하는 상태
+    * [그 외 해당 링크](https://dev.mysql.com/doc/refman/8.0/en/thread-commands.html)를 살핀다.
 * Time
 * State
     * 스레드가 수행 중인 작업을 나타내는 조치. 이벤트 또는 상태이다.
     * state 에 대한 상세한 내용은 [해당링크](https://dev.mysql.com/doc/refman/8.0/en/general-thread-states.html)를 살핀다.
+    * 
 * Info
     * 스레드가 실행중인 명령문.
     * 스레드가 실행한 명령문이 없는 경우에는 NULL 을 표현한다.
