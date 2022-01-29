@@ -99,3 +99,17 @@ SELECT * FROM tb_test WHERE age = 2;
 # index 를 제대로 탔음 : Non_Unique 인덱스를 탔다는 의미
 SELECT * FROM tb_test WHERE age = '2';
 ```
+
+#### 20.1 WHERE 인덱스 사용, (+ GROUP BY, ORDER BY)
+* `다중컬럼 기준` 으로 설명한다.
+  * WHERE 절만 쓰는 경우
+    * 다중컬럼 컬럼의 인덱스 순서를 WHERE 조건 컬럼 순서와 `맞출 필요가 없다.` -> 옵티마이저가 알아서 처리한다. -> 테스트 해보니 그렇다.
+  * WHERE + GROUP BY 같이 쓰는 경우
+    * WHERE 조건 컬럼과 GROUP BY 컬럼은 다중컬럼 순서와 `맞출 필요가 있다.`
+    * 맞추지 않는다면 단순 Index Range Scan 을 타게 된다.
+    * 컬럼이 중간에 비면 안된다. COL_01, COL_02, COL_03 을 다중컬럼 인덱스의 순서로 작성했따면 그대로 WHERE, GROUP BY 절도 동일한 순서로 가야한다.
+  * WHERE + ORDER BY
+    *  WHERE + ORDER BY 와 동일한 수준이다.
+  * WHERE + GROUP BY + ORDER BY
+    * `GROUP BY 와 ORDER BY 는 같이 인덱스를 사용` 해야 효과가 발휘된다.
+  * 관련 플로우는 real mysql 8.0 의 65 장을 살핀다.

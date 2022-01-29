@@ -17,6 +17,7 @@
 * [mysql truncate](./database/truncate.md)
 * [mysql clustered index & secondary indexes](./database/clustered_index_and_secondary_indexes.md)
 * [mysql query : show processlist](./database/show_processlist.md)
+* [mysql query : 단일 인덱스, 다중 인덱스 차이는 뭔가](./database/single_index_composite_index.md)
 
 ### 소프트웨어 아키텍처
 * [c4 modeling](https://pasudo123.tistory.com/469)
@@ -143,6 +144,7 @@
 * [클린코드](https://github.com/pasudo123/mango-banana-clean-code)
 * [ddd : 도메인 주도 설계 철저 입문](https://github.com/pasudo123/ddd)
 * [real mysql 8.0](./book/realmysql80.md)
+  * []
 
 ## 👨‍🚀 궁금증
 * [왜 jvm 인자값은 -D 로 시작하는가?](./personal/jvm_d_option.md)
