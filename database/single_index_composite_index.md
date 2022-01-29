@@ -42,7 +42,8 @@ $ SELECT first_name, hire_date FROM test_employees_multiple_index WHERE first_na
     <img src="../Image/2022-01-29_where_1_multi.png" />
 </kbd>
 
-> SELECT 절에 first_name, hire_date 값만 조회하는 상태에서 복합인덱스의 cost 가 더 낮게 낮온다. 만약에 SELECT * FROM 으로 조회한다면 두 쿼리의 cost 는 동일하다.
+* SELECT 절에 first_name, hire_date 값만 조회하는 상태에서 복합인덱스의 cost 가 더 낮게 나온다. 
+* 만약에 SELECT * FROM 으로 조회한다면 두 쿼리의 cost 는 동일하다.
 
 ### 3.2 WHERE 절 컬럼 2개로 조회할 경우 성능
 #### 3.2.1 단일 인덱스 테이블. 두 개의 조건절을 가지고 조회한다.
