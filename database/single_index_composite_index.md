@@ -23,23 +23,20 @@ first_name 과 hire_date 는 복합 인덱스로 존재하고 있는 상태 (fir
 
 ## 3.0 쿼리비교
 ### 3.1 WHERE 절 컬럼 1개로 조회할 경우 성능
-단일 인덱스 테이블
+
+#### 3.1.1 단일 인덱스 테이블
 ```sql 
 $ SELECT first_name, hire_date FROM test_employees_single_index WHERE first_name = 'Sanjai';
 ```
-
-성능확인
 
 <kbd>
     <img src="../Image/2022-01-29_where_1_single.png" />
 </kbd>
 
-복합인덱스를 가진 테이블에 WHERE 절 수행
+#### 3.1.2 복합인덱스를 가진 테이블에 WHERE 절 수행
 ```sql
 $ SELECT first_name, hire_date FROM test_employees_multiple_index WHERE first_name = 'Sanjai';
 ```
-
-성능확인
 
 <kbd>
     <img src="../Image/2022-01-29_where_1_multi.png" />
@@ -48,24 +45,20 @@ $ SELECT first_name, hire_date FROM test_employees_multiple_index WHERE first_na
 > SELECT 절에 first_name, hire_date 값만 조회하는 상태에서 복합인덱스의 cost 가 더 낮게 낮온다. 만약에 SELECT * FROM 으로 조회한다면 두 쿼리의 cost 는 동일하다.
 
 ### 3.2 WHERE 절 컬럼 2개로 조회할 경우 성능
-단일 인덱스 테이블. 두 개의 조건절을 가지고 조회한다.
+#### 3.2.1 단일 인덱스 테이블. 두 개의 조건절을 가지고 조회한다.
 ```sql
 $ SELECT * FROM test_employees_single_index WHERE first_name = 'Sanjai' AND hire_date = '1987-01-14';
 ```
-
-성능확인
 
 <kbd>
     <img src="../Image/2022-01-29_where_2_single.png" />
 </kbd>
 
 
-복합 인덱스 테이블. 두 개의 조건절을 가지고 조회한다.
+#### 3.2.2 복합 인덱스 테이블. 두 개의 조건절을 가지고 조회한다.
 ```sql
 $ SELECT * FROM test_employees_multiple_index WHERE first_name = 'Sanjai' AND hire_date = '1987-01-14';
 ```
-
-성능확인
 
 <kbd>
     <img src="../Image/2022-01-29_where_2_multi.png" />
@@ -78,12 +71,11 @@ $ SELECT * FROM test_employees_multiple_index WHERE first_name = 'Sanjai' AND hi
     * 풀 테이블 스캔보다는 빠르지만, 제대로 된 인덱스 하나를 레인지 스캔하는 것보단 느릴 수 있다.
 
 ### 3.3 WHERE + ORDER BY 를 같이 쓰는 경우
-`단일 인덱스 테이블`에서 WHERE 과 ORDER BY 를 같이 써본다.
+
+#### 3.3.1 `단일 인덱스 테이블`에서 WHERE 과 ORDER BY 를 같이 써본다.
 ```sql 
 $ SELECT * FROM test_employees_single_index WHERE first_name = 'Xuejia' ORDER BY hire_date;
 ```
-
-성능확인
 
 <kbd>
     <img src="../Image/2022-01-29_where_order_by_single.png" />
@@ -94,12 +86,10 @@ $ SELECT * FROM test_employees_single_index WHERE first_name = 'Xuejia' ORDER BY
     * filesort 는 정렬작업이 쿼리실행 시, 수행됨으로써 건수가 많아지면 쿼리의 응답속도가 느리게 된다.
     
 
-`복합 인덱스 테이블`에서 WHERE 과 ORDER BY 를 같이 써본다.
+#### 3.3.2 `복합 인덱스 테이블`에서 WHERE 과 ORDER BY 를 같이 써본다.
 ```sql
 $ SELECT * FROM test_employees_multiple_index WHERE first_name = 'Xuejia' ORDER BY hire_date;
 ```
-
-성능확인
 
 <kbd>
     <img src="../Image/2022-01-29_where_order_by_multi.png" />
@@ -107,12 +97,10 @@ $ SELECT * FROM test_employees_multiple_index WHERE first_name = 'Xuejia' ORDER 
 
 * cost 는 single 인덱스가 걸린것과 동일한데, order by 시 인덱스를 이용해서 소팅하고 있어서 별도의 filesort 는 사용하고 있지 않다.
 
-`복합 인덱스 테이블`에서 WHERE 과 ORDER BY 의 `컬럼 순서를 변경`해본다.
+#### 3.3.3 `복합 인덱스 테이블`에서 WHERE 과 ORDER BY 의 `컬럼 순서를 변경`해본다.
 ```sql
 $ SELECT * FROM test_employees_multiple_index WHERE hire_date = '1985-06-11' ORDER BY first_name;
 ```
-
-성능확인
 
 <kbd>
     <img src="../Image/2022-01-29_where_order_by_multi_2.png" />
