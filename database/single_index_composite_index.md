@@ -64,11 +64,11 @@ $ SELECT * FROM test_employees_multiple_index WHERE first_name = 'Sanjai' AND hi
     <img src="../Image/2022-01-29_where_2_multi.png" />
 </kbd>
 
-> SELECT 절로 조회할 시, 복합인덱스의 성능이 더 좋게 나온다.   
-> 단일 인덱스는 Index Merge 를 수행한다.
-* 인덱스 머지란? 
-    * 인덱스를 이용하며 테이블을 읽을 때, 하나의 테이블에서 2개 이상의 인덱스를 이용하는 경우
-    * 풀 테이블 스캔보다는 빠르지만, 제대로 된 인덱스 하나를 레인지 스캔하는 것보단 느릴 수 있다.
+* SELECT 절로 조회할 시, 복합인덱스의 성능이 더 좋게 나온다.   
+    * 단일 인덱스는 Index Merge 를 수행한다.
+    * 인덱스 머지란? 
+        * 인덱스를 이용하며 테이블을 읽을 때, 하나의 테이블에서 2개 이상의 인덱스를 이용하는 경우
+        * 풀 테이블 스캔보다는 빠르지만, 제대로 된 인덱스 하나를 레인지 스캔하는 것보단 느릴 수 있다.
 
 ### 3.3 WHERE + ORDER BY 를 같이 쓰는 경우
 
@@ -95,7 +95,7 @@ $ SELECT * FROM test_employees_multiple_index WHERE first_name = 'Xuejia' ORDER 
     <img src="../Image/2022-01-29_where_order_by_multi.png" />
 </kbd>
 
-* cost 는 single 인덱스가 걸린것과 동일한데, order by 시 인덱스를 이용해서 소팅하고 있어서 별도의 filesort 는 사용하고 있지 않다.
+* cost 는 단일인덱스 테이블에서 측정한 것과 동일한데, order by 시 인덱스를 이용해서 소팅하고 있어서 별도의 filesort 는 사용하고 있지 않다.
 
 #### 3.3.3 `복합 인덱스 테이블`에서 WHERE 과 ORDER BY 의 `컬럼 순서를 변경`해본다.
 ```sql
