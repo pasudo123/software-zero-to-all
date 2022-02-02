@@ -101,6 +101,7 @@ SELECT * FROM tb_test WHERE age = '2';
 ```
 
 #### 20.1 WHERE 인덱스 사용, (+ GROUP BY, ORDER BY)
+* `WHERE 가 먼저 선행되어야 이후에 GROUP BY, ORDER BY 를 동작시킬 수 있다.`
 * `다중컬럼 기준` 으로 설명한다.
   * WHERE 절만 쓰는 경우
     * 다중컬럼 컬럼의 인덱스 순서를 WHERE 조건 컬럼 순서와 `맞출 필요가 없다.` -> 옵티마이저가 알아서 처리한다. -> 테스트 해보니 그렇다.
