@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 단일인덱스와 복합인덱스 성능 차이 확인
 real mysql 을 읽다가 다중 컬럼 인덱스 내, 단일 인덱스를 여러개 둬서 복합인덱스처럼 쓰면 안될까? 라는 생각이 들었다. 결론부터 말하면 `성능차이` 가 `존재` 한다.
 
@@ -12,12 +11,6 @@ mysql> SELECT VERSION();
 +-----------+
 1 row in set (0.00 sec)
 ```
-=======
-# 단일 인덱스와 복합인덱스 성능 차이 확인
-* real mysql 을 읽다가 다중 컬럼 인덱스 내, 단일 인덱스를 여러개 둬서 복합인덱스처럼 쓰면 안될까? 라는 생각이 들었다.
-* 그래서 성능을 확인해보도록 한다. `mysql version 8.0.27` 으로 테스트했다.
-* 결론부터 말하면 `성능 차이` 가 있다.
->>>>>>> 61eda9f8cf425ccb6d99057ac41063d5b1f4cdcb
 
 ## 1.0 사전준비
 * 테이블을 두 개 준비한다.
@@ -126,7 +119,6 @@ $ SELECT * FROM test_employees_multiple_index WHERE hire_date = '1985-06-11' ORD
 
 * real mysql의 내용처럼 컬럼의 순서 (first_name, hire_date) 가 WHERE 과 ORDER BY 의 순서와 미스매치되고 있어서 WHERE 절에 대한 인덱스 사용이 안된다. 그로인해 ORDER 쪽도 인덱스 사용을 못하고 있다. real mysql 60페이지 참고
 
-<<<<<<< HEAD
 ## 4.0 테스트하면서 추가로 확인한 사항
 #### 4.1 단일인덱스, 복합인덱스 둘 다 단순 ORDER BY {column} 으로 하는 경우에 table full scan 을 탄다. 그리고 filesort 를 두 쿼리 모두 사용한다.
 ```sql 
@@ -139,8 +131,3 @@ $ SELECT * FROM test_employees_multiple_index ORDER BY hire_date;
 * 단일인덱스로 WHERE, ORDER BY 를 이용하면 WHERE 절에서 조건은 타지만 ORDER BY 에서는 filesort 를 사용한다.
     * 복합인덱스로 WHERE, ORDER BY 를 이용할 시에는 인덱스 컬럼 순서에 맞게 쿼리작성되면 filesort 를 사용하지 않는다.
 * 커버링 인덱스가 아닌 단순 WHERE 절로만 조회하는 경우 단일인덱스나, 복합인덱스 성능은 동일하다. 다만 WHERE + ORDER BY, WHERE + GROUP BY, WHERE + ORDER BY + GROUP BY 를 쓰려고 하는 경우에는 복합인덱스를 고려할 수 있도록 한다.
-=======
-## 4.0 결론
-* 단일 인덱스를 써도 충분히 인덱스를 태울 수 있다.
-* 하지만 호출되는 쿼리가 복합인덱스를 이용함으로써 성능최적화가 된다면 복합인덱스를 이용할 수 있도록 한다.
->>>>>>> 61eda9f8cf425ccb6d99057ac41063d5b1f4cdcb
