@@ -1,7 +1,7 @@
 # real mysql 8.0
 real mysql 을 읽으면서 기록.
 
-### 0.0 테스트를 위한 mysql 설치
+### 0 테스트를 위한 mysql 설치
 ```yml
 version: '3.7'
 services:
@@ -18,12 +18,12 @@ services:
       - "33666:3306"
 ```
 
-### 1.0 아키텍처
+### 1 아키텍처
 <kbd>
   <img alt="" src="../Image/realmysq8.0_chapter04_1.drawio.png" />
 </kbd>
 
-### 2.0 트랜잭션과 잠금
+### 2 트랜잭션과 잠금
 #### 2.1 트랜잭션
 * InnoDB 와 MyISAM 의 두 스토리지 엔진간 commit 및 rollback 차이
   * InnoDB 는 트랜잭션 원칙에 입각하여 전체다 커밋되거나 아니면 에러 발생 시 롤백된다.
@@ -68,8 +68,43 @@ services:
   * SERIALIZABLE
   * [자세한 내용은 여기를 참고](../database/Transaction_Isolation_Levels.md)
 
+### 3 인덱스
+#### 3.1 디스크 읽기 방식
+* 랜덤IO 방식과 순차IO 방식이 존재한다.
 
-### 20.0 인덱스를 잘못 적용한 케이스
+* dbms 의 인덱스는 컬럼의 값을 주어진 순서대로 미리 정렬해서 보관한다.
+* 인덱스와 데이터파일의 저장되는 방식은 다르다.
+  * 인덱스 : sortedList 처럼 정렬된 상태로 저장된다.
+  * 데이터파일 : arrayList 처럼 저장된 순서에 맞게 그대로 유지힌다.
+* 인덱스는 sortedList 처럼 정렬된 상태로 저장되기 때문에 INSERT, DELETE, UPDATE 처리에 대해서 느린 반면에 SELECT 에서는 월등한 성능을 보여준다.
+  * `인덱스는 SELECT 성능을 높이기 위한` 기능이라고 볼 수 있다.
+
+#### 3.2 B-Tree 인덱스
+* db 인덱스 알고리즘에서 가장 흔하게 사용된다.
+  * B-Tree 는 인덱스 구조체 내에서 항상 `정렬된` 상태를 유지한다.
+* B-Tree 의 B 는 `Balance` 를 의미한다. 
+
+##### 3.2.1 B-Tree 인덱스의 구조 및 특성
+* [관련 그림은 여기서](https://hoing.io/archives/5960)
+  * b-tree index 구조에 대한 그림이 있다. 아니면 real mysql8.0 p.221 을 참고한다.
+* 루트노드, 브랜치노드, 리프노드, 데이터파일이 존재
+ * 루트노드 : 최상위에 존재하는 노드
+ * 브랜치노드 : 루트노드와 리프노드를 연결하는 중간다리 노드
+ * 리프노드 : 실제 데이터 레코드를 찾아가기 위한 주솟값을 가지고 있는 노드
+ * 데이터 파일의 레코드는 정렬되어 있지 않고 임의의 순서대로 저장되어 있다.
+* 각각의 노드는 `page` 로 저장되어 있다.
+* `page`
+  * 운영체제의 page 를 의미한다.
+  * dbms 는 데이터들을 디스크에 저장하는데 필요에 따라서 디스크에 저장된 데이터들을 메모리에 올리려고 한다.
+  * 하지만 디스크에 있는 전체의 데이터를 메모리에 올리지 못하므로, 그에 따라 데이터를 논리적인 기준으로 일정한 크기의 `page(=block)` 로 나누고 그것을 메모리에 적재하게 된다.
+  * dbms 에서는 데이터를 read/write 할 때에 page `page` 단위로 입출력하게 될 것이다.
+  * 추가적으로 메모리에 유지하는 페이지들을 관리하는 모듈이 별도로 있는데, page buffer 또는 buffer manager 라는 이름도 있는거 같다.
+  * https://www.datanet.co.kr/news/articleView.html?idxno=115592
+  * https://d2.naver.com/helloworld/407507
+
+
+
+### 20 인덱스를 잘못 적용한 케이스
 index 값을 조작한 경우
 ```sql
 ## salary 는 인덱스 설정이 되어있음
