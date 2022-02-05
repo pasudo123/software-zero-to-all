@@ -1,6 +1,7 @@
 # real mysql 8.0
 real mysql 을 읽으면서 기록.
 
+---
 ### 0 테스트를 위한 mysql 설치
 ```yml
 version: '3.7'
@@ -18,11 +19,13 @@ services:
       - "33666:3306"
 ```
 
+---
 ### 1 아키텍처
 <kbd>
   <img alt="" src="../Image/realmysq8.0_chapter04_1.drawio.png" />
 </kbd>
 
+---
 ### 2 트랜잭션과 잠금
 #### 2.1 트랜잭션
 * InnoDB 와 MyISAM 의 두 스토리지 엔진간 commit 및 rollback 차이
@@ -68,6 +71,7 @@ services:
   * SERIALIZABLE
   * [자세한 내용은 여기를 참고](../database/Transaction_Isolation_Levels.md)
 
+---
 ### 3 인덱스
 #### 3.1 디스크 읽기 방식
 * 랜덤IO 방식과 순차IO 방식이 존재한다.
@@ -102,8 +106,7 @@ services:
   * https://www.datanet.co.kr/news/articleView.html?idxno=115592
   * https://d2.naver.com/helloworld/407507
 
-
-
+---
 ### 20 인덱스를 잘못 적용한 케이스
 index 값을 조작한 경우
 ```sql
