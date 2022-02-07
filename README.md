@@ -144,6 +144,7 @@
 * [클린코드](https://github.com/pasudo123/mango-banana-clean-code)
 * [ddd : 도메인 주도 설계 철저 입문](https://github.com/pasudo123/ddd)
 * [real mysql 8.0](./book/realmysql80.md)
+* [쿠버네티스 인 액션](./book/k8s_in_action.md)
 
 ## 👨‍🚀 궁금증
 * [왜 jvm 인자값은 -D 로 시작하는가?](./personal/jvm_d_option.md)
