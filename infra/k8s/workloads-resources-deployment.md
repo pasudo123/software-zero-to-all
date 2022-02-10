@@ -75,7 +75,37 @@ nginx-deployment-66b6c48dd5-vgvhc   1/1     Running   0          2m14s   app=ngi
 * 해당 레이블은 디플로이먼트의 자식 레플리카셋이 겹치지 않도록 보장한다. 
    * 레플리카셋의 PodTemplate 을 해싱하고, 해시 결과를 레플리카셋 셀렉터, 파드 템플릿 레이블 및 레플리카셋이 가질 수 있는 기존의 모든 파드에 레이블 값으로 추가해서 사용하도록 생성한다.
 
-## 뒤에는 추가적인 공부가 더 필요하다.
+### deployment 롤백하기
+__디플로이먼트를 이전버전으로 롤백한다__
+```
+$ kubectl rollout undo deployment/{deployment-name}
+```
+
+__디플로이먼트를 특정한 버전으로 롤백한다.__
+```
+$ kubectl rollout undo deployment/{deployment-name} --to-revision={revision-number}
+```
+
+__특정한 버전으로 롤백하기 위한 리비전 번호를 살펴보려고 한다면 아래와 같이 수행__
+```
+$ kubectl rollout history deployment/{deployment-name}
+```
+
+### deployment 재실행하기
+__deployment 재실행하기__
+```
+$ kubectl rollout restart deployment/{deployment-name}
+```
+
+### deployment 리소스 스케일링 
+__리소스 개수 조정__
+```
+$ kubectl scale --replicas={변경할 개수} deployment/{deployment-name}
+```
+
+
+### 뒤에는 추가적인 공부가 더 필요하다.
 
 ## reference
 * https://kubernetes.io/ko/docs/concepts/workloads/controllers/deployment/
+* https://kubernetes.io/ko/docs/reference/kubectl/cheatsheet/ : kubectl 자주 사용하는 명령어
