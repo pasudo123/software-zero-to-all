@@ -16,6 +16,7 @@
 * [transaction isolation level](./database/Transaction_Isolation_Levels.md)
 * [mysql truncate](./database/truncate.md)
 * [mysql clustered index & secondary indexes](./database/clustered_index_and_secondary_indexes.md)
+* [mysql table, column 캐릭터 셋 설정](./database/table_column_characterset.md)
 * [mysql query : show processlist](./database/show_processlist.md)
 * [mysql query : 단일 인덱스, 다중 인덱스 차이는 뭔가](./database/single_index_composite_index.md)
 
