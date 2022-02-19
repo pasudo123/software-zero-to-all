@@ -121,6 +121,7 @@ $ SELECT * FROM test_employees_multiple_index WHERE hire_date = '1985-06-11' ORD
 
 ## 4.0 테스트하면서 추가로 확인한 사항
 #### 4.1 단일인덱스, 복합인덱스 둘 다 단순 ORDER BY {column} 으로 하는 경우에 table full scan 을 탄다. 그리고 filesort 를 두 쿼리 모두 사용한다.
+* 결과적으로 인덱스를 가지고 order by 만 단독으로 사용하는 경우에는 인덱스의 장점을 누릴 수 없다.
 ```sql 
 ## 아래의 두 쿼리는 모두 동일하게 table_full_scan + filesort(X) 이다.
 $ SELECT * FROM test_employees_single_index ORDER BY hire_date;
