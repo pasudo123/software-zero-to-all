@@ -1,4 +1,6 @@
 # k8s 
+* [kubenetes-zero-to-all](./infra/k8s/k8s-zero-to-all.md)
+
 ## 오브젝트
 * [what-does-mean-k8s-object : 쿠버네티스 오브젝트란](./what-does-mean-k8s-object.md)
 * [k8s-object-management : 쿠버네티스 오브젝트 관리](./k8s-object-management.md)
