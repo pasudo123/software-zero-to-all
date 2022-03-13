@@ -142,6 +142,7 @@
 ## 👨‍🚀  book : 개발서적(책) 본 것들 정리
 * [오브젝트](https://github.com/coding-buddha/object-by-kotlin/blob/main/README-object.md)
 * [클린코드](https://github.com/pasudo123/mango-banana-clean-code)
+* [클린아키텍처](https://github.com/pasudo123/newyear-clean-architecture)
 * [ddd : 도메인 주도 설계 철저 입문](https://github.com/pasudo123/ddd)
 * [real mysql 8.0](./book/realmysql80.md)
 * [쿠버네티스 인 액션](./book/k8s_in_action.md)
