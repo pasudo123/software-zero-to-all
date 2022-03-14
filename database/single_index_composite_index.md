@@ -12,6 +12,7 @@ mysql> SELECT VERSION();
 1 row in set (0.00 sec)
 ```
 
+---
 ## 1.0 사전준비
 * 테이블을 두 개 준비한다.
     * test_employees_single_index (단일 인덱스로 설정된 테이블)
@@ -19,6 +20,7 @@ mysql> SELECT VERSION();
 * `두 테이블 모두 데이터의 양은 동일` 하다. 
     * `300024 rows`
 
+---
 ## 2.0 index 설정
 first_name 과 hire_date 는 각각 단일 인덱스로 존재하고 있는 상태
 <kbd>
@@ -31,6 +33,7 @@ first_name 과 hire_date 는 복합 인덱스로 존재하고 있는 상태
     <img src="../Image/2022-01-29_multi_index_table.png" />
 </kbd>
 
+---
 ## 3.0 쿼리비교
 ### 3.1 WHERE 절 컬럼 1개로 조회할 경우 성능
 
@@ -55,6 +58,7 @@ $ SELECT first_name, hire_date FROM test_employees_multiple_index WHERE first_na
 * SELECT 절에 first_name, hire_date 값만 조회하는 상태에서 복합인덱스의 cost 가 더 낮게 나온다. 
 * 만약에 SELECT * FROM 으로 조회한다면 두 쿼리의 cost 는 동일하다.
 
+---
 ### 3.2 WHERE 절 컬럼 2개로 조회할 경우 성능
 #### 3.2.1 단일 인덱스 테이블. 두 개의 조건절을 가지고 조회한다.
 ```sql
@@ -81,8 +85,8 @@ $ SELECT * FROM test_employees_multiple_index WHERE first_name = 'Sanjai' AND hi
         * 인덱스를 이용하며 테이블을 읽을 때, 하나의 테이블에서 2개 이상의 인덱스를 이용하는 경우
         * 풀 테이블 스캔보다는 빠르지만, 제대로 된 인덱스 하나를 레인지 스캔하는 것보단 느릴 수 있다.
 
+---
 ### 3.3 WHERE + ORDER BY 를 같이 쓰는 경우
-
 #### 3.3.1 `단일 인덱스 테이블`에서 WHERE 과 ORDER BY 를 같이 써본다.
 ```sql 
 $ SELECT * FROM test_employees_single_index WHERE first_name = 'Xuejia' ORDER BY hire_date;
@@ -119,6 +123,7 @@ $ SELECT * FROM test_employees_multiple_index WHERE hire_date = '1985-06-11' ORD
 
 * real mysql의 내용처럼 컬럼의 순서 (first_name, hire_date) 가 WHERE 과 ORDER BY 의 순서와 미스매치되고 있어서 WHERE 절에 대한 인덱스 사용이 안된다. 그로인해 ORDER 쪽도 인덱스 사용을 못하고 있다. real mysql 60페이지 참고
 
+---
 ## 4.0 테스트하면서 추가로 확인한 사항
 #### 4.1 단일인덱스, 복합인덱스 둘 다 단순 ORDER BY {column} 으로 하는 경우에 table full scan 을 탄다. 그리고 filesort 를 두 쿼리 모두 사용한다.
 * 결과적으로 인덱스를 가지고 order by 만 단독으로 사용하는 경우에는 인덱스의 장점을 누릴 수 없다.
