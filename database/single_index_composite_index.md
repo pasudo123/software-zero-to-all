@@ -75,6 +75,8 @@ $ SELECT * FROM employees_mul WHERE first_name = 'Jenwei';
    <img src="https://user-images.githubusercontent.com/17797352/158189221-1a3be813-d03e-498c-8e71-1d8e42184f88.png" />
 </kbd>
 
+> 위 둘의 코스트는 결과적으로 동일하다.!!
+
 ---
 ### 3.2 WHERE 절 컬럼 2개로 조회할 경우 성능
 #### 3.2.1 단일 인덱스 테이블. 두 개의 조건절을 가지고 조회한다.
