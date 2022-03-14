@@ -35,7 +35,7 @@ first_name 과 hire_date 는 복합 인덱스로 존재하고 있는 상태
 
 ---
 ## 3.0 쿼리비교
-### 3.1 WHERE 절 컬럼 1개로 조회할 경우 성능
+### 3.1 WHERE 절 컬럼 1개로 조회할 경우 성능 + 특정컬럼만 조회
 
 #### 3.1.1 단일 인덱스 테이블
 ```sql 
@@ -46,7 +46,7 @@ $ SELECT first_name, hire_date FROM test_employees_single_index WHERE first_name
     <img src="../Image/2022-01-29_where_1_single.png" />
 </kbd>
 
-#### 3.1.2 복합인덱스를 가진 테이블에 WHERE 절 수행
+#### 3.1.2 복합인덱스를 가진 테이블에 WHERE 절 수행 (feat. 커버링 인덱스)
 ```sql
 $ SELECT first_name, hire_date FROM test_employees_multiple_index WHERE first_name = 'Sanjai';
 ```
@@ -56,7 +56,24 @@ $ SELECT first_name, hire_date FROM test_employees_multiple_index WHERE first_na
 </kbd>
 
 * SELECT 절에 first_name, hire_date 값만 조회하는 상태에서 복합인덱스의 cost 가 더 낮게 나온다. 
-* 만약에 SELECT * FROM 으로 조회한다면 두 쿼리의 cost 는 동일하다.
+* `만약에 SELECT * FROM 으로 조회한다면 두 쿼리의 cost 는 동일하다.`
+
+### 3.1 (번외) WHERE 절 컬럼 1개로 조회할 경우 성능
+#### 3.1.a 단일인덱스 테이블, 단일인덱스로 조회
+```sql 
+$ SELECT * FROM employees_sig WHERE first_name = 'Jenwei';
+```
+<kbd>
+   <img src="https://user-images.githubusercontent.com/17797352/158188702-4ada7b69-cebb-4135-96f9-bdbde741169f.png" />
+</kbd>
+
+#### 3.1.b 복합인덱스 테이블, 단일 인덱스로 조회
+```sql
+$ SELECT * FROM employees_mul WHERE first_name = 'Jenwei';
+```
+<kbd>
+   <img src="https://user-images.githubusercontent.com/17797352/158189221-1a3be813-d03e-498c-8e71-1d8e42184f88.png" />
+</kbd>
 
 ---
 ### 3.2 WHERE 절 컬럼 2개로 조회할 경우 성능
