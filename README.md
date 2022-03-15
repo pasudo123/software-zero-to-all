@@ -144,6 +144,7 @@
 * [클린코드](https://github.com/pasudo123/mango-banana-clean-code)
 * [클린아키텍처](https://github.com/pasudo123/newyear-clean-architecture)
 * [ddd : 도메인 주도 설계 철저 입문](https://github.com/pasudo123/ddd)
+* [객체지향 사고 프로세스](https://pasudo123.tistory.com/446)
 * [real mysql 8.0](./book/realmysql80.md)
 * [쿠버네티스 인 액션](./book/k8s_in_action.md)
 
