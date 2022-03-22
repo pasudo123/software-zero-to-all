@@ -60,6 +60,8 @@ $ SELECT first_name, hire_date FROM test_employees_multiple_index WHERE first_na
 
 ### 3.1 (번외) WHERE 절 컬럼 1개로 조회할 경우 성능
 #### 3.1.a 단일인덱스 테이블, 단일인덱스로 조회
+
+__first_name 이 인덱스가 있는 걸로 조회__
 ```sql 
 $ SELECT * FROM employees_sig WHERE first_name = 'Jenwei';
 ```
@@ -67,7 +69,18 @@ $ SELECT * FROM employees_sig WHERE first_name = 'Jenwei';
    <img src="https://user-images.githubusercontent.com/17797352/158188702-4ada7b69-cebb-4135-96f9-bdbde741169f.png" />
 </kbd>
 
+__last_name 이 인덱스가 있는 걸로 조회__
+```
+$ SELECT * FROM employees_sig WHERE last_name = 'Ossenbruggen';
+```
+<kbd>
+   <img src="https://user-images.githubusercontent.com/17797352/159486679-6f1a4ef7-2dc3-44f2-80a3-446b2fa8b980.png" />
+</kbd>
+
+
 #### 3.1.b 복합인덱스 테이블, 단일 인덱스로 조회
+
+__first_name 이 인덱스가 있는 걸로 조회__
 ```sql
 $ SELECT * FROM employees_mul WHERE first_name = 'Jenwei';
 ```
@@ -75,7 +88,18 @@ $ SELECT * FROM employees_mul WHERE first_name = 'Jenwei';
    <img src="https://user-images.githubusercontent.com/17797352/158189221-1a3be813-d03e-498c-8e71-1d8e42184f88.png" />
 </kbd>
 
-> 위 둘의 코스트는 결과적으로 동일하다.!!
+__last_name 이 인덱스가 있는 걸로 조회 (두번째 인덱스 순서)__
+```
+$ SELECT * FROM employees_mul WHERE last_name = 'Ossenbruggen';
+```
+<kbd>
+   <img src="https://user-images.githubusercontent.com/17797352/159486289-0d506dbc-f682-438d-9114-c6bf836cdccf.png" />
+</kbd>
+
+   
+> 단일인덱스, 복합인덱스에서 첫번째 인덱스만 가지고 조회하는 것은 코스트가 동일하다.
+> 복합인덱스에서 첫번째 인덱스가 아닌 두번째 인덱스부터 조회하는 것은 성능상 이점이 없다. (풀스캔한다.)
+
 
 ---
 ### 3.2 WHERE 절 컬럼 2개로 조회할 경우 성능
