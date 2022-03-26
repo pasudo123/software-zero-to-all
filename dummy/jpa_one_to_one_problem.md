@@ -106,10 +106,12 @@ internal class BookRepositoryTest(
 ```
 
 ## 3-1. 연관관계 주인을 BookDetail 로 설정하고, 테스트 코드 실행 결과(mappedBy 설정)
-```kotlin
+```shell
 // book 만 전체 조회한다.
 val books = bookRepository.findAll()
+```
 
+```shell
 Hibernate: 
     select
         book0_.id as id1_0_,
@@ -157,10 +159,12 @@ Hibernate:
 ```
 
 ## 3-2. 연관관계 주인을 별도로 설정하지 않고 실행 (mappedBy 미설정)
-```kotlin
+```shell
 // book 만 전체 조회한다.
 val books = bookRepository.findAll()
+```
 
+```shell
 // book 만 한번 조회
 Hibernate: 
     select
@@ -178,7 +182,7 @@ Hibernate:
 ```
 
 ## 4. 차이
-* mappedBy 를 설정여부에 따라서, book 에 컬럼 book.detail_book_id 존재여부가 결정된다.
+* mappedBy 를 설정여부에 따라서, book 에 컬럼 `book.detail_book_id 존재여부` 가 결정된다.
 * book 에서 lazy loading 으로 detail 을 들고오기 위해선 사전에 detail_book_id 가 미존재한다면, 애초에 book 을 들고올때 BookDetail 까지 같이 들고온다.
 * detail_book_id 가 존재한다면, book 을 통해서 이후 BookDetail 까지 들고오는게 가능해지기 때문에 mappedBy 가 없는 건은 lazy loading 이 되고있다.
 * 결국 해당 컬럼 존재여부에 따라서 프록시 설정을 통해서 지연로딩의 동작여부가 결정된다고 볼 수 있다.
