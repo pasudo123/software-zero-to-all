@@ -156,7 +156,8 @@
 * [서비스레이어와 비즈니스 로직과의 관계](./personal/%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EB%A1%9C%EC%A7%81%EA%B3%BC%EC%9D%98%20%EA%B4%80%EA%B3%84.md)
 * [SPA vs MPA](./personal/SPA%20vs%20MPA.md)
 
-## 👨‍🚀 중복내용 & 더미
+## 👨‍🚀 중복내용 & 이런저런
 * [[ java ] classpath 의 json 파일 읽어들이기](boilerplate/reading_json_file_of_classpath.md)
-* [spring jpa 에서 hibernate 바인딩된 데이터 조회하기](./dummy/hibernate_show_binding_value.md)
+* [spring jpa 에서 hibernate 바인딩된 데이터 조회하기](./dummy/jpa_hibernate_show_binding_value.md)
 * [spring jpa 에서 querydsl 사용하기 with kotlin](./dummy/jpa_querydsl_with_kotlin.md)
+* [spring jpa 에서 @OneToOne, 1:1 관계에 대한 지연로딩이 안된다.](./dummy/jpa_one_to_one_problem.md)
