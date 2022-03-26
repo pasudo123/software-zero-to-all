@@ -159,3 +159,4 @@
 ## 👨‍🚀 중복내용 & 더미
 * [[ java ] classpath 의 json 파일 읽어들이기](boilerplate/reading_json_file_of_classpath.md)
 * [spring jpa 에서 hibernate 바인딩된 데이터 조회하기](./dummy/hibernate_show_binding_value.md)
+* [spring jpa 에서 querydsl 사용하기 with kotlin](./dummy/jpa_querydsl_with_kotlin.md)
