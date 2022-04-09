@@ -122,7 +122,7 @@
 * [leetcode](./leetcode)
 * [programmers](./programmers)
 
-## 👨‍🚀 리눅스, 쉘, 터미널 커맨드 등
+## 👨‍🚀 리눅스, 쉘, 터미널 커맨드, 툴 등
 * [jq command](./command/jq_command.md)
 * [ll command](./command/ll_comment.md)
 * [ln command : hard link & symbolic link](./command/linux_ln_command.md)
@@ -133,6 +133,7 @@
 * [htop command](./command/linux_htop_command.md)
 * [shell :: variable](./command/shell_variable_command.md)
 * [shell :: &> dev/null/](./command/shell_devnull.md)
+* [ngrok : 로컬개발환경을 인터넷으로 공유해주는 툴](https://www.lesstif.com/software-architect/ngrok-39126236.html)
 * https://crontab.guru/
 
 ## 👨‍🚀 실무관련
