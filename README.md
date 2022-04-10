@@ -1,5 +1,5 @@
 # SoftwareZeroToALL 👨🏻‍💻 👩🏻‍💻 
-부족한 소프트웨어 지식을 채워넣기 위한 공간.
+부족한 소프트웨어 지식을 채워넣기 위한 공간.t 
 
 ## 👨‍🚀 Computer Science
 ### network
