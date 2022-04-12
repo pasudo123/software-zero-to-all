@@ -131,6 +131,7 @@
 * [nohup command](./command/linux_nohup_command.md)
 * [watch command](./command/linux_watch_command.md)
 * [htop command](./command/linux_htop_command.md)
+* [rsync](./command/linux_rsync_cmd.md)
 * [shell :: variable](./command/shell_variable_command.md)
 * [shell :: &> dev/null/](./command/shell_devnull.md)
 * [ngrok : 로컬개발환경을 인터넷으로 공유해주는 툴](https://www.lesstif.com/software-architect/ngrok-39126236.html)
