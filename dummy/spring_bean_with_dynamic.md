@@ -81,8 +81,9 @@ class CustomBeanPostProcessor : BeanPostProcessor {
 * 동적으로 빈을 추가한다면 빈을 정의가 모두 로드된, BeanFactoryPostProcessor 에서 하는게 좋을듯 하다.   
 * 하지만 별도의 BeanFactoryPostProcessor SPI (servie provider interface) 로 제공하는 인터페이스가 있어 그걸 이용하려고 한다.
 * `BeanDefinitionRegistryPostProcessor` 을 아래의 코드처럼 이용할 수 있다.
-    * EnvironmentAware 를 사용하면, program arguments 로 보내준 `--{property}={values}` 값을 읽어들일 수 있다. (대시는 무조건 2개가 있어야 한다.)
-    * 아래에선 --services=apple,banana 를 읽어들이고 있다.
+    * EnvironmentAware 를 사용하면, 스프링 실행건에 대한 인자를 받을 수 있도록 해준다.
+    * program arguments 로 보내준 `--{property}={values}` 값을 읽어들일 수 있다. (대시는 무조건 2개가 있어야 한다.)
+        * 아래에선 --services=apple,banana 를 읽어들이고 있다.
 
 ```kotlin
 @Component
