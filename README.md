@@ -163,3 +163,4 @@
 * [spring jpa 에서 hibernate 바인딩된 데이터 조회하기](./dummy/jpa_hibernate_show_binding_value.md)
 * [spring jpa 에서 querydsl 사용하기 with kotlin](./dummy/jpa_querydsl_with_kotlin.md)
 * [spring jpa 에서 @OneToOne, 1:1 관계에 대한 지연로딩이 안된다.](./dummy/jpa_one_to_one_problem.md)
+* [spring bean : BeanFactoryPostProcessor & BeanPostProcessor 그리고 동적 Bean 추가](./dummy/spring_bean_with_dynamic.md)
