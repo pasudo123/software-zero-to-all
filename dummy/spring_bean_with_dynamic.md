@@ -9,7 +9,7 @@
     * BeanDefinition 은 Bean Instance 가 아니다.
     * Bean Instance 를 조작하려면, `BeanPostProcessor` 를 구현해야 한다.
 * `BeanFactoryPostProcessor` 에서 `beanFactory.getBean("~~~")` 으로 접근하지 말기.
-    * 기존 bean 의 라이프 사이클에 맞지 않을 뿐더러, 예상치 못한 오류가 발생할 수 있다. ([참고])(https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-extension-factory-postprocessors)
+    * 기존 bean 의 라이프 사이클에 맞지 않을 뿐더러, 예상치 못한 오류가 발생할 수 있다. ([참고](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-extension-factory-postprocessors))
 
 ### BeanFactoryPostProcessor 구현
 ```kotlin
@@ -70,7 +70,7 @@ class CustomBeanPostProcessor : BeanPostProcessor {
 ```
 
 ## 호출순서는?
-<img src="https://i.stack.imgur.com/jg555.png" />
+<img style="border: 1px solid black;" src="https://i.stack.imgur.com/jg555.png" />
 
 그림을 기준으로 아래와 같이 생각한다.
 * Bean detection -> `BeanFactoryPostProcessor` -> Bean Init & DI -> `BeanPostProcessor`
