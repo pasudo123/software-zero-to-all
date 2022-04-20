@@ -19,6 +19,7 @@
 * [mysql table, column 캐릭터 셋 설정](./database/table_column_characterset.md)
 * [mysql query : show processlist](./database/show_processlist.md)
 * [mysql query : 단일 인덱스, 다중 인덱스 차이는 뭔가](./database/single_index_composite_index.md)
+* [mysql log 조회하기](./database/mysql_show_log.md)
 
 ### 소프트웨어 아키텍처
 * [c4 modeling](https://pasudo123.tistory.com/469)
