@@ -124,19 +124,19 @@
 * [programmers](./programmers)
 
 ## 👨‍🚀 리눅스, 쉘, 터미널 커맨드, 툴 등
-* [jq command](./command/jq_command.md)
-* [ll command](./command/ll_comment.md)
-* [ln command : hard link & symbolic link](./command/linux_ln_command.md)
-* [kill command](./command/linux_kill_command.md)
-* [awk command](./command/linux_awk_command.md)
-* [nohup command](./command/linux_nohup_command.md)
-* [watch command](./command/linux_watch_command.md)
-* [htop command](./command/linux_htop_command.md)
+* [jq](./command/jq_command.md)
+* [ll](./command/ll_comment.md)
+* [ln : hard link & symbolic link](./command/linux_ln_command.md)
+* [kill](./command/linux_kill_command.md)
+* [awk](./command/linux_awk_command.md)
+* [nohup](./command/linux_nohup_command.md)
+* [watch](./command/linux_watch_command.md)
+* [htop](./command/linux_htop_command.md)
 * [rsync](./command/linux_rsync_cmd.md)
 * [shell :: variable](./command/shell_variable_command.md)
 * [shell :: &> dev/null/](./command/shell_devnull.md)
 * [ngrok : 로컬개발환경을 인터넷으로 공유해주는 툴](https://www.lesstif.com/software-architect/ngrok-39126236.html)
-* https://crontab.guru/
+* [crontab 표현식](https://crontab.guru/)
 
 ## 👨‍🚀 실무관련
 * [신규서비스를 진행하면서 (서술)](./%EA%B0%9C%EC%9D%B8%EC%83%9D%EA%B0%81/%EC%8B%A0%EA%B7%9C%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A5%BC%20%EC%A7%84%ED%96%89%ED%95%98%EB%A9%B4%EC%84%9C%20(%EC%84%9C%EC%88%A0).md)
