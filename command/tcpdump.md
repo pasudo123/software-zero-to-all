@@ -18,6 +18,7 @@ $ tcpdump host {{ip}}
 ```
 $ tcpdump -w {{file-name}}.log
 ```
+* 참고로 tcpdump -w 옵션을 통해서 쓴 파일은 `tcpdump -r` 을 통해서 읽어들일 수 있다. 그냥 읽으면 깨짐.
 
 ---
 ## 명령어 조합
