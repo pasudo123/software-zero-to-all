@@ -20,11 +20,11 @@
     * kafka -> micro-batches -> processing operator -> sink operator
 
 ## Spark Streaming Integration
-<img src="../image/spark01.png" width="500px">
+<img src="../Image/spark01.png" width="500px">
 * kafka, Flume, HDFS/S3, Kineis, Twitter 에 데이터를 Spark Streaming 이 수신받고, 이를 연산하고 이후에 HDFS, DB, DashBoards 등에 저장된다.
 
 ## 아키텍처
-<img src="../image/spark02.png" width="500px">
+<img src="../Image/spark02.png" width="500px">
 * input data를 받고, 각각 DStream 을 생성하고 스파크 연산을 수행한다.
 
 ## 
