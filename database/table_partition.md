@@ -34,7 +34,8 @@
     * 필요한 파티션만 접근 (읽기 + 쓰기)
 
 ## 테이블 파티셔닝 자동 적용
-???
+* mysql event 와 procedure 를 이용
+* https://stackoverflow.com/questions/1786579/can-mysql-create-new-partitions-from-the-event-scheduler
 
 ## 참고자료
 * RealMySQL 8.0 (2) 
