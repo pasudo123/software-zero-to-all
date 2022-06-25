@@ -32,6 +32,7 @@
 * [kubectl run, kubectl creates, kubectl apply 차이](./kubectl-run-vs-create-vs-apply.md)
 * [knowledge-spec-suspend : k8s 대시보드에서 크론잡을 잠시 일시중지 시키려면](./knowledge-spec-suspend.md)
 * [knowledge-matchLabels-labels-selectors : matchLabels & labels & selectors 이해하기](./knowledge-matchLabels-labels-selectors.md) 
+* [config & context](./know_config_context.md)
 
 ## CKA 참고자료
 * [CKA udemy 강의](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/)
