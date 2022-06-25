@@ -30,3 +30,11 @@ users:
 * context, cluster 와 user 를 조합해서 생성된 값
     * clusters-name, user-name 이 필요하다.
 * current-context, 현재 사용하는 context 를 나타낸다.
+
+## 명령어 나열
+```shell
+$ kubectl config current-context 
+$ kubectl config use-context {context-name}
+$ kubectl config get-contexts {context-name}
+$ kubectl config get-clusters
+```

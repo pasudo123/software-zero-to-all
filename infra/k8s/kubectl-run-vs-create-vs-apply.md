@@ -10,6 +10,15 @@ $ kubectl run nginx-pod --image=nginx
 ## kubectl create
 * imprative (명령형) command 를 사용할 때, 사용자는 직접적으로 클러스터 내 live object 에 접근할 수 있다.
 * 클러스터에 __일회성__ 작업을 시작/실행 하는데 권장되는 방법이다.
+* 동일한 오브젝트가 해당 네임스페이스에 존재하는 경우에는 에러가 발생한다. (해당 오브젝트가 미존재 하는 경우에만 생성할 수 있다.)
+```shell
+❯ kubectl create deployment mydeployment --image=nginx
+deployment.apps/mydeployment created
+ 
+❯ kubectl create deployment mydeployment --image=nginx
+error: failed to create deployment: deployments.apps "mydeployment" already exists
+```
+
 * deployment 안에 파드를 생성한다.
 ```
 $ kubectl create -f nginx.yaml
