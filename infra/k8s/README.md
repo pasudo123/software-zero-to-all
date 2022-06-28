@@ -34,7 +34,8 @@
 * [knowledge-matchLabels-labels-selectors : matchLabels & labels & selectors 이해하기](./knowledge-matchLabels-labels-selectors.md) 
 * [config & context](./know_config_context.md)
 * [--dry-run=client 옵션](./know_dry_run.md)
-* [service type, nodePort & clusterIP & LoadBalancer](./know_service_type)
+* [service type, nodePort & clusterIP & LoadBalancer](./know_service_type.md)
+* [namespace](./know_namespace.md)
 
 ## CKA 참고자료
 * [CKA udemy 강의](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/)

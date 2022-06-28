@@ -27,7 +27,7 @@ users:
 ```
 * clusters, 쿠버네티스 클러스터 정보
 * users, 클러스터에 접근하는 유저들의 정보
-* context, cluster 와 user 를 조합해서 생성된 값
+* context, `cluster 와 user 를 조합해서 생성된 값`
     * clusters-name, user-name 이 필요하다.
 * current-context, 현재 사용하는 context 를 나타낸다.
 

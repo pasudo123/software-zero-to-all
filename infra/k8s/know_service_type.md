@@ -10,6 +10,6 @@
 ## ClusterIP
 * k8s 클러스터 내부에서 팟을 접근할 수 있다.
 * service 의 기본타입
-* spec.ports[].targetPort
-* spec.ports[].port : 서비스 IP 에 접근할 수 있는 
+* spec.ports[].targetPort : 접근대상이 되는 팟들이 내부적으로 사용하는 포트
+* spec.ports[].port : 서비스 IP 에 접근할 때 사용하는 포트
 * spec.selector
