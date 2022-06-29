@@ -36,5 +36,32 @@ kubectl apply -f configs/
 kubectl apply -R -f configs/
 ```
 
+## imprative 명령형
+쿠버네티스 클러스터에게 일일히 어떻게 할 것인지에 대한 설명을 나열한다.
+
+### create objects
+* kubectl run --image=nginx nginx
+* kubectl create deployment --image=nginx nginx
+* kubectl expose deployment nginx --port 80
+
+### update objects
+* kubectl edit deployment nginx
+  * 쿠버네티크 클러스터 내의 live object 와 configuration file 간의 내용 차이가 있을 수 있다.
+  * 따라서 파일을 변경하고 replace -f nginx.yml 명령어를 쓰는게 좋을 수 있다.
+* kubectl scale deployment nginx --replicas=5
+* kubectl set image deployment nginx nginx=nginx:1
+
+### etc
+* kubectl create -f nginx.yml
+* kubectl replace -f nginx.yml
+* kubectl delete -f nginx.yml
+* configuration 파일이 변경되지 않은 상태에서 동일한 명령어를 쓰게되면 에러를 만난다.
+
+## declarative 선언형
+configuration 파일을 읽어들여 쿠버네티스 클러스터 내에서 리소스가 적용되도록 한다.
+* kubectl apply -f nginx.yml
+* 동일하게 명령을 수행하더라도 에러를 만나지 않는다.
+
+
 ## reference
 * https://kubernetes.io/docs/concepts/overview/working-with-objects/object-management/#imperative-commands

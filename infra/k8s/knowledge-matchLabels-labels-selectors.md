@@ -61,5 +61,11 @@ spec:
 위의 내용에서는 레플리카셋 정의과 파드템플릿 정의를 따로 구분해서 사용하고 있다.
 ```
 
+## service 와 pod 가 연결안되는 경우가 있다.
+* 실무에서 겪었음.
+* 가령 service 리소스의 yml 파일에 spec.selector.app 항목이 있다.
+  * 해당 항목은 deployment.yml 파일의 spec.template.metadata.labels.app 과 일치시켜주어야 한다.
+  * service 와 deployment 를 연결하는 것이 아닌 service 와 pod 이 연결되어야 한다. 그래서 deployment 쪽의 상위 metadata.labels.app 와는 구분해서 이해하고 있어야 한다.
+
 ## reference
 * https://medium.com/@zwhitchcox/matchlabels-labels-and-selectors-explained-in-detail-for-beginners-d421bdd05362
