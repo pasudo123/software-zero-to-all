@@ -28,7 +28,7 @@
 ## yml 파일 작성
 * [understanding-yaml : yaml 파일에 있는 내용](./understanding-yaml.md)
 
-## k8s 토막지식
+## k8s 토막지식 + udemy 들은 거 기반 정리
 * [kubectl run, kubectl creates, kubectl apply 차이 : imprative & declarative](./kubectl-run-vs-create-vs-apply.md)
 * [knowledge-spec-suspend : k8s 대시보드에서 크론잡을 잠시 일시중지 시키려면](./knowledge-spec-suspend.md)
 * [knowledge-matchLabels-labels-selectors : matchLabels & labels & selectors 이해하기](./knowledge-matchLabels-labels-selectors.md) 
@@ -36,6 +36,7 @@
 * [--dry-run=client 옵션](./know_dry_run.md)
 * [service type, nodePort & clusterIP & LoadBalancer](./know_service_type.md)
 * [namespace](./know_namespace.md)
+* [scheduling](./know_scheduling.md)
 
 ## CKA 참고자료
 * [CKA udemy 강의](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/)
