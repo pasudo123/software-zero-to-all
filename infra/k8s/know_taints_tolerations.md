@@ -13,6 +13,11 @@ taints 된 노드가 거부한다. 해당 노드에 팟이 스케줄링 되기 �
 ## node 에 taints 제거
 * kubectl `taint` nodes {node-name} key=value:{NoSchedule | NoExecute | PreferNoSchedule }`-`
 
+## command example
+> create another pod named `bee` with the `nginx` image, which has a toleration set to the taint `mortein`
+* `kubectl run bee --image=nginx --dry-run=client -o yaml` 로 한번 생성될 yaml 조회
+* `kubectl run bee --image=nginx --dry-run=client -o yaml > bee.yaml` 로 bee.yaml 파일 생성
+* 이후에 vim 명령어를 통해서 해당 yaml 파일을 수정한다.
 
 ## pod configuration 파일에 tolerations 설정
 * pod configuration file 에서 아래 네개의 값을 채운다.

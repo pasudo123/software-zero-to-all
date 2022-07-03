@@ -38,6 +38,8 @@
 * [namespace](./know_namespace.md)
 * [scheduling](./know_scheduling.md)
 * [scheduling : taints & tolerations](./know_taints_tolerations.md)
+* [scheduling : NodeSelector](./know_node_selector.md)
+* [scheduling : NodeAffinity](./know_node_affinity.md)
 
 ## CKA 참고자료
 * [CKA udemy 강의](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/)
