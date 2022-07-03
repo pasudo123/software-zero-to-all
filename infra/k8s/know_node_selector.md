@@ -11,7 +11,7 @@ spec:
 ```
 
 ## node 에 label 을 설정하기
-* kubectl label nodes {node-name} {label-key}={label-value}
+* kubectl `label` nodes {node-name} {label-key}={label-value}
     * ex) kubectl label nodes node01 size=Large
 
 ## nodeSelector 의 한계
