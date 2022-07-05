@@ -17,7 +17,7 @@
 ## limit 을 초과하면?
 * requests.cpu 가 limits.cpu 를 초과하는 경우 k8s throttle 은 limit 만큼 request 가 초과되지 않도록 조절한다.
     * 앱의 퍼포먼스는 떨어질 수 있다. 
-    * liveness health check 를 통해서 문제 발생 시, k8s 가 자체적으로 pod 을 restart 할지 결정한다.
+    * liveness health check 를 통해서 문제 발생 시, 클러스터 내에서 pod 을 restart 할지 결정한다.
 * requests.memory 이 limits.cpu 를 초과하는 경우 pod 은 종료될 수 있다. -> kubelet 은 해당 pod 을 restart 시킨다.
 * pod status OOMKilled 가 나온다.
 * https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#exceed-a-container-s-memory-limit
