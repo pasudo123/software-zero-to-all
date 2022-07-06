@@ -22,6 +22,9 @@
 * pod status OOMKilled 가 나온다.
 * https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#exceed-a-container-s-memory-limit
 
+## 상태를 보려면,
+* kubectl describe pods {pod-name} 으로 lastState 값을 확인하면 된다.
+
 ## best practice
 * [구글공식링크](https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits)
    
