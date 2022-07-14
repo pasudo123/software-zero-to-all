@@ -44,6 +44,7 @@
 * [scheduling : resources.requests & resources.limits](./know_resources_requests_and_resources_limits.md)
 * [scheduling : daemonset : 기존에 작성해둔거 참고](#)
 * [scheduling : static pod](./know_static_pod.md)
+* [scheduling : multiple scheduler](./know_multiple_scheduler.md)
 
 ## CKA 참고자료
 * [CKA udemy 강의](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/)
