@@ -159,6 +159,8 @@
 * [Apple M1 Pro 16, 32GB](#)
 * https://subicura.com/mac/
 * [생산성 도구](https://medium.com/@totuworld/%EC%86%8C%EC%A4%91%ED%95%9C-%EB%82%98%EC%9D%98-1%EC%B4%88%EB%A5%BC-%EC%9C%84%ED%95%9C-10%EA%B0%80%EC%A7%80-%EC%83%9D%EC%82%B0%EC%84%B1-%EB%8F%84%EA%B5%AC-for-macos-cc6db97cd798)
+* [SDKMAN](https://sdkman.io/install)
+* [font : Cascadia-code](https://github.com/microsoft/cascadia-code)
 
 
 ## 👨‍🚀 궁금증
