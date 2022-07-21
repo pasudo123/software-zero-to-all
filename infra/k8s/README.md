@@ -45,6 +45,7 @@
 * [scheduling : daemonset : 기존에 작성해둔거 참고](#)
 * [scheduling : static pod](./know_static_pod.md)
 * [scheduling : multiple scheduler](./know_multiple_scheduler.md)
+* [logging & monitoring](./know_logging_monitoring.md)
 
 ## CKA 참고자료
 * [CKA udemy 강의](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/)
