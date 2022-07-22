@@ -143,7 +143,7 @@
 * [crontab 표현식](https://crontab.guru/)
 
 ## 👨‍🚀 실무
-* [일하면서 주의를 기울이자](./personal/keep_in_mind.md)
+* [실무를 일하면서...](./personal/keep_in_mind.md)
 
 ## 👨‍🚀  book : 개발서적(책) 본 것들 정리
 * [오브젝트](https://github.com/coding-buddha/object-by-kotlin/blob/main/README-object.md)
