@@ -46,6 +46,8 @@
 * [scheduling : static pod](./know_static_pod.md)
 * [scheduling : multiple scheduler](./know_multiple_scheduler.md)
 * [logging & monitoring](./know_logging_monitoring.md)
+* [rolling update & rollback](./know_rolling_update_and_rollback.md)
+* [configure : arguments](./know_arguments.md)
 
 ## CKA 참고자료
 * [CKA udemy 강의](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/)
