@@ -25,5 +25,8 @@ kubectl rollout undo deployment/{deployment-name} 을 통해서 롤백을 수행
 ## 관련 학습한 명령어
 ```shell
 // 이미지 변경
-& kubectl set image {container-name}={image-name}
+$ kubectl set image {container-name}={image-name}
+
+// deployment 내 container `www` 의 이미지를 image:v2 로 변경
+$ kubectl set image deployment/{deployment-name} www=image:v2
 ```
