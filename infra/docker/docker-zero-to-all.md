@@ -106,7 +106,6 @@ PS C:\Users\pasudo123> docker port {container-id}
     * ADD 를 이용하게 되면 실질적으로 이미지에 추가하는 파일이 어떤 것인지 확신하기 어렵다. 
     * COPY 는 Context 로 부터 직접 파일을 추가하기 때문에 명확하다.
 * CMD vs ENTRYPOINT
-    * 
 * [STOPSIGNAL](https://docs.docker.com/engine/reference/builder/#stopsignal)
     * 컨테이너가 정지될 때 사용될 시스템 콜의 종류를 지정한다.
     * 숫자도 가능하고 KILL SIGNAL 명칭도 가능하다. (`SIGTERM`, `SIGKILL` 등등)
