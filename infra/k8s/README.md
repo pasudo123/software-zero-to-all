@@ -52,7 +52,7 @@
 * [configure : secret](./know_configure_secret.md)
 * [initContainer 기존에 작성한 부분 참고](./initContainers.md)
 * [liveness probe & readness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
-* [os upgradle : drain, corbon, uncorbon](./know)
+* [os upgradle : drain, corbon, uncorbon](./know_os_upgrade.md)
 
 ## CKA 참고자료
 * [CKA udemy 강의](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/)
