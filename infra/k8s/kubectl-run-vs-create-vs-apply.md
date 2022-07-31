@@ -56,6 +56,8 @@ kubectl apply -R -f configs/
 ### etc
 * kubectl create -f nginx.yml
 * kubectl replace -f nginx.yml
+* kubectl replace --force -f {file}.yaml
+  * 리소스 강제 업데이트 : 리소스를 삭제하고, 재생성한다. 해당 명령어는 서비스를 중단시킨다.
 * kubectl delete -f nginx.yml
 * configuration 파일이 변경되지 않은 상태에서 동일한 명령어를 쓰게되면 에러를 만난다.
 
