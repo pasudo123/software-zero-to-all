@@ -161,6 +161,7 @@
 * [SDKMAN](https://sdkman.io/install)
 * [font : Cascadia-code](https://github.com/microsoft/cascadia-code)
 * [intellij : live template](https://velog.io/@max9106/IntelliJ-Live-Template)
+* [alias 목록](./mac/alias.md)
 
 
 ## 👨‍🚀 궁금증
