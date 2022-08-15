@@ -55,6 +55,7 @@
 * [os upgrade : drain, corbon, uncorbon](./know_os_upgrade.md)
 * [os upgrade : cluster upgrade process](./know_cluster_upgrade_process.md)
 * [backup & restore : resources, etcdctl](./know_backup_restore.md)
+    * [practice01](./know_backup_restore_practice01.md)
 
 ## CKA 참고자료
 * [CKA udemy 강의](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/)
