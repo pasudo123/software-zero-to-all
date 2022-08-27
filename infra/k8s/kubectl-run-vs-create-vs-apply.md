@@ -48,7 +48,7 @@ kubectl apply -R -f configs/
 
 ### update objects
 * kubectl edit deployment nginx
-  * 쿠버네티크 클러스터 내의 live object 와 configuration file 간의 내용 차이가 있을 수 있다.
+  * 쿠버네티스 클러스터 내의 live object 와 configuration file 간의 내용 차이가 있을 수 있다.
   * 따라서 파일을 변경하고 replace -f nginx.yml 명령어를 쓰는게 좋을 수 있다.
 * kubectl scale deployment nginx --replicas=5
 * kubectl set image deployment nginx nginx=nginx:1

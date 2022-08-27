@@ -1,6 +1,9 @@
 ## watch command 👀
 * 주기적으로 실행한 프로그램의 결과를 전체화면에서 출력하는 명령어이다.
 
+## mac에서 brew 로 설치
+https://formulae.brew.sh/formula/watch
+
 ## watch 간단 사용법
 ```shell
 // watch 명령어 확인
