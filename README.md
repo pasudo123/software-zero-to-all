@@ -21,6 +21,7 @@
 * [mysql query : 단일 인덱스, 다중 인덱스 차이는 뭔가](./database/single_index_composite_index.md)
 * [mysql partition](./database/table_partition.md)
 * [mysql log 조회하기](./database/mysql_show_log.md)
+* [mysql table size 확인하기](./database/mysql_get_table_size.md)
 
 ### 소프트웨어 아키텍처
 * [c4 modeling](https://pasudo123.tistory.com/469)
