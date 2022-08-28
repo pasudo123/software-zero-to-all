@@ -22,8 +22,9 @@ services:
 ---
 ## 1. 아키텍처
 <kbd>
-  <img alt="" src="../Image/realmysq8.0_chapter04_1.drawio.png" />
+  <img alt="" src="../../Image/realmysq8.0_chapter04_1.drawio.png" />
 </kbd>
+
 
 ---
 ## 2. 트랜잭션과 잠금
