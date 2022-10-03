@@ -143,6 +143,7 @@
 * [ngrok : 로컬개발환경을 인터넷으로 공유해주는 툴](https://www.lesstif.com/software-architect/ngrok-39126236.html)
 * [crontab 표현식](https://crontab.guru/)
 * [caffeinate](https://pasudo123.tistory.com/497)
+* [heredoc](./command/heredoc.md)
 
 ## 👨‍🚀 실무
 * [실무를 일하면서...](./personal/keep_in_mind.md)
