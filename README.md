@@ -167,7 +167,7 @@
 * [intellij : live template](https://velog.io/@max9106/IntelliJ-Live-Template)
 * [alias 목록](./mac/alias.md)
 
-
+[test][test]
 ## 👨‍🚀 궁금증
 * [왜 jvm 인자값은 -D 로 시작하는가?](./personal/jvm_d_option.md)
 * [왜 정적팩토리 메소드를 쓰는걸까?](./personal/%EC%99%9C%20%EC%A0%95%EC%A0%81%20%ED%8C%A9%ED%86%A0%EB%A6%AC%20%EB%A9%94%EC%86%8C%EB%93%9C%20%ED%8C%A8%ED%84%B4%EC%9D%84%20%EC%93%B0%EB%8A%94%EA%B0%80.md)
