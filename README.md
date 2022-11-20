@@ -34,6 +34,7 @@
 * [ddd with pivotal : 은행 시스템으로 살펴보는 DDD 약식](./development/ddd-with-pivotal.md)
 * [t academy : spark 개념과 활용](./development/t_academy_spark01.md)
 * [t academy : spark의 실시간/배치](./development/t_academy_spark02.md)
+* [1. toby reactive : pub 과 sub 사이에 operation 을 추가해보자](./development/toby_reactive_operation)
 
 ### OOP : Object Oriented Programming 🌼
 * [초보개발자에게 권장하는 객체지향 모델링 공부방법](https://okky.kr/article/358197)
