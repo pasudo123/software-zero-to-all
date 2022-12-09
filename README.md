@@ -167,6 +167,7 @@
 * [font : Cascadia-code](https://github.com/microsoft/cascadia-code)
 * [intellij : live template](https://velog.io/@max9106/IntelliJ-Live-Template)
 * [alias 목록](./mac/alias.md)
+* [iterm 단축키 모음](./mac/iterm.md)
 
 
 ## 👨‍🚀 궁금증
