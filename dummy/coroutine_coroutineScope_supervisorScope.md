@@ -1,5 +1,5 @@
 ## coroutine 의 coroutinScope & supervisorScope 의 에러 핸들링
-두 scopeBuilder 는 모두 multiple concurrent operation 을 내부 코드블럭에서 작성할 수 있게 해준다.   
+두 scopeBuilder 는 모두 multiple concurrent operation 을 내부 코드블럭에서 작성할 수 있게 해준다.
 
 ### coroutineScope
 * 다수 개의 concurrent operation 이 동작할 때, 하나의 child coroutine 이 실패하면 다른 child coroutine 까지 모두 실패한다. 전체 try/catch 로 감싸야 한다
@@ -151,3 +151,5 @@ class FrontServerService(
 }
 ```
 
+### 참고사항
+* 위 코드에서 backServerClient 는 동일하게 로컬호스터로 띄어놓은 rest api 형태의 단순한 was 이다.
