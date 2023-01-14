@@ -170,6 +170,9 @@
 * [iterm 관련](./mac/iterm.md)
 * [맥북 백틱 입력](https://www.korecmblog.com/backtick-fix/)
 
+## chrome plugins (내가 쓰는...)
+* json viewer, modHeader
+
 
 ## 👨‍🚀 궁금증
 * [왜 jvm 인자값은 -D 로 시작하는가?](./personal/jvm_d_option.md)
