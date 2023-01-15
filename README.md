@@ -166,6 +166,8 @@
 * [SDKMAN](https://sdkman.io/install)
 * [font : Cascadia-code](https://github.com/microsoft/cascadia-code)
 * [intellij : live template](https://velog.io/@max9106/IntelliJ-Live-Template)
+* [intellij : jira 연동](#)
+* [intellij : Code Glance](#)
 * [alias 목록](./mac/alias.md)
 * [iterm 관련](./mac/iterm.md)
 * [맥북 백틱 입력](https://www.korecmblog.com/backtick-fix/)
