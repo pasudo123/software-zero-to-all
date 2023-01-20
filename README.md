@@ -146,6 +146,7 @@
 * [caffeinate](https://pasudo123.tistory.com/497)
 * [xargs](./command/linux_xargs.md)
 * [heredoc](./command/heredoc.md)
+* [which](./command/which.md)
 
 ## 👨‍🚀 실무
 * [실무를 일하면서...](./personal/keep_in_mind.md)
