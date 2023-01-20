@@ -4,4 +4,5 @@
 ## ~/.zshrc 경로
 ```shell
 alias k=kubectl
+alias gitls="git log --all --decorate --oneline --graph"
 ```
