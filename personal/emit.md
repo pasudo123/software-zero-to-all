@@ -3,7 +3,7 @@ emit 은 프로그래밍 관점에서 어떤 의미인지?
 
 ## CHATGPT 에서 확인한 바에 따르면...
 
-<img src="../Image/what-does-mean-'emit-in-programming.png" width="400px"/> 
+<img src="../Image/what-does-mean-'emit-in-programming.png" width="800px"/> 
 
 * 프로그래밍에서 시그널, 이벤트, 메세지를 생성(생산) 하는 느낌
 * 다양한 컨텍스트 내에서 발생할 수 있으며, 소프트웨어 내의 알림, 디바이스 내의 신호, 네트워크 내에서 데이터를 넘어선 발생
