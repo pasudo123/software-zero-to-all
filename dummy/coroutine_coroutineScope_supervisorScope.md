@@ -151,5 +151,5 @@ class FrontServerService(
 }
 ```
 
-### 참고사항
+## 참고사항
 * 위 코드에서 backServerClient 는 동일하게 로컬호스터로 띄어놓은 rest api 형태의 단순한 was 이다.
