@@ -1,11 +1,11 @@
 ## coroutine 의 coroutinScope & supervisorScope 의 에러 핸들링
 두 scopeBuilder 는 모두 multiple concurrent operation 을 내부 코드블럭에서 작성할 수 있게 해준다.
 
-### coroutineScope
+## coroutineScope
 * 다수 개의 concurrent operation 이 동작할 때, 하나의 child coroutine 이 실패하면 다른 child coroutine 까지 모두 실패한다. 전체 try/catch 로 감싸야 한다
 
 ### corotuineScope 코드 (동작 X)
-* 한 개의 async block 에서 익셉션이 떨어지면 해당 코루틴 블록 모두 실패처리 된다. 아래으 코드는 동작하지 않는다.
+* 한 개의 async block 에서 익셉션이 떨어지면 해당 코루틴 블록 모두 실패처리 된다. 아래의 코드는 동작하지 않는다.
 ```kotlin
 @Service
 class FrontServerService(
@@ -94,7 +94,7 @@ suspend fun getCoffeesBySizeWithAsyncError(size: Long): Flow<Coffee> = runBlocki
     }
 ```
 
-### supervisorScope
+## supervisorScope
 * 다수 개의 concurrent operation 이 동작할 때, 개별로 child coroutine 결과에 대해 에러핸들링이 가능하다.
 * parent coroutine 의 에러에 대해선 child coroutine 의 결과에 상관없이 익셉션이 발생한다.
 
