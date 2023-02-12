@@ -35,6 +35,7 @@
 * [t academy : spark 개념과 활용](./development/t_academy_spark01.md)
 * [t academy : spark의 실시간/배치](./development/t_academy_spark02.md)
 * [1. toby reactive : pub 과 sub 사이에 operation 을 추가해보자](./development/toby_reactive_operation)
+* [reactive 혼자 메모해놓은 것들 : 더미로 쌓아둔 것](./development/reactive_dummy.md)
 
 ### OOP : Object Oriented Programming 🌼
 * [초보개발자에게 권장하는 객체지향 모델링 공부방법](https://okky.kr/article/358197)
