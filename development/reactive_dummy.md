@@ -17,7 +17,33 @@ https://projectreactor.io/docs/core/release/reference/#_blocking_can_be_wasteful
         * 스레드를 늘리더라도 병목이 생길 수 밖에 없음
 
 ### subscribe 하기 이전까지 아무것도 일어나지 않는다.
-https://projectreactor.io/docs/core/release/reference/#reactive.subscribe 
+https://projectreactor.io/docs/core/release/reference/#reactive.subscribe
+* publisher 체인을 쓸 때, 데이터를 기본적으로 펌핑하지 않는다. 대신에 비동기적인 추상적인 명세를 생성할 수 있다.
+    * 해당 추상화는 재사용과 플로우 구성에 도움이 된다.
+
+재사용하여 쓸 수 있다.
+```java
+@Test
+public void test1() {
+    Flux<String> strings = Flux.just("park", "kim", "yun", "jae")
+            .filter(element -> element.startsWith("p"));
+
+    strings.subscribe(element -> {
+        System.out.println("name : " + element);
+    });
+
+    System.out.println("-");
+    strings.subscribe(element -> {
+        System.out.println("name : " + element);
+    }, (exception) -> new RuntimeException("error ! : " + exception.getMessage()));
+}
+
+/** 출력내용
+name : park
+-
+name : park
+ */
+```
 
 ### 데이터 변환
 https://projectreactor.io/docs/core/release/reference/#which.values
