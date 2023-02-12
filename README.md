@@ -77,6 +77,7 @@
 ### kotlin & kopring🌼
 * [kotlin-zero-to-all](https://github.com/coding-buddha/kotlin-zero-to-all)
 * [kotlin-spring-zero-to-all](https://github.com/pasudo123/springboot-kotlin-zerotoall)
+* [reactive-with-kopring](https://github.com/pasudo123/reactive-with-kopring)
 
 ### design-pattern 🌼
 * [oop-basis : decorator-pattern](https://github.com/coding-buddha/oop-basis/blob/master/design-pattern-decorator)
@@ -184,6 +185,7 @@
 * [객체지향의 TDA : Tell Don't ASK](./personal/Tell%20Don't%20ASK.md)
 * [서비스레이어와 비즈니스 로직과의 관계](./personal/%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A0%88%EC%9D%B4%EC%96%B4%EC%99%80%20%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%EB%A1%9C%EC%A7%81%EA%B3%BC%EC%9D%98%20%EA%B4%80%EA%B3%84.md)
 * [SPA vs MPA](./personal/SPA%20vs%20MPA.md)
+* [emit 은 프로그래밍 관점에서 어떤 의미인지?](./personal/emit.md)
 
 ## 👨‍🚀 중복내용 & 이런저런
 * [[ java ] classpath 의 json 파일 읽어들이기](boilerplate/reading_json_file_of_classpath.md)
