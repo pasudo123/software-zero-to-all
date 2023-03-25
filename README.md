@@ -132,6 +132,7 @@
 
 ## 👨‍🚀 리눅스, 쉘, 터미널 커맨드, 툴 등
 * [jq](./command/jq_command.md)
+* [httpie](./command/httpie_command.md)
 * [ll](./command/ll_comment.md)
 * [ln : hard link & symbolic link](./command/linux_ln_command.md)
 * [tcpdump](./command/tcpdump.md)
