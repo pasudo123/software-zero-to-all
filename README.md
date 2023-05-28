@@ -198,3 +198,4 @@
 * [spring @configurationProperties 사용 : list + object](./dummy/spring_configuration_properties_list_object.md)
 * [spring 트랜잭션 롤백은 UnCheckedException 을 throw 할 경우에만 발생한다](./dummy/spring_transaction_rollback_with_uncheckedexception.md)
 * [coroutine : coroutineScope vs supervisorScope](./dummy/coroutine_coroutineScope_supervisorScope.md)
+* [spring 에서 objectMapper 자주 쓰는 설정](./dummy/objectMapper_configuration_memo.md)
