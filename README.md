@@ -93,6 +93,7 @@
 * [소스트리에서 git reset(soft, mixed, hard)](https://github.com/pasudo123/GitFlowZero/blob/master/sourcetree-reset.md)
 * [git reset](./git/reset.md)
 * [git revert](./git/revert.md)
+* [git reset --hard head](./dummy/git_reset_hard_head.md)
 
 ## 👨‍🚀 infrastructure
 * [virtualization(가상화) : blog](https://pasudo123.tistory.com/455)
