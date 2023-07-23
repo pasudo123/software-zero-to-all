@@ -34,12 +34,13 @@ class CustomAsyncConfiguration: AsyncConfigurer {
 * 20초 : queue=[Task5]
 * 24초 : Task4 작업종료(coreSize=0), Task5 coreSize=0 -> coreSize=1, queue=[]
 * 25초 : queue=[Task6]
-* `30초` : Task5 작업종료(coreSize=0), Task6 coreSize=0 -> coreSize=1, queue=[]
-* `30초` : queue=[Task7]
-* 35초 : queue=[Task7, Task8] 
-    * queueCapacity=1 이기 때문에 maxPoolSize 초과 시 RejectedExecutionException 이 발생한다.
+* **30초** : Task5 작업종료(coreSize=0), Task6 coreSize=0 -> coreSize=1, queue=[]
+* **30초** : queue=[Task7]
+* **35초** : queue=[Task7, Task8] 
+    * queueCapacity=1 이기 때문에 maxPoolSize 를 늘려주려고 한다. 하지만 maxPoolSize 값이 1이라 `**RejectedExecutionException**` 이 발생한다.
     * @Async 애노테이션 내부에서 발생하는데 아닌 외부에서 @Async 애노테이션이 붙은 메소드 호출 시 에러 발생
 
+#### error 메시지
 ```shell
 Task java.util.concurrent.FutureTask@69a3e3c[Not completed, task = org.springframework.aop.interceptor.AsyncExecutionInterceptor$$Lambda$880/0x00000008006e5c40@61f81d82] rejected from java.util.concurrent.ThreadPoolExecutor@34028e93[Running, pool size = 1, active threads = 1, queued tasks = 1, completed tasks = 0]
 ```
