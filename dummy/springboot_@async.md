@@ -37,7 +37,7 @@ class CustomAsyncConfiguration: AsyncConfigurer {
 * **30초** : Task5 작업종료(coreSize=0), Task6 coreSize=0 -> coreSize=1, queue=[]
 * **30초** : queue=[Task7]
 * **35초** : queue=[Task7, Task8] 
-    * queueCapacity=1 이기 때문에 maxPoolSize 를 늘려주려고 한다. 하지만 maxPoolSize 값이 1이라 `**RejectedExecutionException**` 이 발생한다.
+    * queueCapacity=1 이기 때문에 maxPoolSize 를 늘려주려고 한다. 하지만 maxPoolSize 값이 1이라 _**RejectedExecutionException**_ 이 발생한다.
     * @Async 애노테이션 내부에서 발생하는데 아닌 외부에서 @Async 애노테이션이 붙은 메소드 호출 시 에러 발생
 
 #### error 메시지
