@@ -42,7 +42,10 @@ class CustomAsyncConfiguration: AsyncConfigurer {
 
 #### error 메시지
 ```shell
-Task java.util.concurrent.FutureTask@69a3e3c[Not completed, task = org.springframework.aop.interceptor.AsyncExecutionInterceptor$$Lambda$880/0x00000008006e5c40@61f81d82] rejected from java.util.concurrent.ThreadPoolExecutor@34028e93[Running, pool size = 1, active threads = 1, queued tasks = 1, completed tasks = 0]
+Task java.util.concurrent.FutureTask@69a3e3c
+[Not completed, task = org.springframework.aop.interceptor.AsyncExecutionInterceptor$$Lambda$880/0x00000008006e5c40@61f81d82] 
+rejected from java.util.concurrent.ThreadPoolExecutor@34028e93
+[Running, pool size = 1, active threads = 1, queued tasks = 1, completed tasks = 0]
 ```
 
 
