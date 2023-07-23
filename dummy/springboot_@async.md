@@ -40,7 +40,7 @@ class CustomAsyncConfiguration: AsyncConfigurer {
     * queueCapacity=1 이기 때문에 maxPoolSize 를 늘려주려고 한다. 하지만 maxPoolSize 값이 1이라 _**RejectedExecutionException**_ 이 발생한다.
     * @Async 애노테이션 내부에서 발생하는데 아닌 외부에서 @Async 애노테이션이 붙은 메소드 호출 시 에러 발생
 
-#### error 메시지
+### error 메시지
 ```shell
 Task java.util.concurrent.FutureTask@69a3e3c
 [Not completed, task = org.springframework.aop.interceptor.AsyncExecutionInterceptor$$Lambda$880/0x00000008006e5c40@61f81d82] 
@@ -48,6 +48,12 @@ rejected from java.util.concurrent.ThreadPoolExecutor@34028e93
 [Running, pool size = 1, active threads = 1, queued tasks = 1, completed tasks = 0]
 ```
 
+## rejectionExecutionPolicy
+* @Async 수행해서 _**RejectedExecutionException**_ 발생 시 정책이 있다.
+ * AbortPolicy (기본 default 정책) -> RejectedExecutionException 을 단순 throw 한다.
+ * CallerRunsPolicy -> @Async 를 수행한 Caller 스레드에서 실행되도록 한다. (항상 실행)
+ * DiscardPolicy -> 별도의 조치를 취하지 않고 그냥 버려버린다.
+ * DiscardOldestPolicy -> queue 에 있는 작업 중 가장 오래된 작업을 수행하고 삭제한다. (일부가 버려질 수 있다)
 
 ## 참고
 * https://docs.spring.io/spring-framework/reference/integration/scheduling.html#scheduling-task-namespace-executor
