@@ -202,3 +202,4 @@
 * [spring 에서 objectMapper 자주 쓰는 설정](./dummy/objectMapper_configuration_memo.md)
 * [springboot 에서 에러를 핸들링하영 응답하기](./dummy/springboot_error_handling.md)
 * [springboot 에서 sseEmitter 사용기](./dummy/springboot_sseEmitter.md)
+* [springboot 에서 @Async ThreadPoolTaskExecutor 설정](./dummy/springboot_@async.md)
