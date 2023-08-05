@@ -163,6 +163,7 @@
 * [객체지향 사고 프로세스](https://pasudo123.tistory.com/446)
 * [real mysql 8.0](./book/real_mysql8.0/realmysql80.md)
 * [쿠버네티스 인 액션](./book/k8s_in_action.md)
+* [가상면접사례로 배우는 대규모 시스템 설계 기초](./book/system_design_interview.md)
 
 ## 맥 💻🍎
 * [Apple M1 Pro 16, 32GB](#)
