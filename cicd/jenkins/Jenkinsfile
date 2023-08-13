@@ -13,11 +13,13 @@ pipeline {
 
             steps {
                 // 젠킨스에서 기본으로 가지고 있는 상태값 확인
+                echo "jenkins env---------------------------------------------"
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 echo "JAVA_HOME=${env.JAVA_HOME}"
                 echo "JOB_NAME=${env.JOB_NAME}"
                 echo "NODE_NAME=${env.NODE_NAME}"
                 echo "WORKSPACE=${env.WORKSPACE}"
+                echo "--------------------------------------------------------"
                 sh 'printenv'
             }
         }
