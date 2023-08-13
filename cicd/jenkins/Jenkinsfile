@@ -1,17 +1,24 @@
 pipeline {
     agent any
+    // 모든 step 에 환경변수를 지정
     environment {
         game = 'overwatch2'
     }
     stages {
         stage('Init') {
+            // 특정 step 에 환경변수를 지정
+            environment {
+                DEBUG_FLAGS = '-g'
+            }
+
             steps {
-                // 상태값 확인
+                // 젠킨스에서 기본으로 가지고 있는 상태값 확인
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 echo "JAVA_HOME=${env.JAVA_HOME}"
                 echo "JOB_NAME=${env.JOB_NAME}"
                 echo "NODE_NAME=${env.NODE_NAME}"
-                echo "WORKSPACE=${env.WORK_SPACE}"
+                echo "WORKSPACE=${env.WORKSPACE}"
+                sh 'printenv'
             }
         }
         stage('Build') {
