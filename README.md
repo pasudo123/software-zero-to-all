@@ -204,3 +204,4 @@
 * [springboot 에서 에러를 핸들링하영 응답하기](./dummy/springboot_error_handling.md)
 * [springboot 에서 sseEmitter 사용기](./dummy/springboot_sseEmitter.md)
 * [springboot 에서 @Async ThreadPoolTaskExecutor 설정](./dummy/springboot_@async.md)
+* [CI/CD jenkins 설정 삽질기](./dummy/jenkins_exercise.md)
