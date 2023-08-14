@@ -6,7 +6,7 @@
 * 그 이외의 디테일한 절차들은 생략한다.
 
 ### 아이템, 파이프라인 등록
-<img src="20230814_pipeline_enroll.png" width=500 /><br>
+<img src="20230814_pipeline_enroll.png" width=500 border="2" /><br>
 
 ### 파이프라인 구성 설정 : General
 <img src="20230814_pipeline_general.png" width=500 /><br>
