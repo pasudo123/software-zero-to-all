@@ -1,21 +1,21 @@
-## redis pub/sub 이용하여 설정정보를 서버 N 개에 적용하는 방법
+# redis pub/sub 이용하여 설정정보를 서버 N 개에 적용하는 방법
 * 어드민에서 설정한 정보들을 서버에 반영하기 위해선 어떻게 하는게 좋을까?   
 * 서버가 1대면 상관없지만 N대의 서버에서는 일괄적으로 설정정보를 적용하기 위해 나는 스프링에서 제공하는 @Schedule 애노테이션을 이용했다.
 * `하지만` 이번에 스터디를 진행하면서 다른 스터디원분들은 어떻게 하는지 질문을 했고, redis pub/sub, etcd 얘기가 나왔다. 
 * `그래서` 이번에 나는 redis pub/sub 을 이용해보기로 했다.
 
-### AS-IS
-아래의 그림은 처음에 내가 N개의 서버에 설정정보를 반영하기 위해서 처리했던 방법이다.
-<kbd><img src="../Image/20230815_property_setting_1.drawio.png" width=500 /></kbd><br>
+## AS-IS
+아래의 그림은 처음에 내가 N개의 서버에 설정정보를 반영하기 위해서 처리했던 방법이다.   
+<kbd><img src="../Image/20230815_property_setting_1.drawio.png" width=600 /></kbd><br>
 
 * 어드민에서 설정값을 수정하면 API 는 이를 받아서 수정하고 MySQL 에 반영하고, 변경된 값은 로컬에 저장해둔다.
 * API 내부에 별도 스케줄러는 {N}sec 마다 스케줄링 되면서 MySQL 의 데이터를 조회하여 로컬에 저장된 값에 덮어쓴다.
 * 해당 방법을 하면 주기적으로 MySQL 에 요청쿼리가 날라가고 스토리지에 부담이 생긴다.
 * 그리고 외부에서 별도로 제어할 수 있는 방법이 없다. 내부에서 알아서 스케줄링이 되고 있는 상태다.
 
-### TO-BE
-레디스 pub/sub 을 이용했다.
-<kbd><img src="../Image/20230815_property_setting_2.drawio.png" width=500 /></kbd><br>
+## TO-BE
+레디스 pub/sub 을 이용했다.   
+<kbd><img src="../Image/20230815_property_setting_2.drawio.png" width=600 /></kbd><br>
 
 * API 는 받아서 바로 MySQL 에 저장하지 않고 redis 에 변경된 설정값을 pub 한다. 이후에 MySQL 에 저장한다.
 * 나머지 API 들 (pub 을 수행한 API 포함)은 redis 를 sub 하다가, 메시지를 전달받고 각자의 로컬에 변경된 설정값을 덮어쓴다.
@@ -25,7 +25,7 @@
     * 그리고 재연결을 시도하면서 다시 연결이 되면 재연결이 되었다고 알려준다. 알아서 HealthCheck 를 수행하고 있다.
     * 결과적으로 Lettuce 의 ConnectionWatchdog 는 연결이 끊겨서 재연결을 애플리케이션 레벨에서 따로 조작할 필요 없이 라이브러리에게 맡기면 된다.
 
-### Line LIVE
+## Line LIVE
 [Redis Pub/Sub을 사용해 대규모 사용자에게 고속으로 설정 정보를 배포한 사례](https://youtu.be/CENLaIz2Yb8)
 * 위 영상을 보면 Line 에서는 Redis pub/sub 을 이용해서 설정정보를 처리했다고 한다.
 * 그리고 설정된 정보를 MySQL 에 바로 저장하지 않고 배치시스템에서 redis 의 정보를 읽어다가 mysql 에 쌓고 있다고 한다.
