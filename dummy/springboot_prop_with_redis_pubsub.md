@@ -32,3 +32,94 @@
 * 다만 중간에 sub 이 끊여서 데이터를 전송받지 못한 경우는 어떻게 하는지 디테일하게 이해하기 어려웠다.
     * lettuce 가 아닌 다른 클라이언트 jedis 의 경우에는 주기적으로 ping 을 publish 하고 못받는 경우 reconnect 한다는 것 같다.
     * `그러면 결국 받지 못한 데이터는 어디서 어떻게 다시 받는 거지? 라는 의문이 든다.` -> MySQL 에서 다시 땡겨오는 것인가?
+
+## Lettuce events
+* Lettuce 에 레디스 서버와의 커넥션 발생 이벤트를 리스너로 등록할 수 있는 기능이 제공된다.
+    * [before 3.4/4.1](https://lettuce.io/core/release/reference/#events.before-3.44.1)
+    * [since 3.4/4.1](https://lettuce.io/core/release/reference/#events.since-3.44.1)
+
+__spring-redis-data 에서 LettuceConnectionFactory 를 이용해서 만들 수 있다.__
+* {} 안에 로그를 찍으면 레디스 연결/끊음/재연결 등의 이벤트를 확인할 수 있다.
+* 아래 코드가 적절한 코드인지 몰라서 spring-redis-data 오픈소스쪽에 질문했다. 
+    * https://github.com/spring-projects/spring-data-redis/issues/2685
+```kotlin
+private fun LettuceConnectionFactory.applyNotifyListener() {
+    this.requiredNativeClient.addListener(object : RedisConnectionStateListener {
+        override fun onRedisConnected(connection: RedisChannelHandler<*, *>?, socketAddress: SocketAddress?) {
+            super.onRedisConnected(connection, socketAddress)
+        }
+
+        override fun onRedisDisconnected(connection: RedisChannelHandler<*, *>?) {
+        }
+        override fun onRedisExceptionCaught(connection: RedisChannelHandler<*, *>?, cause: Throwable?) {}
+    })
+}
+
+private fun LettuceConnectionFactory.applyEventBus() {
+    this.connection
+    val eventBus = this.requiredNativeClient.resources.eventBus()
+    eventBus.get().subscribe { event ->
+        when (event) {
+            is ConnectEvent -> {}
+            is ConnectedEvent -> {}
+            is ConnectionActivatedEvent -> {}
+            is ConnectionCreatedEvent -> {}
+            is ConnectionDeactivatedEvent -> {}
+            is DisconnectedEvent -> {}
+            is ReconnectAttemptEvent -> {}
+            is ReconnectFailedEvent -> {}
+            else -> {}
+        }
+    }
+}
+```
+
+## 결론
+* redis pub/sub 이용 시에 특정 sub 이 레디스 연결이 끊겨서 전달받지 못하면, 해당 이벤트 리스너를 이용해서 재전달 받을 수 있도록 처리를 해주면 될 것 같다.
+* 좀 더 간단하게 쓸 수는 없을까? 가령 스프링부트에서 제공하는 @EventListener 를 이용해서도 처리할 수 있지 않을까? -> 테스트한 결과 가능하다. (아래는 샘플코드)
+
+## Lettuce Event + @EventListener 를 조합한 샘플코드
+#### ApplicationEventPublisher 등록
+```kotlin
+// Lettuce EventBus 를 등록하고, 이벤트 전송
+@Configuration
+class CustomRedisConfiguration(
+    private val eventPublisher: ApplicationEventPublisher,
+) {
+
+    private fun LettuceConnectionFactory.applyEventBus() {
+        this.connection
+        val eventBus = this.requiredNativeClient.resources.eventBus()
+        eventBus.get().subscribe { event ->
+            eventPublisher.publishEvent(CustomREvent(event))
+        }
+    }
+}
+
+// 이벤트 전송을 위한 페이로드 객체
+data class CustomREvent (
+    val event: Event
+) { /** 자세한 메소드 내용은 생략 */ }
+
+// @EventListener 등록 후, 로깅
+@Component
+class CustomRedisEventWatcher {
+
+    private val log = LoggerFactory.getLogger(javaClass)
+
+    @EventListener
+    fun handleRedisEvent(rEvent: CustomREvent) {
+        val line = StringBuilder().apply {
+            this.appendLine()
+            this.appendLine("event-state=${rEvent.currentState()}")
+            this.appendLine("event-redis-uri=${rEvent.getRedisUriOrEmpty()}")
+            this.appendLine("event-remote-address=${rEvent.getRemoteAddressOrEmpty()}")
+        }
+        if (rEvent.currentState() == CustomREvent.RState.NONE) {
+            log.error("event check!! : ${rEvent.getInfoOrNull()}")
+            return
+        }
+        log.info(line.toString())
+    }
+}
+```
