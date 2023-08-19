@@ -95,12 +95,16 @@ class CustomRedisConfiguration(
         }
     }
 }
-
+```
+#### 이벤트 리스너 등록
+```kotlin
 // 이벤트 전송을 위한 페이로드 객체
 data class CustomREvent (
     val event: Event
 ) { /** 자세한 메소드 내용은 생략 */ }
+```
 
+```kotlin
 // @EventListener 등록 후, 로깅
 @Component
 class CustomRedisEventWatcher {
