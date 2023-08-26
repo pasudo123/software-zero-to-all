@@ -80,6 +80,7 @@ private fun LettuceConnectionFactory.applyEventBus() {
 
 ## Lettuce Event + @EventListener 를 조합한 샘플코드
 #### ApplicationEventPublisher 등록
+(1) 과 (2) 중에 하나를 고르면 된다.
 ```kotlin
 // Lettuce EventBus 를 등록하고, 이벤트 전송
 @Configuration
@@ -87,10 +88,18 @@ class CustomRedisConfiguration(
     private val eventPublisher: ApplicationEventPublisher,
 ) {
 
+    // (1) connectionFactory 를 이용한 eventBus 이용
     private fun LettuceConnectionFactory.applyEventBus() {
         this.connection
         val eventBus = this.requiredNativeClient.resources.eventBus()
         eventBus.get().subscribe { event ->
+            eventPublisher.publishEvent(CustomREvent(event))
+        }
+    }
+
+    // (2) clientConfiguration.clientResources 를 이용한 eventBus 이용
+    this.clientConfiguration.clientResources.ifPresent {
+        it.eventBus().get().subscribe { event ->
             eventPublisher.publishEvent(CustomREvent(event))
         }
     }

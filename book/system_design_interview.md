@@ -52,3 +52,7 @@
 * 참고
     * https://www.ietf.org/archive/id/draft-polli-ratelimit-headers-02.html 
     * https://www.mimul.com/blog/about-rate-limit-algorithm/
+
+### 7장 분산 사스템을 위한 유일 ID 생성기 설계
+* 참고
+    * [ticket-server](https://code.flickr.net/2010/02/08/ticket-servers-distributed-unique-primary-keys-on-the-cheap/)
