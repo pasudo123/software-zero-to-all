@@ -80,7 +80,10 @@ private fun LettuceConnectionFactory.applyEventBus() {
 
 ## Lettuce Event + @EventListener 를 조합한 샘플코드
 #### ApplicationEventPublisher 등록
-(1) 과 (2) 중에 하나를 고르면 된다.
+(1) 의 방식은 동작하지만, (2) 의 방식은 동작하지 않는다.   
+* 그 이유는 LettuceConnectionFactory 의 clientConfiguration 은 내부적으로 MutableLettuceClientConfiguration 을 이용함 
+* MutableLettuceClientConfiguration 은 clientResources 를 Optional.ofNullable(null) 로 할당해주고 있기 때문에 ClientResources 가 미존재한다. 
+* 따라서 (2) 를 동작하기 위해선 LettuceConnectionFactory 생성 시 커스텀하게 별도로 만들어야 한다.
 ```kotlin
 // Lettuce EventBus 를 등록하고, 이벤트 전송
 @Configuration
@@ -90,14 +93,13 @@ class CustomRedisConfiguration(
 
     // (1) connectionFactory 를 이용한 eventBus 이용
     private fun LettuceConnectionFactory.applyEventBus() {
-        this.connection
         val eventBus = this.requiredNativeClient.resources.eventBus()
         eventBus.get().subscribe { event ->
             eventPublisher.publishEvent(CustomREvent(event))
         }
     }
 
-    // (2) clientConfiguration.clientResources 를 이용한 eventBus 이용
+    // (2) clientConfiguration.clientResources 를 이용한 eventBus 이용 -> 하지만 nullable 해서 동작안함.
     this.clientConfiguration.clientResources.ifPresent {
         it.eventBus().get().subscribe { event ->
             eventPublisher.publishEvent(CustomREvent(event))
@@ -136,5 +138,46 @@ class CustomRedisEventWatcher {
         }
         log.info(line.toString())
     }
+}
+```
+
+#### 번외 : LettuceConnectionFactory 에 ClientConfiguration 추가
+```kotlin
+/**
+ * implementation of {@link MutableLettuceClientConfiguration}.
+ */
+class CustomLettuceClientConfiguration: LettuceClientConfiguration {
+    // 생략
+}
+```
+
+```kotlin
+/**
+ * 아래에서 CustomLettuceClientConfiguration 을 넣어준다. : 내부 LettuceConnectionFactory 생성동작이 살짝 다름
+ */
+@Bean
+fun stringRedisTemplate(): StringRedisTemplate {
+
+    val standaloneConfiguration = RedisStandaloneConfiguration(
+        redisProperties.host,
+        redisProperties.port
+    ).apply {
+        this.password = RedisPassword.none()
+        this.database = 0
+    }
+
+    val connectionFactory = LettuceConnectionFactory(
+        standaloneConfiguration,
+        CustomLettuceClientConfiguration()
+    ).apply {
+        this.afterPropertiesSet()
+        this.applyEventBus()
+    }
+
+    val stringRedisTemplate = StringRedisTemplate(connectionFactory).apply {
+        this.afterPropertiesSet()
+    }
+
+    return stringRedisTemplate
 }
 ```
