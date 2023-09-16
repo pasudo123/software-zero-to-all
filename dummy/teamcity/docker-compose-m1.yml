@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  teamcity-server:
+      image: jetbrains/teamcity-server
+      restart: always
+      container_name: teamcity-server
+      ports:
+        - "18111:8111"
+  teamcity-mysql:
+    image: arm64v8/mysql:8.0
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_DATABASE=teamcity
+    container_name: teamcity-mysql
+    ports:
+      - "18112:3306"
