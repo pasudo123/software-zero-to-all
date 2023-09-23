@@ -151,6 +151,7 @@
 * [xargs](./command/linux_xargs.md)
 * [heredoc](./command/heredoc.md)
 * [which](./command/which.md)
+* [curl](./command/curl.md.)
 
 ## 👨‍🚀 실무
 * [실무를 일하면서...](./personal/keep_in_mind.md)
