@@ -36,6 +36,8 @@
 * [t academy : spark의 실시간/배치](./development/t_academy_spark02.md)
 * [1. toby reactive : pub 과 sub 사이에 operation 을 추가해보자](./development/toby_reactive_operation)
 * [reactive 혼자 메모해놓은 것들 : 더미로 쌓아둔 것](./development/reactive_dummy.md)
+* [OutOfMemory 관련 gradle, jattcath 기록해놓은 레포](https://github.com/pasudo123/oom-zero)
+
 
 ### OOP : Object Oriented Programming 🌼
 * [초보개발자에게 권장하는 객체지향 모델링 공부방법](https://okky.kr/article/358197)
@@ -206,5 +208,6 @@
 * [springboot 에서 sseEmitter 사용기](./dummy/springboot_sseEmitter.md)
 * [springboot 에서 @Async ThreadPoolTaskExecutor 설정](./dummy/springboot_@async.md)
 * [설정된 정보를 모든 서버에 반영하는 방법 : redis pub/sub 이용](./dummy/springboot_prop_with_redis_pubsub.md)
+* [reactive study, springboot with with](https://github.com/pasudo123/reactive-with-kopring)
 * [CI/CD jenkins 설정 삽질기](./dummy/jenkins_exercise.md)
 * [프로메테우스와 스프링부트 metrics](./dummy/prometheus_with_springboot.md)
