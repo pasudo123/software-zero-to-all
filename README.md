@@ -195,6 +195,7 @@
 * [emit 은 프로그래밍 관점에서 어떤 의미인지?](./personal/emit.md)
 
 ## 👨‍🚀 중복내용 & 이런저런
+* [spring document study](./dummy/spring_document_study.md)
 * [[ java ] classpath 의 json 파일 읽어들이기](boilerplate/reading_json_file_of_classpath.md)
 * [spring jpa 에서 hibernate 바인딩된 데이터 조회하기](./dummy/jpa_hibernate_show_binding_value.md)
 * [spring jpa 에서 querydsl 사용하기 with kotlin](./dummy/jpa_querydsl_with_kotlin.md)
@@ -212,3 +213,4 @@
 * [reactive study, springboot with with](https://github.com/pasudo123/reactive-with-kopring)
 * [CI/CD jenkins 설정 삽질기](./dummy/jenkins_exercise.md)
 * [프로메테우스와 스프링부트 metrics](./dummy/prometheus_with_springboot.md)
+* [[외부링크]vscode 로 json 정렬하기](https://gigi.nullneuron.net/gigilabs/formatting-json-in-visual-studio-code/)
