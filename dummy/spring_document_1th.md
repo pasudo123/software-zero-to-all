@@ -143,3 +143,8 @@ class Chapter01Runner : ApplicationRunner {
 * DI 디자인 패턴을 구현하기 위해서 IoC컨테이너를 이용한다. e.g. ApplicationContext, ClassPathXmlApplicationContext 등
 * IoC컨테이너를 이용하지 않더라도 DI 를 구현할 수 있다. (샘플코드 필요)
 
+---
+
+## 참고
+* [DI는 IoC를 사용하지 않아도 된다](https://jwchung.github.io/DI%EB%8A%94-IoC%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EC%95%84%EB%8F%84-%EB%90%9C%EB%8B%A4)
+
