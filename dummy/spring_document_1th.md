@@ -13,7 +13,7 @@
   * assembling: 의존관리/모듈설정
 * ApplicationContext 는 configuration metadata 를 읽음으로써, 앞선 행위를 수행할 수 있다. configuration metadata 를 설정하는 방법에는 여러가지가 존재한다. XML, Java annotations, Java code,...
 
-![Alt text](../Image/20231028_springdoc01.png)
+<img src="../Image/20231028_springdoc01.png" width="400" />
 비즈니스 오브젝트가 설정 메타데이터와 SpringContainer 를 만나서 Bean 으로 처리됨을 보여주고 있다.
 
 --- 
@@ -135,8 +135,11 @@ class Chapter01Runner : ApplicationRunner {
 
 > 하지만 우리가 애플리케이션 코드 내에서 getBean() 메소드를 호출할 일이 없음. 스프링 웹 프레임워크 같은 경우 의존성 주입이 자동적으로 제공되기 때문에 별도 개발자가 액션을 취할일은 없음
 
---- 
 
-### 정리
-* DI 를 위해서 스프링 프레임워크가 존재. 거기에 IoC컨테이너가 있음. e.g. ApplicationContext, ClassPathXmlApplicationContext, etc
+
+---
+
+## 정리
+* DI 디자인 패턴을 구현하기 위해서 IoC컨테이너를 이용한다. e.g. ApplicationContext, ClassPathXmlApplicationContext 등
+* IoC컨테이너를 이용하지 않더라도 DI 를 구현할 수 있다. (샘플코드 필요)
 
