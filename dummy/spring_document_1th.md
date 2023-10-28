@@ -16,12 +16,13 @@
 ![Alt text](../Image/20231028_springdoc01.png)
 비즈니스 오브젝트가 설정 메타데이터와 SpringContainer 를 만나서 Bean 으로 처리됨을 보여주고 있다.
 
+--- 
+
 #### ClassPathXmlApplicationContext : ApplicationContext
 * 전통적으로 XML 에 메타데이터 구성요소를 정의함으로써 빈을 생성/관리할 수 있는 IoC컨테이너
 * xml 구성을 위해선 별도 xml 파일을 만들고 거기에 `<bean>` 태그를 붙여서 설정하여야 한다.
 
-__sample.xml__ 파일   
-의존성이 걸린것과 
+__sample.xml__
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -104,8 +105,12 @@ class Chapter01Runner: ApplicationRunner {
 - coffeeRepositoryBean=class com.example.springdocumenttraining.chapter01.CoffeeRepository
 ```
 
+--- 
+
 #### GenericGroovyApplicationContext : ApplicationContext
 그루비 언어를 통해서도 bean 주입이 가능하다.   
+
+___sample.groovy___
 ```groovy
 beans {
     coffeeRepository(CoffeeRepository)
@@ -114,7 +119,7 @@ beans {
 ```
 
 __ApplicationRunner.kt__   
-아래처럼 설정할 수 있다. 나머지는 이전 코드와 동일
+아래처럼 설정할 수 있다. 나머지는 이전 코드와 동일하다.
 ```kotlin
 @Component
 class Chapter01Runner : ApplicationRunner {
@@ -129,6 +134,8 @@ class Chapter01Runner : ApplicationRunner {
 ```
 
 > 하지만 우리가 애플리케이션 코드 내에서 getBean() 메소드를 호출할 일이 없음. 스프링 웹 프레임워크 같은 경우 의존성 주입이 자동적으로 제공되기 때문에 별도 개발자가 액션을 취할일은 없음
+
+--- 
 
 ### 정리
 * DI 를 위해서 스프링 프레임워크가 존재. 거기에 IoC컨테이너가 있음. e.g. ApplicationContext, ClassPathXmlApplicationContext, etc
