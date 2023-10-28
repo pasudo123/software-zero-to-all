@@ -1,5 +1,6 @@
 ## 1회차, 스프링 도큐먼트 공부
 
+
 ### (1) Introduction to the Spring IoC Container and Beans
 * org.springframework.beans 와 org.springframework.context 패키지는 스프링 프레임워크의 IoC컨테이너 기반이다.
 * BeanFactory 는 Spring IoC컨테이너의 핵심 인터페이스임. 해당 인터페이스는 Bean 객체의 생성/구성/관리를 처리한다. 하지만 기본적인 기능만 제공하고 있기 때문에 더 많은 기능을 사용하고자 하는 경우에는 `ApplicationContext` 를 이용하여야 한다. `ApplicationContext` 는 BeanFactory 의 상위집합 개념이다. 
@@ -135,7 +136,33 @@ class Chapter01Runner : ApplicationRunner {
 
 > 하지만 우리가 애플리케이션 코드 내에서 getBean() 메소드를 호출할 일이 없음. 스프링 웹 프레임워크 같은 경우 의존성 주입이 자동적으로 제공되기 때문에 별도 개발자가 액션을 취할일은 없음
 
+--- 
 
+### (3) Bean Overview
+Bean 의 메타데이터 설정정보를 확인하려면 BeanDefinition 객체를 이용하여 확인이 가능하다.
+```kotlin
+private fun ClassPathXmlApplicationContext.check() {
+    val context = this
+
+
+    with(context.beanFactory.getBeanDefinition(COFFEE_SERVICE)) {
+        log.info("coffeeService.beanClassName=${this.beanClassName}")
+        log.info("coffeeService.factoryBeanName=${this.factoryBeanName}")
+        log.info("coffeeService.description=${this.description}")
+        log.info("coffeeService.scope=${this.scope}")
+        log.info("coffeeService.resolvableType=${this.resolvableType}")
+        log.info("coffeeService.singleton=${this.isSingleton}")
+    }
+}
+```
+* Instantiating Beans
+  * 정의된 메타데이터를 확인하여 빈을 생성함
+  * [생성자를 통해서 만들 수 있음](https://docs.spring.io/spring-framework/reference/core/beans/definition.html#beans-factory-class-ctor)
+  * [스태틱 팩토리 메소드를 통해서 만들 수 있음](https://docs.spring.io/spring-framework/reference/core/beans/definition.html#beans-factory-class-static-factory-method)
+  * [정의된 팩토리 빈을 통해서도 만들 수 있음](https://docs.spring.io/spring-framework/reference/core/beans/definition.html#beans-factory-class-instance-factory-method)
+    * FactoryBean<T> 를 implementation 하여 재구현도 가능함.
+#### Bean Naming
+* id, name 을 사용하여 빈의 이름을 {N}개 이상 표현할 수 있지만 실제 고유한 식별자는 id 만 가능하다.
 
 ---
 
