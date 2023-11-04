@@ -265,10 +265,47 @@ class MyController{
 }
 ```
 
-## 정리3 : DI 와 DIP 는 서로 다른 개념이다.
+## 정리3 : DI 와 DIP(Dependency Inversion Principle) 는 서로 다른 개념이다.
 * DI 는 의존성을 주입하는 것
 * DIP 는 의존성 역전 원칙인데, 이를 위해 DI 를 사용한다.
-    * 고수준의 모듈이 저수준의 모듈에 의존성을 가지지 않고, 저수준의 추상하된 모듈에 의존성을 가짐으로 컴파일이 아닌 런타임시에 의존관계가 달라진다.
+    * 고수준의 모듈이 저수준의 모듈에 의존성을 가지지 않고, 저수준의 추상화된 모듈에 의존성을 가짐으로 컴파일이 아닌 런타임시에 의존관계가 달라진다.
+
+__DIP 로 작성된 코드__
+```kotlin
+interface DiscountPolicy {
+    fun discount(): Long
+}
+
+class AmountDiscountPolicy : DiscountPolicy {
+    override fun discount(): Long {
+        TODO("Not yet implemented")
+    }
+}
+
+class PercentDiscountPolicy : DiscountPolicy {
+    override fun discount(): Long {
+        TODO("Not yet implemented")
+    }
+}
+
+class NoneDiscountPolicy : DiscountPolicy {
+    override fun discount(): Long {
+        TODO("Not yet implemented")
+    }
+}
+
+class MovieDiscountService(
+    private val discountPolicy: DiscountPolicy
+) {
+
+    fun discountFrom(product: Any) {
+        discountPolicy.discount(/** 파라미터 설정 **/)
+    }
+}
+```
+* 고수준의 MovieDiscountService 모듈은 저수준 AmountDiscountPolicy, PercentDiscountPolicy, NoneDiscountPolicy 를 의존하지 않는다.
+* 추상화된 개념의 DiscountPolicy 를 의존한다. 결국 `고수준 모듈 --> 고수준 모듈` 로 처리된다.
+* 추상화를 통해 저수준 모듈을 의존성을 관계를 역전시킬 수 있다.
 
 ## 참고
 * [DI는 IoC를 사용하지 않아도 된다](https://jwchung.github.io/DI%EB%8A%94-IoC%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EC%95%84%EB%8F%84-%EB%90%9C%EB%8B%A4)
