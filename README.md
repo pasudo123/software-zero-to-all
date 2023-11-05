@@ -167,6 +167,7 @@
 * [real mysql 8.0](./book/real_mysql8.0/realmysql80.md)
 * [쿠버네티스 인 액션](./book/k8s_in_action.md)
 * [가상면접사례로 배우는 대규모 시스템 설계 기초](./book/system_design_interview.md)
+* [성공과 실패를 결정하는 1%의 네트워크 원리](./book/1_percent_network.md)
 
 ## 맥 💻🍎
 * [Apple M1 Pro 16, 32GB](#)
