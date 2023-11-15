@@ -36,7 +36,7 @@
 * [t academy : spark의 실시간/배치](./development/t_academy_spark02.md)
 * [1. toby reactive : pub 과 sub 사이에 operation 을 추가해보자](./development/toby_reactive_operation)
 * [reactive 혼자 메모해놓은 것들 : 더미로 쌓아둔 것](./development/reactive_dummy.md)
-* [OutOfMemory 관련 gradle, jattcath 기록해놓은 레포](https://github.com/pasudo123/oom-zero)
+* [oom, OutOfMemory 관련 gradle, jattatch 기록해놓은 레포](https://github.com/pasudo123/oom-zero)
 
 
 ### OOP : Object Oriented Programming 🌼
