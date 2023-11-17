@@ -164,3 +164,140 @@ class Chapter02LazyConfiguration {
 ```
 
 > @Lazy 애노테이션을 딱히 써본적은 없음. 이점이 있는지 크게 잘 모르겠음.
+
+### autowiring collaborators
+* 명시적으로 의존성 설정을 하는 경우, 자동으로 @Autowired 처리는 무시가 된다.
+
+### method injection
+싱글톤빈과 프로토타입빈이 서로 협력할 때, 싱글톤빈에서 프로토타입 빈을 획득하는 방법 -> 이를 `method injection` 이라 칭한다.
+
+__singleton bean & prototype bean 의 선언__
+```kotlin
+@Configuration
+class Chapter02MethodInjectionConfiguration {
+
+    @Bean
+    @Scope("prototype")
+    fun protoTypeSampleBean(): ProtoTypeSampleBean {
+        return ProtoTypeSampleBean()
+    }
+
+    @Bean
+    fun singletonSampleBean(): SingleTonSampleBean {
+        return SingleTonSampleBean()
+    }
+
+    class ProtoTypeSampleBean
+
+    class SingleTonSampleBean : ApplicationContextAware {
+
+        private lateinit var applicationContext: ApplicationContext
+
+        override fun setApplicationContext(applicationContext: ApplicationContext) {
+            this.applicationContext = applicationContext
+        }
+
+        fun getProtoType(): ProtoTypeSampleBean {
+            return applicationContext.getBean(ProtoTypeSampleBean::class.java)
+        }
+    }
+}
+```
+
+__method inejction 사용__
+```kotlin
+@Component
+class Chapter02Runner(
+    private val applicationContext: ApplicationContext,
+): ApplicationRunner {
+
+    private val log = LoggerFactory.getLogger(javaClass)
+
+    override fun run(args: ApplicationArguments?) {
+        log.info("args runner")
+        val singletonBean = applicationContext.getBean(Chapter02MethodInjectionConfiguration.SingleTonSampleBean::class.java)
+        log.info("(1) prototype : ${ObjectUtils.getIdentityHexString(singletonBean.getProtoType())}")
+        log.info("(2) prototype : ${ObjectUtils.getIdentityHexString(singletonBean.getProtoType())}")
+        log.info("(3) prototype : ${ObjectUtils.getIdentityHexString(singletonBean.getProtoType())}")
+    }
+}
+```
+
+__출력값__
+* 빈이 다르기 때문에 반환되는 식별값이 다름
+```shell
+2023-11-17T16:43:26.392+09:00  INFO 70223 --- [           main] c.e.s.chapter02.Chapter02Runner          : args runner
+2023-11-17T16:43:26.393+09:00  INFO 70223 --- [           main] c.e.s.chapter02.Chapter02Runner          : (1) prototype : 5d7f8467
+2023-11-17T16:43:26.393+09:00  INFO 70223 --- [           main] c.e.s.chapter02.Chapter02Runner          : (2) prototype : 29bd85db
+2023-11-17T16:43:26.393+09:00  INFO 70223 --- [           main] c.e.s.chapter02.Chapter02Runner          : (3) prototype : 7caf1e5
+```
+
+__method injection 이 아닌 @Lookup 을 활용__
+```kotlin
+@Configuration
+class Chapter02MethodInjectionConfiguration {
+
+    @Bean
+    @Scope("prototype")
+    fun protoTypeSampleBean(): ProtoTypeSampleBean {
+        return ProtoTypeSampleBean()
+    }
+}
+
+class ProtoTypeSampleBean
+
+@Component
+abstract class SingleTonSampleBean1th {
+
+    @Lookup("protoTypeSampleBean")
+    // 미구현이라도 @Lookup 처리로 인하여 CGLIB 프록시가 생성되어 오버라이딩 처리가 된다
+    abstract fun createProtoType(): ProtoTypeSampleBean
+}
+
+@Component
+abstract class SingleTonSampleBean2th {
+
+    @Lookup("protoTypeSampleBean")
+    abstract fun createProtoType(): ProtoTypeSampleBean
+}
+
+@Component
+class Chapter02Runner(
+    private val singleTonSampleBean1th: SingleTonSampleBean1th,
+    private val singleTonSampleBean2th: SingleTonSampleBean2th
+): ApplicationRunner {
+
+    private val log = LoggerFactory.getLogger(javaClass)
+
+    override fun run(args: ApplicationArguments?) {
+        log.info("args runner")
+        log.info("(1) prototype : ${ObjectUtils.getIdentityHexString(singleTonSampleBean1th.createProtoType())}")
+        log.info("(2) prototype : ${ObjectUtils.getIdentityHexString(singleTonSampleBean1th.createProtoType())}")
+        log.info("(3) prototype : ${ObjectUtils.getIdentityHexString(singleTonSampleBean1th.createProtoType())}")
+
+        log.info("--")
+        log.info("(1) prototype : ${ObjectUtils.getIdentityHexString(singleTonSampleBean2th.createProtoType())}")
+        log.info("(2) prototype : ${ObjectUtils.getIdentityHexString(singleTonSampleBean2th.createProtoType())}")
+        log.info("(3) prototype : ${ObjectUtils.getIdentityHexString(singleTonSampleBean2th.createProtoType())}")
+    }
+}
+```
+
+__출력값__
+```shell
+2023-11-17T17:19:44.318+09:00  INFO 74288 --- [           main] c.e.s.chapter02.Chapter02Runner          : args runner
+2023-11-17T17:19:44.319+09:00  INFO 74288 --- [           main] c.e.s.chapter02.Chapter02Runner          : (1) prototype : 589fb74d
+2023-11-17T17:19:44.319+09:00  INFO 74288 --- [           main] c.e.s.chapter02.Chapter02Runner          : (2) prototype : 200d1a3d
+2023-11-17T17:19:44.319+09:00  INFO 74288 --- [           main] c.e.s.chapter02.Chapter02Runner          : (3) prototype : 7de147e9
+2023-11-17T17:19:44.319+09:00  INFO 74288 --- [           main] c.e.s.chapter02.Chapter02Runner          : --
+2023-11-17T17:19:44.319+09:00  INFO 74288 --- [           main] c.e.s.chapter02.Chapter02Runner          : (1) prototype : 12567179
+2023-11-17T17:19:44.319+09:00  INFO 74288 --- [           main] c.e.s.chapter02.Chapter02Runner          : (2) prototype : 37d699a1
+2023-11-17T17:19:44.319+09:00  INFO 74288 --- [           main] c.e.s.chapter02.Chapter02Runner          : (3) prototype : 7f42b194
+```
+
+> @Lookup 을 사용하면 프로토타입 빈에 대해 동적으로 손쉽게 가져올 수 있음   
+> CGLIB 프록시로 작동되기 때문에 따로 메소드를 구현하지 않아도 된다.   
+> 싱글톤빈과 프로토타입빈의 의존관계를 강결합하게 가져가지 않아도 된다.   
+> 따로 사용해본적은 없다..   
+
+## (2) Bean Scopes
