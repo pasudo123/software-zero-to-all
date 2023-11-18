@@ -314,4 +314,20 @@ __출력값__
     * destruction lifecycle 이 호출되지 않는다.
 * 프로토타입 빈 자원을 해제하는 역할은 개발자가 직접 해야함
 
-> 기타 이외의 내용은 깊게 파고들진 않음
+> 기타 이외의 내용은 깊게 파고들진 않았음  
+> 필요에 따라서 추가적으로 더 살펴본다
+
+## (3) Customizing the Nature of a Bean
+### Lifecycle Callbacks
+* Bean 객체에 InitializingBean & DisposableBean 인터페이스를 구현하면 빈 라이프사이클 콜백메소드를 오버라이딩 할 수 있다.
+    * InitializingBean 는 afterPropertiesSet() 을 오버라이딩
+    * DisposableBean 은 destory() 을 오버라이딩
+* 하지만 JSR-250(자바 표준 명세) 에서 Bean 객체에 @PostConstruct, @PreDestroy 를 베스트 프랙티스로 잡고있다.
+
+### Initialization Callbacks
+* InitializingBean 인터페이스 구현하지 말고, @PostConstruct 를 쓰는걸 추천
+
+### Destruction Callbacks
+* DisposableBean 인터페이스 구현하지 말고, @PreDestroy 를 쓰는걸 추천
+
+### Startup and Shutdown Callbacks
