@@ -424,4 +424,4 @@ class SmartLifeCycleImpl : SmartLifecycle {
 ### ApplicationContextAware and BeanNameAware
 * ApplicationContextAware 는 IoC 방식을 따르지 않고 있기 때문에 피해야함
     * 앞선 methodInjection 에서도 제어의 역전이 되지 않아 Lookup 으로 처리하였음
-* BeanNameAware 를 구현하면 빈의 네이밍을 참조할 수 있는 메소드가 제공됨. `setBeanName(name: String)`
+* ApplicationContext 는 BeanNameAware 를 구현한 클래스에 대해 빈의 네이밍을 참조할 수 있는 메소드가 제공됨. `setBeanName(name: String)`
