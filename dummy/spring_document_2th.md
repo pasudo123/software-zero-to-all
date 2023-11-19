@@ -331,3 +331,97 @@ __출력값__
 * DisposableBean 인터페이스 구현하지 말고, @PreDestroy 를 쓰는걸 추천
 
 ### Startup and Shutdown Callbacks
+* 스프링 컨테이너 내 라이프사이클로 관리하기 위해선 SmartLifecycle 인터페이스를 구현한다.
+* Lifecycle/LifecycleProcessor 의 경우 start() 메소드 호출이 되질 않음.
+
+__Lifecycle 구현__
+```kotlin
+@Component
+class LifeCycleImpl : Lifecycle {
+    var isCustomRunning = false
+
+    override fun start() {
+        isCustomRunning = true
+        println("LifeCycleImpl start")
+    }
+
+    override fun stop() {
+        isCustomRunning = false
+        println("LifeCycleImpl stop")
+    }
+
+    override fun isRunning(): Boolean {
+        println("LifeCycleImpl isRunning")
+        return isCustomRunning
+    }
+}
+```
+
+__LifecycleProcessor 구현__
+```kotlin
+@Component
+class LifeCycleProcessImpl : LifecycleProcessor {
+    var isCustomRunning = false
+
+    override fun start() {
+        isCustomRunning = true
+        println("LifeCycleProcessImpl start")
+    }
+
+    override fun stop() {
+        isCustomRunning = false
+        println("LifeCycleProcessImpl stop")
+    }
+
+    override fun isRunning(): Boolean {
+        println("LifeCycleProcessImpl isRunning")
+        return isCustomRunning
+    }
+
+    override fun onRefresh() {
+        println("LifeCycleProcessImpl onRefresh")
+    }
+
+    override fun onClose() {
+        println("LifeCycleProcessImpl onClose")
+    }
+}
+```
+
+__SmartLifecycle 구현__
+```kotlin
+@Component
+class SmartLifeCycleImpl : SmartLifecycle {
+    var isCustomRunning = false
+
+    override fun start() {
+        isCustomRunning = true
+        println("SmartLifeCycleImpl start")
+    }
+
+    override fun stop() {
+        isCustomRunning = false
+        println("SmartLifeCycleImpl stop")
+    }
+
+    override fun isRunning(): Boolean {
+        println("SmartLifeCycleImpl isRunning")
+        return isCustomRunning
+    }
+
+    override fun isAutoStartup(): Boolean {
+        return true
+    }
+}
+
+```
+
+### Shutting Down the Spring IoC Container Gracefully in Non-Web Applications
+* web-based applicationContext 는 gracefully shutdown 이 설정되어있어서 상관하지 않아도 무방함.
+* non-web-based 에서는 `registerShutdownHook()` 를 호출이 필요함
+
+
+### ApplicationContextAware and BeanNameAware
+* ApplicationContextAware 는 IoC 방식을 따르지 않고 있기 때문에 피해야함
+    * 앞선 methodInjection 에서도 제어의 역전이 되지 않아 Lookup 으로 처리하였음
+* BeanNameAware 를 구현하면 빈의 네이밍을 참조할 수 있는 메소드가 제공됨. `setBeanName(name: String)`
