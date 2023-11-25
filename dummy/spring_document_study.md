@@ -10,3 +10,8 @@
 * Dependencies
 * Bean Scopes
 * Customizing the Nature of a Bean
+
+### [3회차](./spring_document_3th.md)
+* Bean Definition Inheritance
+* Container Extension Points
+* Annotation-based Container Configuration
