@@ -67,3 +67,140 @@ class MyChildBean : MyParentBean()
 class MyNewChildBean: MyParentBean()
 ```
 
+## (2) Container Extension Points
+
+### Customizing Beans by Using a BeanPostProcessor
+- BeanPostProcessor 를 이용해서 빈 생성/의존성 등 로직을 설정할 수 있다.
+- 여러 개의 BeanPostProcessor 를 등록할 수 있고 Ordered 를 가지고 순서를 정의한다.
+- BeanPostProcessor 는 컨테이너 단위로 적용되고 있으며, 특정 컨테이너에 속한 BeanPostProcessor 는 Spring IoC 컨테이너에 속한 빈들에 대해 후처리 작업을 수행한다.
+    - `스프링 기반 웹 애플리케이션이나 혹은 배치단 코드 작업 시 IoC 컨테이너를 N 개 만들어본적은 없음`
+- BeanDefinitios 을 변경하려면 BeanFactoryPostProcessor 를 이용한다.
+    - 자세한 설명은 뒤에서.
+- BeanPostProcessor 는 `두 개` 의 콜백메소드를 제공한다.
+    - 첫번째 콜백은 Bean 이 초기화 메소드 호출되기 전에 발생한다.
+    - 두번째 콜백은 Bean 이 초기화 메소드 호출되고 이후에 발생한다.
+- BeanPostProcessor 는 Bean Instance 에 대한 작업을 수행할 수 있다.
+    - 콜백 인터페이스 확인
+    - 빈을 프록시로 wrapping 하는 작업
+- `BeanPostProcessor 조차도 Bean 으로 등록해서 사전에 빈으로 만들어야 한다. 그러면 ApplicationContext 가 사전에 감지해서 Bean 의 PostProcessor 역할이 된다.`
+- BeanPostProcessor 를 등록하는 두가지 방법
+    - Bean 으로 등록하여 ApplicationContext 로 등록하는 방법 (위에 적힌 방법)
+    - ConfigurableBeanFactory 를 이용하여 BeanPostProcessor 를 등록하는 방법 (Ordered 인터페이스를 준수하지 않는다고 함) Bean 으로 등록하는 것보다 더 일찍 후처리기로 등록된다.
+- `스프링 AOP 프록시 자체가 BeanPostProcessor 를 구현하고 있기 때문에 BeanPostProcessor 를 구현하는 클래스와 해당 클래스가 참조하는 빈은 AOP 프록시 대상이 아니다.`
+
+__BeanPostProcessor 는 AOP 프록시 대상이 아닌 경우__
+```kotlin
+@Configuration
+class CustomBeanPostProcessorConfiguration {
+
+    // 명시적으로 빈 선언
+    @Bean
+    fun myCustomBeanPostProcessor(): BeanPostProcessor {
+        return MyCustomBeanPostProcessor()
+    }
+}
+
+class MyCustomBeanPostProcessor: BeanPostProcessor {
+
+    override fun postProcessBeforeInitialization(bean: Any, beanName: String): Any? {
+        return bean
+    }
+
+    override fun postProcessAfterInitialization(bean: Any, beanName: String): Any? {
+        return bean
+    }
+}
+```
+- 위처럼 코드작성하면 MyCustomBeanPostProcessor 클래스는 AOP 프록시 대상이 아니다. 실행 시 콘솔창에 아래와 같은 문구가 노출
+    - `Bean 'customBeanPostProcessorConfiguration' of type [com.example.springdocumenttraining.chapter03.CustomBeanPostProcessorConfiguration$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)`
+    - 위 클래스는 AOP 프록시 대상이 아님.
+    - BeanPostProcessorChecker 라는 클래스에서 검사를 수행하고 있다. (해당 클래스도 BeanPostProcessor 를 구현하는 클래스)
+
+__BeanPostProcessor 를 AOP 프록시 대상으로 만드는 경우__
+- BeanPostProcessor 를 구현한 클래스에 @Component 설정을 하면 로그메시지가 미출력
+- 이렇게 하면 BeanPostProcessor 가 자기자신을 참조할 수 있다고도 함.
+    - 초기화 단계에서 순환참조에 빠질 수도 있음 + 예상치 못한 동작이 발생.?
+```kotlin
+@Component
+class MyCustomBeanPostProcessor: BeanPostProcessor {
+
+    override fun postProcessBeforeInitialization(bean: Any, beanName: String): Any? {
+        return bean
+    }
+
+    override fun postProcessAfterInitialization(bean: Any, beanName: String): Any? {
+        return bean
+    }
+}
+```
+
+__BeanPostProcessor 의 동작방식 플로우__
+```kotlin
+@Configuration
+class CustomBeanPostProcessorConfiguration {
+
+    @Bean
+    fun water(): Water {
+        return Water()
+    }
+
+    @Bean
+    fun myCustomBeanPostProcessor(): BeanPostProcessor {
+        return MyCustomBeanPostProcessor()
+    }
+}
+
+class Water {
+    @PostConstruct
+    fun init() {
+        log.info("@@ water postConstruct")
+    }
+}
+
+class MyCustomBeanPostProcessor: BeanPostProcessor {
+
+    override fun postProcessBeforeInitialization(bean: Any, beanName: String): Any? {
+        if (bean is Water) {
+            log.info("before init bean, bean.name=${beanName}")
+        }
+        return bean
+    }
+
+    override fun postProcessAfterInitialization(bean: Any, beanName: String): Any? {
+        if (bean is Water) {
+            log.info("after init bean, bean.name=${beanName}")
+        }
+        return bean
+    }
+}
+
+// 위 처럼 작성 시 출력은 아래처럼 된다.
+// BeanPostProcessorWithAopSample$Companion : before init bean, bean.name=water
+// BeanPostProcessorWithAopSample$Companion : @@ water postConstruct
+// BeanPostProcessorWithAopSample$Companion : after init bean, bean.name=water
+```
+
+### AutowiredAnnotationBeanPostProcessor 
+- 스프링에서 BeanPostProcessor 가 아닌 AutowiredAnnotationBeanPostProcessor 를 통해서 @Autowired 의존주입을 자동으로 처리함.
+- 필요시 AutowiredAnnotationBeanPostProcessor 도 커스텀하게 만들 수 있다.
+```kotlin
+@Configuration
+class CustomAutowiredBeanPostProcessorConfiguration {
+
+    @Bean
+    fun myAnnotationBeanPostProcessor(): MyAnnotationBeanPostProcessor {
+        return MyAnnotationBeanPostProcessor()
+    }
+}
+
+class MyAnnotationBeanPostProcessor: AutowiredAnnotationBeanPostProcessor() {
+
+    override fun postProcessBeforeInitialization(bean: Any, beanName: String): Any? {
+        return bean
+    }
+
+    override fun postProcessAfterInitialization(bean: Any, beanName: String): Any? {
+        return bean
+    }
+}
+```
