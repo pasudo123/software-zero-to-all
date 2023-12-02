@@ -204,3 +204,148 @@ class MyAnnotationBeanPostProcessor: AutowiredAnnotationBeanPostProcessor() {
     }
 }
 ```
+
+## Customizing Configuration Metadata with a BeanFactoryPostProcessor
+- BeanFactoryPostProcessor 는 스프링 Bean 의 메타데이터 configuration 에서 동작하는 인터페이스다.
+- 빈이 생성되기 이전에 컨테이너의 동작을 제어할 수 있고 필요한 구성을 적용할 수 있다.
+- BeanFactoryPostProcessor 인스턴스를 여러 개 구성할 수 있고 order 를 통해 순서도 제어가능한다. (Ordered 인터페이스가 구현되어 있어야 한다.)
+- `메타데이터에 의해 기 생성된 Bean 을 변경하려면 BeanPostProcessor 를 건드린다.`
+- `BeanPostProcessor or BeanFactoryPostProcessor 둘은 lazy 하게 초기화되면 안된다`
+    - 느린 초기화 시에 빈의 메타데이터 구성시점에 동작을 하지 않을 뿐더러 빈이 만들어지고 난 뒤에도 설정을 변경할 수 없기 때문에 자동으로 eager 처리가 된다.
+
+
+
+## Customizing Instantiation Logic with a FactoryBean
+- FactoryBean 을 가지고도 빈을 생성할 수 있다.
+    - 선행조건은 FactoryBean 을 구현하는 클래스가 스프링 빈으로 등록이 가능하다.
+- `&` 기호를 쓰면 FactoryBean 그 자체에도 접근이 가능하다.
+
+__Rice 클래스 및 Rice 의 FactoryBean 선언__
+```kotlin
+class Rice(
+    val name: String
+)
+
+// FactoryBean 을 구현하는 클래스는 사전에 빈으로 등록되어 있어야 한다.
+// 네이밍도 반환하는 Bean 네임으로 한다.
+@Component("rice1")
+class RiceFactoryBean : FactoryBean<Rice> {
+    override fun getObject(): Rice {
+        return Rice("흑미밥")
+    }
+
+    override fun getObjectType(): Class<*> {
+        return Rice::class.java
+    }
+
+    override fun isSingleton(): Boolean {
+        return true
+    }
+}
+```
+
+__ApplicationRunner 에서 Bean 그리고 FactoryBean 을 획득하는 구문__
+```kotlin
+@Component
+class Chapter03Runner(
+    private val applicationContext: ApplicationContext,
+): ApplicationRunner {
+
+    override fun run(args: ApplicationArguments?) {
+
+        // bean 획득
+        with(applicationContext.getBean("rice1")) {
+
+            // 흑미밥 반환
+            println((this as Rice).name)
+        }
+
+        // factoryBean 획득
+        with(applicationContext.getBean("&rice1")) {
+
+            // true 반환
+            println((this as RiceFactoryBean).isSingleton)
+        }
+    }
+}
+```
+
+## (3) Annotation-based Container Configuration
+### Using @Autowired
+- JSR330 의 @Inject 는 스프링의 @Autowired 대체할 수 있다.
+- @Autowired 를 의존성 주입을 위한 임의의 이름을 가진 메소드에 붙일 수 있다.
+- @Autowired 를 생성자와 필드에 섞어쓸 수 있다
+- @Autowired 는 타입을 리스트/셋/맵으로 받을 수 있다.
+
+__임의의 이름을 가진 메소드로 @Autowired 설정 시 호출__
+```kotlin
+@Component
+class MovieRecommender {
+
+    private lateinit var catalog: MovieCatalog
+    private lateinit var preference: MoviePreference
+
+    @Autowired
+    fun prepare(
+        catalog: MovieCatalog,
+        preference: MoviePreference
+    ) {
+        println("autowired prepare")
+        this.catalog = catalog
+        this.preference = preference
+    }
+}
+
+@Component
+class MovieCatalog
+
+@Component
+class MoviePreference
+```
+
+__@Autowired 애노테이션을 다양한 타입으로 설정가능__
+```kotlin
+interface Milk
+
+@Component
+class ChocoMilk : Milk
+
+@Component
+class OrangeMilk : Milk
+
+@Component
+class BasicMilk : Milk
+
+@Component
+class MilkStorage(
+    @Autowired
+    val milkGroup: List<Milk> // Set<Milk> 도 가능
+
+    // Map<String, Milk> 라고 했을 때 key 값은 빈네임이 된다.
+)
+```
+
+### Using @Primary
+- @Primary 를 이용해서 어느 타입을 빈의 우선순위로 할 지 결정한다.
+    - `멀티데이터소스 작업처리할 때 이렇게 진행한 적이 있다.`
+```kotlin
+@Configuration
+class CustomPrimaryConfiguration {
+
+    @Bean
+    fun mainStudySource(): StudySource {
+        return StudySource()
+    }
+
+    @Bean
+    fun secondStudySource(): StudySource {
+        return StudySource()
+    }
+}
+
+@Service
+class StudySourceProvider(
+    // 어느 타입을 빈으로 주입할지 IoC 컨테이너는 알 수 없음
+    private val studySource: StudySource
+)
+```
