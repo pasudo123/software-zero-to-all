@@ -349,3 +349,85 @@ class StudySourceProvider(
     private val studySource: StudySource
 )
 ```
+
+### Fine-tuning Annotation-based Autowiring with Qualifiers
+- @Primary 를 사용하면 여러 빈 후보군 중에서 하나를 선택하는데 유용하지만, 더 많은 제어가 필요한 경우는 @Qualifier 를 이용할 수 있다.
+    - @Qualifier 를 이용해서 특정한 후보군을 선정해서 처리할 수 있다.
+- @Autowired 는 타입을 기반하여 의존성 주입에 중정을 두고 있기 때문에 @Qualifier 를 타입에 대한 매칭을 세부적으로 가져갈 수 있다.
+- @Qulifier 는 Collections 에도 적용할 수 있다.
+
+### Custom Qualifiers
+- @Qualifier 를 이용해서 커스텀 애노테이션을 만들 수 있음.
+- 가독성이 좋긴 하겠지만, 도입한다고 했을 때, 초반에 거부감이 들 수 있을 것 같다.
+```kotlin
+@Configuration
+class MyCustomConfiguration {
+
+    @Bean
+    fun actionBookCatalog(): BookCatalog {
+        return BookCatalog("action")
+    }
+
+    @Bean
+    fun comedyBookCatalog(): BookCatalog {
+        return BookCatalog("comedy")
+    }
+}
+
+class BookCatalog(
+    val name: String
+)
+
+@Target(AnnotationTarget.FIELD, AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.PROPERTY, AnnotationTarget.FUNCTION)
+@Retention(AnnotationRetention.RUNTIME)
+@Qualifier("comedyBookCatalog")
+annotation class Comedy
+
+@Target(AnnotationTarget.FIELD, AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.PROPERTY, AnnotationTarget.FUNCTION)
+@Retention(AnnotationRetention.RUNTIME)
+@Qualifier("actionBookCatalog")
+annotation class Action
+
+@Component
+class BookRecommender(
+    @Action
+    private val bookCatalog: BookCatalog
+) {
+
+    @PostConstruct
+    fun init() {
+        println("catalog=${bookCatalog.name}")
+    }
+}
+```
+
+### Using @Value
+- 외부에 있는 속성값을 넣을 수 있다.
+- @PropertySource 는 application.yml 을 로드할 수 없다. 그래서 로드하려면 직접 구현이 필요하다.
+    - PropertySourceFactory 를 구현해서 처리가 필요함, [참고](https://www.baeldung.com/spring-yaml-propertysource)
+```kotlin
+@Component
+@PropertySources(
+    value = [
+        PropertySource("classpath:application.properties"),
+    ]
+)
+class MyConfigStorage(
+    // 코틀린은 @Value 사용 시 `백슬래시` 를 이용한다.
+    // 디폴트값은 콜론으로 구분해서 처리할 수 있다.
+    @Value("\${person.name: park}")
+    val personName: String,
+    @Value("\${person.age: 22}")
+    val personAge: Int,
+) {
+
+    init {
+        println("name=$personName, age=$personAge")
+    }
+}
+```
+__application.properties__
+```properties
+person.name=hong
+person.age=20
+```
