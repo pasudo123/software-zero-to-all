@@ -45,7 +45,7 @@ dependencies {
     kapt("com.querydsl:querydsl-apt:5.0.0:jakarta")
 
     // jakarta.annotation.* 대응, 하지만 querydsl 5.5.0 에선 여전히 javax.annotation 을 사용하고 있음
-    // 따라서 없어도 동작은 하지만 그 외 애노테이션 @PostConstruct
+    // 따라서 없어도 동작은 하지만 그 외 애노테이션 @PostConstruct 등은 jakarta 로 바뀌었음
     kapt("jakarta.annotation:jakarta.annotation-api") 
 
     // jakarta.persistence.* 대응, JPA 관련 애노테이션
