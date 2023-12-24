@@ -190,3 +190,76 @@ Hibernate:
 ## 5. 해결
 1. fetchJoin 을 한다. : book 조회 시, bookDetail 도 같이 조회할 수 있도록 한다.
 2. 구조를 다시 변경한다. : 처리비용이 많이 들 것 같다.. 요건 별도로 확인이 필요하다. 어떻게 하면 좀 더 효율적으로 할 수 있는가?
+
+## 5.1 해결 : @OneToOne 을 @OneToMany, @ManyToOne 으로 구조를 변경한다. (2023년 12월 24일 갱신)
+* 위 코드에서 springboot 3.x 및 querydsl 버전을 5.5.0 으로 변경한 뒤에 다시 테스트했는데, fetchJoin() 형태로 같이 들고오고 있었다.
+* 그래서 동작이 예전에 작성했던 내용과는 달라짐을 확인하였다. -> 결국 구조를 변경하는 걸로 해결방안을 아래처럼 잡으면 lazy 하게 처리가 가능했다.
+
+### 5.1.1 연관관계
+```
+Book : BookDetail = 1 : N 관계로 설정
+```
+
+### 5.1.2 관련코드
+```kotlin
+// 안봐도 상관없는 코드는 생략했다.
+@Entity
+@Table(name = "book_detail")
+class BookDetail: BaseEntity() {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null
+
+    // 연관관계 주인, 외래키를 들고있는 테이블을 선정
+    @ManyToOne(targetEntity = Book::class)
+    var book: Book? = null
+        protected set
+}
+
+@Entity
+@Table(name = "book")
+class Book: BaseEntity() {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null
+
+    // 연관관계 자식, FetchType.LAZY 에 주목
+    @OneToMany(
+        mappedBy = "book",
+        fetch = FetchType.LAZY,
+        targetEntity = BookDetail::class,
+    )
+    var detail: MutableList<BookDetail> = mutableListOf()
+}
+```
+
+### 결과쿼리
+fetchType.LAZY 이기 때문에 쿼리는 findAll() 수행 시. 단 한번만 쿼리가 나가는 걸 알 수 있었다.   
+만약 EAGER 였으면 N + 1 현상이 발생한다.
+```
+select
+    b1_0.id,
+    b1_0.author,
+    b1_0.created_at,
+    b1_0.isbn,
+    b1_0.library_id,
+    b1_0.modified_at,
+    b1_0.name,
+    b1_0.publisher 
+from
+    book b1_0
+
+// findAll() 수행한 결과에 한개의 book detail 만 조회하면 추가 쿼리가 아래처럼 1번만 나간다.
+select
+    d1_0.book_id,
+    d1_0.id,
+    d1_0.content,
+    d1_0.created_at,
+    d1_0.modified_at 
+from
+    book_detail d1_0 
+where
+    d1_0.book_id=?
+```
