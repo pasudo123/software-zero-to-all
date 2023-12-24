@@ -201,6 +201,7 @@
 * [spring jpa 에서 hibernate 바인딩된 데이터 조회하기](./dummy/jpa_hibernate_show_binding_value.md)
 * [spring jpa 에서 querydsl 사용하기 with kotlin](./dummy/jpa_querydsl_with_kotlin.md)
 * [spring jpa 에서 @OneToOne, 1:1 관계에 대한 지연로딩이 안된다.](./dummy/jpa_one_to_one_problem.md)
+* [springboot 3.x 에서 querydsl 을 설정하기](./dummy/springboot3_querydsl_configuration.md)
 * [spring bean : BeanFactoryPostProcessor & BeanPostProcessor 그리고 동적 Bean 추가](./dummy/spring_bean_with_dynamic.md)
 * [spring @configurationProperties 사용 : list + object](./dummy/spring_configuration_properties_list_object.md)
 * [spring 트랜잭션 롤백은 UnCheckedException 을 throw 할 경우에만 발생한다](./dummy/spring_transaction_rollback_with_uncheckedexception.md)
