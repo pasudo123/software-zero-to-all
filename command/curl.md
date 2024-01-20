@@ -31,14 +31,14 @@ $ curl -v https://www.naver.com
    
 ### --resolve 를 이용, 로컬호스트 테스트
 ```shell
-$ curl --resolve ${hosts 파일에 설정된 호스트명}:${webserver port}:${local IP} ${요청보낼 호스트명}
+$ curl --resolve ${host}:${port}:${local IP} ${domain}
 $ curl --resolve my.local:80:127.0.0.1 http://myapp.local
 ```
    
 ### --resolve 를 이용, 로드밸런서 테스트
 강제로 DNS 리졸브를 가능하게한다.
 ```shell
-$ curl --resolve ${domain}:${port}:${IP} ${domain(프로토콜 포함된)}
+$ curl --resolve ${host}:${port}:${IP} ${domain}
 
 ## https 
 $ curl --resolve myloadbalancer.example.com:443:203.0.113.10 https://myloadbalancer.example.com
