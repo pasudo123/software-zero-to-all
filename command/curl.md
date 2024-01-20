@@ -36,8 +36,15 @@ $ curl --resolve my.local:80:127.0.0.1 http://myapp.local
 ```
    
 ### --resolve 를 이용, 로드밸런서 테스트
+강제로 DNS 리졸브를 가능하게한다.
 ```shell
-$ curl --resolve ${로드밸런서 호스트명}:${webserver port}:${요청보내고자 하는 server IP} ${로드밸런서 호스트명}
+$ curl --resolve ${domain}:${port}:${IP} ${domain(프로토콜 포함된)}
+
+## https 
 $ curl --resolve myloadbalancer.example.com:443:203.0.113.10 https://myloadbalancer.example.com
+
+## http
+$ curl --resolve myloadbalancer.example.com:80:203.0.113.10 http://myloadbalancer.example.com
 ```
 * VIP 로 묶인 서버를 기준으로 특정 IP 로 요청보낸다.
+* VIP 로 묶인 서버를 기준으로 인증서 갱신 개별 확인할때 편하다.
