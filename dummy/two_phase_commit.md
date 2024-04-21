@@ -23,6 +23,7 @@
 
 ## 구현 다이어그램
 <img src="../Image/20240421_2PC.png" width="800px">
+   
 - OrderService, BillingService 로 요청구문에는 모두 익셉션 처리를 한다.
 - 익셉션 발생 시, 롤백처리를 한다.
   - OrderService 요청에 익셉션 발생 시, OrderStorage 는 롤백되고 사용자에게 실패응답을 준다.
