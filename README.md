@@ -220,4 +220,5 @@
 * [[세미나]잘 키운 모노리스 하나 열 마이크로서비스 안부럽다(박용권)](./dummy/wellgrown_monolith.md)
 * [[대규모 설계시스템 기초2 : base32/base64]](./dummy/base64.md)
 * [[대규모 설계시스템 기초2 : redis pub/sub 동작원리]](./dummy/redis_pub_sub_under_the_hood.md)
+* [[대규모 설계시스템 기초2 : two-phase commit]](./dummy/two_phase_commit.md)
 * [[외부링크]vscode 로 json 정렬하기](https://gigi.nullneuron.net/gigilabs/formatting-json-in-visual-studio-code/)
