@@ -14,6 +14,7 @@
 * [join sql](./database/Join%20(SQL).md)
 * [transaction](./database/Transaction.md)
 * [transaction isolation level](./database/Transaction_Isolation_Levels.md)
+* [innodb locking read](https://pasudo123.tistory.com/505)
 * [mysql truncate](./database/truncate.md)
 * [mysql clustered index & secondary indexes](./database/clustered_index_and_secondary_indexes.md)
 * [mysql table, column 캐릭터 셋 설정](./database/table_column_characterset.md)
@@ -221,4 +222,5 @@
 * [[대규모 설계시스템 기초2 : base32/base64]](./dummy/base64.md)
 * [[대규모 설계시스템 기초2 : redis pub/sub 동작원리]](./dummy/redis_pub_sub_under_the_hood.md)
 * [[대규모 설계시스템 기초2 : two-phase commit]](./dummy/two_phase_commit.md)
+* [[대규모 설계시스템 기초2 : database transaction schedule]](./dummy/db_transaction_shedule.md)
 * [[외부링크]vscode 로 json 정렬하기](https://gigi.nullneuron.net/gigilabs/formatting-json-in-visual-studio-code/)
