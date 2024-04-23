@@ -214,6 +214,7 @@
 * [springboot 에서 sseEmitter 사용기](./dummy/springboot_sseEmitter.md)
 * [springboot 에서 @Async ThreadPoolTaskExecutor 설정](./dummy/springboot_@async.md)
 * [설정된 정보를 모든 서버에 반영하는 방법 : redis pub/sub 이용](./dummy/springboot_prop_with_redis_pubsub.md)
+* [java computeIfPresent, putIfAbsent 사용](./dummy/java_computeIfPresent_putIfAbsent.md)
 * [grpc](./dummy/grpc.md)
 * [reactive study, springboot with with](https://github.com/pasudo123/reactive-with-kopring)
 * [CI/CD jenkins 설정 삽질기](./dummy/jenkins_exercise.md)
