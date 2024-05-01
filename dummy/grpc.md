@@ -4,10 +4,16 @@
 - gRPC 는 Protobuf 를 사용하여 메시지를 정의 및 직렬화하는 방법을 제공
   - 즉 gRPC 인터페이스와 메시지 페이로드는 Protobuf 를 사용하여 정의
 - gPRC 는 Protobuf 를 이용한 통신방법 중에 하나.
+  - 따라서 Protobuf 를 꼭 gPRC 를 통하여 통신하지 않아도 된다.
+  - REST API 로 통신을 해도 무방하다.
+    - `Content-Type: x-protobuf;charset=utf-8`, `Accept: x-protobuf;charset=utf-8`
 
 ## Protobuf
 - 구글에서 개발한 데이터를 직렬화한 형식
 - 구조화된 데이터를 바이너리 형식으로 컴팩트하게 저장하여 네트워크 연결을 빠르게 처리
+
+## kotlin 으로 구현하기.
+- [프로젝트 참고](https://github.com/pasudo123/springboot-zerotoall/tree/main/springboot-grpc-basis)
 
 ## 참고자료
 * [gRPC 소개](https://grpc.io/docs/what-is-grpc/introduction/)
