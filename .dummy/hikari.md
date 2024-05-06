@@ -5,7 +5,9 @@
     - 클라이언트가 pool 에서 연결을 기다리는 최대 밀리초
     - 시간초과 시, SQLException 이 발생
 - maximumPoolSize
+    - 풀의 최대크기
 - minimumIdle
+    - 풀의 최소크기
 
 ## MySQL Configuration
 Hikari CP 에서 MySQL 성능향상을 위해 추천하는 옵션값. 하나씩 살펴보기.
