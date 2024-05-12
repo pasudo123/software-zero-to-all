@@ -1,14 +1,17 @@
-## curl
+# curl
 * CURL = Cient URL 의 약자
 * 네트워크 프로토콜을 이용, 다양한 작업을 수행할 수 있음
    
-## curl 의 옵션 (다른것 알아서 검색하자..)
-### -o, --output 을 이용, 결과값 파일로 저장
+<BR>
+
+## -o, --output 을 이용, 결과값 파일로 저장
 ```shell
 $ curl -o sample.txt www.naver.com
 ```
    
-### -i, --include 를 이용, 응답헤더를 반환
+<BR>
+
+## -i, --include 를 이용, 응답헤더를 반환
 ```shell
 $ curl -i www.naver.com
 HTTP/2 200
@@ -23,19 +26,25 @@ x-xss-protection: 1; mode=block
 strict-transport-security: max-age=63072000; includeSubdomains
 referrer-policy: unsafe-url
 ```
-   
-### -v 를 이용, curl 의 결과 상세 출력
+
+<BR>
+
+## -v 를 이용, curl 의 결과 상세 출력
 ```shell
 $ curl -v https://www.naver.com
 ```
-   
-### --resolve 를 이용, 로컬호스트 테스트
+
+<BR>
+
+## --resolve 를 이용, 로컬호스트 테스트
 ```shell
 $ curl --resolve ${host}:${port}:${local IP} ${domain}
 $ curl --resolve my.local:80:127.0.0.1 http://myapp.local
 ```
-   
-### --resolve 를 이용, 로드밸런서 테스트
+
+<BR>
+
+## --resolve 를 이용, 로드밸런서 테스트
 강제로 DNS 리졸브를 가능하게한다.
 ```shell
 $ curl --resolve ${host}:${port}:${IP} ${domain}
@@ -48,3 +57,13 @@ $ curl --resolve myloadbalancer.example.com:80:203.0.113.10 http://myloadbalance
 ```
 * VIP 로 묶인 서버를 기준으로 특정 IP 로 요청보낸다.
 * VIP 로 묶인 서버를 기준으로 인증서 갱신 개별 확인할때 편하다.
+
+<BR>
+
+## -x 를 이용, 프록시 설정 테스트
+```shell
+// curl -x proxy.example.com:10050 -X POST www.naver.com
+$ curl -x ${proxy-host} -X POST ${host}
+$ curl --proxy ${proxy-host} -X POST ${host}
+```
+- 아웃바운드로 나갈 시, 프록시를 거칠때 위와같은 설정을 한다.
