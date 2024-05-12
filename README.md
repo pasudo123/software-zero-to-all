@@ -22,7 +22,7 @@
 * [mysql query : 단일 인덱스, 다중 인덱스 차이는 뭔가](./database/single_index_composite_index.md)
 * [mysql partition](./database/table_partition.md)
 * [mysql log 조회하기](./database/mysql_show_log.md)
-* [mysql binglog 로 데이터 복구하기](./database/data_restore_with_binlog.md)
+* [mysql binlog 파일을 활용 데이터복구 : mysqlbinlog 이용](./database/data_restore_with_binlog.md)
 * [mysql table size 확인하기](./database/mysql_get_table_size.md)
 
 ### 소프트웨어 아키텍처
