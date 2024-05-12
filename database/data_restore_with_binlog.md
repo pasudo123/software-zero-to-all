@@ -158,7 +158,6 @@ ERROR 1050 (42S01) at line 40: Table 'book' already exists
 ### 복구시행 : 추가옵션 force 를 준다. : 에러는 발생하지만 쿼리실행은 다 된다.
 ```shell
 root@69e6561e5dd0:/var/lib/mysql# mysql -u root -p -f < testdb.sql
-root@69e6561e5dd0:/var/lib/mysql# mysql -u root -p -f < testdb.sql
 Enter password:
 ERROR 1050 (42S01) at line 40: Table 'book' already exists
 ERROR 1050 (42S01) at line 64: Table 'book_detail' already exists
