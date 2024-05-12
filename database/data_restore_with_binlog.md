@@ -148,13 +148,15 @@ root@69e6561e5dd0:/var/lib/mysql# mysqlbinlog -d testdb --stop-datetime='2024-05
 ```
 - --start-datetime, --stop-datetime 옵션으로 특정 구간을 잘라서 처리할 수 있다.
 
-### 복구시행 : 에러를 만나면 쿼리 수행이 멈춘다. 따라서 추가적인 옵션을 준다.
+### 복구시행 : 에러를 만나면 쿼리 수행이 멈춘다. 
 ```shell
 root@69e6561e5dd0:/var/lib/mysql# mysql -u root -p < testdb.sql
 Enter password:
 ERROR 1050 (42S01) at line 40: Table 'book' already exists
+```
 
-// 추가옵션, force 를 준다. : 에러는 발생하지만 쿼리실행은 다 된다.
+### 복구시행 : 추가옵션 force 를 준다. : 에러는 발생하지만 쿼리실행은 다 된다.
+```shell
 root@69e6561e5dd0:/var/lib/mysql# mysql -u root -p -f < testdb.sql
 root@69e6561e5dd0:/var/lib/mysql# mysql -u root -p -f < testdb.sql
 Enter password:
