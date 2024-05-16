@@ -13,6 +13,8 @@ Transaction1 과 Transaction2 과 나란히 실행되었다는 것을 전제로 
 __이때 트랜잭션 2는 갱신된 데이터를 읽어와도 되는가 하는 문제가 발생__   
 모순되지 않게 처리하려면 트랜잭션 1이 커밋해서 확정된 후 데이터를 읽어와야 한다. 이처럼 트랜잭션 1과 트랜잭션 2가 나란히 실행되었을 때 모순되지 않게 처리하는 속성이 바로 __격리성 (Isolation)__ 이다.
 
+<BR>
+
 ## 병렬 수행되는 트랜잭션에서 데이터가 모순되는 대표적 세가지 상태
 ### __1.  Dirty Read__<BR />
 다른 트랜잭션이 COMMIT 이나 ROLLBACK 을 하지 않았음에도 불구하고, 또 다른 트랜잭션에서 해당 데이터를 읽어내는 것이다. Dirty 는 흑백이 구분되지 않은 어중간한 데이터라는 느낌을 나타낸다. 정합성에 문제가 많은 격리 수준.
@@ -28,19 +30,21 @@ __이때 트랜잭션 2는 갱신된 데이터를 읽어와도 되는가 하는 
 
 
 ## 격리성 (Isolcation) 수준의 종류
-|                  독립성 수준                     |           의미            |
+|                 격리성 수준                     |           의미            |
 |------------------------------------------------|--------------------------|
 | __Isolation : Read UnCommitted__ |다른 트랜잭션이 커밋되기 전에 데이터를 변경하였고, 또다른 트랜잭션에서 아직 커밋하지 않은 데이터도 읽어낼 수 `있음`|
 | __Isolation : Read Committed__ |다른 트랜잭션이 변경하였지만, 커밋을 하지 않았기 때문에 읽을 수가 `없음`. 대신 커밋 수행 시 읽어들일 수 있음|
 | __Isolation : Repeatable Read__ |트랜잭션 내에서 여러 번 데이터를 읽어올 때, <BR /> 다른 트랜잭션이 도중에 데이터를 갱신해도 여전히 같은 값을 읽어낼 수 있음 (이렇게 하는 이유는 스냅샷이 특정시점에 기록되기 때문에) |
 | __Isolation : Serializable__ |트랜잭션을 하나씩 순서대로 처리해서 독립시킴|
 
+<BR> 
+
 ## 격리성 수준(isolation level) 과 데이터가 모순된 상태 (O : 허용, X : 불허)
 |           격리성 수준          |   Dirty Read   |    Unrepeatable Read     |    Phantom Read    |
 |------------------------------|------|------|------|
 | __Isolation Read UnCommitted__ | O | O | O |
 | __Isolation Read Committed__ | X | O | O |
-| __Isolation Repeatable Read__ | X | X | O (mysql 의 InnoDB 스토리지 엔진은 해당사항이 아니다.) |
+| __Isolation Repeatable Read__ | X | X | X (mysql 의 InnoDB 스토리지 엔진의 경우) |
 | __Isolation Serializable__ | X | X | X |
    
 아래로 내려올수록 모순된 상태를 허용하지 않고 격리성의 수준은 높아진다. 여기서 항상 격리성이 높은 __Isolation Serializable__ 을 생각할 수 있지만, 격리성이 높아지면 그만큼 성능이 나빠진다. 
@@ -54,6 +58,7 @@ __이때 트랜잭션 2는 갱신된 데이터를 읽어와도 되는가 하는 
 > Consistent reads within the same transaction read the snapshot established by the first read.
 * 첫번째 읽어들인 스냅샷을 가지고 쿼리의 결과를 읽어들이기 때문.
 
+<BR>
 
 ## 추가설명
 * InnoDB 의 디폴트 isolation level 은 `REPEATABLE READ` 이다.
