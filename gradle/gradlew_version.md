@@ -1,4 +1,6 @@
 # gradlew 이용. 버전확인
+- 버전을 확인하는 방법은 인텔리제이에서 gradle 탭을 눌러서 확인하는 방법이 있다.
+- 혹은 ./gradlew 명령어를 통해서 확인하는 방법도 있다.
 
 ## dependencyInsight 를 이용하여 버전확인
 - ./gradlew dependencyInsight 명령어는 Gradle 프로젝트에서 특정 의존성에 대한 정보를 제공하는 데 사용한다. 
@@ -6,6 +8,7 @@
 
 ### spring-boot-starter-undertow 의존성의 `runtimeClasspath` 구성에서 버전을 확인한다.
 ```
+// ./gradlew dependencyInsight --dependency ${dependencyName} --configuration ${compileClasspath | runtimeClasspath | ...}
 ❯ ./gradlew dependencyInsight --dependency spring-boot-starter-undertow --configuration runtimeClasspath
 ```
 
