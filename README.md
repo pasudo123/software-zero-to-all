@@ -224,6 +224,7 @@
 * [redis pub/sub : 설정된 정보를 모든 서버에 반영하는 방법](./dummy/springboot_prop_with_redis_pubsub.md)
 * [redic-cli](./dummy/redis_cli.md)
 * [kafka](./dummy/kafka.md)
+* [http](./dummy/http.md)
 * [hikari CP](.dummy/hikari.md)
 * [reactive study, springboot with with](https://github.com/pasudo123/reactive-with-kopring)
 * [CI/CD jenkins 설정 삽질기](./dummy/jenkins_exercise.md)
