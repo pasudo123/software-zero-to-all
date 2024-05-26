@@ -1,7 +1,56 @@
-## ObjectMapper 자주쓰는 설정 모음집 (chatGPT 와 함께)
+# ObjectMapper 자주쓰는 설정 모음집 (chatGPT 와 함께)
 * kotlin + gradle 기반으로 설명
 
-### LocalDateTime, LocalDate, LocalTime 직렬화 설정
+## 직렬화, 역직렬화 설정
+객체 -> JSON, JSON -> 객체로 표현하기 위해 아래처럼 코드를 작성한다.
+```kotlin
+// object -> json
+inline fun <reified T : Any> T.toJson(): String = mapper.writeValueAsString(this)
+
+// json -> object 
+inline fun <reified T : Any> String.toObject(): T = mapper.readValue(this, T::class.java)
+
+// json -> List<Object>
+inline fun <reified T : Any> String?.toObjectList(): List<T> = this?.let { mapper.readerForListOf(T::class.java).readValue(it) } ?: emptyList()
+```
+
+__사용예시__ <BR>
+아래와 같은 클래스가 있다고 가정한다.
+```kotlin
+data class Coffee(
+    val name: String
+)
+```
+
+```kotlin
+var coffees = listOf(Coffee("플랫화이트"))
+println(coffees.toJson()) // [{"name":"플랫화이트"}]
+```
+
+```kotlin
+val json = """
+    [{"name":"아메리카노4"},{"name":"아메리카노5"},{"name":"아메리카노6"}]
+""".trimIndent()
+
+val coffees = json.toObjectList<Coffee>()
+println(coffees) // [Coffee(name=아메리카노4), Coffee(name=아메리카노5), Coffee(name=아메리카노6)]
+println(coffees.first().name) // 아메리카노4
+```
+
+__에러가 발생하는 케이스__
+```kotlin
+val json = """
+    [{"name":"아메리카노4"},{"name":"아메리카노5"},{"name":"아메리카노6"}]
+""".trimIndent()
+
+val coffees = json.toObject<List<Coffee>>() // 해당 구문에서 객체가 아닌 LinkedHashMap 형태로 변환된다.
+println(coffees) // [Coffee(name=아메리카노4), Coffee(name=아메리카노5), Coffee(name=아메리카노6)]
+println(coffees.first().name) // java.lang.ClassCastException: class java.util.LinkedHashMap cannot be cast to class com.xxx.Coffee
+```
+
+<BR>
+
+## LocalDateTime, LocalDate, LocalTime 직렬화 설정
 > Java 8 date/time type `java.time.LocalDate` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling
 * ObjectMapper 설정 시 위와 같은 java8 에 추가된 시간/날짜 클래스에 직렬화 에러를 만날 수 있음
 * 우선 `com.fasterxml.jackson.datatype:jackson-datatype-jsr310` 의존성을 gradle 에 추가한다.
@@ -78,7 +127,7 @@ com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.5
 \--- org.springframework.boot:spring-boot-starter-json:2.7.9 (*)
 ```
 
-### json 을 pretty 하게 보고싶은경우 설정
+## json 을 pretty 하게 보고싶은경우 설정
 * 아래와 같이 설정하면 기존에 한줄로 string 이 보이던 형태를 들여쓰기가 되어있는 상태의 json 형태로 노출되도록 해준다.
 ```kotlin
 @Configuration
