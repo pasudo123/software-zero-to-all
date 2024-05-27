@@ -164,14 +164,39 @@ use sequence, elapsedTime= 256 milliSec
 
 <BR>
 
-## 결론
+# 번외 : sequence 는 yield 를 통해 중단되고 재개된다.
+시퀀스 빌더에는 yield 라는 함수가 있다. 이 함수를 통해서 시퀀스 빌더내의 값을 중단하고 재개할 수 있다. <BR>
+100번 랜덤한 숫자를 출력한다. while(true) 로 시퀀스빌더에 잡혀있더라도, 처리되는데 이상없다. <BR>
+```kotlin
+class SequenceRandomTest {
+
+    @Test
+    fun `yield 를 사용한다`() {
+        val randomSequence = sequence {
+            while (true) {
+                val number = Random.nextLong(0, 10001)
+                yield(number)
+            }
+        }
+
+        repeat(100) {
+            val it = randomSequence.iterator()
+            println(it.next())
+        }
+    }
+}
+```
+
+<BR>
+
+# 결론
 - 자세한 내용은 참고링크에 더 많다.
 - sequence 를 사용해야 하는 부분은 명백하게 중간연산이 많은 경우, 최종연산으로 결과값을 바로 반환되는 경우에 효과적이다. 
     - 그 외의 케이스는 직접 테스트하면서 적용이 필요한 것 같다.
 
 <BR>
 
-## 참고링크
+# 참고링크
 - https://typealias.com/guides/when-to-use-sequences/
 - https://typealias.com/guides/kotlin-sequences-illustrated-guide/
 - https://typealias.com/guides/inside-kotlin-sequences/

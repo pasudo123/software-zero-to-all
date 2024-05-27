@@ -234,5 +234,5 @@
 * [[대규모 설계시스템 기초2 : redis pub/sub 동작원리]](./dummy/redis_pub_sub_under_the_hood.md)
 * [[대규모 설계시스템 기초2 : two-phase commit]](./dummy/two_phase_commit.md)
 * [[대규모 설계시스템 기초2 : database transaction schedule]](./dummy/db_transaction_shedule.md)
-* [lazy evaluation vs eager evaluation](./dummy/lazy_evaluation_and_eager_evaluation.md)
+* [kotlin sequence, lazy evaluation vs eager evaluation](./dummy/lazy_evaluation_and_eager_evaluation.md)
 * [[외부링크]vscode 로 json 정렬하기](https://gigi.nullneuron.net/gigilabs/formatting-json-in-visual-studio-code/)
