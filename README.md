@@ -221,6 +221,7 @@
 * [springboot 에서 @Async ThreadPoolTaskExecutor 설정](./dummy/springboot_@async.md)
 * [java computeIfPresent, putIfAbsent 사용](./dummy/java_computeIfPresent_putIfAbsent.md)
 * [grpc](./dummy/grpc.md)
+* [redis 가 빠른이유](./dummy/why_redis_fast.md)
 * [redis pub/sub : 설정된 정보를 모든 서버에 반영하는 방법](./dummy/springboot_prop_with_redis_pubsub.md)
 * [redic-cli](./dummy/redis_cli.md)
 * [kafka](./dummy/kafka.md)
