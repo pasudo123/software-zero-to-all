@@ -41,25 +41,23 @@
 
 <BR>
 
-## (3) 단일스레드
+## (3) 단일스레드 & 이벤트루프 메커니즘
 - 여러 스레드가 동시 자원에 접근할 때, 발생하는 경합조건 및 메커니즘을 피할 수 있다.
 - 다중 스레드 환경의 컨텍스트 스위칭으로 인한 오버헤드가 발생하지 않는다. 따라서 CPU 자원을 더 효율적으로 사용할 수 있다.
-
-<BR>
-
-## (4) 이벤트루프
 - 이벤트루프를 사용하여 비동기 IO 를 관리한다.
-- 이벤트가 발생할때까지 기다리면서 발생한 이벤트를 처리한다.
+- 이벤트가 발생할때까지 기다리면서 발생한 이벤트를 처리한다. -> IO 멀티플렉싱 동작을 `지속적으로 반복` 한다.
+- [레디스 오픈소스 이벤트루프 사이즈 설정 후, 실행](https://github.com/redis/redis/blob/690ef36330b192ed29d8c24d08a24d6d5cfd40a4/deps/hiredis/examples/example-ae.c#L43)
+- [이벤트루프 코드](https://github.com/redis/redis/blob/690ef36330b192ed29d8c24d08a24d6d5cfd40a4/src/ae.c#L342)
 
 <BR>
 
-## (5) RESP 프로토콜 (REdis Serialization Protocol)
+## (4) RESP 프로토콜 (REdis Serialization Protocol)
 - 텍스트 기반 프로토콜. 명령어와 데이터를 직관적으로 표현한다.
 - 프로토콜이 단순하여 오버헤드가 낮다.
 
 <BR>
 
-## (6) 효율적인 데이터 구조
+## (5) 효율적인 데이터 구조
 - 고성능 데이터 구조를 지원. 
     - ex) String, List, Set, Sorted Set, Hash, ...
 
