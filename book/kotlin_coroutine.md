@@ -2,9 +2,10 @@
 책 읽고, 실습 및 내용 요약. + chatGPT 이용.
 
 ## 6장. 코루틴 빌더
-- 코루틴 빌더를 사용하기 위한 두가지 방법이 존재.
-  - (1) runBlocking
-  - (2) coroutineScope
+- suspend function() 을 사용하기 위해선 코루틴 빌더 또는 코루틴 스코프 함수가 필요하다.
+  - (1) runBlocking, launch, async (코루틴 빌더)
+  - (2) coroutineScope (코루틴 스코프 함수)
+- 일반함수가 suspend function 을 호출할 수 없다. suspend function 을 호출할 수 있는 지점이 코루틴 빌더다. 
 
 ```kotlin
 fun main() {
