@@ -175,7 +175,7 @@
 * [가상면접사례로 배우는 대규모 시스템 설계 기초 1](./book/system_design_interview.md)
 * [가상면접사례로 배우는 대규모 시스템 설계 기초 2](./book/system_design_interview_2.md)
 * [성공과 실패를 결정하는 1%의 네트워크 원리](./book/1_percent_network.md)
-* [코틀린, 코루틴](./book/kotlin_coroutine.md)
+* [코틀린, 코루틴 : kotlin, coroutine](./book/kotlin_coroutine.md)
 
 ## 맥 💻🍎
 * [Apple M1 Pro 16, 32GB](#)
