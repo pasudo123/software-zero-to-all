@@ -119,3 +119,62 @@ suspend fun processFileWithRepeat(file: String) {
   }
 }
 ```
+
+## 11장. 코루틴 스코프 함수
+- SupervisorJob 을 이용하여 신규 CoroutineScope 를 만들 수 있다.
+  - SupervisorJob 내부에서 에러가 발생하더라도 부모 코루틴 스코프로 에러가 전파되지 않는다.
+  - 복잡한 코루틴 구조를 관리할 수 있으며 독립적으로 실행 시에 유리하다.
+  - 하나의 코루틴이 실패해도 다른 코루틴이 계속 실행되도록 보장한다.
+- SupervisorJob + Dispatchers.IO 와 결합하여 사용도 가능하다.
+
+```kotlin
+/**
+ * 에러가 부모 코루틴까지 전파되지 않는다.
+ */
+fun printHelloWorldWithSupervisorScope() = runBlocking {
+    supervisorScope {
+        launch {
+            // supervisorScope 로 감싼 해당 {} 만 에러가 발생하고, 나머지는 영향을 끼치지 않음
+            throw RuntimeException("Hello Error")
+            delay(500)
+            println("Hello")
+        }
+        launch {
+            delay(100)
+            println("World")
+        }
+    }
+
+    launch {
+        println("Done")
+    }
+}
+
+val personalCoroutineScope = CoroutineScope(context = SupervisorJob())
+val personalCoroutineScopeIO = CoroutineScope(context = SupervisorJob() + Dispatchers.IO)
+
+suspend fun printHelloWorldWithSupervisorScope2() = coroutineScope {
+
+    delay(500)
+    println("Do something...")
+
+    // personalCoroutineScope.launch { notifyToUser() }
+    // personalCoroutineScopeIO.launch { notifyToUser() }
+    CoroutineScope(Dispatchers.IO).launch {
+        // 에러가 부모코루틴으로 전파된다.
+        notifyToUser()
+    }
+
+    println("Done")
+}
+
+// 별도 작업으로 처리할 수 있다.
+suspend fun notifyToUser() {
+    delay(3000)
+    println("Hello World")
+}
+
+fun main() = runBlocking {
+    printHelloWorldWithSupervisorScope2()
+}
+```
