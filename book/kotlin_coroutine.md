@@ -178,3 +178,79 @@ fun main() = runBlocking {
     printHelloWorldWithSupervisorScope2()
 }
 ```
+
+## 12장. 디스패처
+> - 코틀린 코루틴 라이브러리가 제공하는 중요한 기능은 코루틴이 실행되어야할 (시작 or 재개) 스레드 또는 스레드풀을 결정할 있다는 것. <BR>
+> - Dispatchers.Default 는 1core 에 1개 스레드까지만 허용. (`CPU 직얍적인 연산을 수행하기 위함`) <BR>
+> - Dispatchers.IO 는 1core 에 최대 64개 스레드까지 확장가능. (`I/O 작업이 많음, 대기시간이 있음`) 8core 면 512개 스레드까지 확장가능 (8 * 64) <BR>
+
+### Executor 와 asCoroutineDispatchers() 를 이용
+- 직접 스레드풀을 제한할 수 있다. (스레드 풀의 크기를 제한한다.)
+- `close()` 는 반드시 하여야 한다. 스레드 누수가 발생하고, 아래코드에서 미존재시 main() 함수가 종료되지 않는다.
+- try {} finally {} 말고도 executorDispatchersIO.use {} 블럭을 통해 심플하게 사용할 수 있다.
+```kotlin
+fun main() = runBlocking {
+    
+    // 스레드 3개인 스레드풀 생성. 거기에 따른 launch {} 처리
+    val executorDispatchersIO = Executors.newFixedThreadPool(3).asCoroutineDispatcher()
+
+    try {
+      val jobs = (1..50).map { i ->
+        launch(executorDispatchersIO) {
+          println("thread=${Thread.currentThread().name}, current=$i, time=${System.currentTimeMillis()}")
+          Thread.sleep(100)
+        }
+      }
+      jobs.joinAll()
+    } finally {
+      executorDispatchersIO.close()
+    }
+    println("end...")
+}
+```
+
+출력 결과값.
+- pool-1-thread-[1::3] 으로 출력되는 것을 확인할 수 있다.
+```shell
+thread=pool-1-thread-1, current=1, time=1728805953246
+thread=pool-1-thread-3, current=3, time=1728805953247
+thread=pool-1-thread-2, current=2, time=1728805953247
+// 생략...
+thread=pool-1-thread-1, current=47, time=1728805954805
+thread=pool-1-thread-3, current=48, time=1728805954808
+thread=pool-1-thread-2, current=49, time=1728805954905
+thread=pool-1-thread-1, current=50, time=1728805954906
+end...
+```
+
+### 커스텀 스레드풀을 사용
+- kotlin 1.6 부터 도입된 limitedParallelism(). 아직까지 실험적 단계의 API 이기 때문에 사용 시에 `@OptIn(ExperimentalCoroutinesApi::class)` 가 붙는다.
+- 독립적인 스레드풀을 가진 새로운 디스패처를 만들어낸다. (-> 기존 스레드풀과 격리된 환경에서의 병렬성을 제공)
+```kotlin
+@OptIn(ExperimentalCoroutinesApi::class)
+fun main() = runBlocking {
+    val customDispatchersIO = Dispatchers.IO.limitedParallelism(3)
+    val jobs = (1..50).map { i ->
+        launch(customDispatchersIO) {
+            println("thread=${Thread.currentThread().name}, current=$i, time=${System.currentTimeMillis()}")
+            Thread.sleep(100)
+        }
+    }
+    jobs.joinAll()
+    println("end...")
+}
+```
+
+출력 결과값.
+- DefaultDispatcher-worker-[1::3] 으로 출력되는 것을 확인할 수 있다.
+```shell
+thread=DefaultDispatcher-worker-3, current=2, time=1728806292730
+thread=DefaultDispatcher-worker-2, current=3, time=1728806292730
+thread=DefaultDispatcher-worker-1, current=1, time=1728806292728
+// 생략...
+thread=DefaultDispatcher-worker-1, current=48, time=1728806294307
+thread=DefaultDispatcher-worker-2, current=49, time=1728806294396
+thread=DefaultDispatcher-worker-1, current=50, time=1728806294410
+end...
+```
+
