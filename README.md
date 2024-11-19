@@ -228,7 +228,7 @@
 * [redic-cli](./dummy/redis_cli.md)
 * [kafka](./dummy/kafka.md)
 * [http](./dummy/http.md)
-* [hikari CP](.dummy/hikari.md)
+* [hikari CP](dummy/hikari.md)
 * [reactive study, springboot with with](https://github.com/pasudo123/reactive-with-kopring)
 * [CI/CD jenkins 설정 삽질기](./dummy/jenkins_exercise.md)
 * [프로메테우스와 스프링부트 metrics](./dummy/prometheus_with_springboot.md)
