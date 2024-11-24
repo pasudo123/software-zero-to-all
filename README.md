@@ -207,6 +207,7 @@
 * [[ java ] classpath 의 json 파일 읽어들이기](boilerplate/reading_json_file_of_classpath.md)
 * [spring jpa 에서 hibernate 바인딩된 데이터 조회하기](./dummy/jpa_hibernate_show_binding_value.md)
 * [spring jpa 에서 @OneToOne, 1:1 관계에 대한 지연로딩이 안된다.](./dummy/jpa_one_to_one_problem.md)
+* [spring jpa 에서 strategy = GenerationType.IDENTITY 로 최초 생성 시 에러가 발생하면?](./dummy/jpa_strategy_identity_error.md)
 * [springboot 2.x 에서 querydsl 설정하기](./dummy/jpa_querydsl_with_kotlin.md)
 * [springboot 3.x 에서 querydsl 설정하기](./dummy/springboot3_querydsl_configuration.md)
 * [spring bean : BeanFactoryPostProcessor & BeanPostProcessor 그리고 동적 Bean 추가](./dummy/spring_bean_with_dynamic.md)
