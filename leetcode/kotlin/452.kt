@@ -3,7 +3,7 @@ class Solution {
         points.sortBy { it[1] }
 
         var count = 0
-        var prevEnd = Int.MIN_VALUE
+        var prevEnd = Long.MIN_VALUE
 
         for (point in points) {
             val (start, end) = point
@@ -12,7 +12,7 @@ class Solution {
             // 그리고 구간을 새롭게 갱신한다
             if (start > prevEnd) {
                 count++
-                prevEnd = end
+                prevEnd = end.toLong()
             }
         }
 
