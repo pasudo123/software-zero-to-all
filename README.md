@@ -4,7 +4,7 @@
 ## 👨‍🚀 Computer Science
 ### network
 * [한양대 Network MOOC 수강 내용 정리](./network/Network%20MOOC.md)
-* [HTTPS](./Book%20%26%20Memo/HTTP%20%EC%99%84%EB%B2%BD%EA%B0%80%EC%9D%B4%EB%93%9C/HTTPS.md)
+* [HTTPS](./book/HTTP 완벽가이드/HTTPS.md)
 
 ### database
 * [씨아이보드 메뉴얼 스키마 설계 샘플](http://www.ciboard.co.kr/manual/tables)
@@ -141,7 +141,7 @@
 ## 👨‍🚀 리눅스, 쉘, 터미널 커맨드, 툴 등
 * [jq](./command/jq_command.md)
 * [httpie](./command/httpie_command.md)
-* [ll](./command/ll_comment.md)
+* [ll](./command/ll_command.md)
 * [ln : hard link & symbolic link](./command/linux_ln_command.md)
 * [tcpdump](./command/tcpdump.md)
 * [kill](./command/linux_kill_command.md)
@@ -178,13 +178,13 @@
 * [코틀린, 코루틴 : kotlin, coroutine](./book/kotlin_coroutine.md)
 
 ## 맥 💻🍎
-* [Apple M1 Pro 16, 32GB](#)
+* [Apple M1 Pro 16, 32GB]()
 * https://subicura.com/mac/
 * [생산성 도구](https://medium.com/@totuworld/%EC%86%8C%EC%A4%91%ED%95%9C-%EB%82%98%EC%9D%98-1%EC%B4%88%EB%A5%BC-%EC%9C%84%ED%95%9C-10%EA%B0%80%EC%A7%80-%EC%83%9D%EC%82%B0%EC%84%B1-%EB%8F%84%EA%B5%AC-for-macos-cc6db97cd798)
 * [SDKMAN](https://sdkman.io/install)
 * [font : Cascadia-code](https://github.com/microsoft/cascadia-code)
 * [intellij : live template](https://velog.io/@max9106/IntelliJ-Live-Template)
-* [intellij : jira 연동](#)
+* [intellij : jira 연동]()
 * [intellij : Plugins](./mac/plugins.md)
 * [alias 목록](./mac/alias.md)
 * [iterm 관련](./mac/iterm.md)
