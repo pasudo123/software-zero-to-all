@@ -241,4 +241,5 @@
 * [[대규모 설계시스템 기초2 : database transaction schedule]](./dummy/db_transaction_shedule.md)
 * [kotlin sequence, lazy evaluation vs eager evaluation](./dummy/lazy_evaluation_and_eager_evaluation.md)
 * [kotlin mutex & semaphore](./dummy/kotlin_mutex_semaphore.md)
+* [kotlin sort](./dummy/kotlin_sorted.md)
 * [[외부링크]vscode 로 json 정렬하기](https://gigi.nullneuron.net/gigilabs/formatting-json-in-visual-studio-code/)
