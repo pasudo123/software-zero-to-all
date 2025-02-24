@@ -13,6 +13,16 @@ spring:
     timeout-per-shutdown-phase: "10s"
 ```
 
+## 테스트는 어떻게?
+* intellij 같은 IDE 환경에선 sigkill(9) 가 동작한다.
+* pid 기준으로 sigterm(15) 가 동작할 수 있도록 터미널을 통한 종료를 진행하면 테스트 확인할 수 있다. (직접 해봄.)
+
+8080 포트로 pid 를 확인할 수 있다.
+```shell
+❯ lsof -i :8080 
+```
+
+
 ## k8s 고려사항
 * k8s 환경에서 애플리케이션을 구동중이면 pod 의 라이프사이클을 고려할 필요가 있다.
 * preStop 과 terminationGracePeriodSeconds 을 이용한다.
