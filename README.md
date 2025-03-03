@@ -223,6 +223,7 @@
 * [springboot 에서 @Async ThreadPoolTaskExecutor 설정](./dummy/springboot_@async.md)
 * [springboot RestTemplate logging disabled In TestCode](./dummy/restTemplate_logging_disabled.md)
 * [springboot graceful shutdown](./dummy/springboot_graceful_shutdown.md)
+* [springboot warmup](./dummy/springboot_warmup.md)
 * [java computeIfPresent, putIfAbsent 사용](./dummy/java_computeIfPresent_putIfAbsent.md)
 * [grpc](./dummy/grpc.md)
 * [redis 가 빠른이유](./dummy/why_redis_fast.md)
