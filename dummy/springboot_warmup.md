@@ -22,6 +22,8 @@ management:
         ## GET actuator/health/liveness
         enabled: true
 ```
+* k8s deployment 의 readiness probe, liveness probe path 를 위처럼 사용할 수 있다. (스프링 특정버전 이상)
+* `하지만 아래처럼 별도로 정의해서 사용하는 방법`
 
 readiness 에 대해서 웜업 수행 이후에 별도 API status UP 상태로 유지한다.
 ```kotlin
