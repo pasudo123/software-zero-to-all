@@ -1,138 +1,95 @@
 ## MACBOOK 세팅
 맥북 초기세팅
 
-## 목차
-<!-- TOC -->
-  * [MACBOOK 세팅](#macbook-세팅)
-  * [목차](#목차)
-  * [처음맥북](#처음맥북)
-  * [폰트](#폰트)
-  * [생산성 도구](#생산성-도구)
-  * [터미널](#터미널)
-  * [sdkman 설치](#sdkman-설치)
-  * [Intellij Live Templates 설정](#intellij-live-templates-설정)
-  * [Intellij Jira 연동](#intellij-jira-연동)
-  * [Intellij sync & backup 기능 설정](#intellij-sync--backup-기능-설정)
-  * [Intellij plugins](#intellij-plugins)
-  * [DataGrip sync & backup 기능 설정](#datagrip-sync--backup-기능-설정)
-  * [Datagrip global Datasource 설정](#datagrip-global-datasource-설정)
-  * [Medis redis properties export](#medis-redis-properties-export)
-  * [http tool](#http-tool-)
-  * [k8s openlens 설치](#k8s-openlens-설치)
-  * [charles 설치](#charles-설치)
-<!-- TOC -->
+## 🔖 목차
+- [기본 설정](#기본-설정)
+- [폰트](#폰트)
+- [생산성 도구](#생산성-도구)
+- [터미널](#터미널)
+- [Alias 명령어](#alias-명령어)
+- [개발 도구](#개발-도구)
+- [추가 도구](#추가-도구)
 
-## 처음맥북
-* 문서자체가 어느정도 오래되었기 때문에 모든걸 다 따라할 필요는 없고 참고만 한다.
-* https://subicura.com/mac/
-* 데스크탑 핫코너
-  * 5시 방향 미션컨트롤
-  * 7시 방향 잠금화면
-* 시간표시 24시간 표기 및 초단위 노출
-* 배터리는 `%` 노출
-* 한글입력 시 백틱 입력되도록 설정 (https://www.korecmblog.com/backtick-fix/)
+---
 
-## 폰트
-[Cascadia-code](https://github.com/microsoft/cascadia-code) 를 기본사용
-- cascadia-code 이용
-- 13 Font 이용
+## 🛠️ 기본 설정
+| 항목 | 설명 |
+|------|------|
+| 초기 설정 참고 | [Subicura 맥북 설정 참고](https://subicura.com/mac/) |
+| 핫코너 설정 | 오른쪽 하단(미션 컨트롤), 왼쪽 하단(잠금 화면) |
+| 시간 표시 설정 | 24시간 표기, 초단위 표시 |
+| 배터리 표시 | `%` 노출 |
+| 백틱(`) 입력 설정 | [한글 입력 시 백틱 입력 설정](https://www.korecmblog.com/backtick-fix/) |
 
-## 생산성 도구
-| 이름       | 설명                     | 링크 |
-|----------|------------------------|----|
-| RunCat   | 상태바 고양이 노출 (PC 사용량 체크) | https://apps.apple.com/kr/app/runcat/id1429033973?mt=12   |
-| Keka     | MacOS 압축프로그램           |  https://www.keka.io/ko/  |
-| Maccy    | 클립보드 매니저 프로그램          |  https://maccy.app/  |
-| caffeine | 절전모드 실행방지 프로그램         | https://www.caffeine-app.net/ |
+---
 
+## 🔤 폰트
+| 항목 | 설정 |
+|------|------|
+| 기본 폰트 | [Cascadia Code](https://github.com/microsoft/cascadia-code) |
+| 폰트 크기 | 13 |
 
+---
 
-## 터미널
-기존 터미널을 사용하지 않는다.
-- [iterm2](https://iterm2.com/index.html)
-  - Settings > General > Settings 에 iTerm2 의 세팅을 export/import 할 수 있다.
-- [powerlevel10k](https://github.com/romkatv/powerlevel10k)
-  - iterm2 를 특정 테마에 맞게 하는게 아닌 사용자가 직접 커스텀
-  - .zshrc 파일의 내용을 그대로 옮겨서 사용할 수 있음
-- [하이라이팅 : zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-  - homebrew 설치 이후에 .zshrc 적용 후 source 커맨드
-- [자동완성 : zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-  - homebrew 설치 이후에 .zshrc 적용 후 source 커맨드
-- `~/.zshrc` 파일에 모두 들어갈 수 있도록 한다. 아래 커맨드 이용
-  - `source ~/.zshrc`
-- `git` 명령어도 포함시킨다.
-```text
-alias gitlog="git log --all --decorate --oneline --graph"
-```
-- `kubectl` 명령어도 포함시킨다.
-```text
-alias k=kubectl
-```
+## 📌 생산성 도구
+| 이름 | 설명 | 링크 |
+|------|------|------|
+| RunCat | 상태바에서 PC 사용량 체크 | [링크](https://apps.apple.com/kr/app/runcat/id1429033973?mt=12) |
+| Keka | 압축 프로그램 | [링크](https://www.keka.io/ko/) |
+| Maccy | 클립보드 매니저 | [링크](https://maccy.app/) |
+| caffeine | 절전모드 방지 | [링크](https://www.caffeine-app.net/) |
 
-그 외 기타 사용방법
-```text
-## iterm delete 
-> 한 줄 지우기
-* profiles -> Open Profile -> edit profiles -> keys
-* shortcut : cmd + backspace
-    * action : send hex codes 
-    * send : 0x15
+---
 
-> 한 단어씩 지우기 
-* profiles -> Open Profile -> edit profiles -> keys
-* shortcut : option + backspace
-    * action : send hex codes 
-    * send : 0x17
+## 💻 터미널
+| 항목 | 설정 및 설명 | 링크 |
+|------|------|------|
+| 터미널 | iTerm2 (세팅 export/import 가능) | [iTerm2](https://iterm2.com/index.html) |
+| 테마 관리 | powerlevel10k (사용자 커스터마이징 가능) | [powerlevel10k](https://github.com/romkatv/powerlevel10k) |
+| 하이라이팅 | 명령어 문법 강조 플러그인 | [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) |
+| 자동완성 | 자동 완성 기능 플러그인 | [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) |
 
-## iterm 단축키 모음 (mac 기준으로 설명한다.)
-> CMD + shift + I 
-* 동시에 입력할 수 있도록 도와준다.
+### 🔑 iTerm 주요 단축키
+| 단축키 | 기능 |
+|--------|------|
+| Cmd + Backspace | 한 줄 지우기 (hex: 0x15) |
+| Option + Backspace | 한 단어씩 지우기 (hex: 0x17) |
+| Cmd + Shift + I | 여러 창 동시 입력 |
+| Cmd + D | 창 가로 추가 |
+| Cmd + Shift + D | 창 세로 추가 |
 
-> CMD + D : iterm 
-* 창을 가로로 추가한다.
+---
 
-> CMD + shift + D : iterm 
-* 창을 세로로 추가한다.
-```
+## 🔗 Alias 명령어
+| 명령어 | 설명 |
+|--------|------|
+| `gitlog` | Git 로그를 깔끔하게 그래픽 표시 |
+| `k` | `kubectl` 명령어 단축 |
 
+**설정 적용 방법**: `.zshrc`에 추가 후 `source ~/.zshrc` 실행
 
-## sdkman 설치
-https://sdkman.io/
-fx 라고 작성된건 JavaFx 가 설치된 버전 의미. -> 필요없음
+---
 
+## 🧑‍💻 개발 도구
+| 항목 | 세부 내용 | 링크 |
+|------|------|------|
+| sdkman | JDK/SDK 관리 툴 | [sdkman](https://sdkman.io/) |
+| IntelliJ Live Templates | Kotlin 템플릿 설정 (`TT`) | [Live Template 설정법](https://velog.io/@max9106/IntelliJ-Live-Template) |
+| IntelliJ Jira 연동 | Jira 서버 연동 (계정 정보 필요) | - |
+| IntelliJ Sync & Backup | 계정 기준 활성화 | - |
+| IntelliJ Plugins | CodeGlance Pro(코드 미니맵), Key Promoter(단축키 추천) | - |
+| DataGrip Sync & Backup | 계정 기준 활성화 | - |
+| DataGrip Global Datasource | 타 PC와 datasource 공유 | - |
 
-## Intellij Live Templates 설정
-Settings > Editor > Live Templates 에서 설정가능
-* kotlin 에서 `TT` 를 입력
-https://velog.io/@max9106/IntelliJ-Live-Template
+---
 
-## Intellij Jira 연동
-Tools > Tasks > Servers 에서 지라연결 (사내 id, pwd 입력)
+## 🔧 추가 도구
+| 도구명 | 설명 | 링크 |
+|------|------|------|
+| Medis Redis | Redis properties export/import | - |
+| Rapid API | API 마켓플레이스 플랫폼 | - |
+| HTTPie | CLI 기반 HTTP 클라이언트 | - |
+| Postman | GUI 기반 API 테스트 클라이언트 | - |
+| OpenLens | K8s GUI 관리 도구 | - |
+| Charles | HTTP 요청/응답 캡처 및 분석 도구 | - |
 
-## Intellij sync & backup 기능 설정
-* Settings > Backup And Sync Enabled 설정
-  * 계정 기준으로 설정하도록 한다.
-
-## Intellij plugins
-* CodeGlance Pro
-* Key Promoter
-
-## DataGrip sync & backup 기능 설정
-* Settings > Backup And Sync Enabled 설정
-  * 계정 기준으로 설정하도록 한다.
-
-## Datagrip global Datasource 설정
-* DataSource 에서 Global Datasource 를 설정하여 타 PC 에서 datasource 를 들고오도록 한다.
-
-## Medis redis properties export
-* Medis redis properties 를 export 하고 import 한다
-
-## http tool 
-* rapid API
-* httpie
-* postman
-
-## k8s openlens 설치
-
-## charles 설치
-앱 payload 확인
