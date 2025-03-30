@@ -1,5 +1,10 @@
-## MACBOOK 세팅
-맥북 초기세팅
+# 📘 MACBOOK 초기 세팅 가이드
+
+<style>
+table tr:nth-child(even), table tr:nth-child(odd) {
+    background-color: transparent !important;
+}
+</style>
 
 ## 🔖 목차
 - [기본 설정](#기본-설정)
@@ -92,4 +97,3 @@
 | Postman | GUI 기반 API 테스트 클라이언트 | - |
 | OpenLens | K8s GUI 관리 도구 | - |
 | Charles | HTTP 요청/응답 캡처 및 분석 도구 | - |
-
