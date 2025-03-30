@@ -72,18 +72,19 @@
 ---
 
 ## 🔧 개발 도구
-| 항목 | 설명 | 링크 |
-|------------|--------------------------------|---------------------------------------------------------------|
-| IntelliJ   | JetBrains의 Java/Kotlin IDE | [IntelliJ](https://www.jetbrains.com/idea/) |
-| DataGrip   | DB 관리용 IDE | [DataGrip](https://www.jetbrains.com/datagrip/) |
-| WebStorm   | JS/TS 개발용 IDE | [WebStorm](https://www.jetbrains.com/webstorm/) |
-| sdkman     | JDK/SDK 관리 툴 | [sdkman](https://sdkman.io/) |
-| Medis      | Redis properties export/import | [Medis](https://getmedis.com/) |
-| Rapid API  | API 마켓플레이스 플랫폼 | [Rapid API](https://rapidapi.com/) |
-| HTTPie     | CLI 기반 HTTP 클라이언트 | [HTTPie](https://httpie.io/) |
-| Postman    | GUI 기반 API 테스트 클라이언트 | [Postman](https://www.postman.com/) |
-| OpenLens   | K8s GUI 관리 도구 | [OpenLens](https://openlens.dev/) |
-| Charles    | HTTP 요청/응답 캡처 및 분석 도구 | [Charles](https://www.charlesproxy.com/) |
+| 항목             | 설명                             | 링크                                                                |
+|----------------|--------------------------------|-------------------------------------------------------------------|
+| IntelliJ       | JetBrains의 Java/Kotlin IDE     | [IntelliJ](https://www.jetbrains.com/idea/)                       |
+| DataGrip       | DB 관리용 IDE                     | [DataGrip](https://www.jetbrains.com/datagrip/)                   |
+| WebStorm       | JS/TS 개발용 IDE                  | [WebStorm](https://www.jetbrains.com/webstorm/)                   |
+| sdkman         | JDK/SDK 관리 툴                   | [sdkman](https://sdkman.io/)                                      |
+| Medis          | Redis properties export/import | [Medis](https://getmedis.com/)                                    |
+| Rapid API      | API 마켓플레이스 플랫폼                 | [Rapid API](https://rapidapi.com/)                                |
+| HTTPie         | CLI 기반 HTTP 클라이언트              | [HTTPie](https://httpie.io/)                                      |
+| Postman        | GUI 기반 API 테스트 클라이언트           | [Postman](https://www.postman.com/)                               |
+| OpenLens       | K8s GUI 관리 도구                  | [OpenLens](https://openlens.dev/)                                 |
+| Charles        | HTTP 요청/응답 캡처 및 분석 도구          | [Charles](https://www.charlesproxy.com/)                          |
+| Docker Desktop | Docker GUI 툴                   | [Docker Desktop](https://www.docker.com/products/docker-desktop/) |
 
 ---
 
