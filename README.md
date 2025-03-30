@@ -177,18 +177,9 @@
 * [성공과 실패를 결정하는 1%의 네트워크 원리](./book/1_percent_network.md)
 * [코틀린, 코루틴 : kotlin, coroutine](./book/kotlin_coroutine.md)
 
-## 맥 💻🍎
+## 맥북 및 IDE 세팅 💻🍎
 * [Apple M1 Pro 16, 32GB]()
-* https://subicura.com/mac/
-* [생산성 도구](https://medium.com/@totuworld/%EC%86%8C%EC%A4%91%ED%95%9C-%EB%82%98%EC%9D%98-1%EC%B4%88%EB%A5%BC-%EC%9C%84%ED%95%9C-10%EA%B0%80%EC%A7%80-%EC%83%9D%EC%82%B0%EC%84%B1-%EB%8F%84%EA%B5%AC-for-macos-cc6db97cd798)
-* [SDKMAN](https://sdkman.io/install)
-* [font : Cascadia-code](https://github.com/microsoft/cascadia-code)
-* [intellij : live template](https://velog.io/@max9106/IntelliJ-Live-Template)
-* [intellij : jira 연동]()
-* [intellij : Plugins](./mac/plugins.md)
-* [alias 목록](./mac/alias.md)
-* [iterm 관련](./mac/iterm.md)
-* [맥북 백틱 입력](https://www.korecmblog.com/backtick-fix/)
+* [MAC 세팅](./dummy/macbook_setting.md)
 
 ## chrome plugins (내가 쓰는...)
 * json viewer, modHeader
