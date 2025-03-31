@@ -62,10 +62,12 @@
 ---
 
 ## 🔗 Alias 명령어
-| alias 명령어 | 전체 명령어 | 설명 |
-|-----------|----------------------------------------------|---------|
-| `gitlog`  | `git log --all --decorate --oneline --graph` | Git 로그 보기 |
-| `k`       | `kubectl`                                    | Kubernetes 명령어 단축 |
+| alias 명령어          | 전체 명령어                                                                                     | 설명                     |
+|--------------------|--------------------------------------------------------------------------------------------|------------------------|
+| `gitlog`           | `git log --all --decorate --oneline --graph`                                               | Git 로그 보기              |
+| `git-prune-branch` | `git fetch --prune && git branch -vv \| awk '/: gone]/{print \$1}' \| xargs git branch -D` | (영문) Git 미사용 로컬 브랜치 삭제 |
+| `git-prune-branch` | `git fetch --prune && git branch -vv \| awk '/: 없음]/{print \$1}' \| xargs git branch -D`   | (한글) Git 미사용 로컬 브랜치 삭제 |
+| `k`                | `kubectl`                                                                                  | Kubernetes 명령어 단축      |
 
 **설정 적용 방법**: `.zshrc`에 추가 후 `source ~/.zshrc` 실행
 

@@ -177,7 +177,7 @@
 * [성공과 실패를 결정하는 1%의 네트워크 원리](./book/1_percent_network.md)
 * [코틀린, 코루틴 : kotlin, coroutine](./book/kotlin_coroutine.md)
 
-## 맥북 및 IDE 세팅 💻🍎
+## 맥북 💻🍎
 * [Apple M1 Pro 16, 32GB]()
 * [MAC 세팅](./dummy/macbook_setting.md)
 
