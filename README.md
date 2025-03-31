@@ -4,7 +4,7 @@
 ## 👨‍🚀 Computer Science
 ### network
 * [한양대 Network MOOC 수강 내용 정리](./network/Network%20MOOC.md)
-* [HTTPS](./book/HTTP 완벽가이드/HTTPS.md)
+* [HTTPS](book/HTTP_완벽가이드/HTTPS.md)
 
 ### database
 * [씨아이보드 메뉴얼 스키마 설계 샘플](http://www.ciboard.co.kr/manual/tables)
@@ -136,7 +136,6 @@
 
 ## 👨‍🚀 알고리즘
 * [leetcode](./leetcode)
-* [programmers](./programmers)
 
 ## 👨‍🚀 리눅스, 쉘, 터미널 커맨드, 툴 등
 * [jq](./command/jq_command.md)
