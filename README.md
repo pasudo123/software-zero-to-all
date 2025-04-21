@@ -236,3 +236,4 @@
 * [kotlin mutex & semaphore](./dummy/kotlin_mutex_semaphore.md)
 * [kotlin sort](./dummy/kotlin_sorted.md)
 * [[외부링크]vscode 로 json 정렬하기](https://gigi.nullneuron.net/gigilabs/formatting-json-in-visual-studio-code/)
+* [🥥 혼자하는 개발회고, 2025년 상반기](./dummy/2025_h1_reflection.md)
