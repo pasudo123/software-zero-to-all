@@ -121,7 +121,7 @@ fun main() = runBlocking {
 [4] counter=1000
 ```
 
-## semaphore 사용. 코틀린 코드
+## semaphore 사용. 코틀린 코드 (1)
 Semaphore 를 생성할 시에 몇개의 스레드를 허용할지 갯수를 설정할 수 있습니다.   
 아래 코드에선 2개의 스레드를 허용하고 있으며, job_1, job_2 만 임계영역에 들어올 수 있습니다.   
 나머지 스레드들은 대기하는 상태로, 먼저 들어간 작업이 끝나면 이후에 작업을 수행합니다.   
@@ -171,4 +171,25 @@ enter-job_9
 enter-job_10
 exit-job_9
 exit-job_10
+```
+
+## semaphore 사용. 코틀린 코드 (2)
+withPermit {} 람다를 이용함으로써, 내부적으로 acquire() 와 release() 를 포함하는 구문입니다.
+
+```kotlin
+val semaphore = Semaphore(2)
+
+private suspend fun apiCall(name: String) {
+    println("enter-$name")
+    delay(3000)
+    println("exit-$name")
+}
+
+fun main() = runBlocking {
+    val jobs = (1..10).map {
+        launch { semaphore.withPermit { apiCall("job_$it") } }
+    }
+
+    jobs.joinAll()
+}
 ```
