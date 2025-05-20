@@ -174,9 +174,9 @@ exit-job_10
 ```
 
 ## semaphore 사용. 코틀린 코드 (2)
-withPermit{} 은 Semaphore의 permit을 안전하게 acquire/release 할 수 있도록 도와주는 확장함수입니다.
-내부적으로 acquire() 와 release() 를 포함하고 있어, 블록 안에서 실행되는 코드가 항상 permit 범위 내에서 실행되도록 보장합니다.
-아래 예제는 동시에 최대 2개의 apiCall() 만 실행되도록 제어합니다. 결과는 acquire() & release() 사용코드와 동일합니다.
+withPermit{} 은 Semaphore의 permit을 안전하게 acquire/release 할 수 있도록 도와주는 확장함수입니다.  
+내부적으로 acquire() 와 release() 를 포함하고 있어, 블록 안에서 실행되는 코드가 항상 permit 범위 내에서 실행되도록 보장합니다.  
+아래 예제는 동시에 최대 2개의 apiCall() 만 실행되도록 제어합니다. 결과는 acquire() & release() 사용코드와 동일합니다.  
 
 ```kotlin
 val semaphore = Semaphore(2)
