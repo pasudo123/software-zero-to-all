@@ -207,6 +207,7 @@
 * [spring 로컬캐시 사용기](./dummy/spring_cache.md)
 * [coroutine 정리한 README](https://github.com/pasudo123/springboot-kotlin-zerotoall/blob/main/pure-kotlin/coroutine-readme.md)
 * [coroutine : coroutineScope vs supervisorScope](./dummy/coroutine_coroutineScope_supervisorScope.md)
+* [coroutine : supervisorJob 을 안쓰면 발생하는 문제. coroutineScope 에서 익셉션 발생 시](./dummy/coroutine_supervisorJob_with_error.md)
 * [spring 에서 objectMapper 자주 쓰는 설정](./dummy/objectMapper_configuration_memo.md)
 * [springboot 에서 에러를 핸들링하영 응답하기](./dummy/springboot_error_handling.md)
 * [springboot 에서 sseEmitter 사용기](./dummy/springboot_sseEmitter.md)
