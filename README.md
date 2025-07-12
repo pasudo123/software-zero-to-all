@@ -220,6 +220,7 @@
 * [redis 가 빠른이유](./dummy/why_redis_fast.md)
 * [redis cache 전략](./dummy/redis_cache_strategy.md)
 * [redis pub/sub : 설정된 정보를 모든 서버에 반영하는 방법](./dummy/springboot_prop_with_redis_pubsub.md)
+* [redis 를 이용한 동시성 제어](./dummy/redis-lock-usage.md)
 * [redic-cli](./dummy/redis_cli.md)
 * [kafka](./dummy/kafka.md)
 * [http](./dummy/http.md)
