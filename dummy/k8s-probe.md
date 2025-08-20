@@ -3,6 +3,7 @@ probe 를 두가지 종류가 있다. readiness probe, liveness probe.
 - Readiness Probe: 파드를 서비스 트래픽 대상에서 포함/제외
 - Liveness Probe: 비정상 파드를 감지하여 재시작
 
+   
 ## liveness probe 
 * 컨테이너가 정상적으로 살아있는지 확인
 * 정상적이지 않은 컨테이너라면 restart 수행
@@ -11,6 +12,7 @@ probe 를 두가지 종류가 있다. readiness probe, liveness probe.
 * 애플리케이션 뜨는 시간 및 웜업을 고려하여 `initialDelaySeconds` 를 주도록 한다.
   * (프로젝트마다 구동되는 시간이 다를 수 있음)
 
+   
 ## readiness probe
 * 컨테이너가 정상적으로 응답을 줄 수 있는지 확인
 * 정상적이지 않은 컨테이너라면 svc 에서 서비스 제외 → 트래픽 차단.
@@ -19,20 +21,27 @@ probe 를 두가지 종류가 있다. readiness probe, liveness probe.
 * 애플리케이션 뜨는 시간 및 웜업을 고려하여 `initialDelaySeconds` 를 주도록 한다.
   * (프로젝트마다 구동되는 시간이 다를 수 있음)
 
+   
 ## preStop
 * 컨테이너가 종료되기 직전에 명령을 실행하도록 하는 hook
 * k8s 가 컨테이너에게 SIGTERM 을 전송하기 이전에 preStop hook 을 먼저 실행
 * 이후에 처리가 마무리되면 kubelet 은 컨테이너로 SIGTERM 이 전송된다. 
   * SIGTERM을 전달받은 애플리케이션은 그때 graceful shutdown 을 수행
 
+   
 ## terminationGracePeriodSeconds
 * `terminationGracePeriodSeconds` 은 preStop 의 시간까지 포함하고 있음
 * (preStop 진행시간 + 추가시간) <= `terminationGracePeriodSeconds` 이 되어야 한다.
 * 컨테이너가 아닌 애플리케이션은 이 시점에 graceful shutdown 을 수행
 * `terminationGracePeriodSeconds` 이 지난 다음 kubelet 은 컨테이너로 SIGKILL 을 전송한다. → 강제종료
 
+   
 ## 다이어그램 간단히 (chatGPT)
 ```mermaid
+---
+config:
+  layout: dagre
+---
 flowchart TD
     %% Probe 단계
     subgraph Probe["Kubernetes Probe 단계"]
@@ -56,5 +65,4 @@ flowchart TD
     Readiness -->|비정상| ServiceRemove["Service 제외"]
 
     PreStop --> SIGTERM --> GracePeriod --> SIGKILL
-
 ```
