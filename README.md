@@ -178,7 +178,7 @@
 
 ## 맥북 💻🍎
 * [Apple M1 Pro 16, 32GB]()
-* [MAC 세팅](./dummy/macbook_setting.md)
+* [MAC 세팅 : alias, iterm 등 단축키](./dummy/macbook_setting.md)
 
 ## chrome plugins (내가 쓰는...)
 * json viewer, modHeader
@@ -240,3 +240,4 @@
 * [[외부링크]vscode 로 json 정렬하기](https://gigi.nullneuron.net/gigilabs/formatting-json-in-visual-studio-code/)
 * [🥥 혼자하는 개발회고, 2025년 상반기](./dummy/2025_h1_reflection.md)
 * [k8s ingress nginx timeout 설정](./dummy/nginx-ingress-setting.md)
+* [k8s probe 설정](./dummy/k8s-probe.md)

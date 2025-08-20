@@ -56,13 +56,16 @@
 | 자동완성 | 자동 완성 기능 플러그인 | [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) |
 
 ### 🔑 iTerm 주요 단축키
-| 단축키 | 기능 |
-|--------|------|
-| Cmd + Backspace | 한 줄 지우기 (보내는 제어 문자: hex 0x15) |
-| Option + Backspace | 한 단어씩 지우기 (보내는 제어 문자: hex 0x17) |
-| Cmd + Shift + I | 여러 창 동시 입력 |
-| Cmd + D | 창 가로 추가 |
-| Cmd + Shift + D | 창 세로 추가 |
+| 단축키                    | 기능                              |
+|------------------------|---------------------------------|
+| Cmd(⌘) + Backspace     | 한 줄 지우기 (보내는 제어 문자: hex 0x15)   |
+| Option(⌥) + Backspace  | 한 단어씩 지우기 (보내는 제어 문자: hex 0x17) |
+| Cmd(⌘) + Shift + I     | 여러 창 동시 입력                      |
+| Cmd(⌘) + D             | 동일 탭 내, 창 가로분할 추가               |
+| Cmd(⌘) + Shift + D     | 동일 탑 내 창 세로분할 추가                |
+| ⌘ + ⌥ + 화살표            | 분할 화면 간 이동                      |
+| Cmd(⌘) + T             | 새탭 추가                           | 
+| Cmd(⌘) + 숫자 (예: ⌘ + 1) | 탭 이동 |
 
 ---
 
