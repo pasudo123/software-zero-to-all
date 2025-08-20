@@ -38,10 +38,9 @@ probe 를 두가지 종류가 있다. readiness probe, liveness probe.
    
 ## 다이어그램 간단히 (chatGPT)
 ```mermaid
----
-config:
-  layout: dagre
----
+%%{ init: { 
+  "theme": "neutral"
+} }%%
 flowchart TD
     %% Probe 단계
     subgraph Probe["Kubernetes Probe 단계"]
