@@ -3,9 +3,10 @@
 
 ## Throwable & Exception & Error 의 관계
 - 예외는 Throwable 클래스 또는 그 서브클래스의 인스턴스를 의미하고 있다.
-- `Exception 클래스`와 `Error 클래스`는 모두 Throwable 클래스의 서브클래스다.
-- Exception 클래스는 일반 애플리케이션이 복구를 시도할 수 있는 예외의 슈퍼클래스다.
-- Error 클래스는 일반 애플리케이션이 복구하기 어렵거나 기대하지 않는 심각한 문제의 슈퍼클래스다.
+- Throwable 클래스와 그 서브클래스 전체를 예외 클래스라고 볼 수 있다.
+  - `Exception 클래스`와 `Error 클래스`는 Throwable 클래스의 서브클래스다.
+  - Exception 클래스는 일반 애플리케이션이 복구를 시도할 수 있는 예외의 슈퍼클래스다.
+  - Error 클래스는 일반 애플리케이션이 복구하기 어렵거나 기대하지 않는 심각한 문제의 슈퍼클래스다.
 
 ## RuntimeException & CheckedException
 - RuntimeException 은 Exception 클래스의 서브클래스다.
@@ -24,7 +25,7 @@ class Demo01ServiceWithRollback(
 
   /**
    * RuntimeException, Error 은 기본 정책으로 롤백
-   * Exception 은 기본 정책으로 롤백되지 않음. checked exception 롤백이 필요하면 rollbackFor 를 명시한다.
+   * Exception 은 기본 정책으로 롤백되지 않음. checked exception 롤백이 필요하면 rollbackFor 설정이 필요
    */
   @Transactional(rollbackFor = [Exception::class])
   fun queryWithSize(query: Query, size: Int) {
@@ -53,7 +54,7 @@ class Demo01ServiceWithRollback(
 }
 ```
 * 위 코드에서 @Transaction 의 롤백은 throw Error() 구문과 throw RuntimeException() 구문에서 발생한다.
-* throw Exception() 구문에서도 롤백을 동작하게 하고 싶다면 `@Transactional(rollbackFor = [Exception::class])` 처럼 롤백 대상 클래스를 정의해야 한다.
+* throw Exception() 구문에서도 롤백을 동작하게 하고 싶다면 `@Transactional(rollbackFor = [Exception::class])` 구문을 통해서 롤백을 하려고 하는 클래스를 정의해야 한다.
 
 ## 참고
 * https://docs.oracle.com/javase/specs/jls/se7/html/jls-11.html#jls-11.1.1

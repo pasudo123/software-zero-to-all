@@ -354,7 +354,7 @@ ubuntu:18.04
 * 도커의 측면에서 `브리지 네트워크` 는 동일한 브리지 네트워크에 연결된 컨테이너가 통신할 수 있도록 하는 소프트웨어 브리지를 사용한다. 그리고 해당 브리지를 사용하지 않는 컨테이너로부터 격리시킨다. 도커 브리지 드라이버는 서로 다른 브리지 네트워크의 컨테이너가 서로 직접적인 통신을 할 수 없도록 호스트 머신에 규칙을 자동으로 설치한다.
 * `사용자 정의 브리지` 와 `디폴트 브리지` 간의 차이점
     * `사용자 정의 브리지` 는 컨테이너 간의 자동 dns 를 설정시켜준다.
-        * 디폴트 브리지 네트워크의 경우에는 레거시 기능인 `--link` 를 사용하지 않는 한 서로 IP address 를 직접 알아야 접근할 수 있다. 하지만 `사용자 정의 브리지` 의 경우에는 컨테이너의 이름 또는 `alias` 를 통해서 접근이 가능하다.
+        * 디폴트 브리지 네트워크의 경우에는 `--link` 라는 레거시 기능을 사용하지 않는 한 서로 ip address 를 직접 알아야 접근할 수 있다. 하지만 `사용자 정의 브리지` 의 경우에는 컨테이너의 이름 또는 `alias` 를 통해서 접근이 가능하다.
     * `사용자 정의 브리지` 는 더 나은 `isolation` 을 제공하고 있다.
         * 모든 컨테이너는 `--network` 를 설정하지 않는다면 `디폴트 브리지` 에 연결된다. 이건 꽤나 `위험성` 있는데 연관성이 없는 `stack/services/containers` 가 서로 통신할 수 있기 때문이다.
     * 자세한 내용은 [여기](https://docs.docker.com/engine/network/drivers/bridge/)를 참고한다.
@@ -402,7 +402,7 @@ $ docker network disconnect {user-defined-bridge-name} {container-name}
 |-------------|-------------|-------------|-------------|
 |--volume(-v)||bind volume 를 수행한다. <br> 이미지에 안에 디렉토리가 존재하는 상태에서 호스트의 볼륨을 공유하면 __이미지 내 기존 디렉토리는 덮어씌어진다.__ |`docker run -d -v /data/etc:/var/etc -p 23340:14480 pasudo123/springboot-docker-basis`|
 |--volume-from||지정한 컨테이너와 볼륨 바인드를 수행한다.|`docker run  -d  --name new_container --volume-from {container_name}` |
-|--link||타 컨테이너의 내부 ip 를 알 필요없이 컨테이너 alias 만으로도 접근하도록 설정한다. 현재는 레거시 기능이므로 사용자 정의 bridge network 사용을 권장한다.|`docker run --link wordpressdb:mysql ...` (wordpressdb 컨테이너 명칭을 mysql 로 지정하였다. 이렇게하면 wordpressdb 의 ip 를 몰라도 호스트명으로 접근이 가능하다.)|
+|--link||타 컨테이너의 내부 ip 를 알 필요없이 컨테이너 alias 만으로도 접근하도록 설정한다. 현재는 레거시 기능이므로 사용자 정의 bridge network 를 쓰는 편이 좋다.|`docker run --link wordpressdb:mysql ...` (wordpressdb 컨테이너 명칭을 mysql 로 지정하였다. 이렇게하면 wordpressdb 의 ip 를 몰라도 호스트명으로 접근이 가능하다.)|
 |--interactive, -i||docker attached 하지않고도 STDIN 을 열어둔다||
 |--restart||docker 가 종료되었을 때, 적용할 재시작 정책. ([상세링크](https://docs.docker.com/engine/reference/commandline/run/#restart-policies---restart))|
 |-publish, -p||Dockerfile 에 설정된 EXPOSE 의 모든 포트를 호스트에 연결하도록 설정한다. 호스트의 포트는 `무작위` 로 설정된다.| `docker run -d -P --name myserver mybuild:1.0`

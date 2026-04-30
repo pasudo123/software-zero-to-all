@@ -77,6 +77,7 @@
 <BR>
 
 # 참고
+- chatGPT
 - [Redis docs - Redis architecture](https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/)
 - https://youtu.be/5TRFpFBccQM?si=c9ZAggm8Qg96322r
 - [IO Multiplexing (IO 멀티플렉싱) 기본 개념부터 심화까지 -1부-](https://blog.naver.com/n_cloudplatform/222189669084)

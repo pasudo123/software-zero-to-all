@@ -89,7 +89,7 @@ fun main() = runBlocking {
 ## CAS(Compare And Set) 를 이용. 코틀린 코드
 AtomicInteger 를 사용해서 락 없이도 동시성 제어를 가능하게 합니다.   
 CAS 연산은 CPU 가 제공하는 기계어 명령어 (원자적 CPU 인스트럭션) 를 통해 구현됩니다.   
-메모리에 있는 값을 읽고 기대값과 비교한 뒤, 조건이 충족될 때만 값을 갱신하는 과정을 하나의 원자적 연산으로 수행합니다.
+명령어는 메모리에 있는 값을 읽고 기대값과 비교합니다. 조건이 충족되면 값을 갱신하는 과정이고 이는 하나의 원자적 연산입니다.
 ```kotlin
 val counterAtomic = AtomicInteger(0)
 

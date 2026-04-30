@@ -1,6 +1,6 @@
 ## springboot graceful shutdown 
-* Spring Boot 2.3 부터 graceful shutdown 설정이 도입되었다.
-* Spring Boot 2.x 문서 기준으로 graceful shutdown 을 활성화하려면 `server.shutdown=graceful` 을 설정한다.
+* springboot 서버의 shutdown 정책은 버전에 따라 기본값을 확인해야 한다.
+* Spring Boot 2.3 부터 graceful shutdown 설정이 도입되었고, 2.x 기준으로는 `server.shutdown=graceful` 을 설정해야 graceful shutdown 이 동작한다.
 * 최신 Spring Boot 문서에서는 graceful shutdown 이 기본 활성화로 설명되며, `server.shutdown=immediate` 로 비활성화할 수 있다.
 
 ```yaml

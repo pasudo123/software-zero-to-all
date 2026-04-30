@@ -29,14 +29,14 @@ nginx.ingress.kubernetes.io/proxy-connect-timeout: "10"
 
 ## proxy-send-timeout
 * nginx 가 백엔드로 요청 body를 전송(write) 하는 중에, 응답 없이 지연될 수 있는 최대 대기 시간
-* 예시상황
+* 예시상황 (나도 직접 해보진 않음. 2025-07-09)
   * 요청 바디가 큰 경우 (대형 JSON, 파일 업로드)
   * 네트워크 지연으로 데이터 전송이 지체되는 경우
 
 ## proxy-connect-timeout
 * nginx 가 백엔드 (was : e.g. undertow, tomcat) 와 TCP 연결을 시도할 때 최대 대기시간
 * 기본값은 60초.
-* 예시상황
+* 예시상황 (나도 직접 해보진 않음. 2025-07-09)
   * pod가 부하로 느리게 뜨는 경우
   * 서비스가 비정상적이거나 readiness probe 가 통과되지 않아 느려지는 경우
 

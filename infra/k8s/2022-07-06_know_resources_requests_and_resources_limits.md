@@ -1,6 +1,6 @@
 ## resources.requests & resources.limits
-* `requests` 는 컨테이너가 필요로 하는 최소 리소스를 선언하며, 스케줄러가 노드를 고를 때 사용한다.
-* `limits` 는 컨테이너가 사용할 수 있는 최대 리소스를 선언하며, kubelet 과 컨테이너 런타임이 커널 기능으로 강제한다.
+* `requests` 는 pod 의 리소스를 최소 보장할 cpu/memory 를 설정한다. 스케줄러가 노드를 고를 때 사용한다.
+* `limits` 는 pod 의 리소스를 최대 제한할 cpu/memory 를 설정한다. kubelet 과 컨테이너 런타임이 커널 기능으로 강제한다.
 * yaml 설정
     * spec.containers[].resources.requests.memory
     * spec.containers[].resources.limits.memory
@@ -8,7 +8,7 @@
     * spec.containers[].resources.limits.cpu
 
 ## pod 가 node 에 스케줄링될 때,
-* pod 의 resources.requests 합계만큼 할당 가능한 리소스가 있는 노드에 스케줄링된다.
+* pod 의 resources.requests 만큼의 여유가 있는 노드에 스케줄링된다.
 * pod 를 할당할 때, 사용되는 자원 할당기준은 `resources.requests` 가 된다. 
 * pod 가 `pending` 상태로 되는 경우
     * node 에 가용가능한 memory 와 pod 의 `resources.requests.memory` 를 비교, pod 의 `요청 메모리` 가 크다면 pod 의 상태는 `pending` 이 된다.

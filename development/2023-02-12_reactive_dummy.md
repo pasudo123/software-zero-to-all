@@ -89,10 +89,9 @@ https://projectreactor.io/docs/core/release/reference/#_simple_ways_to_create_a_
 * fromRunnable() : Runnable 객체 emit
 * empty() : 아무런 아이템 없이 emit 한다.
 * never() : 어떤 데이터, complete, error 시그널도 발생시키지 않는다.
-    * 실제 서비스 흐름보다는 테스트나 영원히 완료되지 않는 publisher 를 표현해야 할 때 주로 사용한다.
+    * never 은 언제 쓰는걸까? 실제 서비스 흐름보다는 테스트나 영원히 완료되지 않는 publisher 를 표현해야 할 때 주로 사용한다고 보면 될 것 같다.
 * error()
 * interval()
 * range()
 
  
-
