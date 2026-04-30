@@ -1,5 +1,5 @@
 ## springboot @Async 의 ThreadPoolTaskExecutor 설정
-* @Aysnc 애노테이션 사용 시, ThreadPoolTaskExecutor 를 설정할 수 있다.
+* @Async 애노테이션 사용 시, ThreadPoolTaskExecutor 를 설정할 수 있다.
 ```kotlin
 @Configuration
 @EnableAsync
@@ -16,25 +16,25 @@ class CustomAsyncConfiguration: AsyncConfigurer {
     }
 }
 ```
-* corePoolSize 는 @Async 로 동작할 때 기본적으로 주는 스레드풀 내 갯수
-* maxPoolSize 는 작업 Task 가 queueCapacity 를 초과하였을 떄 최대치만큼 생성할 수 있는 스레드풀 내 갯수
-    * queueCapacity < taskCount 면 poolSize 를 1개 더 늘린다.
+* corePoolSize 는 기본적으로 유지할 스레드 수다.
+* maxPoolSize 는 큐가 가득 찬 뒤 추가 작업을 처리하기 위해 늘릴 수 있는 최대 스레드 수다.
+    * ThreadPoolExecutor 는 보통 corePoolSize 까지 스레드를 만들고, 이후 작업은 큐에 넣는다. 큐가 가득 찬 뒤에도 작업이 들어오면 maxPoolSize 까지 스레드를 늘린다.
 * maxPoolSize 초과 시, RejectedExecutionException 이 발생한다.
 
 
 ## 5초간 스케줄링하는 작업이 6초가 소요되는 Task 예시
 * corePoolSize=1, maxPoolSize=1, queueCapacity=1 로 세팅
-* 0초 : Task1 coreSize=0 -> coreSize=1 로 처리
+* 0초 : Task1 수행. core thread 1개가 생성되어 실행
 * 5초 : queue=[Task2]
-* 6초 : Task1 작업종료(coreSize=0), Task2 coreSize=0 -> coreSize=1, queue=[]
+* 6초 : Task1 작업종료, Task2 실행, queue=[]
 * 10초 : queue=[Task3]
-* 12초 : Task2 작업종료(coreSize=0), Task3 coreSize=0 -> coreSize=1, queue=[]
+* 12초 : Task2 작업종료, Task3 실행, queue=[]
 * 15초 : queue=[Task4]
-* 18초 : Task3 작업종료(coreSize=0), Task4 coreSize=0 -> coreSize=1, queue=[]
+* 18초 : Task3 작업종료, Task4 실행, queue=[]
 * 20초 : queue=[Task5]
-* 24초 : Task4 작업종료(coreSize=0), Task5 coreSize=0 -> coreSize=1, queue=[]
+* 24초 : Task4 작업종료, Task5 실행, queue=[]
 * 25초 : queue=[Task6]
-* **30초** : Task5 작업종료(coreSize=0), Task6 coreSize=0 -> coreSize=1, queue=[]
+* **30초** : Task5 작업종료, Task6 실행, queue=[]
 * **30초** : queue=[Task7]
 * **35초** : queue=[Task7, Task8] 
     * queueCapacity=1 이기 때문에 maxPoolSize 를 늘려주려고 한다. 하지만 maxPoolSize 값이 1이라 _**RejectedExecutionException**_ 이 발생한다.

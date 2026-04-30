@@ -42,12 +42,16 @@ redis 오픈소스의 C 코드를 기반하여 설명되고 있어서 링크도 
 
 ### redis pub/sub/unSub 의 시간복잡도
 * PUB
-  * 채널이름을 해싱하여 SUBSCRIBER 목록 찾는 과정이 필요하다. -> 해시테이블을 이용하기 때문에 O(1) 소요
-  * 그리고 SUBSCRIBER 목록을 순회해서 메시지를 전송해야 한다. -> O(N) 소요 : 채널의 구독자 수가 적기 때문에 시간복잡도는 상대적으로 낮을 수 있다.
+  * Redis 공식 문서 기준 `PUBLISH` 는 O(N+M) 이다.
+  * N 은 메시지를 받을 채널의 구독 클라이언트 수이고, M 은 전체 패턴 구독 수이다.
 * SUB
-  * 채널을 SUB 하기 위해 해시테이블에 SUBSCRIBER 목록을 찾는 과정이 필요하다. -> O(1) 소요
-  * SUBSCRIBER 목록의 가장 맨 뒤에 새롭게 추가되어야 한다. -> O(1) 소요 : 링크드리스트 요소 추가이기 때문에 상수시간 소요된다.
+  * Redis 공식 문서 기준 `SUBSCRIBE` 는 O(N) 이다.
+  * N 은 구독하려는 채널 수이다.
 * UN-SUB
-  * 채널을 UN-SUNB 하기 위해 해시테이블에 SUBSCRIVER 목록을 찾는 과정이 필요하다. -> O(1) 소요
-  * SUBSCRIBER 목록에서 UN-SUBSCRIBER 를 수행할 클라이언트를 찾는 과정이 필요하다. -> O(N) 소요
-  
+  * Redis 공식 문서 기준 `UNSUBSCRIBE` 는 O(N) 이다.
+  * N 은 구독 해제하려는 채널 수이다.
+
+## reference
+* [Redis docs - PUBLISH](https://redis.io/docs/latest/commands/publish/)
+* [Redis docs - SUBSCRIBE](https://redis.io/docs/latest/commands/subscribe/)
+* [Redis docs - UNSUBSCRIBE](https://redis.io/docs/latest/commands/unsubscribe/)
