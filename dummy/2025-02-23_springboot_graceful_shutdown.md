@@ -1,13 +1,14 @@
 ## springboot graceful shutdown 
-* springboot 서버의 기본 shutdown 정책은 `immediate` 다.
-* graceful shutdown 을 수행하기 위해선 아래처럼 작성한다. (springboot 2.3 부터 도입)
+* springboot 서버의 shutdown 정책은 버전에 따라 기본값을 확인해야 한다.
+* Spring Boot 2.3 부터 graceful shutdown 설정이 도입되었고, 2.x 기준으로는 `server.shutdown=graceful` 을 설정해야 graceful shutdown 이 동작한다.
+* 최신 Spring Boot 문서에서는 graceful shutdown 이 기본 활성화로 설명되며, `server.shutdown=immediate` 로 비활성화할 수 있다.
 
 ```yaml
 server:
   port: 8080
   shutdown: graceful
 
-## shutdown 수행 시에 타임아웃 시간을 설정 (default 30초)
+## shutdown 수행 시에 타임아웃 시간을 설정 (Spring Boot 2.x 기본값 30초)
 spring:
   lifecycle:
     timeout-per-shutdown-phase: "10s"
@@ -33,3 +34,4 @@ spring:
 
 ## reference
 * https://docs.spring.io/spring-boot/reference/web/graceful-shutdown.html
+* https://docs.spring.io/spring-boot/docs/2.3.x/reference/html/appendix-application-properties.html

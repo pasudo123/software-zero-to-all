@@ -44,7 +44,7 @@ kubectl apply -R -f configs/
 * kubectl create deployment --image=nginx nginx
 * kubectl expose deployment nginx --port 80
 * kubectl expose service --name {name} --port=80 
-  * default 로 svc 타입은 cluserip 로 세팅된다.
+  * default 로 svc 타입은 `ClusterIP` 로 세팅된다.
 
 ### update objects
 * kubectl edit deployment nginx
@@ -65,7 +65,7 @@ kubectl apply -R -f configs/
 configuration 파일을 읽어들여 쿠버네티스 클러스터 내에서 리소스가 적용되도록 한다.
 * kubectl apply -f nginx.yml
 * 동일하게 명령을 수행하더라도 에러를 만나지 않는다.
-* 쿠버네티스 클러스터 내에서 live object configuration 내용을 살피면 `metadata.annotations.kubectl.kubernetes.io/last-applied-confiugarion` 내용이 있다. 해당 내용에 따라서 local file 의 configuraion 이 변경되었을 때 live object 도 적용/반영된다.
+* 쿠버네티스 클러스터 내에서 live object configuration 내용을 살피면 `metadata.annotations.kubectl.kubernetes.io/last-applied-configuration` 내용이 있다. 해당 내용에 따라서 local file 의 configuration 이 변경되었을 때 live object 도 적용/반영된다.
 
 
 ## reference

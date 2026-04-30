@@ -35,7 +35,7 @@
   - epoll 은 두가지 호출, epoll_create, epoll_ctl, epoll_wait 를 사용하여 fd 를 관리하고 이벤트를 감시한다.
     - epoll_create : epoll 을 사용하기 위해 사용하는 함수명
     - epoll_ctl(epfd, EPOLL_CTL_ADD, fd, &event) : 감시할 fd 와 이벤트타입(읽기/쓰기) 등을 추가하는 함수명
-    - epoll_wait(epfd, events, maxevents, timeoout) : epoll 인스턴스에서 이벤트가 발생한, 즉 준비된 fd 를 한번에 모아서 가져오기 위해 사용하는 함수명
+    - epoll_wait(epfd, events, maxevents, timeout) : epoll 인스턴스에서 이벤트가 발생한, 즉 준비된 fd 를 한번에 모아서 가져오기 위해 사용하는 함수명
   - 많은 수의 fd 를 처리할 때 성능이 뛰어나다.
 - **kqueue()**
   - BSD, macOS 계통은 kqueue,kevent 를 사용. 
@@ -78,6 +78,7 @@
 
 # 참고
 - chatGPT
+- [Redis docs - Redis architecture](https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/)
 - https://youtu.be/5TRFpFBccQM?si=c9ZAggm8Qg96322r
 - [IO Multiplexing (IO 멀티플렉싱) 기본 개념부터 심화까지 -1부-](https://blog.naver.com/n_cloudplatform/222189669084)
 - [IO Multiplexing (IO 멀티플렉싱) 기본 개념부터 심화까지 -2부-](https://blog.naver.com/n_cloudplatform/222255261317)

@@ -73,8 +73,8 @@ https://projectreactor.io/docs/core/release/reference/#which.peeking
 * doOnNext() : 각각의 이벤트 emit 건에 대한 처리
 * doOnComplete() : 완료되고 난 뒤
 * doOnCancel() : 취소가 되고 난 뒤
-* doAfterTermiate() : 
-* doFinallny() : 성공적으로 끝나는거, 취소되는거, 에러뜨는거 등 모든 훅을 받음
+* doAfterTerminate() : complete 또는 error 이후 실행되는 훅. cancel 에서는 호출되지 않는다.
+* doFinally() : complete, error, cancel 등 종료 시그널을 모두 받을 수 있는 훅
 
 ### 시퀀스 생성
 https://projectreactor.io/docs/core/release/reference/#which.create 
@@ -88,12 +88,10 @@ https://projectreactor.io/docs/core/release/reference/#_simple_ways_to_create_a_
     * CompletableFuture 
 * fromRunnable() : Runnable 객체 emit
 * empty() : 아무런 아이템 없이 emit 한다.
-* never() : 어떤 시그널도 발생시키지 않는다. cancel 또는 complete 든
-    * never 은 언제 쓰는걸까? chatGPT 에서는 long polling connection 하고자 할 때, 그 외에 아무것도 트리거하지 않고자 할 때 사용한다고 한다.
+* never() : 어떤 데이터, complete, error 시그널도 발생시키지 않는다.
+    * never 은 언제 쓰는걸까? 실제 서비스 흐름보다는 테스트나 영원히 완료되지 않는 publisher 를 표현해야 할 때 주로 사용한다고 보면 될 것 같다.
 * error()
 * interval()
 * range()
 
  
-
-

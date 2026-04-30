@@ -1,6 +1,6 @@
 ## Transaction Isolation Levels In DBMS
-격리성 수준은 트랜잭션 터리가 병렬 실행될 때 각 트랜잭션의 격리성을 결정하는 것이다. 트랜잭션 특징의 
-격리성, Isolation 에 대해서 보면 아래의 그림과 같다.
+격리성 수준은 트랜잭션 처리가 병렬 실행될 때 각 트랜잭션의 격리성을 결정하는 것이다.
+트랜잭션 특징의 격리성, Isolation 에 대해서 보면 아래의 그림과 같다.
 
 ![alt Isolation Levels](../Image/Isolation_Levels%20Image.png)
 ```
@@ -29,7 +29,7 @@ __이때 트랜잭션 2는 갱신된 데이터를 읽어와도 되는가 하는 
 트랜잭션 내에서 같은 데이터를 여러 번 읽을 때, 다른 트랜잭션이 새로 레코드를 `추가` 하면 새로이 추가된 레코드를 읽어내는 것이다. Phantom 은 유령이라는 의미로 없던 내용이 다시 나타남을 생각하면 된다.
 
 
-## 격리성 (Isolcation) 수준의 종류
+## 격리성 (Isolation) 수준의 종류
 |                 격리성 수준                     |           의미            |
 |------------------------------------------------|--------------------------|
 | __Isolation : Read UnCommitted__ |다른 트랜잭션이 커밋되기 전에 데이터를 변경하였고, 또다른 트랜잭션에서 아직 커밋하지 않은 데이터도 읽어낼 수 `있음`|
@@ -62,10 +62,10 @@ __이때 트랜잭션 2는 갱신된 데이터를 읽어와도 되는가 하는 
 
 ## 추가설명
 * InnoDB 의 디폴트 isolation level 은 `REPEATABLE READ` 이다.
-* 유저는 `SET TRANSACTION` 을 통해서 싱글세션 또는 모든 subsequent connction 에 대해서 isolation level 을 설정할 수 있다. (자세한 내용은 하단 링크 참고)
+* 유저는 `SET TRANSACTION` 을 통해서 싱글 세션 또는 이후 connection 에 대해서 isolation level 을 설정할 수 있다. 서버 기본값은 `--transaction-isolation` 옵션으로 설정할 수 있다. (자세한 내용은 하단 링크 참고)
 * `Consistent read` (일관된 읽기)
-    * `read operation` 은  쿼리의 결과를 나타내기 위해서 특정시점 기준의 `snapshot` 정보를 사용한다. 다른 트랜잭션이 동시에 살행되는 것과 상관이 없이 특정시점의 `snapshot` 을 이용하는 것이다. 만약에 데이터가 다른 트랜잭션에 의해서 변경되면 오리진 데이터는 `undo log` 에 의해서 재구성된다. 이와 같은 `consistent read 기술` 은 `concurrency` 를 감소시키는 `locking` 이슈를 회피할 수 있다.
-    * `Consistent read` 는 InnoDB 가 `READ COMMITED` 와 `REPEATABLE READ` 격리수준에서 SELECT 문을 처리하는 기본모드이다.
+    * `read operation` 은 쿼리의 결과를 나타내기 위해서 특정시점 기준의 `snapshot` 정보를 사용한다. 다른 트랜잭션이 동시에 실행되는 것과 상관없이 특정시점의 `snapshot` 을 이용하는 것이다. 만약에 데이터가 다른 트랜잭션에 의해서 변경되면 오리진 데이터는 `undo log` 에 의해서 재구성된다. 이와 같은 `consistent read 기술` 은 `concurrency` 를 감소시키는 `locking` 이슈를 회피할 수 있다.
+    * `Consistent read` 는 InnoDB 가 `READ COMMITTED` 와 `REPEATABLE READ` 격리수준에서 SELECT 문을 처리하는 기본모드이다.
 
 
 ```

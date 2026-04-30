@@ -76,7 +76,7 @@
 컨테이너가 non-zero exit 으로 비정상적인 종료를 하였을 때 재실행함을 의미한다. 파드가 특정한 작업을 수행하고 성공적으로 완료되었는지에 대해서 유용하다.
 
 ### restartPolicy : Never
-컨테이너가 어느종료에 상관없이 항상 종료됨을 의미한다.
+컨테이너가 종료되면 성공/실패 여부와 상관없이 재시작하지 않는다.
 
 ## reference
 * [파드 라이프사이클](https://kubernetes.io/ko/docs/concepts/workloads/pods/pod-lifecycle/#%ED%8C%8C%EB%93%9C%EC%9D%98-%EB%8B%A8%EA%B3%84)

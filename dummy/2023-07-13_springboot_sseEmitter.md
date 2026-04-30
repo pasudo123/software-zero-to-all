@@ -8,7 +8,7 @@
 
 ### springboot 코드 예제
 Controller
-* SseEmitter 의 타임아웃은 디폴트 `30초` 이다.
+* SseEmitter 의 타임아웃은 생성자에서 직접 설정하지 않으면 Spring MVC 설정값을 사용하고, 그 값도 없으면 서블릿 컨테이너 기본값을 따른다. 고정된 30초로 보면 안된다.
 * 클라로 응답주는 MediaType 이 SSE 는 `text/event-stream` 이다.
 ```kotlin
 @RestController
@@ -87,8 +87,8 @@ class RyeSseEmitter(timeoutMilli: Long = 60000) : SseEmitter(timeoutMilli) {
     }
 
     /**
-     * sse response 에서 한글이 깨지기 때문에 인코딩타입을 맞춰준다.
-     * 디폴트는 ISO-8859-1 로 잡혀있어서 한글이 깨진다.
+     * sse response 에서 한글이 깨지는 경우 인코딩타입을 확인한다.
+     * event stream 은 UTF-8 로 인코딩되어야 한다.
      */
     override fun extendResponse(outputMessage: ServerHttpResponse) {
         when (outputMessage) {
@@ -120,4 +120,6 @@ id:dedee870-7bad-40d8-9b36-8c5827ada2b7
 
 
 ## 참고
+* https://html.spec.whatwg.org/multipage/server-sent-events.html
+* https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/mvc/method/annotation/SseEmitter.html
 * https://www.baeldung.com/spring-server-sent-events
