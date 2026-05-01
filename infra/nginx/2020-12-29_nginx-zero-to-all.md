@@ -14,7 +14,7 @@
             * `docker run -d -name my-nginx -p 8080:80 {nginx-image-name}` : nginx image 에 대한 container 생성 및 run
                 * host 8080 을 container 의 80 포트로 포워딩
         * docker 실행 (2)
-            * `./Dockerfile_nginx` 디렉토리를 이용, Dockerfile 을 통해 이미지 생성 : `docker build -t custom-nginx .`
+            * `../dockerfile-nginx` 디렉토리를 이용, Dockerfile 을 통해 이미지 생성 : `docker build -t custom-nginx .`
             * custom-nginx image 가 생성된 이후에 `docker run -it -d --name custom-nginx-container -p 8081:80 custom-nginx`
     * [nginx conf 작성시 유의사항](#notice)
     * [nginx-http-core-module](https://nginx.org/en/docs/http/ngx_http_core_module.html)

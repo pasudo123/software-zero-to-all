@@ -28,7 +28,7 @@ query {
 }
 ```
 
-![image](../../Image/2021-05-16_grapql_vs_restful-api.png)
+![image](../../image/2021-05-16_grapql_vs_restful-api.png)
 
 ## reference
 * https://github.com/benawad
