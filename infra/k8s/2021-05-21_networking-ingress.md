@@ -12,7 +12,7 @@
 * 클러스터 외부에서 클러스터의 내부 [서비스](https://kubernetes.io/ko/docs/concepts/services-networking/service/) 로 http/https 경로를 노출한다.   
 * 트래픽 `라우팅` 은 인그레스 리소스에 정의된 규칙에 의해서 컨트롤된다.   
 * 인그레스 리소스가 작동하려면, 클러스터는 실행중인 [`인그레스 컨트롤러`](https://kubernetes.io/ko/docs/concepts/services-networking/ingress-controllers/) 가 반드시 필요하다.
-<img src="../../Image/20210522_ingress_diagram.png" />
+<img src="../../image/20210522_ingress_diagram.png" />
 
 ## 인그레스 리소스 설정파일
 ```yaml
