@@ -57,6 +57,7 @@
 * [backup & restore : resources, etcdctl](2022-08-15_know-backup-restore.md)
     * [practice01](2022-08-15_know-backup-restore-practice01.md)
 * [security](2022-08-27_know-security.md)
+* [local cache patterns : 다중 파드에서 로컬 캐시 운영 패턴](2026-03-24_k8s-local-cache-patterns.md)
 
 ## CKA 참고자료
 * [CKA udemy 강의](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/)

@@ -53,6 +53,7 @@
 - 2020-03-10 [객체지향의 TDA : Tell Don't ASK](./personal/2020-03-10_tell-don-t-ask.md)
 - 2022-01-15 [ddd with pivotal : 은행 시스템으로 살펴보는 DDD 약식](./development/2022-01-15_ddd-with-pivotal.md)
 - 2024-04-10 [세미나: 잘 키운 모노리스 하나 열 마이크로서비스 안부럽다](./dummy/2024-04-10_wellgrown-monolith.md)
+- 2026-04-12 [DDD 계층 구조와 DIP 적용 실습](./development/2026-04-12_ddd-layered-architecture-dip-order-practice.md)
 
 ## Backend & Spring
 
@@ -69,6 +70,11 @@
 - 2024-01-20 [spring 로컬캐시 사용기](./dummy/2024-01-20_spring-cache.md)
 - 2024-05-06 [spring @Transactional propagation & proxy](./dummy/2024-05-06_spring-transactional-propagation-and-proxy.md)
 - 2024-11-25 [spring jpa 에서 strategy = GenerationType.IDENTITY 로 최초 생성 시 에러가 발생하면?](./dummy/2024-11-25_jpa-strategy-identity-error.md)
+- 2026-03-22 [Caffeine Local Cache 딥다이브](./dummy/2026-03-22_caffeine-local-cache-deep-dive.md)
+- 2026-03-22 [Caffeine 내부구조 심화](./dummy/2026-03-22_caffeine-local-cache-internals-deep-dive.md)
+- 2026-03-24 [RequestContextHolder 실전 가이드](./dummy/2026-03-24_request-context-holder-practice.md)
+- 2026-04-12 [Eventual Consistency 실습](./dummy/2026-04-12_eventual-consistency-review-summary-practice.md)
+- 2026-04-13 [Caffeine Local Cache 활용 패턴 정리](./dummy/2026-04-13_caffeine-local-cache-patterns.md)
 
 ### Spring Boot & Backend Notes
 
@@ -135,6 +141,7 @@
 - 2022-07-06 [resources.requests & resources.limits](./infra/k8s/2022-07-06_know-resources-requests-and-resources-limits.md)
 - 2024-03-23 [kubernetes, k8s openlens](./infra/k8s/2024-03-23_open-lens.md)
 - 2025-08-21 [k8s probe 설정](./dummy/2025-08-21_k8s-probe.md)
+- 2026-03-24 [K8s 다중 파드에서 Local Cache 운영 패턴](./infra/k8s/2026-03-24_k8s-local-cache-patterns.md)
 
 ### Monitoring
 
