@@ -162,6 +162,7 @@
 - 2023-03-25 [httpie](./command/2023-03-25_httpie-command.md)
 - 2023-09-23 [curl](./command/2023-09-23_curl.md)
 - 2024-05-05 [lsof](./command/2024-05-05_lsof.md)
+- 2026-05-04 [Codex CLI](./command/2026-05-04_codex-cli.md)
 
 ### Git & Gradle
 
