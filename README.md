@@ -9,6 +9,7 @@
 - [Computer Science](#computer-science)
 - [Backend & Spring](#backend--spring)
 - [Infrastructure](#infrastructure)
+- [AI](#ai)
 - [Command & Git](#command--git)
 - [Books & Courses](#books--courses)
 - [Personal & Notes](#personal--notes)
@@ -139,6 +140,12 @@
 
 - 2023-09-26 [프로메테우스와 스프링부트 metrics](./dummy/2023-09-26_prometheus-with-springboot.md)
 
+## AI
+
+### AI Tools
+
+- 2026-05-04 [Codex CLI](./ai/2026-05-04_codex-cli.md)
+
 ## Command & Git
 
 ### Linux, Shell, CLI
@@ -162,7 +169,6 @@
 - 2023-03-25 [httpie](./command/2023-03-25_httpie-command.md)
 - 2023-09-23 [curl](./command/2023-09-23_curl.md)
 - 2024-05-05 [lsof](./command/2024-05-05_lsof.md)
-- 2026-05-04 [Codex CLI](./command/2026-05-04_codex-cli.md)
 
 ### Git & Gradle
 
