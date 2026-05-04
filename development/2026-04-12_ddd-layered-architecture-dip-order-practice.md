@@ -29,6 +29,99 @@
 
 ## 동작 방식
 
+### 0) 핵심 코드 먼저 보기
+
+응용 서비스는 유스케이스 흐름을 조율한다. 커맨드를 도메인 객체로 바꾸고, 저장소를 통해 애그리거트를 저장/조회하지만, “취소된 주문은 배송지를 바꿀 수 없다” 같은 규칙은 직접 구현하지 않는다.
+
+```kotlin
+@Service
+class StudyOrderService(
+    private val orderRepository: OrderRepository,
+) : PlaceOrderUseCase, ChangeShippingInfoUseCase {
+
+    @Transactional
+    override fun placeOrder(command: PlaceOrderCommand): Order =
+        command.toDomainOrder().also(orderRepository::save)
+
+    @Transactional
+    override fun changeShippingInfo(command: ChangeShippingInfoCommand): Order {
+        val orderId = command.orderId.toDomainOrderId()
+        val order = orderRepository.findById(orderId)
+            ?: throw OrderNotFoundException(orderId)
+
+        order.changeShippingInfo(command.toDomainShippingInfo())
+        return order.also(orderRepository::save)
+    }
+}
+```
+
+도메인 규칙은 애그리거트 루트인 `Order`에 둔다. 생성 시점 검증은 `create`, 상태 변경 검증은 도메인 메서드가 맡는다.
+
+```kotlin
+class Order private constructor(
+    val id: OrderId,
+    val orderer: Orderer,
+    val orderLines: List<OrderLine>,
+    shippingInfo: ShippingInfo,
+    val totalAmount: Money,
+    val createdAt: Instant,
+) {
+    var shippingInfo: ShippingInfo = shippingInfo
+        private set
+
+    var status: OrderStatus = OrderStatus.CREATED
+        private set
+
+    fun changeShippingInfo(newShippingInfo: ShippingInfo) {
+        ensureNotCanceled()
+        shippingInfo = newShippingInfo
+    }
+
+    fun cancel(canceledTime: Instant = Instant.now()) {
+        ensureNotCanceled()
+        status = OrderStatus.CANCELED
+    }
+
+    private fun ensureNotCanceled() {
+        if (status == OrderStatus.CANCELED) {
+            throw InvalidOrderStateException("취소된 주문은 수정할 수 없습니다.")
+        }
+    }
+
+    companion object {
+        fun create(
+            id: OrderId,
+            orderer: Orderer,
+            orderLines: List<OrderLine>,
+            shippingInfo: ShippingInfo,
+            createdAt: Instant = Instant.now(),
+        ): Order {
+            if (orderLines.isEmpty()) {
+                throw InvalidOrderException("주문 항목은 최소 1개 이상이어야 합니다.")
+            }
+
+            val immutableLines = orderLines.toList()
+            val total = immutableLines.fold(Money.zero()) { acc, line ->
+                acc.plus(line.totalPrice())
+            }
+
+            return Order(id, orderer, immutableLines, shippingInfo, total, createdAt)
+        }
+    }
+}
+```
+
+저장소는 응용 계층이 의존하는 인터페이스다. 인메모리/JPA 같은 구현 기술은 이 인터페이스 뒤로 숨는다.
+
+```kotlin
+interface OrderRepository {
+    fun save(order: Order)
+    fun findById(orderId: OrderId): Order?
+}
+```
+
+아래 다이어그램들은 이 코드 구조를 다른 관점으로 펼쳐 본 것이다. `StudyOrderService`는 응용 계층, `Order`는 도메인 계층, `OrderRepository` 구현체는 인프라 계층에 대응된다.
+
 ### 1) 도메인 모델과 엔티티 관계
 
 ```mermaid
@@ -244,7 +337,7 @@ flowchart LR
 - 결제/재고/이벤트 발행도 인터페이스 기반으로 분리하면 DIP를 유지한 채 확장할 수 있다.
 - 저장 구조 설계는 도메인 모델 확정 이후에 조회/성능 요구를 반영해 조정한다.
 - 리뷰 요약처럼 애그리거트 간 조회 요구는 eventual consistency 리드모델로 해결할 수 있다.
-  - 참고: `study/2026-04-12_eventual-consistency-review-summary-practice.md`
+  - 참고: [Eventual Consistency 실습](../dummy/2026-04-12_eventual-consistency-review-summary-practice.md)
 
 ## 유의사항
 

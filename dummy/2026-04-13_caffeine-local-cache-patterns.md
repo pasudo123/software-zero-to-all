@@ -1,6 +1,6 @@
 # Caffeine Local Cache 활용 패턴 정리
 
-이 문서는 `com.vibewithcodex.study.cachetier` 패키지의 실습 코드와 함께 보는 짧은 가이드다. 목표는 Redis/DB 계층 설계까지 확장하기보다, **Caffeine 하나로 어떤 활용 패턴을 만들 수 있는지**를 선명하게 정리하는 것이다.
+이 문서는 `com.vibewithcodex.study.cachetier` 패키지의 실습 코드와 함께 보는 짧은 가이드다. 목표는 Redis/DB 계층 설계까지 확장하기보다, **Caffeine 하나로 어떤 활용 패턴을 만들 수 있는지**를 코드 흐름 중심으로 정리하는 것이다.
 
 ---
 
@@ -12,24 +12,57 @@
 
 ---
 
-## 1) 실습 API
+## 1) 실습 코드 구조
 
-```http
-POST /study/cachetier/data/product:100
-Content-Type: application/json
+HTTP 호출 자체보다 중요한 것은 Controller가 어떤 서비스 메서드로 위임하고, 서비스가 Caffeine을 어디까지 직접 제어하는지다.
 
-{
-  "value": "apple",
-  "invalidateCaches": true
+```kotlin
+@RestController
+@RequestMapping("/study/cachetier")
+class StudyCacheTierController(
+    private val studyCacheTierService: StudyCacheTierService,
+) {
+    @GetMapping("/cache-aside/{key}")
+    fun getWithCacheAside(@PathVariable key: String) =
+        studyCacheTierService.getWithCacheAside(key)
+
+    @GetMapping("/loading/{key}")
+    fun getWithLoadingCache(@PathVariable key: String) =
+        studyCacheTierService.getWithLoadingCache(key)
+
+    @GetMapping("/refresh/{key}")
+    fun getWithRefreshAfterWrite(@PathVariable key: String) =
+        studyCacheTierService.getWithRefreshAfterWrite(key)
 }
 ```
 
-```http
-GET /study/cachetier/cache-aside/product:100
-GET /study/cachetier/loading/product:100
-GET /study/cachetier/refresh/product:100
-POST /study/cachetier/cache-aside/product:100/invalidate
-GET /study/cachetier/cache-aside/stats
+서비스는 origin 역할의 `ConcurrentHashMap`과 Caffeine 캐시 3개를 나란히 둔다. 같은 데이터를 여러 전략으로 관찰하기 위한 학습용 구조다.
+
+```kotlin
+class StudyCacheTierService(
+    private val properties: StudyCacheTierProperties,
+) {
+    private val originData = ConcurrentHashMap<String, String>()
+
+    private val cacheAsideCache: Cache<String, String> = Caffeine.newBuilder()
+        .expireAfterWrite(Duration.ofSeconds(properties.localTtlSeconds))
+        .maximumSize(properties.localMaximumSize)
+        .recordStats()
+        .build()
+
+    private val loadingCache: LoadingCache<String, String> = Caffeine.newBuilder()
+        .expireAfterWrite(Duration.ofSeconds(properties.localTtlSeconds))
+        .maximumSize(properties.localMaximumSize)
+        .recordStats()
+        .build { key -> loadForLoadingCache(key) }
+
+    private val refreshAfterWriteCache: LoadingCache<String, String> = Caffeine.newBuilder()
+        .refreshAfterWrite(Duration.ofSeconds(properties.refreshAfterWriteSeconds))
+        .expireAfterWrite(Duration.ofSeconds(properties.localTtlSeconds))
+        .maximumSize(properties.localMaximumSize)
+        .recordStats()
+        .build { key -> loadForRefreshCache(key) }
+}
 ```
 
 응답에서 볼 핵심 필드는 다음이다.
@@ -44,14 +77,40 @@ GET /study/cachetier/cache-aside/stats
 
 ## 2) Cache-aside
 
+Cache-aside는 서비스 코드가 캐시 조회, 원천 조회, 캐시 적재를 직접 제어한다.
+
 ```kotlin
-cache.getIfPresent(key)?.let { return it }
-val loaded = origin[key] ?: return null
-cache.put(key, loaded)
-return loaded
+fun getWithCacheAside(key: String): CacheLookupResponse {
+    cacheAsideCache.getIfPresent(key)?.let { cached ->
+        return CacheLookupResponse(
+            key = key,
+            value = cached,
+            pattern = CachePattern.CACHE_ASIDE,
+            source = CacheSource.LOCAL_CACHE,
+            message = "Cache-aside hit",
+        )
+    }
+
+    val loaded = originData[key] ?: return CacheLookupResponse(
+        key = key,
+        value = null,
+        pattern = CachePattern.CACHE_ASIDE,
+        source = CacheSource.MISS,
+        message = "Origin data does not exist",
+    )
+
+    cacheAsideCache.put(key, loaded)
+    return CacheLookupResponse(
+        key = key,
+        value = loaded,
+        pattern = CachePattern.CACHE_ASIDE,
+        source = CacheSource.LOADER,
+        message = "Loaded origin data and populated Caffeine",
+    )
+}
 ```
 
-서비스 코드가 캐시 조회, 원천 조회, 캐시 적재를 직접 제어한다.
+이 패턴에서는 “miss일 때 무엇을 할지”가 서비스 코드에 드러난다. 값이 없으면 `MISS`로 응답하고, 값이 있으면 Caffeine에 직접 `put`한다.
 
 | 장점 | 주의사항 |
 | --- | --- |
@@ -64,36 +123,75 @@ return loaded
 
 ## 3) LoadingCache
 
-```kotlin
-val cache = Caffeine.newBuilder()
-    .maximumSize(10_000)
-    .expireAfterWrite(Duration.ofSeconds(10))
-    .build<String, String> { key -> loadFromOrigin(key) }
+`LoadingCache`는 miss 시 Caffeine이 loader를 호출한다. 서비스는 `get(key)`만 호출하고, 값을 가져오는 규칙은 builder의 loader에 둔다.
 
-val value = cache.get(key)
+```kotlin
+private val loadingCache: LoadingCache<String, String> = Caffeine.newBuilder()
+    .maximumSize(properties.localMaximumSize)
+    .expireAfterWrite(Duration.ofSeconds(properties.localTtlSeconds))
+    .recordStats()
+    .build { key -> loadForLoadingCache(key) }
+
+fun getWithLoadingCache(key: String): CacheLookupResponse {
+    val before = loadingCache.getIfPresent(key)
+    val value = loadingCache.get(key)
+
+    return CacheLookupResponse(
+        key = key,
+        value = value,
+        pattern = CachePattern.LOADING_CACHE,
+        source = if (before == null) CacheSource.LOADER else CacheSource.LOCAL_CACHE,
+        message = if (before == null) "Loader called" else "Cached value returned",
+    )
+}
+
+private fun loadForLoadingCache(key: String): String {
+    return originData[key] ?: "generated:$key"
+}
 ```
 
-Caffeine이 miss 시 loader를 자동 호출한다.
+학습 코드에서는 origin에 값이 없을 때 `generated:$key`를 반환한다. 운영 코드라면 missing value를 예외로 볼지, null object로 볼지, fallback으로 볼지를 별도로 정해야 한다.
 
 | 장점 | 주의사항 |
 | --- | --- |
 | 서비스 코드가 간결해진다 | loader가 느리거나 실패할 때 영향 범위를 고려해야 한다 |
 | 같은 key의 중복 로딩을 줄이기 좋다 | null을 캐싱할 수 없으므로 missing value 정책이 필요하다 |
 
-추천 상황은 key를 넣으면 값을 읽는 규칙이 단순하고 일관적인 경우다.
-
 ---
 
 ## 4) refreshAfterWrite
 
+`refreshAfterWrite`는 “정해진 시간이 지나면 바로 삭제”가 아니라, refresh 대상이 된 entry를 접근 시점에 다시 로드할 수 있게 한다. 기존 값을 최대한 유지하면서 갱신하려는 성격이라, latency를 낮추고 싶은 read-heavy 데이터에 어울린다.
+
 ```kotlin
-val cache = Caffeine.newBuilder()
-    .refreshAfterWrite(Duration.ofSeconds(3))
-    .expireAfterWrite(Duration.ofSeconds(10))
-    .build<String, String> { key -> loadFromOrigin(key) }
+private val refreshAfterWriteCache: LoadingCache<String, String> = Caffeine.newBuilder()
+    .refreshAfterWrite(Duration.ofSeconds(properties.refreshAfterWriteSeconds))
+    .expireAfterWrite(Duration.ofSeconds(properties.localTtlSeconds))
+    .maximumSize(properties.localMaximumSize)
+    .recordStats()
+    .build { key -> loadForRefreshCache(key) }
+
+fun refreshNow(key: String): CacheMutationResponse {
+    val value = refreshAfterWriteCache.refresh(key).get()
+    return CacheMutationResponse(
+        key = key,
+        value = value,
+        message = "RefreshAfterWrite cache refreshed from origin data",
+    )
+}
 ```
 
-`refreshAfterWrite`는 “정해진 시간이 지나면 바로 삭제”가 아니라, refresh 대상이 된 entry를 접근 시점에 다시 로드할 수 있게 한다. 기존 값을 최대한 유지하면서 갱신하려는 성격이라, latency를 낮추고 싶은 read-heavy 데이터에 어울린다.
+테스트에서는 origin 값을 바꾼 뒤 캐시를 무효화하지 않아 stale 값을 관찰하고, 이후 refresh를 통해 새 값을 확인한다.
+
+```kotlin
+studyCacheTierService.putData("product:3", "old")
+studyCacheTierService.getWithRefreshAfterWrite("product:3").value shouldBe "old"
+
+studyCacheTierService.putData("product:3", "new", invalidateCaches = false)
+studyCacheTierService.getWithRefreshAfterWrite("product:3").value shouldBe "old"
+
+studyCacheTierService.refreshNow("product:3").value shouldBe "new"
+```
 
 | 장점 | 주의사항 |
 | --- | --- |
@@ -104,12 +202,29 @@ val cache = Caffeine.newBuilder()
 
 ## 5) stats/invalidate
 
-```kotlin
-cache.stats()
-cache.invalidate(key)
-```
-
 캐시는 넣는 것보다 관측하고 비우는 전략이 더 중요할 때가 많다.
+
+```kotlin
+fun invalidate(cacheName: String, key: String): CacheMutationResponse {
+    cacheByName(cacheName).invalidate(key)
+    return CacheMutationResponse(key = key, value = null, message = "Invalidated")
+}
+
+fun getStats(cacheName: String): CacheStatsResponse {
+    val cache = cacheByName(cacheName)
+    val stats = cache.stats()
+    return CacheStatsResponse(
+        cacheName = cacheName,
+        requestCount = stats.requestCount(),
+        hitCount = stats.hitCount(),
+        missCount = stats.missCount(),
+        hitRate = stats.hitRate(),
+        evictionCount = stats.evictionCount(),
+        estimatedSize = cache.estimatedSize(),
+        loaderCallCount = loaderCount(cacheName),
+    )
+}
+```
 
 | 기능 | 확인할 것 |
 | --- | --- |

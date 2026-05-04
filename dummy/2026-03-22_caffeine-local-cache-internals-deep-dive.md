@@ -102,6 +102,21 @@ fun getData(key: String): Response {
 }
 ```
 
+study 코드에서는 이 흐름을 응답의 `source`로 드러낸다. `LOCAL_CACHE`면 Caffeine hit, `LOADER`면 origin 조회 후 적재, `MISS`면 origin에도 값이 없는 상태다. 아래 코드는 원본 메서드의 핵심 흐름만 줄인 형태다.
+
+```kotlin
+fun getWithCacheAside(key: String): CacheLookupResponse {
+    cacheAsideCache.getIfPresent(key)?.let { cached ->
+        return hitFromLocalCache(key, cached)
+    }
+
+    val loaded = originData[key] ?: return miss(key)
+
+    cacheAsideCache.put(key, loaded)
+    return loadedFromOrigin(key, loaded)
+}
+```
+
 겉으로는 단순하지만, 내부에서는 아래와 같은 일이 이어진다.
 
 ### 3-1. 단계별 동작 표
@@ -222,6 +237,21 @@ flowchart LR
 2. lower tier 지연과 local cache miss를 분리해서 본다.
 3. TTL 문제인지, size 문제인지, refresh 오해인지 분리한다.
 4. 정책을 바꾸기 전에 키 분포와 트래픽 패턴을 함께 본다.
+
+실습 코드에서는 아래처럼 `stats()`와 loader count를 같이 읽는다. `missCount`가 늘어도 loader 호출이 항상 같은 의미는 아니므로, Caffeine 통계와 애플리케이션 카운터를 나눠 보는 습관이 필요하다.
+
+```kotlin
+val stats = cache.stats()
+
+CacheStatsResponse(
+    requestCount = stats.requestCount(),
+    hitCount = stats.hitCount(),
+    missCount = stats.missCount(),
+    evictionCount = stats.evictionCount(),
+    estimatedSize = cache.estimatedSize(),
+    loaderCallCount = loaderCount(cacheName),
+)
+```
 
 ---
 

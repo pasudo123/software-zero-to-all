@@ -81,6 +81,33 @@ val asyncCache = Caffeine.newBuilder()
 | `LoadingCache<K, V>` | miss 로딩 규칙이 명확할 때 | 코드 간결, 자동 로딩 | loader 실패/지연 시 영향 범위를 설계해야 함 |
 | `AsyncLoadingCache<K, V>` | 로딩 지연이 크고 비동기 처리가 필요할 때 | 스레드 점유 감소, 병렬 처리 유리 | Future 체인/타임아웃/예외 처리 설계 필요 |
 
+### 1-4-1. study 코드에서의 세 가지 캐시
+
+`StudyCacheTierService`는 같은 origin 데이터를 세 가지 Caffeine 패턴으로 읽어본다. `Cache`는 수동 cache-aside, `LoadingCache`는 자동 loader, `refreshAfterWriteCache`는 stale 값을 잠깐 유지하면서 갱신하는 실습용이다.
+
+```kotlin
+private val originData = ConcurrentHashMap<String, String>()
+
+private val cacheAsideCache: Cache<String, String> = Caffeine.newBuilder()
+    .expireAfterWrite(Duration.ofSeconds(properties.localTtlSeconds))
+    .maximumSize(properties.localMaximumSize)
+    .recordStats()
+    .build()
+
+private val loadingCache: LoadingCache<String, String> = Caffeine.newBuilder()
+    .expireAfterWrite(Duration.ofSeconds(properties.localTtlSeconds))
+    .maximumSize(properties.localMaximumSize)
+    .recordStats()
+    .build { key -> loadForLoadingCache(key) }
+
+private val refreshAfterWriteCache: LoadingCache<String, String> = Caffeine.newBuilder()
+    .refreshAfterWrite(Duration.ofSeconds(properties.refreshAfterWriteSeconds))
+    .expireAfterWrite(Duration.ofSeconds(properties.localTtlSeconds))
+    .maximumSize(properties.localMaximumSize)
+    .recordStats()
+    .build { key -> loadForRefreshCache(key) }
+```
+
 ### 1-5. Spring 래핑 사용 예시
 
 ```kotlin
@@ -243,6 +270,22 @@ val refreshCache = Caffeine.newBuilder()
     .build<String, Product> { key -> loadFromStore(key) }
 ```
 
+study 코드에서는 origin 값을 바꿔도 캐시를 무효화하지 않는 테스트로 stale 값을 관찰한다. 이후 `refresh(key)`를 호출하면 loader가 다시 실행되고 새 값을 볼 수 있다.
+
+```kotlin
+studyCacheTierService.putData("product:3", "old")
+studyCacheTierService.getWithRefreshAfterWrite("product:3").value // old
+
+studyCacheTierService.putData(
+    key = "product:3",
+    value = "new",
+    invalidateCaches = false,
+)
+
+studyCacheTierService.getWithRefreshAfterWrite("product:3").value // old
+studyCacheTierService.refreshNow("product:3").value // new
+```
+
 출처:
 - Refresh: https://github.com/ben-manes/caffeine/wiki/Refresh
 
@@ -279,10 +322,43 @@ flowchart TD
 
 ### 4-2. 왜 이 study는 Native를 선택했는가
 현재 study 요구사항은 다음과 같다.
-- 조회 source(`LOCAL/REDIS/MISS`)를 응답으로 내려야 함
-- `ttlRemainingSeconds`를 source 기준으로 내려야 함
-- `seed` 재적재 시 local invalidate 정책 제어 필요
-- local clear API 같은 운영/학습 훅 필요
+- 조회 source(`LOCAL_CACHE/LOADER/MISS`)를 응답으로 내려야 함
+- cache-aside, loading, refresh 패턴의 차이를 같은 데이터로 비교해야 함
+- origin 데이터 변경 시 캐시 invalidate 여부를 실험해야 함
+- hit/miss/eviction과 loader 호출 수를 함께 관찰해야 함
+
+Native Caffeine을 직접 쓰면 응답에 hit/miss 원인을 담거나, 특정 캐시만 골라 비우는 코드가 명시적으로 드러난다.
+
+```kotlin
+fun getWithCacheAside(key: String): CacheLookupResponse {
+    cacheAsideCache.getIfPresent(key)?.let { cached ->
+        return CacheLookupResponse(
+            key = key,
+            value = cached,
+            pattern = CachePattern.CACHE_ASIDE,
+            source = CacheSource.LOCAL_CACHE,
+            message = "Cache-aside hit",
+        )
+    }
+
+    val loaded = originData[key] ?: return CacheLookupResponse(
+        key = key,
+        value = null,
+        pattern = CachePattern.CACHE_ASIDE,
+        source = CacheSource.MISS,
+        message = "Origin data does not exist",
+    )
+
+    cacheAsideCache.put(key, loaded)
+    return CacheLookupResponse(
+        key = key,
+        value = loaded,
+        pattern = CachePattern.CACHE_ASIDE,
+        source = CacheSource.LOADER,
+        message = "Loaded origin data and populated Caffeine",
+    )
+}
+```
 
 이 요구사항은 "캐시 적용"보다 "캐시 흐름 자체"가 핵심이라, 수동 cache-aside가 더 직접적이다.
 
@@ -376,6 +452,25 @@ println("averageLoadPenalty(ns) = ${stats.averageLoadPenalty()}")
 주의:
 - 통계는 "방향성" 파악 용도다. 한 지표만 보고 정책을 바꾸면 오판할 수 있다.
 - `hitRate`만 높이고 stale 문제가 커지면 오히려 비즈니스 품질은 떨어질 수 있다.
+
+study 코드의 stats 응답은 Caffeine 통계와 loader 호출 수를 같이 보여준다. Caffeine의 hit/miss와 실제 하위 저장소 로딩 횟수를 함께 봐야 캐시 정책을 해석하기 쉽다.
+
+```kotlin
+fun getStats(cacheName: String): CacheStatsResponse {
+    val cache = cacheByName(cacheName)
+    val stats = cache.stats()
+    return CacheStatsResponse(
+        cacheName = cacheName,
+        requestCount = stats.requestCount(),
+        hitCount = stats.hitCount(),
+        missCount = stats.missCount(),
+        hitRate = stats.hitRate(),
+        evictionCount = stats.evictionCount(),
+        estimatedSize = cache.estimatedSize(),
+        loaderCallCount = loaderCount(cacheName),
+    )
+}
+```
 
 ---
 

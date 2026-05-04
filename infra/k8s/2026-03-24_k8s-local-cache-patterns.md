@@ -35,6 +35,22 @@ flowchart LR
 핵심은 "캐시가 파드 간 공유되지 않는다"는 점이다.
 따라서 L1만으로는 수평 확장 시 hit ratio가 구조적으로 낮아질 수 있다.
 
+학습 코드로 보면 각 파드마다 아래 객체들이 별도로 존재한다고 이해하면 된다. `originData`가 DB/Redis를 단순화한 저장소이고, `cacheAsideCache`가 JVM 내부 L1 캐시다.
+
+```kotlin
+class StudyCacheTierService {
+    private val originData = ConcurrentHashMap<String, String>()
+
+    private val cacheAsideCache: Cache<String, String> = Caffeine.newBuilder()
+        .expireAfterWrite(Duration.ofSeconds(localTtlSeconds))
+        .maximumSize(localMaximumSize)
+        .recordStats()
+        .build()
+}
+```
+
+파드가 100개라면 이 `cacheAsideCache`도 100개다. A 파드의 cache hit는 B 파드의 hit로 이어지지 않는다.
+
 ---
 
 ## 2) 운영 패턴 3가지
@@ -107,6 +123,21 @@ Pattern C는 stale 억제에 강하지만, 이벤트 유실/지연/중복 처리
 ---
 
 ## 4) 운영 체크리스트
+
+쓰기 경로에서는 최소한 해당 파드의 L1을 비우는 규칙이 필요하다. 학습 코드에서는 origin을 갱신한 뒤 세 캐시를 모두 invalidate한다.
+
+```kotlin
+fun putData(key: String, value: String, invalidateCaches: Boolean = true) {
+    originData[key] = value
+    if (invalidateCaches) {
+        cacheAsideCache.invalidate(key)
+        loadingCache.invalidate(key)
+        refreshAfterWriteCache.invalidate(key)
+    }
+}
+```
+
+K8s에서는 이 코드가 “현재 요청을 처리한 파드의 L1만 비운다”는 점이 중요하다. 다른 파드의 L1까지 비우려면 Redis Pub/Sub, Kafka, Spring Cloud Bus 같은 무효화 전파가 추가로 필요하다.
 
 | 체크 항목 | 질문 | 권장 기준 |
 | --- | --- | --- |

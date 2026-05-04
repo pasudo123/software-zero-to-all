@@ -40,7 +40,120 @@ sequenceDiagram
   Projector->>SummaryRepo: save(summary)
 ```
 
-적용 코드:
+적용 코드는 크게 세 부분으로 나뉜다.
+
+### 1) 쓰기 모델: Review 애그리거트 저장 후 이벤트 발행
+
+`StudyReviewService`는 리뷰 쓰기 트랜잭션을 처리하고, 저장 직후 이벤트를 발행한다. 이 시점에 `ProductReviewSummary`를 직접 수정하지 않는 것이 포인트다.
+
+```kotlin
+@Service
+class StudyReviewService(
+    private val reviewRepository: ReviewRepository,
+    private val reviewEventPublisher: ReviewEventPublisher,
+) {
+    @Transactional
+    fun writeReview(command: WriteReviewCommand): Review {
+        val review = Review.create(
+            id = ReviewId.of(command.reviewId),
+            productId = ProductId.of(command.productId),
+            reviewerId = MemberId.of(command.reviewerId),
+            score = ReviewScore.of(command.score),
+            content = command.content,
+        )
+
+        return review.also {
+            reviewRepository.save(it)
+            reviewEventPublisher.publish(
+                ReviewWrittenEvent(
+                    reviewId = it.id,
+                    productId = it.productId,
+                    score = it.score.value,
+                    occurredAt = Instant.now(),
+                ),
+            )
+        }
+    }
+}
+```
+
+### 2) 비동기 전달: queue에 넣고 worker가 subscriber 호출
+
+학습용 구현에서는 `LinkedBlockingQueue`와 worker thread로 지연을 재현한다. 운영에서는 이 자리를 Kafka, RabbitMQ, SQS 같은 메시지 브로커로 바꿀 수 있다.
+
+```kotlin
+class InMemoryAsyncReviewEventPublisher(
+    private val processingDelayMillis: Long = 100,
+) : ReviewEventPublisher, AutoCloseable {
+    private val running = AtomicBoolean(true)
+    private val queue = LinkedBlockingQueue<ReviewEvent>()
+    private val subscribers = CopyOnWriteArrayList<ReviewEventSubscriber>()
+
+    private val worker = Thread {
+        while (running.get() || queue.isNotEmpty()) {
+            val event = queue.poll(200, TimeUnit.MILLISECONDS) ?: continue
+            Thread.sleep(processingDelayMillis)
+            subscribers.forEach { it.on(event) }
+        }
+    }.apply { start() }
+
+    override fun publish(event: ReviewEvent) {
+        queue.offer(event)
+    }
+
+    override fun subscribe(subscriber: ReviewEventSubscriber) {
+        subscribers.add(subscriber)
+    }
+}
+```
+
+### 3) 읽기 모델: 이벤트를 ProductReviewSummary에 투영
+
+Projector는 이벤트를 읽기 모델에 반영한다. `ReviewWrittenEvent`는 리뷰 수와 평균을 새로 반영하고, `ReviewEditedEvent`는 이전 점수와 새 점수의 차이를 반영한다.
+
+```kotlin
+class ProductReviewSummaryProjector(
+    private val summaryRepository: ProductReviewSummaryRepository,
+) : ReviewEventSubscriber {
+    override fun on(event: ReviewEvent) {
+        when (event) {
+            is ReviewWrittenEvent -> {
+                val current = summaryRepository.findByProductId(event.productId)
+                    ?: ProductReviewSummary.empty(event.productId)
+                summaryRepository.save(current.applyReviewWritten(event.score))
+            }
+
+            is ReviewEditedEvent -> {
+                val current = summaryRepository.findByProductId(event.productId)
+                    ?: ProductReviewSummary.empty(event.productId)
+                summaryRepository.save(current.applyReviewEdited(event.oldScore, event.newScore))
+            }
+        }
+    }
+}
+```
+
+테스트는 쓰기 직후 조회 모델이 비어 있을 수 있음을 먼저 확인하고, 이후 일정 시간 동안 projector 반영을 기다린다.
+
+```kotlin
+reviewService.writeReview(
+    WriteReviewCommand(
+        reviewId = "review-1",
+        productId = "product-1",
+        reviewerId = "member-1",
+        score = 5,
+        content = "excellent",
+    ),
+)
+
+summaryRepository.findByProductId(ProductId.of("product-1")) shouldBe null
+
+val afterWrite = awaitSummary(summaryRepository, "product-1") { summary ->
+    summary.reviewCount == 1 && summary.averageScore == 5.0
+}
+```
+
+정리하면 다음 코드가 서로 연결된다.
 
 - 이벤트 모델: `ReviewEvent`, `ReviewWrittenEvent`, `ReviewEditedEvent`
 - 퍼블리셔: `ReviewEventPublisher`, `InMemoryAsyncReviewEventPublisher`
