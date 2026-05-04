@@ -9,6 +9,7 @@
 - [Computer Science](#computer-science)
 - [Backend & Spring](#backend--spring)
 - [Infrastructure](#infrastructure)
+- [AI](#ai)
 - [Command & Git](#command--git)
 - [Books & Courses](#books--courses)
 - [Personal & Notes](#personal--notes)
@@ -138,6 +139,12 @@
 ### Monitoring
 
 - 2023-09-26 [프로메테우스와 스프링부트 metrics](./dummy/2023-09-26_prometheus-with-springboot.md)
+
+## AI
+
+### AI Tools
+
+- 2026-05-04 [Codex CLI](./ai/2026-05-04_codex-cli.md)
 
 ## Command & Git
 
