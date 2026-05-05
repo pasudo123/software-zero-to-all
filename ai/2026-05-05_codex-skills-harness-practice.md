@@ -141,6 +141,9 @@ description: Use when adding or reorganizing Markdown learning notes in software
 처음엔 이 정도 instruction-only skill이면 충분하다.
 나중에 링크 검사나 README 정렬 같은 작업이 반복되면 `scripts/`를 붙이는 식으로 키운다.
 
+이 저장소에서는 문서 추가와 정리 절차를 `.agents/skills/software-zero-docs/SKILL.md`에 repo-local skill로 따로 둔다.
+`AGENTS.md`에는 모든 작업에 항상 필요한 기본 규칙만 남기고, 반복 workflow는 skill에서 관리하는 방식이다.
+
 ## 주의사항
 
 - `AGENTS.md`는 길수록 좋은 파일이 아니다. 반복 규칙과 금지사항만 남긴다.
