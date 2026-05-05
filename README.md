@@ -152,6 +152,7 @@
 - [AI 문서 인덱스](./ai/README.md)
 - 2026-05-04 [Codex CLI](./ai/2026-05-04_codex-cli.md)
 - 2026-05-05 [LLM 개요](./ai/2026-05-05_llm-overview.md)
+- 2026-05-05 [Codex Skills 와 Harness 실무 정리](./ai/2026-05-05_codex-skills-harness-practice.md)
 
 ## Command & Git
 
