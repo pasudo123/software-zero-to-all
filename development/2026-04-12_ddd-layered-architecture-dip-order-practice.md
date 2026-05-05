@@ -337,7 +337,7 @@ flowchart LR
 - 결제/재고/이벤트 발행도 인터페이스 기반으로 분리하면 DIP를 유지한 채 확장할 수 있다.
 - 저장 구조 설계는 도메인 모델 확정 이후에 조회/성능 요구를 반영해 조정한다.
 - 리뷰 요약처럼 애그리거트 간 조회 요구는 eventual consistency 리드모델로 해결할 수 있다.
-  - 참고: [Eventual Consistency 실습](../dummy/2026-04-12_eventual-consistency-review-summary-practice.md)
+  - 참고: [Eventual Consistency 실습](../spring/2026-04-12_eventual-consistency-review-summary-practice.md)
 
 ## 유의사항
 

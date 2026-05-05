@@ -57,38 +57,41 @@
 
 ## Backend & Spring
 
-### Spring, JPA, Querydsl
+### Spring, JPA, QueryDSL, Spring Boot
 
-- 2022-03-09 [spring jpa 에서 hibernate 바인딩된 데이터 조회하기](./dummy/2022-03-09_jpa-hibernate-show-binding-value.md)
-- 2022-03-26 [spring jpa 에서 @OneToOne, 1:1 관계에 대한 지연로딩이 안된다.](./dummy/2022-03-26_jpa-one-to-one-problem.md)
-- 2022-03-26 [springboot 2.x 에서 querydsl 설정하기](./dummy/2022-03-26_jpa-querydsl-with-kotlin.md)
-- 2022-04-17 [spring bean : BeanFactoryPostProcessor & BeanPostProcessor 그리고 동적 Bean 추가](./dummy/2022-04-17_spring-bean-with-dynamic.md)
-- 2022-05-28 [spring @configurationProperties 사용 : list + object](./dummy/2022-05-28_spring-configuration-properties-list-object.md)
-- 2023-05-01 [spring @Transactional 롤백은 UnCheckedException 을 throw 할 경우에만 발생한다](./dummy/2023-05-01_spring-transaction-rollback-with-uncheckedexception.md)
-- 2023-10-28 [spring document study](./dummy/2023-10-28_spring-document-study.md)
-- 2023-12-24 [springboot 3.x 에서 querydsl 설정하기](./dummy/2023-12-24_springboot3-querydsl-configuration.md)
-- 2024-01-20 [spring 로컬캐시 사용기](./dummy/2024-01-20_spring-cache.md)
-- 2024-05-06 [spring @Transactional propagation & proxy](./dummy/2024-05-06_spring-transactional-propagation-and-proxy.md)
-- 2024-11-25 [spring jpa 에서 strategy = GenerationType.IDENTITY 로 최초 생성 시 에러가 발생하면?](./dummy/2024-11-25_jpa-strategy-identity-error.md)
-- 2026-03-22 [Caffeine Local Cache 딥다이브](./dummy/2026-03-22_caffeine-local-cache-deep-dive.md)
-- 2026-03-22 [Caffeine 내부구조 심화](./dummy/2026-03-22_caffeine-local-cache-internals-deep-dive.md)
-- 2026-03-24 [RequestContextHolder 실전 가이드](./dummy/2026-03-24_request-context-holder-practice.md)
-- 2026-04-12 [Eventual Consistency 실습](./dummy/2026-04-12_eventual-consistency-review-summary-practice.md)
-- 2026-04-13 [Caffeine Local Cache 활용 패턴 정리](./dummy/2026-04-13_caffeine-local-cache-patterns.md)
+- [Spring 문서 인덱스](./spring/README.md)
+- 2022-03-09 [spring jpa 에서 hibernate 바인딩된 데이터 조회하기](./spring/2022-03-09_jpa-hibernate-show-binding-value.md)
+- 2022-03-26 [spring jpa 에서 @OneToOne, 1:1 관계에 대한 지연로딩이 안된다.](./spring/2022-03-26_jpa-one-to-one-problem.md)
+- 2022-03-26 [springboot 2.x 에서 querydsl 설정하기](./spring/2022-03-26_jpa-querydsl-with-kotlin.md)
+- 2022-04-17 [spring bean : BeanFactoryPostProcessor & BeanPostProcessor 그리고 동적 Bean 추가](./spring/2022-04-17_spring-bean-with-dynamic.md)
+- 2022-05-28 [spring @configurationProperties 사용 : list + object](./spring/2022-05-28_spring-configuration-properties-list-object.md)
+- 2023-05-01 [spring @Transactional 롤백은 UnCheckedException 을 throw 할 경우에만 발생한다](./spring/2023-05-01_spring-transaction-rollback-with-uncheckedexception.md)
+- 2023-05-28 [spring 에서 objectMapper 자주 쓰는 설정](./spring/2023-05-28_objectmapper-configuration-memo.md)
+- 2023-07-08 [springboot 에서 에러를 핸들링하영 응답하기](./spring/2023-07-08_springboot-error-handling.md)
+- 2023-07-13 [springboot 에서 sseEmitter 사용기](./spring/2023-07-13_springboot-sseemitter.md)
+- 2023-07-23 [springboot 에서 @Async ThreadPoolTaskExecutor 설정](./spring/2023-07-23_springboot-@async.md)
+- 2023-08-15 [redis pub/sub : 설정된 정보를 모든 서버에 반영하는 방법](./spring/2023-08-15_springboot-prop-with-redis-pubsub.md)
+- 2023-09-26 [프로메테우스와 스프링부트 metrics](./spring/2023-09-26_prometheus-with-springboot.md)
+- 2023-10-28 [spring document study](./spring/2023-10-28_spring-document-study.md)
+- 2023-12-24 [springboot 3.x 에서 querydsl 설정하기](./spring/2023-12-24_springboot3-querydsl-configuration.md)
+- 2024-01-20 [spring 로컬캐시 사용기](./spring/2024-01-20_spring-cache.md)
+- 2024-05-06 [hikari CP](./spring/2024-05-06_hikari.md)
+- 2024-05-06 [spring @Transactional propagation & proxy](./spring/2024-05-06_spring-transactional-propagation-and-proxy.md)
+- 2024-11-20 [springboot RestTemplate logging disabled In TestCode](./spring/2024-11-20_resttemplate-logging-disabled.md)
+- 2024-11-25 [spring jpa 에서 strategy = GenerationType.IDENTITY 로 최초 생성 시 에러가 발생하면?](./spring/2024-11-25_jpa-strategy-identity-error.md)
+- 2025-02-23 [springboot graceful shutdown](./spring/2025-02-23_springboot-graceful-shutdown.md)
+- 2025-03-03 [springboot warmup](./spring/2025-03-03_springboot-warmup.md)
+- 2026-03-22 [Caffeine Local Cache 딥다이브](./spring/2026-03-22_caffeine-local-cache-deep-dive.md)
+- 2026-03-22 [Caffeine 내부구조 심화](./spring/2026-03-22_caffeine-local-cache-internals-deep-dive.md)
+- 2026-03-24 [RequestContextHolder 실전 가이드](./spring/2026-03-24_request-context-holder-practice.md)
+- 2026-04-12 [Eventual Consistency 실습](./spring/2026-04-12_eventual-consistency-review-summary-practice.md)
+- 2026-04-13 [Caffeine Local Cache 활용 패턴 정리](./spring/2026-04-13_caffeine-local-cache-patterns.md)
 
-### Spring Boot & Backend Notes
+### Backend Notes
 
 - 2021-05-14 [graphql](./backend/graphql/2021-05-14_youtube-tutorial-record.md)
-- 2023-05-28 [spring 에서 objectMapper 자주 쓰는 설정](./dummy/2023-05-28_objectmapper-configuration-memo.md)
-- 2023-07-08 [springboot 에서 에러를 핸들링하영 응답하기](./dummy/2023-07-08_springboot-error-handling.md)
-- 2023-07-13 [springboot 에서 sseEmitter 사용기](./dummy/2023-07-13_springboot-sseemitter.md)
-- 2023-07-23 [springboot 에서 @Async ThreadPoolTaskExecutor 설정](./dummy/2023-07-23_springboot-@async.md)
 - 2024-04-16 [grpc](./dummy/2024-04-16_grpc.md)
 - 2024-04-23 [java computeIfPresent, putIfAbsent 사용](./dummy/2024-04-23_java-computeifpresent-putifabsent.md)
-- 2024-05-06 [hikari CP](./dummy/2024-05-06_hikari.md)
-- 2024-11-20 [springboot RestTemplate logging disabled In TestCode](./dummy/2024-11-20_resttemplate-logging-disabled.md)
-- 2025-02-23 [springboot graceful shutdown](./dummy/2025-02-23_springboot-graceful-shutdown.md)
-- 2025-03-03 [springboot warmup](./dummy/2025-03-03_springboot-warmup.md)
 
 ### Kotlin, Coroutine, Java
 
@@ -111,7 +114,6 @@
 
 ### Redis, Kafka, Messaging
 
-- 2023-08-15 [redis pub/sub : 설정된 정보를 모든 서버에 반영하는 방법](./dummy/2023-08-15_springboot-prop-with-redis-pubsub.md)
 - 2024-03-17 [redis pub/sub 동작원리](./dummy/2024-03-17_redis-pub-sub-under-the-hood.md)
 - 2024-05-01 [kafka](./dummy/2024-05-01_kafka.md)
 - 2024-05-01 [redis-cli](./dummy/2024-05-01_redis-cli.md)
@@ -143,15 +145,13 @@
 - 2025-08-21 [k8s probe 설정](./dummy/2025-08-21_k8s-probe.md)
 - 2026-03-24 [K8s 다중 파드에서 Local Cache 운영 패턴](./infra/k8s/2026-03-24_k8s-local-cache-patterns.md)
 
-### Monitoring
-
-- 2023-09-26 [프로메테우스와 스프링부트 metrics](./dummy/2023-09-26_prometheus-with-springboot.md)
-
 ## AI
 
-### AI Tools
+### Overview & Tools
 
+- [AI 문서 인덱스](./ai/README.md)
 - 2026-05-04 [Codex CLI](./ai/2026-05-04_codex-cli.md)
+- 2026-05-05 [LLM 개요](./ai/2026-05-05_llm-overview.md)
 
 ## Command & Git
 
