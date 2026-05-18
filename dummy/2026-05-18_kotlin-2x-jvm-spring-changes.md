@@ -144,6 +144,36 @@ Kotlin 2.1 compatibility guide 에서는 JSpecify nullability mismatch diagnosti
 
 Spring 과 Java 라이브러리를 많이 섞는 프로젝트에서는 좋은 변화이면서 동시에 migration point 다. 기존에는 warning 만 보고 넘어가던 Java interop 코드가 Kotlin 2.x 업그레이드 후 컴파일 에러가 될 수 있다.
 
+예를 들어 Java API 가 JSpecify annotation 으로 nullability 를 명확히 드러낸다고 하자.
+
+```java
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
+
+@NullMarked
+public interface MemberClient {
+    Member findRequiredMember(String id);
+
+    @Nullable
+    Member findNullableMember(String id);
+}
+```
+
+Kotlin 에서는 `findRequiredMember()` 결과는 non-null 로, `findNullableMember()` 결과는 nullable 로 다루는 쪽이 자연스럽다.
+
+```kotlin
+fun loadMemberName(client: MemberClient, id: String): String {
+    val required = client.findRequiredMember(id)
+    val nullable = client.findNullableMember(id)
+
+    println(required.name)
+
+    return nullable?.name ?: "unknown"
+}
+```
+
+문제가 되는 건 Java annotation 과 Kotlin 사용부가 어긋나는 경우다. Kotlin 2.1 부터는 이런 mismatch 가 warning 이 아니라 error 로 올라갈 수 있으므로, 업그레이드 중에 Java 라이브러리의 nullability 계약을 맞춰 수정해야 한다.
+
 ## Gradle 설정 변화
 
 Kotlin Gradle plugin 은 compiler option 설정을 `compilerOptions {}` 로 모으는 방향이다. 예전 프로젝트에서 자주 보던 `kotlinOptions {}` 는 점점 deprecated 된다. Kotlin 2.2.0 에서는 Gradle 의 `kotlinOptions {}` block deprecation level 이 error 로 올라간다고 공식 문서에서 안내한다.
@@ -200,6 +230,34 @@ kotlin {
 | 2.3.21 | 2.3.20 이후 bug fix release. 새 기능보다는 안정화 릴리즈로 본다. |
 
 Kotlin 2.x 릴리즈는 2.0 이후부터 language release, tooling release, bug fix release 로 나뉜다. 공식 release process 기준으로 language release 는 `2.x.0`, tooling release 는 `2.x.20`, bug fix release 는 `2.x.yz` 형태로 이해하면 된다.
+
+Kotlin 2.3.0 의 unused return value checker 는 실험적 기능이지만, 실무 코드에서는 꽤 유용할 수 있다. 예를 들어 도메인 객체를 변경한다고 생각했지만 실제로는 새 값을 반환하는 함수라면, 반환값을 버리는 코드가 버그가 된다.
+
+```kotlin
+data class Order(
+    val status: String,
+) {
+    fun cancel(): Order {
+        return copy(status = "CANCELED")
+    }
+}
+
+fun cancelOrder(order: Order) {
+    order.cancel()
+}
+```
+
+위 코드는 `cancel()` 이 새 `Order` 를 반환하지만 호출부가 결과를 쓰지 않는다. checker 를 켜면 이런 코드를 더 빨리 발견할 수 있다.
+
+```kotlin
+kotlin {
+    compilerOptions {
+        freeCompilerArgs.add("-Xreturn-value-checker=check")
+    }
+}
+```
+
+프로젝트 전체에 더 강하게 적용하려면 `-Xreturn-value-checker=full` 을 검토할 수 있다. 다만 실험적 기능이므로 바로 production build 의 hard rule 로 두기보다, 먼저 로컬이나 CI warning 관찰 용도로 써보는 쪽이 안전하다.
 
 ## 마이그레이션 체크리스트
 
