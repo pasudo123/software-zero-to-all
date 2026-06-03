@@ -178,6 +178,10 @@
 - 2023-03-25 [httpie](./command/2023-03-25_httpie-command.md)
 - 2023-09-23 [curl](./command/2023-09-23_curl.md)
 - 2024-05-05 [lsof](./command/2024-05-05_lsof.md)
+- 2026-06-03 [fzf](./command/2026-06-03_fzf-command.md)
+- 2026-06-03 [zoxide](./command/2026-06-03_zoxide-command.md)
+- 2026-06-03 [fd](./command/2026-06-03_fd-command.md)
+- 2026-06-03 [ripgrep](./command/2026-06-03_ripgrep-command.md)
 
 ### Git & Gradle
 
