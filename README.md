@@ -103,6 +103,7 @@
 - 2024-12-15 [kotlin mutex & semaphore](./dummy/2024-12-15_kotlin-mutex-semaphore.md)
 - 2025-02-17 [kotlin sort](./dummy/2025-02-17_kotlin-sorted.md)
 - 2025-06-11 [coroutine : supervisorJob 을 안쓰면 발생하는 문제. coroutineScope 에서 익셉션 발생 시](./dummy/2025-06-11_coroutine-supervisorjob-with-error.md)
+- 2026-05-18 [Kotlin 2.x 변경점 정리 - JVM/Spring 관점](./dummy/2026-05-18_kotlin-2x-jvm-spring-changes.md)
 
 ### Reactive, Spark, Elasticsearch
 
