@@ -1,321 +1,132 @@
-## awk 👀
-* 경량화된 json processor 커맨드
-* curl 과 함께 사용할 수 있다.
+## jq
 
-## 예시 1
+`jq` 는 JSON 을 터미널에서 읽기 좋게 출력하거나 원하는 필드만 뽑아낼 때 사용하는 커맨드라인 JSON processor 다.
+API 응답을 확인하거나, 로그/설정 파일처럼 JSON 으로 떨어지는 데이터를 빠르게 살펴볼 때 자주 쓴다.
+
+## 언제 쓰는가
+
+- JSON 응답을 보기 좋게 pretty print 하고 싶을 때
+- 특정 필드만 추출하고 싶을 때
+- 배열을 필터링하거나 새로운 객체 형태로 재구성하고 싶을 때
+- `curl`, `httpie`, `gh`, `kubectl` 같은 CLI 출력과 조합하고 싶을 때
+
+## 기본 사용법
+
+```bash
+# JSON 전체를 보기 좋게 출력
+cat response.json | jq '.'
+
+# 특정 필드 추출
+cat response.json | jq '.name'
+
+# 문자열 따옴표 없이 출력
+cat response.json | jq -r '.name'
+```
+
+`jq` 의 필터는 작은따옴표로 감싸는 편이 안전하다.
+셸에서 큰따옴표를 쓰면 `$`, `\` 같은 문자가 먼저 해석될 수 있다.
+
+## 객체 필드 추출
+
+예시 JSON 이 아래와 같다고 가정한다.
+
 ```json
 {
   "name": "jq",
-  "full_name": "jq",
   "tap": "homebrew/core",
-  "oldname": null,
-  "aliases": [
-
-  ],
-  "versioned_formulae": [
-
-  ],
   "desc": "Lightweight and flexible command-line JSON processor",
-  "license": "MIT",
-  "homepage": "https://stedolan.github.io/jq/",
   "versions": {
-    "stable": "1.6",
-    "head": "HEAD",
-    "bottle": true
-  },
-  "urls": {
-    "stable": {
-      "url": "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-1.6.tar.gz",
-      "tag": null,
-      "revision": null
-    }
-  },
-  "revision": 0,
-  "version_scheme": 0,
-  "bottle": {
-    "stable": {
-      "rebuild": 1,
-      "root_url": "https://ghcr.io/v2/homebrew/core",
-      "files": {
-        "arm64_monterey": {
-          "cellar": ":any",
-          "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:f70e1ae8df182b242ca004492cc0a664e2a8195e2e46f30546fe78e265d5eb87",
-          "sha256": "f70e1ae8df182b242ca004492cc0a664e2a8195e2e46f30546fe78e265d5eb87"
-        },
-        "arm64_big_sur": {
-          "cellar": ":any",
-          "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:674b3ae41c399f1e8e44c271b0e6909babff9fcd2e04a2127d25e2407ea4dd33",
-          "sha256": "674b3ae41c399f1e8e44c271b0e6909babff9fcd2e04a2127d25e2407ea4dd33"
-        },
-        "monterey": {
-          "cellar": ":any",
-          "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:7fee6ea327062b37d34ef5346a84810a1752cc7146fff1223fab76c9b45686e0",
-          "sha256": "7fee6ea327062b37d34ef5346a84810a1752cc7146fff1223fab76c9b45686e0"
-        },
-        "big_sur": {
-          "cellar": ":any",
-          "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:bf0f8577632af7b878b6425476f5b1ab9c3bf66d65affb0c455048a173a0b6bf",
-          "sha256": "bf0f8577632af7b878b6425476f5b1ab9c3bf66d65affb0c455048a173a0b6bf"
-        },
-        "catalina": {
-          "cellar": ":any",
-          "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:820a3c85fcbb63088b160c7edf125d7e55fc2c5c1d51569304499c9cc4b89ce8",
-          "sha256": "820a3c85fcbb63088b160c7edf125d7e55fc2c5c1d51569304499c9cc4b89ce8"
-        },
-        "mojave": {
-          "cellar": ":any",
-          "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:71f0e76c5b22e5088426c971d5e795fe67abee7af6c2c4ae0cf4c0eb98ed21ff",
-          "sha256": "71f0e76c5b22e5088426c971d5e795fe67abee7af6c2c4ae0cf4c0eb98ed21ff"
-        },
-        "high_sierra": {
-          "cellar": ":any",
-          "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:dffcffa4ea13e8f0f2b45c5121e529077e135ae9a47254c32182231662ee9b72",
-          "sha256": "dffcffa4ea13e8f0f2b45c5121e529077e135ae9a47254c32182231662ee9b72"
-        },
-        "sierra": {
-          "cellar": ":any",
-          "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:bb4d19dc026c2d72c53eed78eaa0ab982e9fcad2cd2acc6d13e7a12ff658e877",
-          "sha256": "bb4d19dc026c2d72c53eed78eaa0ab982e9fcad2cd2acc6d13e7a12ff658e877"
-        },
-        "x86_64_linux": {
-          "cellar": ":any_skip_relocation",
-          "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:2beea2c2c372ccf1081e9a5233fc3020470803254284aeecc071249d76b62338",
-          "sha256": "2beea2c2c372ccf1081e9a5233fc3020470803254284aeecc071249d76b62338"
-        }
-      }
-    }
-  },
-  "keg_only": false,
-  "keg_only_reason": null,
-  "bottle_disabled": false,
-  "options": [
-
-  ],
-  "build_dependencies": [
-
-  ],
-  "dependencies": [
-    "oniguruma"
-  ],
-  "recommended_dependencies": [
-
-  ],
-  "optional_dependencies": [
-
-  ],
-  "uses_from_macos": [
-
-  ],
-  "requirements": [
-
-  ],
-  "conflicts_with": [
-
-  ],
-  "caveats": null,
-  "installed": [
-    {
-      "version": "1.6",
-      "used_options": [
-
-      ],
-      "built_as_bottle": true,
-      "poured_from_bottle": true,
-      "runtime_dependencies": [
-        {
-          "full_name": "oniguruma",
-          "version": "6.9.7.1",
-          "declared_directly": true
-        }
-      ],
-      "installed_as_dependency": false,
-      "installed_on_request": true
-    }
-  ],
-  "linked_keg": "1.6",
-  "pinned": false,
-  "outdated": false,
-  "deprecated": false,
-  "deprecation_date": null,
-  "deprecation_reason": null,
-  "disabled": false,
-  "disable_date": null,
-  "disable_reason": null,
-  "analytics": {
-    "install": {
-      "30d": {
-        "jq": 43543,
-        "jq --HEAD": 17
-      },
-      "90d": {
-        "jq": 143297,
-        "jq --HEAD": 77
-      },
-      "365d": {
-        "jq": 554438,
-        "jq --HEAD": 473
-      }
-    },
-    "install_on_request": {
-      "30d": {
-        "jq": 42343,
-        "jq --HEAD": 17
-      },
-      "90d": {
-        "jq": 139285,
-        "jq --HEAD": 77
-      },
-      "365d": {
-        "jq": 539971,
-        "jq --HEAD": 474
-      }
-    },
-    "build_error": {
-      "30d": {
-        "jq": 1
-      }
-    }
-  },
-  "analytics-linux": {
-    "install": {
-      "30d": {
-        "jq": 2051,
-        "jq --HEAD": 2
-      },
-      "90d": {
-        "jq": 5546,
-        "jq --HEAD": 2
-      },
-      "365d": {
-        "jq": 18860,
-        "jq --HEAD": 6
-      }
-    },
-    "install_on_request": {
-      "30d": {
-        "jq": 1932,
-        "jq --HEAD": 2
-      },
-      "90d": {
-        "jq": 5275,
-        "jq --HEAD": 2
-      },
-      "365d": {
-        "jq": 17926,
-        "jq --HEAD": 6
-      }
-    },
-    "build_error": {
-      "30d": {
-        "jq": 0
-      }
-    }
-  },
-  "generated_date": "2022-01-05"
-}
-```
-
-## 출력을 JSON 형태로 나타내기
-```json
-$ curl https://formulae.brew.sh/api/formula/jq.json | jq '.'
-```
-
-## 출력에 대한 필드값을 배열로 나타내기
-```json
-$ curl https://formulae.brew.sh/api/formula/jq.json | jq '[.name, .full_name, .tap, .oldname]'
-[
-"jq",
-"jq",
-"homebrew/core",
-null
-]
-```
-
-## 출력에 대한 필드값을 새로운 오브젝트로 나타내기
-```json
-$ curl https://formulae.brew.sh/api/formula/jq.json | jq '{name: .full_name, tap: .tap,  oldName: .oldname}'
-{
-  "name": "jq",
-  "tap": "homebrew/core",
-  "oldName": null
-}
-```
-
-## 출력에 대한 필드값을 csv 형태로 나타내기
-```json
-$ curl https://formulae.brew.sh/api/formula/jq.json | jq '[.name, .full_name, .tap, .desc] | @csv'
-"\"jq\",\"jq\",\"homebrew/core\",\"Lightweight and flexible command-line JSON processor\""
-        
-// -r 옵션을 주면, raw 형태로 따옴표 없이 출력된다.
-$ curl https://formulae.brew.sh/api/formula/jq.json | jq -r '[.name, .full_name, .tap, .desc] | @csv'
-"jq","jq","homebrew/core","Lightweight and flexible command-line JSON processor"
-```
-
-## 특정 필드값 기준으로 추출하기
-```json
-$ curl https://formulae.brew.sh/api/formula/jq.json | jq '.bottle'
-
-{
-  "stable": {
-    "rebuild": 1,
-    "root_url": "https://ghcr.io/v2/homebrew/core",
-    "files": {
-      "arm64_monterey": {
-        "cellar": ":any",
-        "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:f70e1ae8df182b242ca004492cc0a664e2a8195e2e46f30546fe78e265d5eb87",
-        "sha256": "f70e1ae8df182b242ca004492cc0a664e2a8195e2e46f30546fe78e265d5eb87"
-      },
-      "arm64_big_sur": {
-        "cellar": ":any",
-        "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:674b3ae41c399f1e8e44c271b0e6909babff9fcd2e04a2127d25e2407ea4dd33",
-        "sha256": "674b3ae41c399f1e8e44c271b0e6909babff9fcd2e04a2127d25e2407ea4dd33"
-      },
-      "monterey": {
-        "cellar": ":any",
-        "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:7fee6ea327062b37d34ef5346a84810a1752cc7146fff1223fab76c9b45686e0",
-        "sha256": "7fee6ea327062b37d34ef5346a84810a1752cc7146fff1223fab76c9b45686e0"
-      },
-      "big_sur": {
-        "cellar": ":any",
-        "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:bf0f8577632af7b878b6425476f5b1ab9c3bf66d65affb0c455048a173a0b6bf",
-        "sha256": "bf0f8577632af7b878b6425476f5b1ab9c3bf66d65affb0c455048a173a0b6bf"
-      },
-      "catalina": {
-        "cellar": ":any",
-        "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:820a3c85fcbb63088b160c7edf125d7e55fc2c5c1d51569304499c9cc4b89ce8",
-        "sha256": "820a3c85fcbb63088b160c7edf125d7e55fc2c5c1d51569304499c9cc4b89ce8"
-      },
-      "mojave": {
-        "cellar": ":any",
-        "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:71f0e76c5b22e5088426c971d5e795fe67abee7af6c2c4ae0cf4c0eb98ed21ff",
-        "sha256": "71f0e76c5b22e5088426c971d5e795fe67abee7af6c2c4ae0cf4c0eb98ed21ff"
-      },
-      "high_sierra": {
-        "cellar": ":any",
-        "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:dffcffa4ea13e8f0f2b45c5121e529077e135ae9a47254c32182231662ee9b72",
-        "sha256": "dffcffa4ea13e8f0f2b45c5121e529077e135ae9a47254c32182231662ee9b72"
-      },
-      "sierra": {
-        "cellar": ":any",
-        "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:bb4d19dc026c2d72c53eed78eaa0ab982e9fcad2cd2acc6d13e7a12ff658e877",
-        "sha256": "bb4d19dc026c2d72c53eed78eaa0ab982e9fcad2cd2acc6d13e7a12ff658e877"
-      },
-      "x86_64_linux": {
-        "cellar": ":any_skip_relocation",
-        "url": "https://ghcr.io/v2/homebrew/core/jq/blobs/sha256:2beea2c2c372ccf1081e9a5233fc3020470803254284aeecc071249d76b62338",
-        "sha256": "2beea2c2c372ccf1081e9a5233fc3020470803254284aeecc071249d76b62338"
-      }
-    }
+    "stable": "1.7.1"
   }
 }
 ```
 
-## 오브젝트 내 뎁스를 깊이해서 갈 수 있다.
-```json
-$ curl https://formulae.brew.sh/api/formula/jq.json | jq '.bottle.stable.root_url'
+```bash
+# 단일 필드
+cat formula.json | jq '.name'
 
-"https://ghcr.io/v2/homebrew/core"
+# 중첩 필드
+cat formula.json | jq '.versions.stable'
+
+# 여러 필드를 새 객체로 재구성
+cat formula.json | jq '{name: .name, version: .versions.stable, desc: .desc}'
 ```
 
-# <a id="reference"></a> reference 🚀
-https://formulae.brew.sh/formula/jq
+## 배열 다루기
+
+```json
+{
+  "items": [
+    { "name": "jq", "type": "json" },
+    { "name": "ripgrep", "type": "search" },
+    { "name": "fd", "type": "search" }
+  ]
+}
+```
+
+```bash
+# 배열 전체
+cat tools.json | jq '.items'
+
+# 첫 번째 요소
+cat tools.json | jq '.items[0]'
+
+# 배열 안의 name 만 추출
+cat tools.json | jq '.items[].name'
+
+# type 이 search 인 항목만 추출
+cat tools.json | jq '.items[] | select(.type == "search")'
+```
+
+## raw output
+
+문자열 값을 다른 명령어에 넘길 때는 `-r` 옵션을 자주 쓴다.
+따옴표가 포함된 JSON 문자열이 아니라 순수 문자열만 출력한다.
+
+```bash
+cat tools.json | jq -r '.items[].name'
+```
+
+출력 예시는 아래와 같다.
+
+```text
+jq
+ripgrep
+fd
+```
+
+## API 응답과 조합하기
+
+```bash
+# curl 응답을 jq 로 보기 좋게 출력
+curl -s https://api.github.com/repos/pasudo123/dotfiles | jq '.'
+
+# 필요한 필드만 추출
+curl -s https://api.github.com/repos/pasudo123/dotfiles \
+  | jq '{name: .name, default_branch: .default_branch, stars: .stargazers_count}'
+
+# httpie 는 기본적으로 JSON 을 보기 좋게 출력하지만, jq 로 추가 필터링할 수 있다.
+http GET https://api.github.com/repos/pasudo123/dotfiles \
+  | jq -r '.clone_url'
+```
+
+## CSV 로 변환하기
+
+`@csv` 를 사용하면 배열을 CSV 형태로 만들 수 있다.
+실제 문자열만 필요하면 `-r` 옵션을 같이 쓴다.
+
+```bash
+cat formula.json | jq -r '[.name, .tap, .desc] | @csv'
+```
+
+## 주의사항
+
+- 없는 필드를 조회하면 `null` 이 출력된다.
+- `-r` 옵션은 문자열을 후속 명령어에 넘길 때 좋지만, JSON 구조를 유지해야 할 때는 쓰지 않는다.
+- 큰 JSON 을 다룰 때는 먼저 `jq 'keys'`, `jq '.items[0]'` 처럼 구조를 좁혀가며 확인하는 편이 좋다.
+- 민감한 응답을 문서나 로그에 남길 때는 token, password 같은 값을 마스킹한다.
+
+## reference
+
+- https://jqlang.org/
+- https://formulae.brew.sh/formula/jq
